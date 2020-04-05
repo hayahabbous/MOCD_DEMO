@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="taskCell" rowHeight="80" id="WXz-G7-pWT" customClass="taskCell" customModule="MOCD_DEMO" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="374" height="80"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WXz-G7-pWT" id="6R3-9r-nM5">
+                <rect key="frame" x="0.0" y="0.0" width="374" height="80"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EXAMPLE TASK 01" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eal-cR-DAc">
+                        <rect key="frame" x="16" y="11" width="342" height="18"/>
+                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="done" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iqO-Wp-XQh">
+                        <rect key="frame" x="43" y="38" width="34.5" height="20"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view tag="22" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M0V-Wc-u5d" customClass="M13Checkbox" customModule="M13Checkbox">
+                        <rect key="frame" x="93.5" y="38" width="20" height="20"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="tintColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="AFZ-Xc-IHi"/>
+                            <constraint firstAttribute="width" constant="20" id="HdK-1Q-YkF"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="secondaryTintColor">
+                                <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="secondaryCheckmarkTintColor">
+                                <color key="value" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="string" keyPath="_IBBoxType" value="Square"/>
+                            <userDefinedRuntimeAttribute type="string" keyPath="_IBMarkType" value="2"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="not done" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PkB-7o-oDA">
+                        <rect key="frame" x="129.5" y="38" width="61" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="61" id="TVp-3H-yVJ"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view tag="33" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1PV-Jz-5qu" customClass="M13Checkbox" customModule="M13Checkbox">
+                        <rect key="frame" x="211" y="38" width="20" height="20"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="tintColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="C3t-dY-792"/>
+                            <constraint firstAttribute="width" constant="20" id="Jc9-vH-weI"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="secondaryTintColor">
+                                <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="secondaryCheckmarkTintColor">
+                                <color key="value" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="string" keyPath="_IBBoxType" value="Square"/>
+                            <userDefinedRuntimeAttribute type="string" keyPath="_IBMarkType" value="2"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Need Assistance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KoL-Wd-OC9">
+                        <rect key="frame" x="243" y="38" width="115" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="115" id="W56-Zu-AO5"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view tag="11" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ih5-OA-OMC" customClass="M13Checkbox" customModule="M13Checkbox">
+                        <rect key="frame" x="16" y="38" width="20" height="20"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="tintColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="A2s-lG-cqJ"/>
+                            <constraint firstAttribute="height" constant="20" id="u2H-EH-DHD"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="secondaryTintColor">
+                                <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="secondaryCheckmarkTintColor">
+                                <color key="value" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="string" keyPath="_IBBoxType" value="Square"/>
+                            <userDefinedRuntimeAttribute type="string" keyPath="_IBMarkType" value="2"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="iqO-Wp-XQh" firstAttribute="top" secondItem="ih5-OA-OMC" secondAttribute="top" id="12I-se-uYS"/>
+                    <constraint firstItem="KoL-Wd-OC9" firstAttribute="trailing" secondItem="Eal-cR-DAc" secondAttribute="trailing" id="2Fa-ow-mks"/>
+                    <constraint firstItem="M0V-Wc-u5d" firstAttribute="leading" secondItem="iqO-Wp-XQh" secondAttribute="trailing" constant="16" id="Ez2-Jd-W3c"/>
+                    <constraint firstItem="Eal-cR-DAc" firstAttribute="leading" secondItem="6R3-9r-nM5" secondAttribute="leading" constant="16" id="Map-rv-9tW"/>
+                    <constraint firstItem="KoL-Wd-OC9" firstAttribute="top" secondItem="1PV-Jz-5qu" secondAttribute="top" id="Mb2-pL-0Cw"/>
+                    <constraint firstItem="KoL-Wd-OC9" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1PV-Jz-5qu" secondAttribute="trailing" constant="8" symbolic="YES" id="Mmz-FM-gvf"/>
+                    <constraint firstItem="PkB-7o-oDA" firstAttribute="bottom" secondItem="M0V-Wc-u5d" secondAttribute="bottom" id="TVk-g9-JWT"/>
+                    <constraint firstItem="PkB-7o-oDA" firstAttribute="leading" secondItem="M0V-Wc-u5d" secondAttribute="trailing" constant="16" id="XDJ-NV-L7d"/>
+                    <constraint firstItem="1PV-Jz-5qu" firstAttribute="leading" secondItem="PkB-7o-oDA" secondAttribute="trailing" constant="20.333333333333343" id="XIB-cq-j69"/>
+                    <constraint firstItem="1PV-Jz-5qu" firstAttribute="top" secondItem="PkB-7o-oDA" secondAttribute="top" id="blG-5n-Bwl"/>
+                    <constraint firstItem="iqO-Wp-XQh" firstAttribute="bottom" secondItem="ih5-OA-OMC" secondAttribute="bottom" id="cdJ-9z-mDt"/>
+                    <constraint firstItem="KoL-Wd-OC9" firstAttribute="leading" secondItem="1PV-Jz-5qu" secondAttribute="trailing" constant="12" id="du5-Ki-qAw"/>
+                    <constraint firstItem="iqO-Wp-XQh" firstAttribute="leading" secondItem="ih5-OA-OMC" secondAttribute="trailing" constant="7" id="e3X-JQ-lfc"/>
+                    <constraint firstItem="ih5-OA-OMC" firstAttribute="top" secondItem="Eal-cR-DAc" secondAttribute="bottom" constant="9" id="m3a-DO-eee"/>
+                    <constraint firstItem="PkB-7o-oDA" firstAttribute="top" secondItem="M0V-Wc-u5d" secondAttribute="top" id="o5k-0t-EOb"/>
+                    <constraint firstItem="1PV-Jz-5qu" firstAttribute="bottom" secondItem="PkB-7o-oDA" secondAttribute="bottom" id="ogT-6L-6aE"/>
+                    <constraint firstAttribute="trailing" secondItem="Eal-cR-DAc" secondAttribute="trailing" constant="16" id="pDf-YG-C6b"/>
+                    <constraint firstItem="Eal-cR-DAc" firstAttribute="top" secondItem="6R3-9r-nM5" secondAttribute="top" constant="11" id="sV0-7d-Ipe"/>
+                    <constraint firstItem="KoL-Wd-OC9" firstAttribute="bottom" secondItem="1PV-Jz-5qu" secondAttribute="bottom" id="tQ5-FE-5cU"/>
+                    <constraint firstItem="M0V-Wc-u5d" firstAttribute="bottom" secondItem="iqO-Wp-XQh" secondAttribute="bottom" id="tu8-dK-T7D"/>
+                    <constraint firstItem="ih5-OA-OMC" firstAttribute="leading" secondItem="Eal-cR-DAc" secondAttribute="leading" id="ujO-O7-rZg"/>
+                    <constraint firstItem="M0V-Wc-u5d" firstAttribute="top" secondItem="iqO-Wp-XQh" secondAttribute="top" id="xRl-Oj-h4T"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="aCheckBox" destination="ih5-OA-OMC" id="Vg2-GQ-FCh"/>
+                <outlet property="bCheckBox" destination="M0V-Wc-u5d" id="iWn-73-XfW"/>
+                <outlet property="cCheckBox" destination="1PV-Jz-5qu" id="Pph-lE-Imy"/>
+                <outlet property="taskLabel" destination="Eal-cR-DAc" id="Dzc-vd-K2G"/>
+            </connections>
+            <point key="canvasLocation" x="-152" y="104"/>
+        </tableViewCell>
+    </objects>
+</document>

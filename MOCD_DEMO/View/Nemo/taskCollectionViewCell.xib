@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="taskCollectionViewCell" translatesAutoresizingMaskIntoConstraints="NO" id="tCh-nd-f1B" customClass="taskCollectionViewCell" customModule="MOCD_DEMO" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="565" height="114"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                <rect key="frame" x="0.0" y="0.0" width="565" height="114"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EDDEN NEED MORE ATTENTION" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ST4-R4-rgr">
+                        <rect key="frame" x="102" y="27" width="447" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="edens health need attention ,visit your closest medical center to get a check up" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pAl-Uq-pUI">
+                        <rect key="frame" x="102" y="49" width="393" height="26.5"/>
+                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="11"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0wy-s6-Hqb">
+                        <rect key="frame" x="10" y="27" width="70" height="70"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="70" id="6Oi-xf-aXh"/>
+                            <constraint firstAttribute="height" constant="70" id="OeV-t3-kTH"/>
+                        </constraints>
+                    </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="6PM-X2-vxW">
+                        <rect key="frame" x="15" y="32" width="60" height="60"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="60" id="81J-AD-aXA"/>
+                            <constraint firstAttribute="height" constant="60" id="CpS-Sd-eks"/>
+                        </constraints>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IB8-bl-aTr">
+                        <rect key="frame" x="503" y="48" width="46" height="28"/>
+                        <color key="backgroundColor" red="0.73333333329999995" green="0.61176470589999998" blue="0.38431372549999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="46" id="gJM-8q-l8U"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <state key="normal" title="Done">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
+                        <connections>
+                            <action selector="doneButtonAction:" destination="tCh-nd-f1B" eventType="touchUpInside" id="R50-le-TXA"/>
+                        </connections>
+                    </button>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="0.87882237346625769" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="pAl-Uq-pUI" firstAttribute="top" secondItem="ST4-R4-rgr" secondAttribute="bottom" constant="4" id="3PF-T0-FUQ"/>
+                <constraint firstItem="KJU-Hk-R0W" firstAttribute="trailing" secondItem="ST4-R4-rgr" secondAttribute="trailing" constant="16" id="Abm-kK-xrf"/>
+                <constraint firstItem="0wy-s6-Hqb" firstAttribute="centerY" secondItem="KJU-Hk-R0W" secondAttribute="centerY" id="Bev-Jf-Sak"/>
+                <constraint firstItem="6PM-X2-vxW" firstAttribute="centerX" secondItem="0wy-s6-Hqb" secondAttribute="centerX" id="KhO-bT-iuf"/>
+                <constraint firstItem="pAl-Uq-pUI" firstAttribute="centerY" secondItem="6PM-X2-vxW" secondAttribute="centerY" id="Pnd-hM-5Tr"/>
+                <constraint firstItem="IB8-bl-aTr" firstAttribute="centerY" secondItem="KJU-Hk-R0W" secondAttribute="centerY" id="Uxr-3E-NcY"/>
+                <constraint firstItem="KJU-Hk-R0W" firstAttribute="trailing" secondItem="IB8-bl-aTr" secondAttribute="trailing" constant="16" id="bEU-0V-hQf"/>
+                <constraint firstItem="0wy-s6-Hqb" firstAttribute="leading" secondItem="KJU-Hk-R0W" secondAttribute="leading" constant="10" id="bW2-2w-Una"/>
+                <constraint firstItem="IB8-bl-aTr" firstAttribute="leading" secondItem="pAl-Uq-pUI" secondAttribute="trailing" constant="8" id="eI5-Hm-9PN"/>
+                <constraint firstItem="ST4-R4-rgr" firstAttribute="top" secondItem="0wy-s6-Hqb" secondAttribute="top" id="ot4-91-3Dj"/>
+                <constraint firstItem="6PM-X2-vxW" firstAttribute="centerY" secondItem="0wy-s6-Hqb" secondAttribute="centerY" id="s7q-yD-BW0"/>
+                <constraint firstItem="ST4-R4-rgr" firstAttribute="leading" secondItem="0wy-s6-Hqb" secondAttribute="trailing" constant="22" id="tAF-1M-tqR"/>
+                <constraint firstItem="pAl-Uq-pUI" firstAttribute="leading" secondItem="ST4-R4-rgr" secondAttribute="leading" id="woB-UY-GVg"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="KJU-Hk-R0W"/>
+            <size key="customSize" width="565" height="114"/>
+            <connections>
+                <outlet property="backImageView" destination="0wy-s6-Hqb" id="BDL-rC-nhs"/>
+                <outlet property="backImageWidth" destination="6Oi-xf-aXh" id="1o9-be-aCj"/>
+                <outlet property="detailsLabel" destination="pAl-Uq-pUI" id="weH-at-Etb"/>
+                <outlet property="doneButton" destination="IB8-bl-aTr" id="GxD-or-UEQ"/>
+                <outlet property="imageWidth" destination="81J-AD-aXA" id="O1c-3O-qzc"/>
+                <outlet property="profileImageView" destination="6PM-X2-vxW" id="Gie-FR-S4V"/>
+                <outlet property="titleLabel" destination="ST4-R4-rgr" id="amy-wS-YiJ"/>
+            </connections>
+            <point key="canvasLocation" x="-13.768115942028986" y="93.080357142857139"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="profile" width="500" height="500"/>
+    </resources>
+</document>

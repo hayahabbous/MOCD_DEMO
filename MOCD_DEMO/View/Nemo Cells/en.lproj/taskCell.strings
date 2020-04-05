@@ -1,0 +1,12 @@
+
+/* Class = "UILabel"; text = "EXAMPLE TASK 01"; ObjectID = "Eal-cR-DAc"; */
+"Eal-cR-DAc.text" = "EXAMPLE TASK 01";
+
+/* Class = "UILabel"; text = "Need Assistance"; ObjectID = "KoL-Wd-OC9"; */
+"KoL-Wd-OC9.text" = "Need Assistance";
+
+/* Class = "UILabel"; text = "not done"; ObjectID = "PkB-7o-oDA"; */
+"PkB-7o-oDA.text" = "not done";
+
+/* Class = "UILabel"; text = "done"; ObjectID = "iqO-Wp-XQh"; */
+"iqO-Wp-XQh.text" = "done";

@@ -1,0 +1,76 @@
+/* 
+  Localizable.strings
+  MOCD_DEMO
+
+  Created by macbook pro on 11/25/19.
+  Copyright © 2019 Datacellme. All rights reserved.
+*/
+"Early intervention stage for kids" = "مرحلة التدخل المبكر للأطفال";
+"To help make your life easy" = "لمساعدتك في جعل حياتك سهلة";
+"Recording parameters such as daily biometric data,medical appointments and any symptoms" = "تسجيل المعلومات مثل البيانات البيومترية اليومية , والمواعيد الطبية وأية اغراض ";
+"Stories for your children" = "قصص مختارة لأطفالك";
+"Nemo" = "نمو";
+"Edkhar" = "إدخار";
+"Medical Agenda" = "الأجندة الطبية";
+"Stories" = "القصص";
+"Change language" = "تغيير اللغة";
+"Login" = "تسجيل الدخول";
+"Logout" = "تسجيل الخروج";
+" helth is fine" = "";
+"Please ensure that your child" = " الرجاء التأكد من ان صحة ابنك ";
+" need test" = "يحتاج الى فحص";
+" is Perfect" = "سليم";
+" Might Need Attention" = "ربما يحتاج الى انتباه";
+" child's health Might need attention . Keep checking his health " = "ربما يحتاج طفلك الى مزيد من الانتباه , استمر في فحص حالته الصحية";
+" need attention" = "يحتاج الى انتباه";
+" child's health need attention .visit your closest medical center to get a check-up " = "الرجاء التوجه الى اقرب مركز صحي لفحص طفلك";
+
+" Months" = "أشهر";
+"danger" = "خطر";
+"un-health" = "محتمل";
+"fine" = "سليم";
+"need test" = "غير معروف";
+"First Name" = "الاسم الأول";
+"Last Name" = "اسم العائلة";
+"Mobile" = "الهاتف";
+"Birthdate" = "تاريخ الميلاد";
+"Nationality" = "الجنسية";
+"Email" = "البريد الالكتروني";
+"Emirates ID" = "رقم الهوية الإماراتية";
+"Emirate" = "الإمارة";
+"Address" = "العنوان";
+"Gender" = "الجنس";
+"Save child" = "حفظ المعلومات";
+"Add child" = "إضافة الطفل";
+"username" = "اسم المستخدم";
+"password" = "كلمة المرور";
+"Username" = "اسم المستخدم";
+"Password" = "كلمة المرور";
+"Confirm Password" = "تأكيد كلمة المرور";
+"Gender" = "الجنس";
+"Password and Password Confirmation are not the same" = "كلمتا المرور غير متطابقتين";
+"Psswords dismatch " = "";
+"Nationality is empty" = "";
+"Please enter a valid nationality" = "";
+"gender is empty" = "";
+"Please enter a valid gender" = "";
+"Address is empty" = "";
+"Please enter a valid address" = "";
+"Emirate is empty" = "";
+"Please enter a valid emirate" = "";
+"Phone is empty" = "";
+"Please enter a valid Phone number" = "";
+"Password Confirmation is empty" = "";
+"Please enter a  password confirmation" = "";
+"Password is empty" = "";
+"Please enter a valid password" = "";
+"Email is empty" = "";
+"Please enter a valid email address" = "";
+"Emirates ID is empty" = "";
+"Please enter a valid emirates ID" = "";
+"lastname is empty" = "";
+"Please enter a valid last name" = "";
+"firstname  is empty" = "";
+"Please enter a valid first name" = "";
+"username is empty" = "";
+"Please enter a valid username" = "";

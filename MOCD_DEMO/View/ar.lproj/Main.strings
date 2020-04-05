@@ -1,0 +1,163 @@
+
+/* Class = "UILabel"; text = "un-healthy"; ObjectID = "2Us-ML-X3Q"; */
+"2Us-ML-X3Q.text" = "un-healthy";
+
+/* Class = "UILabel"; text = "UNITED ARAB EMIRATES"; ObjectID = "2jF-IM-Vxh"; */
+"2jF-IM-Vxh.text" = "الإمارات العربية المتحدة";
+
+/* Class = "UIButton"; normalTitle = "Forget Password?"; ObjectID = "39G-Dh-C8A"; */
+"39G-Dh-C8A.normalTitle" = "هل نسيت كلمة المرور؟";
+
+/* Class = "UILabel"; text = "EXAMPLE TASK 01"; ObjectID = "4Ro-7Y-J5e"; */
+"4Ro-7Y-J5e.text" = "EXAMPLE TASK 01";
+
+/* Class = "UIButton"; normalTitle = "All"; ObjectID = "5Fr-hd-Yck"; */
+"5Fr-hd-Yck.normalTitle" = "All";
+
+/* Class = "UILabel"; text = "3 Years"; ObjectID = "5Ka-1M-XFb"; */
+"5Ka-1M-XFb.text" = "3 Years";
+
+/* Class = "UILabel"; text = "GOALS PROGRESS"; ObjectID = "8G5-Vp-Z5t"; */
+"8G5-Vp-Z5t.text" = "التقدم";
+
+/* Class = "UINavigationItem"; title = "Parent Profile"; ObjectID = "8Rx-kV-w7G"; */
+"8Rx-kV-w7G.title" = "Parent Profile";
+
+/* Class = "UILabel"; text = "not done"; ObjectID = "AQj-lR-heO"; */
+"AQj-lR-heO.text" = "not done";
+
+/* Class = "UINavigationItem"; title = "Add New Child"; ObjectID = "HSX-iT-wZm"; */
+"HSX-iT-wZm.title" = "إضافة طفل جديد";
+
+/* Class = "UINavigationItem"; title = "Stories"; ObjectID = "Iiv-0N-GIw"; */
+"Iiv-0N-GIw.title" = "Stories";
+
+/* Class = "UILabel"; text = "1"; ObjectID = "JF1-dC-TDY"; */
+"JF1-dC-TDY.text" = "1";
+
+/* Class = "UILabel"; text = "Sometimes"; ObjectID = "JKn-Qx-zVt"; */
+"JKn-Qx-zVt.text" = "Sometimes";
+
+/* Class = "UILabel"; text = "James Aurthuer"; ObjectID = "JO7-N9-1q4"; */
+"JO7-N9-1q4.text" = "James Aurthuer";
+
+/* Class = "UILabel"; text = "EXAMPLE TASK 01"; ObjectID = "LPZ-Z2-L7u"; */
+"LPZ-Z2-L7u.text" = "EXAMPLE TASK 01";
+
+/* Class = "UILabel"; text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"; ObjectID = "NRa-eC-5xY"; */
+"NRa-eC-5xY.text" = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum";
+
+/* Class = "UIButton"; normalTitle = "Signup"; ObjectID = "PGU-ge-DVY"; */
+"PGU-ge-DVY.normalTitle" = "تسجيل";
+
+/* Class = "UILabel"; text = "Haya !"; ObjectID = "R9Y-Xh-arF"; */
+"R9Y-Xh-arF.text" = "Haya !";
+
+/* Class = "UILabel"; text = "OBJECTIVES"; ObjectID = "T8e-Rf-aas"; */
+"T8e-Rf-aas.text" = "OBJECTIVES";
+
+/* Class = "UILabel"; text = "Yes"; ObjectID = "THH-XK-lNi"; */
+"THH-XK-lNi.text" = "Yes";
+
+/* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "Usa-Wh-Ddz"; */
+"Usa-Wh-Ddz.normalTitle" = "Submit";
+
+/* Class = "UILabel"; text = "fill out the details :"; ObjectID = "WfN-xS-poP"; */
+"WfN-xS-poP.text" = "إملأ الحقول: ";
+
+/* Class = "UILabel"; text = "199K"; ObjectID = "WlN-me-ZCc"; */
+"WlN-me-ZCc.text" = "199K";
+
+/* Class = "UILabel"; text = "No children added. add children to see their helth status "; ObjectID = "XKF-dI-ln2"; */
+"XKF-dI-ln2.text" = "لايوجد أطفال , قم بإضافة أطفال لمتابعة حالتهم الصحية";
+
+/* Class = "UILabel"; text = "Choose story"; ObjectID = "XTC-XF-Isg"; */
+"XTC-XF-Isg.text" = "Choose story";
+
+/* Class = "UILabel"; text = "Don't have account?"; ObjectID = "XZv-g4-Svr"; */
+"XZv-g4-Svr.text" = "ليس لديك حساب؟";
+
+/* Class = "UILabel"; text = "fill out the details :"; ObjectID = "Xft-gd-hMS"; */
+"Xft-gd-hMS.text" = "fill out the details :";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "bH2-td-5yJ"; */
+"bH2-td-5yJ.text" = "Label";
+
+/* Class = "UILabel"; text = "Select Category"; ObjectID = "bTa-rT-XqB"; */
+"bTa-rT-XqB.text" = "Select Category";
+
+/* Class = "UIButton"; normalTitle = "Add Child"; ObjectID = "cmh-d5-Sff"; */
+"cmh-d5-Sff.normalTitle" = "إضافة الطفل";
+
+/* Class = "UILabel"; text = "UNITED ARAB EMIRATES"; ObjectID = "eor-CW-RvR"; */
+"eor-CW-RvR.text" = "الإمارات العربية المتحدة";
+
+/* Class = "UIButton"; normalTitle = "Signup"; ObjectID = "fao-Jk-Bti"; */
+"fao-Jk-Bti.normalTitle" = "تسجيل";
+
+/* Class = "UIButton"; normalTitle = "Continue as guest"; ObjectID = "g1P-Qe-vEe"; */
+"g1P-Qe-vEe.normalTitle" = "استمرار كزائر";
+
+/* Class = "UIBarButtonItem"; title = "Back"; ObjectID = "ipA-dt-Wpc"; */
+"ipA-dt-Wpc.title" = "رجوع";
+
+/* Class = "UILabel"; text = "No"; ObjectID = "k1e-pM-GhJ"; */
+"k1e-pM-GhJ.text" = "No";
+
+/* Class = "UILabel"; text = "Need Assistance"; ObjectID = "kzf-0o-bXf"; */
+"kzf-0o-bXf.text" = "Need Assistance";
+
+/* Class = "UILabel"; text = "MINISTRY OF COMMUNITY DEVELOPMENT"; ObjectID = "m4e-TX-Ohb"; */
+"m4e-TX-Ohb.text" = "وزارة تنمية وتطوير المجتمع";
+
+/* Class = "UILabel"; text = "The World of an abstract artist"; ObjectID = "n4e-1X-pap"; */
+"n4e-1X-pap.text" = "The World of an abstract artist";
+
+/* Class = "UILabel"; text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy ."; ObjectID = "nVA-rA-4Cj"; */
+"nVA-rA-4Cj.text" = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy .";
+
+/* Class = "UILabel"; text = "20"; ObjectID = "pcd-OL-pKf"; */
+"pcd-OL-pKf.text" = "20";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "pip-pj-59y"; */
+"pip-pj-59y.text" = "Label";
+
+/* Class = "UINavigationItem"; title = "Nemo"; ObjectID = "t4e-eh-4SQ"; */
+"t4e-eh-4SQ.title" = "نمو";
+
+/* Class = "UILabel"; text = "MINISTRY OF COMMUNITY DEVELOPMENT"; ObjectID = "tmq-UK-IZU"; */
+"tmq-UK-IZU.text" = "وزارة تنمية وتطوير المجتمع";
+
+/* Class = "UILabel"; text = "done"; ObjectID = "viI-Td-IUD"; */
+"viI-Td-IUD.text" = "done";
+
+/* Class = "UILabel"; text = "Welcome"; ObjectID = "vme-2Y-zOd"; */
+"vme-2Y-zOd.text" = "مرحبا";
+
+/* Class = "UILabel"; text = "Section Title"; ObjectID = "wNz-Ob-iC2"; */
+"wNz-Ob-iC2.text" = "Section Title";
+
+/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "wcf-l3-h4k"; */
+"wcf-l3-h4k.title" = "الإعدادات";
+
+/* Class = "UIBarButtonItem"; title = "Back"; ObjectID = "xbZ-Td-bUt"; */
+"xbZ-Td-bUt.title" = "رجوع";
+
+/* Class = "UIBarButtonItem"; title = "Back"; ObjectID = "xcc-Mo-vDc"; */
+"xcc-Mo-vDc.title" = "رجوع";
+
+/* Class = "UIButton"; normalTitle = "LOG IN"; ObjectID = "z4L-2j-smK"; */
+"z4L-2j-smK.normalTitle" = "تسجيل الدخول";
+
+/* Class = "UILabel"; text = "EDEN JAMAL"; ObjectID = "zAq-Zv-Ovt"; */
+"zAq-Zv-Ovt.text" = "EDEN JAMAL";
+
+/* Class = "UITextField"; placeholder = "Nationality"; ObjectID = "zVL-ng-aFj"; */
+"zVL-ng-aFj.placeholder" = "Nationality";
+
+/* Class = "UIButton"; normalTitle = "Save "; ObjectID = "zVX-j2-fE3"; */
+"zVX-j2-fE3.normalTitle" = "Save ";
+
+
+"N1m-hU-rqB.placeholder" = "الاسم الاول";
+"Ov8-fU-xbl.placeholder" = "اسم العائلة";

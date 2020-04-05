@@ -1,0 +1,15 @@
+
+/* Class = "UILabel"; text = "Sometimes"; ObjectID = "991-1U-TI1"; */
+"991-1U-TI1.text" = "احيانا";
+
+/* Class = "UILabel"; text = "No"; ObjectID = "EVG-5k-28L"; */
+"EVG-5k-28L.text" = "كلا";
+
+/* Class = "UILabel"; text = "Yes"; ObjectID = "M9z-rD-nl2"; */
+"M9z-rD-nl2.text" = "نعم";
+
+/* Class = "UIButton"; normalTitle = "submit"; ObjectID = "UFs-ZB-aVC"; */
+"UFs-ZB-aVC.normalTitle" = "انهاء";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "d63-t3-MR2"; */
+"d63-t3-MR2.text" = "Label";
