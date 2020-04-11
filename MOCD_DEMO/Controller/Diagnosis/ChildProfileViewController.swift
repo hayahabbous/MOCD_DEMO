@@ -11,7 +11,18 @@ import UIKit
 import NVActivityIndicatorView
 import LinearProgressBar
 import M13Checkbox
-class ChildProfileViewController: UIViewController {
+
+protocol answerAssessment {
+    func showPopup()
+}
+class ChildProfileViewController: UIViewController ,answerAssessment{
+    
+    
+    
+    
+    
+    
+    
     
     @IBOutlet var statusView: UIView!
     @IBOutlet var backgroundImage: UIImageView!
@@ -42,7 +53,7 @@ class ChildProfileViewController: UIViewController {
     var imageName = ""
     
     var assessmentArray: [String] = []
-    
+
 
     
     @IBOutlet var notificationsCollectionView: UICollectionView!
@@ -104,12 +115,12 @@ class ChildProfileViewController: UIViewController {
         if mocd_user?.isCenter == "1" || mocd_user?.isCenter == "true"  {
             self.navigationItem.rightBarButtonItems = [rightBarButton]
         }
-        
+        getChildFull()
         
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        getChildFull()
+        //getChildFull()
         
         
         let string = "\(AppConstants.WEB_SERVER_IMAGE_MOCD_URL)\(childItem.child_picture )"
@@ -120,6 +131,52 @@ class ChildProfileViewController: UIViewController {
         self.checkTime()
     }
     
+    
+    func showPopup() {
+        
+        
+        self.getChildFull()
+        if self.answeredSurveys.count == self.surveysList.count {
+            
+            
+            let dangerString = """
+
+نتيجة المسح تظهر علامات تأخر نمائي في بعض المجالات لدى الطفل
+"الرجاء التواصل مع مركز التدخل المبكر الأقرب إليكم لإجراء التقييم الشامل
+
+"""
+            
+            
+            let normalString = """
+يبدو أن هناك تأخر طفيف في بعض المجالات النمائية، سيقوم التطبيق بتزويدكم ببعض الأهداف التي يمكنكم تدريب الطفل عليها
+
+
+"""
+            
+            let healthString = """
+
+تهانينا، تطور طفلك متناسب مع عمره سيتم إعلامكم بموعد الاستبيان القادم عندما يحين موعده.  مع تمنياتنا لكم بموفور الصحة والعافية
+"""
+            
+            switch  childItem.status{
+            case .DANGER:
+                print("danger")
+                Utils.showAlertWith(title: "", message:dangerString, viewController: self)
+            case .FINE:
+                print("fine")
+                Utils.showAlertWith(title: "", message:healthString, viewController: self)
+            case .NEED_TEST:
+               
+                print("need test")
+                
+            case .UN_HEALTH:
+                 Utils.showAlertWith(title: "", message:normalString, viewController: self)
+                print("un health")
+            
+            }
+        }
+        
+    }
     @IBAction func editChildAction(_ sender: Any) {
         
         self.performSegue(withIdentifier: "toEditChild", sender: self)
@@ -194,7 +251,7 @@ class ChildProfileViewController: UIViewController {
                 guard let answeredObjectives = result["answered_objectives"] as? [[String: Any]] else {return}
                 guard let answeredS = result["answered surveys"] as? [[String: Any]] else {return}
                 
-                
+                self.childItem.status = CHILD_STATUS(value: result["overall_status"] as? String ?? "") ?? .NEED_TEST
                 self.childItem.picture = result["child_picture"] as? String ?? ""
                 self.surveysList = []
                 for r in surveys {
@@ -242,7 +299,13 @@ class ChildProfileViewController: UIViewController {
                     obj.routine_ar = r["routine_ar"] as? String  ?? ""
                     obj.routine_en = r["routine_ar"] as? String  ?? ""
         
+                    obj.routine_id = r["routine_id"] as? String ?? ""
+                    
+                    obj.routine_time = ROUTINE_TIME(value: obj.routine_id) ?? .NONE
                    
+                    
+                    
+                    
                     if let tasks = r["tasks"] as? [[String: Any]] {
                         var tList:[Task] = []
                                          
@@ -253,7 +316,7 @@ class ChildProfileViewController: UIViewController {
                             task.taskId = t["id"] as? String ?? ""
                             task.task_text_ar = t["task_text_ar"] as? String ?? ""
                             task.task_text_en = t["task_text_en"] as? String ?? ""
-                            
+                
                             tList.append(task)
                             
                         }
@@ -262,7 +325,11 @@ class ChildProfileViewController: UIViewController {
                     }
                     
                     
+                    
+                    
                    
+                    
+                    
                     
                     self.objectivesList.append(obj)
                 }
@@ -283,6 +350,41 @@ class ChildProfileViewController: UIViewController {
                         }
                 
                 
+                if self.mocd_user?.isCenter == "1" || self.mocd_user?.isCenter == "true"  {
+                    
+                    
+                    //cenetr case
+                    self.objectivesListForDisplaying = []
+                    
+                    for o in self.objectivesList {
+                        
+                        var result = self.answeredbjectivesList.filter { (obj) -> Bool in
+                            obj.objectiveId == o.objectiveId
+                        }.first
+                        
+                        if result != nil {
+                            
+                            o.result = result?.result ?? ""
+                            self.objectivesListForDisplaying.append(o)
+                        }else {
+                            self.objectivesListForDisplaying.append(o)
+                        }
+                        
+                    }
+                    
+                    
+                    DispatchQueue.main.async {
+                        self.setupInfromation()
+                        self.notificationsCollectionView.reloadData()
+                        if self.notificationsCollectionView.numberOfItems(inSection: 0) > 0  {
+                            self.notificationsCollectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .left, animated: false)
+                        }
+                        
+                        self.tableView.reloadData()
+                    }
+                    return
+                }
+                
                 if self.answeredbjectivesList.count > 0 {
                     
                     
@@ -295,11 +397,101 @@ class ChildProfileViewController: UIViewController {
                         
                         if result == nil {
                             self.objectivesListForDisplaying.append(o)
+                        }else if result?.result == "not" || result?.result == "need" {
+                            
+                            o.result = result?.result ?? ""
+                            self.objectivesListForDisplaying.append(o)
                         }
+                        
+                        
                     }
                     
+                    
+                    
+                }else {
+                    self.objectivesListForDisplaying = self.objectivesList
                 }
+                
+                
+                //filter objectives according to time
+                
+                
+                let calendar = Calendar.current
+                let now = Date()
+                let tomorrow = DateComponents(year: now.year, month: now.month, day: now.day + 1)
+                let dateTomorrow = Calendar.current.date(from: tomorrow)!
+                let fiveAM_today = calendar.date(
+                  bySettingHour: 5,
+                  minute: 0,
+                  second: 0,
+                  of: now)!
+                
+                let fiveAM_tommorow = calendar.date(
+                bySettingHour: 5,
+                minute: 0,
+                second: 0,
+                of: dateTomorrow)!
+
+                let towPM_today = calendar.date(
+                  bySettingHour: 14,
+                  minute: 0,
+                  second: 0,
+                  of: now)!
+                
+                
+                
+                let fivePM_today = calendar.date(
+                bySettingHour: 17,
+                minute: 0,
+                second: 0,
+                of: now)!
+                
+                
+                let ninePM_today = calendar.date(
+                bySettingHour: 21,
+                minute: 0,
+                second: 0,
+                of: now)!
+                
+                
+                
+                
+                if now >= fiveAM_today &&
+                  now <= towPM_today
+                {
+                    self.objectivesListForDisplaying = self.objectivesListForDisplaying.filter { (o) -> Bool in
+                        o.routine_time == .FIVE_AM_TOW_PM
+                    }
+                  print("The time is between 5:00 AM and 14:00 PM")
+                }else if now >= towPM_today &&
+                  now <= fivePM_today
+                {
+                    self.objectivesListForDisplaying = self.objectivesListForDisplaying.filter { (o) -> Bool in
+                        o.routine_time == .TOW_PM_FIVE_PM
+                    }
+                    print("The time is between 2:00 PM and 5:00 PM")
+                }else if now >= fivePM_today &&
+                    now <= ninePM_today {
+                    
+                    self.objectivesListForDisplaying = self.objectivesListForDisplaying.filter { (o) -> Bool in
+                        o.routine_time == .FIVE_PM_NINE_PM
+                    }
+                    print("The time is between 5:00 PM and 8:00 PM")
+                }else if now >= ninePM_today &&
+                now <= fiveAM_tommorow {
+                    self.objectivesListForDisplaying = self.objectivesListForDisplaying.filter { (o) -> Bool in
+                        o.routine_time == .NINE_PM_FIVE_AM_NEXT_DAY
+                    }
+                    print("The time is between 8:00 PM and 5:00 AM")
+                    
+                }
+                
+                
+                
                 DispatchQueue.main.async {
+                    
+                    self.setupInfromation()
+                    
                     self.notificationsCollectionView.reloadData()
                     if self.notificationsCollectionView.numberOfItems(inSection: 0) > 0  {
                         self.notificationsCollectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .left, animated: false)
@@ -316,6 +508,10 @@ class ChildProfileViewController: UIViewController {
             
         }
     }
+    
+    
+    
+    
     func getSurveys() {
            
       NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
@@ -440,14 +636,25 @@ class ChildProfileViewController: UIViewController {
     }
    
     func checkTime() {
+        
+        
         let calendar = Calendar.current
         let now = Date()
+        
+        
+        let tomorrow = DateComponents(year: now.year, month: now.month, day: now.day + 1)
+        let dateTomorrow = Calendar.current.date(from: tomorrow)!   
         let fiveAM_today = calendar.date(
           bySettingHour: 5,
           minute: 0,
           second: 0,
           of: now)!
 
+        let fiveAM_tommorow = calendar.date(
+        bySettingHour: 5,
+        minute: 0,
+        second: 0,
+        of: dateTomorrow)!
         let towPM_today = calendar.date(
           bySettingHour: 14,
           minute: 0,
@@ -488,8 +695,8 @@ class ChildProfileViewController: UIViewController {
             AppConstants.backgroundImage = UIImage(named: "evening")!
               self.backgroundImage.image = AppConstants.backgroundImage
             print("The time is between 5:00 PM and 8:00 PM")
-        }else if now >= fivePM_today &&
-        now <= eightPM_today {
+        }else if now >= eightPM_today &&
+        now <= fiveAM_tommorow {
             AppConstants.backgroundImage = UIImage(named: "night")!
               self.backgroundImage.image = AppConstants.backgroundImage
             print("The time is between 8:00 PM and 5:00 AM")
@@ -754,6 +961,12 @@ extension ChildProfileViewController: UITableViewDelegate ,UITableViewDataSource
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if cell.reuseIdentifier == "taskCell" {
             
+            
+            let cell = cell as! taskCell
+            let obje = objectivesListForDisplaying[indexPath.row]
+            cell.selectedObj = obje
+            cell.answerObjDelegate = self
+            cell.checkAnswers()
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -779,6 +992,7 @@ extension ChildProfileViewController: UITableViewDelegate ,UITableViewDataSource
         if segue.identifier == "toSurvey" {
             let vc = segue.destination as! AssessmentViewController
           
+            vc.delegate = self
             vc.selectedSurvey = self.selectedSurvey
             vc.selectedChild = self.childItem
             
@@ -786,6 +1000,7 @@ extension ChildProfileViewController: UITableViewDelegate ,UITableViewDataSource
         if segue.identifier == "toAssessment" {
             let vc = segue.destination as! categoriesViewController
           
+            
             vc.selectedSurvey = self.selectedSurvey
             vc.selectedChild = self.childItem
             
@@ -823,9 +1038,23 @@ extension ChildProfileViewController: answerObjective {
             if code == 200 {
                 
                 DispatchQueue.main.async {
-                    if let indexPath = self.tableView.indexPath(for: cell) {
-                        self.objectivesListForDisplaying.remove(at: indexPath.row)
-                        self.tableView.reloadData()
+                    
+                    
+                    
+                
+                    if self.mocd_user?.isCenter == "1" || self.mocd_user?.isCenter == "true"  {
+                        return
+                    }
+                    if o.result == "done" || answerString == "done" {
+                        if let indexPath = self.tableView.indexPath(for: cell) {
+                            self.objectivesListForDisplaying.remove(at: indexPath.row)
+                            
+                            
+                            self.tableView.deleteRows(at: [indexPath], with: .fade)
+                            
+                            //self.tableView.reloadData()
+                        }
+                        
                     }
                     
                 }

@@ -344,6 +344,9 @@ class nemoMainViewController: UIViewController ,quetionnairDelegate , MyCellDele
         
         backgroundImage.image = AppConstants.backgroundImage
         
+        
+        
+        
     }
     
     
@@ -594,6 +597,8 @@ class nemoMainViewController: UIViewController ,quetionnairDelegate , MyCellDele
                             
                             obj.routine_ar = o["routine_ar"] as? String  ?? ""
                             obj.routine_en = o["routine_ar"] as? String  ?? ""
+                            obj.routine_id = o["routine_id"] as? String ?? ""
+                            obj.routine_time = ROUTINE_TIME(value: obj.routine_id) ?? .NONE
                             
                             
                             if let tasks = o["tasks"] as? [[String: Any]] {
@@ -608,6 +613,7 @@ class nemoMainViewController: UIViewController ,quetionnairDelegate , MyCellDele
                                     task.task_text_ar = t["task_text_ar"] as? String ?? ""
                                     task.task_text_en = t["task_text_en"] as? String ?? ""
                                     task.childItem = child
+                                    task.objective = obj
                                     tList.append(task)
                                     
                                 }
@@ -673,7 +679,9 @@ class nemoMainViewController: UIViewController ,quetionnairDelegate , MyCellDele
                                     self.tasksList.append(t)
                                     
                                     
-                                    //LocalNotificationHelperT.sharedInstance.createReminderNotification(t.taskId, t.childItem.firstName, t.task_text_en, .Minutes)
+                                    
+                                    
+                                    
                                 }else{
                                     print("\(a_t?.task_text_en)")
                                 }
@@ -698,8 +706,103 @@ class nemoMainViewController: UIViewController ,quetionnairDelegate , MyCellDele
                             
                         }
                     }
+                    
+                    for t in self.tasksList {
+                        //LocalNotificationHelperT.sharedInstance.createReminderNotification(t.taskId, t.childItem.firstName, t.task_text_en, hour: 19,minute: 53, notificationDate: Date(), .Daily)//10
+                        
+                        
+                        switch t.objective?.routine_time {
+                        case .NONE:
+                            print("none")
+                        case .FIVE_AM_TOW_PM:
+                            LocalNotificationHelperT.sharedInstance.createReminderNotification(t.taskId, t.childItem.firstName, t.task_text_en, hour: 10,minute: 1, notificationDate: Date(), .Daily)//10
+                        case .TOW_PM_FIVE_PM:
+                            LocalNotificationHelperT.sharedInstance.createReminderNotification(t.taskId, t.childItem.firstName, t.task_text_en, hour: 16,minute: 1, notificationDate: Date(), .Daily)//16
+                        case .FIVE_PM_NINE_PM:
+                            LocalNotificationHelperT.sharedInstance.createReminderNotification(t.taskId, t.childItem.firstName, t.task_text_en,hour: 19,minute: 1 ,notificationDate: Date(), .Daily)//19
+                        case .NINE_PM_FIVE_AM_NEXT_DAY:
+                            LocalNotificationHelperT.sharedInstance.createReminderNotification(t.taskId, t.childItem.firstName, t.task_text_en, hour: 21,minute: 1, notificationDate: Date() ,.Daily)//21
+                        default:
+                            print("default")
+                        }
+                        
+                    }
+                    
                 }
                 
+                
+                
+                //filter tasks list according to time
+                
+                let calendar = Calendar.current
+                let now = Date()
+                let tomorrow = DateComponents(year: now.year, month: now.month, day: now.day + 1)
+                let dateTomorrow = Calendar.current.date(from: tomorrow)!
+                let fiveAM_today = calendar.date(
+                  bySettingHour: 5,
+                  minute: 0,
+                  second: 0,
+                  of: now)!
+                
+                let fiveAM_tommorow = calendar.date(
+                bySettingHour: 5,
+                minute: 0,
+                second: 0,
+                of: dateTomorrow)!
+
+                let towPM_today = calendar.date(
+                  bySettingHour: 14,
+                  minute: 0,
+                  second: 0,
+                  of: now)!
+                
+                
+                
+                let fivePM_today = calendar.date(
+                bySettingHour: 17,
+                minute: 0,
+                second: 0,
+                of: now)!
+                
+                
+                let ninePM_today = calendar.date(
+                bySettingHour: 21,
+                minute: 0,
+                second: 0,
+                of: now)!
+                
+                
+                
+                
+                if now >= fiveAM_today &&
+                  now <= towPM_today
+                {
+                    self.tasksList = self.tasksList.filter { (o) -> Bool in
+                        o.objective?.routine_time == .FIVE_AM_TOW_PM
+                    }
+                  print("The time is between 5:00 AM and 14:00 PM")
+                }else if now >= towPM_today &&
+                  now <= fivePM_today
+                {
+                    self.tasksList = self.tasksList.filter { (o) -> Bool in
+                        o.objective?.routine_time == .TOW_PM_FIVE_PM
+                    }
+                    print("The time is between 2:00 PM and 5:00 PM")
+                }else if now >= fivePM_today &&
+                    now <= ninePM_today {
+                    
+                    self.tasksList = self.tasksList.filter { (o) -> Bool in
+                        o.objective?.routine_time == .FIVE_PM_NINE_PM
+                    }
+                    print("The time is between 5:00 PM and 8:00 PM")
+                }else if now >= ninePM_today &&
+                now <= fiveAM_tommorow {
+                    self.tasksList = self.tasksList.filter { (o) -> Bool in
+                        o.objective?.routine_time == .NINE_PM_FIVE_AM_NEXT_DAY
+                    }
+                    print("The time is between 8:00 PM and 5:00 AM")
+                    
+                }
                 
                 
                 

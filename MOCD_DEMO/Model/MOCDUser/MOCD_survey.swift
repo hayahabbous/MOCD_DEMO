@@ -55,6 +55,9 @@ class Answer: NSObject {
 
 }
 class Objective: NSObject {
+    
+    
+    var routine_id: String = ""
     var objectiveId:String  = ""
     var objective_text_ar:String  = ""
     var objective_text_en:String  = ""
@@ -63,6 +66,9 @@ class Objective: NSObject {
     var routine_en:String  = ""
     
     var result: String = ""
+    
+    
+    var routine_time: ROUTINE_TIME = .NONE
     var tasks: [Task] = []
 }
 class Task: NSObject {
@@ -73,7 +79,12 @@ class Task: NSObject {
     var result: String = ""
     var selectedTask: String  = ""
     
+    
+    
+    var routine_time: ROUTINE_TIME = .NONE
      var childItem = ChildObject()
+    var objective: Objective?
+    
 }
 
 class storyCategory {

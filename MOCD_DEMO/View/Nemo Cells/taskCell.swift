@@ -39,6 +39,35 @@ class taskCell: UITableViewCell {
         
     }
     
+    func checkAnswers() {
+        if selectedObj.result == "done" {
+            aCheckBox.setCheckState(.checked, animated: true)
+            
+            
+            bCheckBox.setCheckState(.unchecked, animated: true)
+            cCheckBox.setCheckState(.unchecked, animated: true)
+            
+        }else if selectedObj.result == "not" {
+            bCheckBox.setCheckState(.checked, animated: true)
+            
+            aCheckBox.setCheckState(.unchecked, animated: true)
+            cCheckBox.setCheckState(.unchecked, animated: true)
+            
+        }else if selectedObj.result == "need" {
+            cCheckBox.setCheckState(.checked, animated: true)
+            
+            bCheckBox.setCheckState(.unchecked, animated: true)
+            aCheckBox.setCheckState(.unchecked, animated: true)
+        }else{
+            aCheckBox.setCheckState(.unchecked, animated: true)
+            bCheckBox.setCheckState(.unchecked, animated: true)
+            cCheckBox.setCheckState(.unchecked, animated: true)
+                  
+        }
+        
+        
+    }
+    
     
     @objc func checkboxValueChanged(_ sender: M13Checkbox) {
         
@@ -52,7 +81,7 @@ class taskCell: UITableViewCell {
             case .checked:
                 //bCheckBox.checkState = .unchecked
                 //cCheckBox.checkState = .unchecked
-                
+                selectedObj.result = "done"
                 answerObjDelegate.answerObjective(o: selectedObj, answerString: "done" , cell: self)
                 break
             default:
@@ -67,7 +96,7 @@ class taskCell: UITableViewCell {
             case .checked:
                 //aCheckBox.checkState = .unchecked
                 //cCheckBox.checkState = .unchecked
-                
+                selectedObj.result = "not"
                 answerObjDelegate.answerObjective(o: selectedObj, answerString: "not" , cell: self)
                 break
             default:
@@ -85,7 +114,7 @@ class taskCell: UITableViewCell {
                 //bCheckBox.checkState = .unchecked
                 
                 
-               
+               selectedObj.result = "need"
                 answerObjDelegate.answerObjective( o: selectedObj, answerString: "need" , cell: self)
                 break
             default:

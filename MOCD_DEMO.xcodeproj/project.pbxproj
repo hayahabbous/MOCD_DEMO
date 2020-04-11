@@ -247,6 +247,7 @@
 		5244D1CB22B7746C00EEA152 /* childCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5244D1CA22B7746C00EEA152 /* childCollectionViewCell.xib */; };
 		5244D1CD22B7747500EEA152 /* childCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5244D1CC22B7747500EEA152 /* childCollectionViewCell.swift */; };
 		5244D1D122B7B99B00EEA152 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5244D1D022B7B99B00EEA152 /* Utils.swift */; };
+		524A037E2440E2A00021A5EE /* MOCDSecurityQuestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524A037D2440E2A00021A5EE /* MOCDSecurityQuestions.swift */; };
 		5252172022B8BA5A00658497 /* wisdomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5252171F22B8BA5A00658497 /* wisdomCollectionViewCell.swift */; };
 		5252172222B8BA6700658497 /* wisdomCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5252172122B8BA6700658497 /* wisdomCollectionViewCell.xib */; };
 		5252172422B8CDCC00658497 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5252172322B8CDCC00658497 /* extensions.swift */; };
@@ -550,6 +551,7 @@
 		5244D1CA22B7746C00EEA152 /* childCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = childCollectionViewCell.xib; sourceTree = "<group>"; };
 		5244D1CC22B7747500EEA152 /* childCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = childCollectionViewCell.swift; sourceTree = "<group>"; };
 		5244D1D022B7B99B00EEA152 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		524A037D2440E2A00021A5EE /* MOCDSecurityQuestions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MOCDSecurityQuestions.swift; sourceTree = "<group>"; };
 		5252171F22B8BA5A00658497 /* wisdomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wisdomCollectionViewCell.swift; sourceTree = "<group>"; };
 		5252172122B8BA6700658497 /* wisdomCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = wisdomCollectionViewCell.xib; sourceTree = "<group>"; };
 		5252172322B8CDCC00658497 /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
@@ -810,6 +812,7 @@
 				523D08142373F7DF003672D8 /* MOCDUser.swift */,
 				52AD6888237946E100BCAFF0 /* MOCD_survey.swift */,
 				52724530237C220000FA9612 /* GalleryItem.swift */,
+				524A037D2440E2A00021A5EE /* MOCDSecurityQuestions.swift */,
 			);
 			path = MOCDUser;
 			sourceTree = "<group>";
@@ -1970,6 +1973,7 @@
 				523D41DB22BD5B34008EEB6E /* SpendingTypeModel.swift in Sources */,
 				523D408622BCCE2B008EEB6E /* PDFGenerator.swift in Sources */,
 				523D41AB22BD5B33008EEB6E /* PreviousMonthCell.swift in Sources */,
+				524A037E2440E2A00021A5EE /* MOCDSecurityQuestions.swift in Sources */,
 				52A06D5C230D22DE00E6F202 /* sListViewController.swift in Sources */,
 				523D41B322BD5B33008EEB6E /* SavingHeaderView.swift in Sources */,
 				523D41D822BD5B34008EEB6E /* IncomeModel.swift in Sources */,
@@ -2297,7 +2301,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1;
+				CURRENT_PROJECT_VERSION = 1.0;
 				DEVELOPMENT_TEAM = RYD66E6YP6;
 				INFOPLIST_FILE = MOCD_DEMO/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -2309,7 +2313,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/Realm/core",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.datacellme.mocd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "MOCD_DEMO/View/MOCD_DEMO-Bridging-Header.h";
@@ -2326,7 +2330,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1;
+				CURRENT_PROJECT_VERSION = 1.0;
 				DEVELOPMENT_TEAM = RYD66E6YP6;
 				INFOPLIST_FILE = MOCD_DEMO/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -2338,7 +2342,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/Realm/core",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.datacellme.mocd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "MOCD_DEMO/View/MOCD_DEMO-Bridging-Header.h";

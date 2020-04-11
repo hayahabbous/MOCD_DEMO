@@ -49,6 +49,33 @@ class multipleTextField: UIView , NibLoadable{
         
         
         if sender == firstCheckBox {
+            switch firstCheckBox.checkState {
+            case .checked:
+                secondCheckBox.setCheckState(.unchecked, animated: true)
+            case .unchecked:
+                secondCheckBox.setCheckState(.checked, animated: true)
+            case .mixed:
+                print("Mixed")
+            
+            }
+        }
+        
+        
+        if sender == secondCheckBox {
+            switch secondCheckBox.checkState {
+            case .checked:
+                firstCheckBox.setCheckState(.unchecked, animated: true)
+            case .unchecked:
+                firstCheckBox.setCheckState(.checked, animated: true)
+            case .mixed:
+                print("Mixed")
+            
+            }
+        }
+        
+       
+        /*
+        if sender == firstCheckBox {
             if(firstCheckBox.checkState == .checked) {
                 firstCheckBox.checkState = .unchecked
                 secondCheckBox.checkState = .checked
@@ -68,7 +95,7 @@ class multipleTextField: UIView , NibLoadable{
                 secondCheckBox.checkState = .checked
                 firstCheckBox.checkState = .unchecked
             }
-        }
+        }*/
         
     }
     

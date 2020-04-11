@@ -891,6 +891,23 @@
         <!--Register View Controller-->
         <scene sceneID="PjZ-qU-kSb">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FyB-Cl-uht" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <pickerView contentMode="scaleToFill" id="9Av-wL-yZC">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="216"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <connections>
+                        <outlet property="dataSource" destination="Tqo-st-g0I" id="TVj-4p-gQe"/>
+                        <outlet property="delegate" destination="Tqo-st-g0I" id="CSf-pP-SeW"/>
+                    </connections>
+                </pickerView>
+                <pickerView contentMode="scaleToFill" id="BNl-Bk-xZI">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="216"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <connections>
+                        <outlet property="dataSource" destination="Tqo-st-g0I" id="5bz-62-Vb8"/>
+                        <outlet property="delegate" destination="Tqo-st-g0I" id="Tpe-NW-6yx"/>
+                    </connections>
+                </pickerView>
                 <viewController id="Tqo-st-g0I" customClass="RegisterViewController" customModule="MOCD_DEMO" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ns8-FU-BM6"/>
@@ -904,7 +921,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="1500"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MAE-Ll-6gg">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1412"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1534"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hW5-qp-rjN">
                                                 <rect key="frame" x="132" y="44" width="150" height="150"/>
@@ -1058,7 +1075,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="signinAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lsV-Ge-BqD"/>
+                                                    <action selector="submitButtonAction:" destination="Tqo-st-g0I" eventType="touchUpInside" id="75H-cA-VfY"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -1156,16 +1173,17 @@
                         <outlet property="genderView" destination="i4H-G4-ghP" id="j3g-ZF-Gmk"/>
                         <outlet property="lastNameView" destination="g9r-Q9-M7v" id="5tM-Uz-XXh"/>
                         <outlet property="mobileView" destination="tJX-yF-RCC" id="Wob-Pe-yEB"/>
+                        <outlet property="nationalitiesPickerView" destination="BNl-Bk-xZI" id="dyM-0W-K7O"/>
                         <outlet property="nationalityView" destination="qD4-8p-5tF" id="5d4-08-Tqn"/>
                         <outlet property="passwordView" destination="J1V-2T-dnV" id="4Ug-Ja-hd8"/>
                         <outlet property="profileImageView" destination="8f2-IC-LSM" id="dU9-LD-4KT"/>
+                        <outlet property="securityPicker" destination="9Av-wL-yZC" id="yTr-f7-rhz"/>
                         <outlet property="securityQuestionsView" destination="dWG-w0-IHd" id="Uuw-KM-dTk"/>
                         <outlet property="submitButton" destination="CVn-kQ-R6V" id="ITl-OX-MzQ"/>
                         <outlet property="twoFactorAuthCheckBox" destination="Dq3-Jh-CJ9" id="rRc-pc-WHT"/>
                         <outlet property="usernameView" destination="CiP-bZ-o53" id="oU4-4R-6Tq"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FyB-Cl-uht" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2630" y="-1454"/>
         </scene>
@@ -2059,8 +2077,15 @@
                                             <constraint firstAttribute="height" constant="60" id="MS3-mY-KTl"/>
                                         </constraints>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1BR-My-8KS" customClass="textFieldMandatory" customModule="MOCD_DEMO" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="309" width="342" height="60"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="U6m-Ub-1MX"/>
+                                        </constraints>
+                                    </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LI7-3f-I74">
-                                        <rect key="frame" x="111" y="373" width="120" height="40"/>
+                                        <rect key="frame" x="111" y="409" width="120" height="40"/>
                                         <color key="backgroundColor" red="0.73333333329999995" green="0.61176470589999998" blue="0.38431372549999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="120" id="ELk-L8-hlH"/>
@@ -2093,14 +2118,17 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="J52-2e-dvH" secondAttribute="trailing" id="4PY-VP-FCQ"/>
                                     <constraint firstItem="P1M-k2-6gN" firstAttribute="centerX" secondItem="pNn-ot-5FL" secondAttribute="centerX" id="4Ts-0g-aof"/>
+                                    <constraint firstItem="LI7-3f-I74" firstAttribute="top" secondItem="1BR-My-8KS" secondAttribute="bottom" constant="40" id="575-k8-UsZ"/>
                                     <constraint firstItem="J52-2e-dvH" firstAttribute="leading" secondItem="pNn-ot-5FL" secondAttribute="leading" id="5Dm-3J-Zwh"/>
+                                    <constraint firstItem="1BR-My-8KS" firstAttribute="leading" secondItem="yzA-Ja-s4P" secondAttribute="leading" id="82J-Pl-9at"/>
                                     <constraint firstItem="P1M-k2-6gN" firstAttribute="top" secondItem="pNn-ot-5FL" secondAttribute="top" constant="30" id="9gQ-pB-0cg"/>
                                     <constraint firstItem="J52-2e-dvH" firstAttribute="top" secondItem="pNn-ot-5FL" secondAttribute="top" constant="81" id="Cbl-0X-WUC"/>
+                                    <constraint firstItem="1BR-My-8KS" firstAttribute="trailing" secondItem="yzA-Ja-s4P" secondAttribute="trailing" id="Dn4-Uk-K4U"/>
                                     <constraint firstItem="LI7-3f-I74" firstAttribute="centerX" secondItem="pNn-ot-5FL" secondAttribute="centerX" id="K7J-0s-KHg"/>
-                                    <constraint firstItem="LI7-3f-I74" firstAttribute="top" secondItem="yzA-Ja-s4P" secondAttribute="bottom" constant="80" id="Lyp-D0-Nqq"/>
                                     <constraint firstItem="WlW-eH-26g" firstAttribute="leading" secondItem="J52-2e-dvH" secondAttribute="leading" id="MNW-pl-e9K"/>
                                     <constraint firstItem="WlW-eH-26g" firstAttribute="trailing" secondItem="J52-2e-dvH" secondAttribute="trailing" id="RTM-nP-zP6"/>
                                     <constraint firstItem="yzA-Ja-s4P" firstAttribute="trailing" secondItem="WlW-eH-26g" secondAttribute="trailing" id="SNp-oX-FkV"/>
+                                    <constraint firstItem="1BR-My-8KS" firstAttribute="top" secondItem="yzA-Ja-s4P" secondAttribute="bottom" constant="16" id="Tm3-pg-hOB"/>
                                     <constraint firstItem="yzA-Ja-s4P" firstAttribute="top" secondItem="WlW-eH-26g" secondAttribute="bottom" constant="16" id="ZuL-RT-9kQ"/>
                                     <constraint firstAttribute="trailing" secondItem="tbU-TO-PBM" secondAttribute="trailing" constant="8" id="gcv-FM-frf"/>
                                     <constraint firstItem="tbU-TO-PBM" firstAttribute="top" secondItem="pNn-ot-5FL" secondAttribute="top" constant="8" id="gxY-xB-6WW"/>
@@ -2127,6 +2155,7 @@
                         <outlet property="objectiveTextView" destination="J52-2e-dvH" id="wkb-Ro-3c6"/>
                         <outlet property="routinPickerView" destination="iRs-3V-kwb" id="oWC-Vv-nD8"/>
                         <outlet property="routineView" destination="yzA-Ja-s4P" id="bM1-xI-94d"/>
+                        <outlet property="taskView" destination="1BR-My-8KS" id="so6-MV-g8b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hqQ-Qj-Lja" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -3277,8 +3306,11 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IP3-oR-oYB" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="8" y="450" width="359" height="17"/>
+                                                <rect key="frame" x="8" y="450" width="359" height="39"/>
                                                 <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="39" id="2sQ-Vv-du7"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
@@ -3342,12 +3374,12 @@
                                                 </constraints>
                                             </imageView>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rdv-WJ-3ny" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="8" y="483" width="359" height="17"/>
+                                                <rect key="frame" x="8" y="505" width="359" height="17"/>
                                                 <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Address"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Emirates ID"/>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
                                                         <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </userDefinedRuntimeAttribute>
@@ -3368,6 +3400,12 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="this app is for the children who are less than 66 months old" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n5Y-ZU-Iek">
+                                                <rect key="frame" x="8" y="585.5" width="359" height="33.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -3409,8 +3447,8 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cmh-d5-Sff">
-                                        <rect key="frame" x="127.5" y="549" width="120" height="30"/>
-                                        <color key="backgroundColor" red="0.2369583207" green="0.59855216739999995" blue="0.58454734009999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <rect key="frame" x="127.5" y="635" width="120" height="30"/>
+                                        <color key="backgroundColor" red="0.73333333329999995" green="0.61176470589999998" blue="0.38431372549999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="120" id="CkF-rN-ycl"/>
                                         </constraints>
@@ -3423,7 +3461,7 @@
                                         </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BZi-M2-7ou" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                        <rect key="frame" x="8" y="516" width="359" height="17"/>
+                                        <rect key="frame" x="8" y="538" width="359" height="17"/>
                                         <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -3453,13 +3491,16 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="Vv1-DH-te0" firstAttribute="centerX" secondItem="5Jh-Ty-Idp" secondAttribute="centerX" id="1b0-nn-GN4"/>
+                                    <constraint firstItem="n5Y-ZU-Iek" firstAttribute="top" secondItem="BZi-M2-7ou" secondAttribute="bottom" constant="30.5" id="1pL-ij-APA"/>
                                     <constraint firstItem="cmh-d5-Sff" firstAttribute="centerX" secondItem="NPp-0V-sJO" secondAttribute="centerX" id="37G-8S-bLJ"/>
                                     <constraint firstAttribute="trailing" secondItem="Vv1-DH-te0" secondAttribute="trailing" id="I8Y-bx-tJN"/>
+                                    <constraint firstItem="n5Y-ZU-Iek" firstAttribute="trailing" secondItem="BZi-M2-7ou" secondAttribute="trailing" id="J08-Js-nZU"/>
                                     <constraint firstItem="BZi-M2-7ou" firstAttribute="trailing" secondItem="rdv-WJ-3ny" secondAttribute="trailing" id="MS0-s2-WAr"/>
+                                    <constraint firstItem="cmh-d5-Sff" firstAttribute="top" secondItem="n5Y-ZU-Iek" secondAttribute="bottom" constant="16" id="R7K-BT-b51"/>
                                     <constraint firstAttribute="bottom" secondItem="cmh-d5-Sff" secondAttribute="bottom" constant="420" id="Rf1-3K-Uy1"/>
                                     <constraint firstItem="BZi-M2-7ou" firstAttribute="leading" secondItem="rdv-WJ-3ny" secondAttribute="leading" id="X2G-hA-qbG"/>
+                                    <constraint firstItem="n5Y-ZU-Iek" firstAttribute="leading" secondItem="BZi-M2-7ou" secondAttribute="leading" id="XkA-du-IlW"/>
                                     <constraint firstItem="Vv1-DH-te0" firstAttribute="leading" secondItem="5Jh-Ty-Idp" secondAttribute="leading" id="eyx-H6-vF7"/>
-                                    <constraint firstItem="cmh-d5-Sff" firstAttribute="top" secondItem="BZi-M2-7ou" secondAttribute="bottom" constant="16" id="o2l-NU-JG5"/>
                                     <constraint firstItem="Vv1-DH-te0" firstAttribute="top" secondItem="5Jh-Ty-Idp" secondAttribute="top" id="wHg-ay-udn"/>
                                     <constraint firstItem="BZi-M2-7ou" firstAttribute="top" secondItem="rdv-WJ-3ny" secondAttribute="bottom" constant="16" id="wtk-If-JoQ"/>
                                 </constraints>
@@ -3488,6 +3529,7 @@
                         <outlet property="birthdateButton" destination="FAn-GO-7dp" id="VlY-ay-VSd"/>
                         <outlet property="birthdateTextField" destination="h7d-Pg-a1c" id="XAJ-Ce-iFW"/>
                         <outlet property="cameraImageView" destination="7kq-h3-kwt" id="yRT-Un-tbn"/>
+                        <outlet property="emirateHeightConstraint" destination="2sQ-Vv-du7" id="55K-TL-4Gh"/>
                         <outlet property="emiratePickerView" destination="4r9-d9-eLK" id="P7D-7l-vF0"/>
                         <outlet property="emirateTextField" destination="IP3-oR-oYB" id="fqt-9l-rEh"/>
                         <outlet property="firstNameTextField" destination="N1m-hU-rqB" id="yyU-jA-JKk"/>
@@ -3500,6 +3542,14 @@
                         <outlet property="scrollView" destination="5Jh-Ty-Idp" id="Jp3-q4-3tN"/>
                     </connections>
                 </viewController>
+                <pickerView contentMode="scaleToFill" id="eC5-K8-fXD">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="216"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <connections>
+                        <outlet property="dataSource" destination="DFa-qD-r0F" id="0DW-gJ-gf4"/>
+                        <outlet property="delegate" destination="DFa-qD-r0F" id="WBh-Dl-Tox"/>
+                    </connections>
+                </pickerView>
                 <pickerView contentMode="scaleToFill" id="a6S-nc-DDZ">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="162"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -3515,14 +3565,6 @@
                     <connections>
                         <outlet property="dataSource" destination="DFa-qD-r0F" id="DH8-tb-cdu"/>
                         <outlet property="delegate" destination="DFa-qD-r0F" id="Tkf-K8-rss"/>
-                    </connections>
-                </pickerView>
-                <pickerView contentMode="scaleToFill" id="eC5-K8-fXD">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="216"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                    <connections>
-                        <outlet property="dataSource" destination="DFa-qD-r0F" id="0DW-gJ-gf4"/>
-                        <outlet property="delegate" destination="DFa-qD-r0F" id="WBh-Dl-Tox"/>
                     </connections>
                 </pickerView>
             </objects>
@@ -4750,6 +4792,6 @@
         <segue reference="Ruu-cK-qli"/>
         <segue reference="Bo4-UZ-ibe"/>
         <segue reference="sF9-Rt-gqb"/>
-        <segue reference="ZOO-LG-UFs"/>
+        <segue reference="6rb-Fp-yLI"/>
     </inferredMetricsTieBreakers>
 </document>

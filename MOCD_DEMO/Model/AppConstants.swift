@@ -49,6 +49,15 @@ enum CHILD_STATUS : Int {
     
 }
 
+enum ROUTINE_TIME: Int  {
+    case FIVE_AM_TOW_PM = 0
+    case TOW_PM_FIVE_PM = 1
+    case FIVE_PM_NINE_PM = 2
+    case NINE_PM_FIVE_AM_NEXT_DAY = 3
+    case NONE = 4
+    
+}
+
 extension CHILD_STATUS {
     init?(value: String) {
         switch value {
@@ -66,6 +75,27 @@ extension CHILD_STATUS {
     }
 }
 
+
+extension ROUTINE_TIME {
+    init?(value: String) {
+        switch value {
+        case "":
+            self.init(rawValue: 4) // NONE
+        case "1","5","12","9":
+            self.init(rawValue: 0)
+        case "2","6","8":
+            self.init(rawValue: 1)
+        case "7","10","11":
+            self.init(rawValue: 2)
+        case "3","13","4":
+            self.init(rawValue: 3)
+            
+            
+        default:
+            self.init(rawValue: 4)
+        }
+    }
+}
 class AspectElement: NSObject {
     var title = ""
     var objectId = ""

@@ -25,7 +25,7 @@ class addObjectiveViewController: UIViewController {
     var routinesArray: [Routine] = []
     var aspectsArray: [Aspect] = []
     var objective_text: String!
-    
+    var task_text: String!
     var selectedRoutine: Routine = Routine()
     var selectedAspect: Aspect = Aspect()
     
@@ -35,8 +35,10 @@ class addObjectiveViewController: UIViewController {
     var childItem: ChildObject!
     
     
+    @IBOutlet var taskView: textFieldMandatory!
     @IBOutlet var domainView: selectTextField!
     @IBOutlet var routineView: selectTextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -64,6 +66,9 @@ class addObjectiveViewController: UIViewController {
         routinPickerView.translatesAutoresizingMaskIntoConstraints = false
         
        
+        
+        taskView.textLabel.text = "Task Text"
+        taskView.textField.placeholder = "Task Text"
         
         
         getRoutines()
@@ -230,12 +235,18 @@ class addObjectiveViewController: UIViewController {
     func checkFields() -> Bool {
         
         objective_text = objectiveTextView.textField.text ?? ""
+        task_text = taskView.textField.text ?? ""
         if objective_text == "" {
             Utils.showErrorMessage(NSLocalizedString("Please enter a valid objective text", comment:""), withTitle: NSLocalizedString("objective is empty", comment:""), andInViewController: self)
             
             return false
         }
         
+        if task_text == "" {
+            Utils.showErrorMessage(NSLocalizedString("Please enter a valid task text", comment:""), withTitle: NSLocalizedString("task is empty", comment:""), andInViewController: self)
+            
+            return false
+        }
         
         if selectedAspect == nil || selectedRoutine == nil {
             Utils.showErrorMessage(NSLocalizedString("Please enter a valid Routine and Aspect", comment:""), withTitle: NSLocalizedString("fields are empty", comment:""), andInViewController: self)
@@ -255,8 +266,10 @@ class addObjectiveViewController: UIViewController {
         
         NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
         
-        WebService.insertNewObjective(objective_text_ar: objective_text, objective_text_en: objective_text, min_age: "\((Int(childItem.age) ?? 0) - 2)", max_age: "\((Int(childItem.age) ?? 0) + 2)", user_id: mocd_user?.DId ?? "0", child_id: childItem.objectID, aspect_id: selectedAspect.aspect_id , routine_id: selectedRoutine.routine_id) { (json) in
+        WebService.insertNewObjective(objective_text_ar: objective_text, objective_text_en: objective_text, min_age: "\((Int(childItem.age) ?? 0) - 2)", max_age: "\((Int(childItem.age) ?? 0) + 2)", user_id: mocd_user?.DId ?? "0", child_id: childItem.objectID, aspect_id: selectedAspect.aspect_id , routine_id: selectedRoutine.routine_id ,task: task_text) { (json) in
             
+            
+            print(json)
             
             DispatchQueue.main.async {
                 
