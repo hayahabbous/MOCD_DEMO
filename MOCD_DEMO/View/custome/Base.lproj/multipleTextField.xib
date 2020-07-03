@@ -8,12 +8,13 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="multipleTextField" customModule="MOCD_DEMO" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="multipleTextField" customModule="MOCD_CONNECT" customModuleProvider="target">
             <connections>
                 <outlet property="firstCheckBox" destination="Rxd-j8-jWM" id="4cu-PW-Fln"/>
                 <outlet property="firstLabel" destination="XKG-HF-uK5" id="gDx-oA-qvQ"/>
                 <outlet property="secondCheckBox" destination="6IY-D2-qkY" id="hWH-8k-QMN"/>
                 <outlet property="secondLabel" destination="AwL-uG-dJz" id="f4h-yn-E9x"/>
+                <outlet property="starImage" destination="Dqp-uI-GUd" id="him-3k-Jil"/>
                 <outlet property="textLabel" destination="Lyi-fD-lxH" id="jWF-bX-jtk"/>
             </connections>
         </placeholder>

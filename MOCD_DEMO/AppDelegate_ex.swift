@@ -17,7 +17,7 @@ extension AppDelegate {
         }
         
         self.setDrawerControllerT()
-        
+        /*
         LanguageManager.sharedInstance.setSupportedLanguages(["en", "ar"])
         LanguageManager.sharedInstance.setNotificationEnable(false)
         
@@ -47,7 +47,7 @@ extension AppDelegate {
             UserDefaults.standard.setValue(aLangCode, forKey: "Language")
             UserDefaults.standard.synchronize()
         }
-        
+        */
         // Dropbox integration code. (Start)
         DropboxClientsManager.setupWithAppKey(DropboxAppkey)
         

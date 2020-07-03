@@ -16,9 +16,12 @@ import NVActivityIndicatorView
 class addObjectiveViewController: UIViewController {
     
     
+    
+    
+    var isEdit = false
     @IBOutlet var objectiveTextView: textFieldMandatory!
     
-    
+    var delegate: answerAssessment!
     var mocd_user = MOCDUser.getMOCDUser()
     var toolBar = UIToolbar()
     let activityData = ActivityData()
@@ -33,14 +36,18 @@ class addObjectiveViewController: UIViewController {
     @IBOutlet var routinPickerView: UIPickerView!
     
     var childItem: ChildObject!
-    
+    var selectedObjective: Objective?
     
     @IBOutlet var taskView: textFieldMandatory!
     @IBOutlet var domainView: selectTextField!
     @IBOutlet var routineView: selectTextField!
+    var task_id: String?
+
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         
         domainPickerView.delegate = self
@@ -49,16 +56,16 @@ class addObjectiveViewController: UIViewController {
         domainPickerView.dataSource = self
         routinPickerView.dataSource = self
                
-        objectiveTextView.textLabel.text = "Objective Text"
-        objectiveTextView.textField.placeholder = "Objective Text"
+        objectiveTextView.textLabel.text = "Objective Text".localize
+        objectiveTextView.textField.placeholder = "Objective Text".localize
         
         
-        domainView.textLabel.text = "Domain"
-        domainView.textField.placeholder = "Please Select"
+        domainView.textLabel.text = "Domain".localize
+        domainView.textField.placeholder = "Please Select".localize
         domainView.textField.inputView = domainPickerView
         
-        routineView.textLabel.text = "Routine"
-        routineView.textField.placeholder = "Please Select"
+        routineView.textLabel.text = "Routine".localize
+        routineView.textField.placeholder = "Please Select".localize
         routineView.textField.inputView = routinPickerView
         
         
@@ -67,8 +74,8 @@ class addObjectiveViewController: UIViewController {
         
        
         
-        taskView.textLabel.text = "Task Text"
-        taskView.textField.placeholder = "Task Text"
+        taskView.textLabel.text = "Task Text".localize
+        taskView.textField.placeholder = "Task Text".localize
         
         
         getRoutines()
@@ -80,10 +87,31 @@ class addObjectiveViewController: UIViewController {
       
         setupToolbar()
         
+        
+        if isEdit {
+            self.fillInformation()
+        }
+        
     }
     
     
+    func fillInformation() {
+        
+        objectiveTextView.textField.isUserInteractionEnabled = false
+        domainView.textField.isUserInteractionEnabled = false
+        routineView.textField.isUserInteractionEnabled = false
     
+        
+        objectiveTextView.textField.text = selectedObjective?.objective_text_en
+        domainView.textField.text = selectedObjective?.aspect_en
+        routineView.textField.text = selectedObjective?.routine_en
+        
+        taskView.textField.text = selectedObjective?.tasks[0].task_text_en
+        
+    
+        
+        
+    }
     func setupToolbar() {
         toolBar.tintColor = AppConstants.BROWN_COLOR
         toolBar.barStyle = .default
@@ -93,11 +121,13 @@ class addObjectiveViewController: UIViewController {
         
         
         var items = [UIBarButtonItem]()
+        
+        /*
         items.append(
             UIBarButtonItem(barButtonSystemItem: .cancel, target: nil, action: #selector(onClickedToolbeltButton(_:)))
         )
         items.append(
-            UIBarButtonItem(barButtonSystemItem: .flexibleSpace , target: self, action: nil))
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace , target: self, action: nil))*/
         items.append(
             UIBarButtonItem(barButtonSystemItem: .done , target: self, action: #selector(onClickedToolbeltButton(_:)))
         )
@@ -152,7 +182,7 @@ class addObjectiveViewController: UIViewController {
                     routine.routine_id = r["id"] as? String  ?? ""
                     routine.routine_ar = r["routine_ar"] as? String  ?? ""
                     routine.routine_en = r["routine_en"] as? String  ?? ""
-                    
+                    routine.time = r["time"] as? String  ?? ""
                     
                     self.routinesArray.append(routine)
                     
@@ -264,23 +294,44 @@ class addObjectiveViewController: UIViewController {
             return
         }
         
-        NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
-        
-        WebService.insertNewObjective(objective_text_ar: objective_text, objective_text_en: objective_text, min_age: "\((Int(childItem.age) ?? 0) - 2)", max_age: "\((Int(childItem.age) ?? 0) + 2)", user_id: mocd_user?.DId ?? "0", child_id: childItem.objectID, aspect_id: selectedAspect.aspect_id , routine_id: selectedRoutine.routine_id ,task: task_text) { (json) in
-            
-            
-            print(json)
-            
-            DispatchQueue.main.async {
-                
-                NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
-                self.dismiss(animated: true, completion: nil)
+        if isEdit {
+            NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
+            WebService.updateTask(taskId: selectedObjective?.tasks[0].taskId ?? "", new_task: task_text) { (json) in
+                 print(json)
+                               
+                               
+                DispatchQueue.main.async {
+                    NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+                    self.delegate.reloadChild()
+                    self.dismiss(animated: true, completion: nil)
+                                       
                     
+                }
             }
-                       
+        }else{
             
+            NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
             
+            WebService.insertNewObjective(objective_text_ar: objective_text, objective_text_en: objective_text, min_age: "\((Int(childItem.age) ?? 0) - 2)", max_age: "\((Int(childItem.age) ?? 0) + 2)", user_id: mocd_user?.DId ?? "0", child_id: childItem.objectID, aspect_id: selectedAspect.aspect_id , routine_id: selectedRoutine.routine_id ,task: task_text) { (json) in
+                
+                
+                print(json)
+                
+                DispatchQueue.main.async {
+                    
+                    NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+                    
+                    self.delegate.reloadChild()
+                    self.dismiss(animated: true, completion: nil)
+                        
+                }
+                           
+                
+                
+            }
         }
+        
+        
     }
     @IBAction func cancelAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
@@ -317,12 +368,17 @@ extension addObjectiveViewController: UIPickerViewDelegate , UIPickerViewDataSou
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView == domainPickerView {
             let item = Array(aspectsArray)[row]
-            let title = item.aspect_title_en
+            let title = AppConstants.isArabic() ? item.aspect_title_ar : item.aspect_title_en
             
             return title
         }else if pickerView == routinPickerView{
             let item = Array(routinesArray)[row]
-            let title = item.routine_en
+            
+            let routineString = AppConstants.isArabic() ? item.routine_ar : item.routine_en
+            
+            let timeString = "( \(item.time ?? "") )"
+            
+            let title =  "\(routineString ?? "") \(timeString)"
             
             return title
         }
@@ -338,12 +394,19 @@ extension addObjectiveViewController: UIPickerViewDelegate , UIPickerViewDataSou
             
             
             selectedRoutine = item
-            routineView.textField.text = selectedRoutine.routine_en
+            
+            let timeString = "( \(item.time ?? "") )"
+            
+            
+            let string  = AppConstants.isArabic() ? selectedRoutine.routine_ar : selectedRoutine.routine_en
+            
+            let completeString  =  "\(string ?? "") \(timeString)"
+            routineView.textField.text = AppConstants.isArabic() ? selectedRoutine.routine_ar : selectedRoutine.routine_en
         }else if pickerView == domainPickerView{
             let item = Array(aspectsArray)[row]
           
             selectedAspect = item
-            domainView.textField.text = selectedAspect.aspect_title_en
+            domainView.textField.text = AppConstants.isArabic() ? selectedAspect.aspect_title_ar :  selectedAspect.aspect_title_en
         }
         
         

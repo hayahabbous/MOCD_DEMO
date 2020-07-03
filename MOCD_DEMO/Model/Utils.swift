@@ -116,8 +116,8 @@ class Utils: NSObject {
         return emailPred.evaluate(with: email)
     }
     class func isValidPassword(_ pass: String) -> Bool {
-        let emailRegEx = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$"
-
+        //let emailRegEx = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$"
+        let emailRegEx = "^(?=.*[0-9])(?=.*[A-Z])(?=\\S+$).{8,16}$"
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailPred.evaluate(with: pass)
     }

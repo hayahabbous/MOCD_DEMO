@@ -62,9 +62,13 @@ class Objective: NSObject {
     var objective_text_ar:String  = ""
     var objective_text_en:String  = ""
     
+    
+    var aspect_ar: String = ""
+    var aspect_en: String = ""
+    var aspect_id: String = ""
     var routine_ar:String  = ""
     var routine_en:String  = ""
-    
+    var child_id: String = ""
     var result: String = ""
     
     
@@ -110,6 +114,8 @@ class Routine: NSObject {
     var routine_id: String!
     var routine_ar: String!
     var routine_en: String!
+    
+    var time: String!
 }
 
 

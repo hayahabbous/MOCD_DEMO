@@ -11,31 +11,41 @@ import UIKit
 import NVActivityIndicatorView
 import LinearProgressBar
 import M13Checkbox
-
+import EmptyDataSet_Swift
 protocol answerAssessment {
+    func changeIsOpenAssessment()
     func showPopup()
+    func reloadChild()
+    
 }
 class ChildProfileViewController: UIViewController ,answerAssessment{
+    func changeIsOpenAssessment() {
+        isOpenAssessmentWithoutAlert = false
+    }
     
     
     
     
     
     
-    
-    
+    @IBOutlet var surveyNotiLabel: UILabel!
+    var isEditObjective = false
+    var isOpenAssessmentWithoutAlert = false
+    var isOpenAssessment = false
     @IBOutlet var statusView: UIView!
     @IBOutlet var backgroundImage: UIImageView!
     @IBOutlet var eidtButton: UIButton!
     var surveysList: [MOCDSurvey] = []
     var objectivesList: [Objective] = []
-    
+    var centers: [MOCDCenter] = []
     var objectivesListForDisplaying: [Objective] = []
     var answeredbjectivesList: [Objective] = []
     var answeredSurveys: [MOCDSurvey] = []
     
     var selectedSurvey: MOCDSurvey = MOCDSurvey()
     var selectedTask: Task = Task()
+    
+    var selectedObjective: Objective!
     @IBOutlet var backImageView: UIImageView!
     @IBOutlet var profileImageView: UIImageView!
     @IBOutlet var nameLabel: UILabel!
@@ -55,6 +65,7 @@ class ChildProfileViewController: UIViewController ,answerAssessment{
     var assessmentArray: [String] = []
 
 
+    var isShowPopupMessage = false
     
     @IBOutlet var notificationsCollectionView: UICollectionView!
     override func viewDidLoad() {
@@ -67,6 +78,9 @@ class ChildProfileViewController: UIViewController ,answerAssessment{
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        tableView.emptyDataSetSource = self
+        tableView.emptyDataSetDelegate = self
         
         
         backImageView.layer.cornerRadius = backImageView.frame.height / 2
@@ -109,13 +123,14 @@ class ChildProfileViewController: UIViewController ,answerAssessment{
         }
         
         
-        let rightBarButton = UIBarButtonItem(title: "add objective", style: .plain, target: self, action: #selector(addnewobjective))
+        let rightBarButton = UIBarButtonItem(title: "add objective".localize, style: .plain, target: self, action: #selector(addnewobjective))
         
         
         if mocd_user?.isCenter == "1" || mocd_user?.isCenter == "true"  {
             self.navigationItem.rightBarButtonItems = [rightBarButton]
         }
         getChildFull()
+        
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -129,20 +144,104 @@ class ChildProfileViewController: UIViewController ,answerAssessment{
         
         
         self.checkTime()
+        
+         if self.answeredSurveys.count == self.surveysList.count {
+            
+            surveyNotiLabel.text = ""
+            
+         }else{
+            let message = """
+
+            عزيزي (\(mocd_user?.firstName ?? "")) لتقييم التطور النمائى لطفلك (\(childItem.firstName)) في المراحل العمرية المختلفة، عليك الإجابة على جميع الأسئلة في الاستبيان.
+            """
+            surveyNotiLabel.text = message
+        }
+    }
+    func reloadChild() {
+        isShowPopupMessage = true
+        getChildFull()
     }
     
+    func openAssessmentWithoutAlert()
+    {
+        if isOpenAssessmentWithoutAlert == false {
+            isOpenAssessmentWithoutAlert = true
+            
+        }else {
+            return
+        }
+        
+        for s in surveysList {
+        if s.status == .NEED_TEST {
+            
+           
+            self.selectedSurvey = s
+            
+            
+            self.performSegue(withIdentifier: "toSurvey", sender: self)
+            
+            
+            break
+            }
+        }
+    }
+    func openAssessment() {
+        //Utils.showAlertWith(title: "open", message: "openAssessment", viewController: self)
+        
+        if isOpenAssessment == false {
+            isOpenAssessment = true
+            
+        }else {
+            return
+        }
+        
+        
     
+        for s in surveysList {
+            if s.status == .NEED_TEST {
+                
+                
+                
+                let message = """
+
+                عزيزي (\(mocd_user?.firstName ?? "")) لتقييم التطور النمائى لطفلك (\(childItem.firstName)) في المراحل العمرية المختلفة، عليك الإجابة على جميع الأسئلة في الاستبيان.
+                """
+                let logOutAlertActionController = UIAlertController(title:"", message: message, preferredStyle: .alert )
+                
+                let yesAlerActionOption = UIAlertAction(title: "نعم", style: .default) { (alert) in
+                    
+                    
+                    self.selectedSurvey = s
+                    
+                    self.performSegue(withIdentifier: "toSurvey", sender: self)
+                }
+                
+                let noAlertActionOption = UIAlertAction(title:NSLocalizedString("No",comment:""), style: .default, handler: nil)
+                
+                logOutAlertActionController.addAction(yesAlerActionOption)
+                logOutAlertActionController.addAction(noAlertActionOption)
+                
+                self.present(logOutAlertActionController, animated: true, completion: nil)
+                
+                
+                break
+            }
+        }
+         
+        
+        
+    }
     func showPopup() {
         
         
-        self.getChildFull()
+        //self.getChildFull()
         if self.answeredSurveys.count == self.surveysList.count {
             
             
             let dangerString = """
 
 نتيجة المسح تظهر علامات تأخر نمائي في بعض المجالات لدى الطفل
-"الرجاء التواصل مع مركز التدخل المبكر الأقرب إليكم لإجراء التقييم الشامل
+الرجاء التواصل مع مركز التدخل المبكر الأقرب إليكم لإجراء التقييم الشامل
 
 """
             
@@ -183,6 +282,8 @@ class ChildProfileViewController: UIViewController ,answerAssessment{
     }
     
     @objc func addnewobjective() {
+        
+        isEditObjective = false
         self.performSegue(withIdentifier: "toAddObjective", sender: self)
         
         
@@ -251,6 +352,9 @@ class ChildProfileViewController: UIViewController ,answerAssessment{
                 guard let answeredObjectives = result["answered_objectives"] as? [[String: Any]] else {return}
                 guard let answeredS = result["answered surveys"] as? [[String: Any]] else {return}
                 
+                guard let centers = result["centers"] as? [[String: Any]] else {return}
+                
+                
                 self.childItem.status = CHILD_STATUS(value: result["overall_status"] as? String ?? "") ?? .NEED_TEST
                 self.childItem.picture = result["child_picture"] as? String ?? ""
                 self.surveysList = []
@@ -295,10 +399,13 @@ class ChildProfileViewController: UIViewController ,answerAssessment{
                     obj.objectiveId = r["objective_id"] as? String  ?? ""
                     obj.objective_text_ar = r["objective_text_ar"] as? String  ?? ""
                     obj.objective_text_en = r["objective_text_en"] as? String  ?? ""
-                    
+                    obj.child_id = r["child_id"] as? String  ?? ""
                     obj.routine_ar = r["routine_ar"] as? String  ?? ""
                     obj.routine_en = r["routine_ar"] as? String  ?? ""
         
+                    obj.aspect_ar = r["aspect_ar"] as? String  ?? ""
+                    obj.aspect_en = r["aspect_en"] as? String  ?? ""
+                    obj.aspect_id = r["aspect_id"] as? String  ?? ""
                     obj.routine_id = r["routine_id"] as? String ?? ""
                     
                     obj.routine_time = ROUTINE_TIME(value: obj.routine_id) ?? .NONE
@@ -334,6 +441,23 @@ class ChildProfileViewController: UIViewController ,answerAssessment{
                     self.objectivesList.append(obj)
                 }
                 
+                self.centers = []
+                
+                for c in centers {
+                    let centerItem: MOCDCenter = MOCDCenter()
+                    
+                    centerItem.center_address = c["center_address"] as? String ?? ""
+                    centerItem.center_name = c["center_name"] as? String ?? ""
+                    centerItem.email = c["email"] as? String ?? ""
+                    centerItem.id = c["id"] as? String ?? ""
+                    centerItem.latitude = c["latitude"] as? String ?? ""
+                    centerItem.longitude = c["longitude"] as? String ?? ""
+                    centerItem.telephone = c["telephone"] as? String ?? ""
+                    
+                    
+                    self.centers.append(centerItem)
+                    
+                }
                 self.answeredbjectivesList = []
                         for r in answeredObjectives {
                             let t: Objective = Objective()
@@ -355,7 +479,7 @@ class ChildProfileViewController: UIViewController ,answerAssessment{
                     
                     //cenetr case
                     self.objectivesListForDisplaying = []
-                    
+                    self.centers = []
                     for o in self.objectivesList {
                         
                         var result = self.answeredbjectivesList.filter { (obj) -> Bool in
@@ -384,6 +508,20 @@ class ChildProfileViewController: UIViewController ,answerAssessment{
                     }
                     return
                 }
+                
+                for surveyItem in self.surveysList {
+                    if let s = self.answeredSurveys.filter({ (s1) -> Bool in
+                        if AppConstants.isArabic() {
+                            return s1.aspect_title_ar == surveyItem.aspect_title_ar
+                        }else{
+                            return s1.aspect_title_en == surveyItem.aspect_title_en
+                        }
+                        
+                    }).first {
+                        surveyItem.status = s.status
+                    }
+                }
+                
                 
                 if self.answeredbjectivesList.count > 0 {
                     
@@ -496,7 +634,16 @@ class ChildProfileViewController: UIViewController ,answerAssessment{
                     if self.notificationsCollectionView.numberOfItems(inSection: 0) > 0  {
                         self.notificationsCollectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .left, animated: false)
                     }
+                  
                     
+                    if self.isShowPopupMessage {
+                        self.showPopup()
+                        self.isShowPopupMessage = false
+                    }
+                    
+                    
+                    self.openAssessment()
+                    self.openAssessmentWithoutAlert()
                     self.tableView.reloadData()
                 }
                 
@@ -768,9 +915,9 @@ extension ChildProfileViewController: UICollectionViewDelegate,UICollectionViewD
             let surveyItem = surveysList[indexPath.row]
             
             cell.titleLabel.text = AppConstants.isArabic() ? surveyItem.aspect_title_ar : surveyItem.aspect_title_en
-            cell.detailsLabel.text = AppConstants.isArabic() ? surveyItem.aspect_title_ar : surveyItem.aspect_title_en
+            //cell.detailsLabel.text = AppConstants.isArabic() ? surveyItem.aspect_title_ar : surveyItem.aspect_title_en
             cell.backgroundColor = AppConstants.BROWN_COLOR
-            
+            cell.detailsLabel.text = ""
             
             if let s = answeredSurveys.filter({ (s1) -> Bool in
                 if AppConstants.isArabic() {
@@ -786,7 +933,7 @@ extension ChildProfileViewController: UICollectionViewDelegate,UICollectionViewD
             switch surveyItem.status {
             case .NEED_TEST:
                 print("")
-                cell.backgroundColor = AppConstants.BROWN_COLOR
+                cell.backgroundColor = .lightGray
                
                 
             case .FINE:
@@ -872,27 +1019,62 @@ extension ChildProfileViewController: UICollectionViewDelegate,UICollectionViewD
         
         if collectionView == self.notificationsCollectionView  {
             
-            return CGSize(width: collectionView.frame.width - 20  , height: 80)
+            return CGSize(width: collectionView.frame.width - 10  , height: 60)
             
         }
         
         
         return CGSize(width: 150, height: 150)
     }
+    
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        return UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 10
     }
     
     
   
 }
 
-extension ChildProfileViewController: UITableViewDelegate ,UITableViewDataSource  {
+extension ChildProfileViewController: UITableViewDelegate ,UITableViewDataSource ,EmptyDataSetSource ,EmptyDataSetDelegate {
+    
+    func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        
+        
+         let healthString = """
+
+        تهانينا، تطور طفلك متناسب مع عمره سيتم إعلامكم بموعد الاستبيان القادم عندما يحين موعده.  مع تمنياتنا لكم بموفور الصحة والعافية
+        """
+                    
+        let font = UIFont.systemFont(ofSize: 16)
+        if self.answeredSurveys.count == self.surveysList.count {
+            
+            if childItem.status == .FINE {
+                return NSAttributedString(string: healthString,attributes: [NSAttributedString.Key.font: font, .foregroundColor: UIColor.darkGray] )
+            }
+            
+        }
+        return NSAttributedString(string: "")
+    }
+    
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if self.answeredSurveys.count == self.surveysList.count {
+            
+            if childItem.status == .DANGER {
+                if objectivesListForDisplaying.count == 0 {
+                    return centers.count
+                }
+            }
+        }
         return objectivesListForDisplaying.count
     }
     
@@ -906,6 +1088,17 @@ extension ChildProfileViewController: UITableViewDelegate ,UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        
+        
+        if self.answeredSurveys.count == self.surveysList.count {
+                   
+                   if childItem.status == .DANGER {
+                       if objectivesListForDisplaying.count == 0 {
+                        
+                        return tableView.dequeueReusableCell(withIdentifier: "centerCell", for: indexPath)
+                    }
+            }
+        }
         let cellIdentifier = "taskCell"
         
         let obje = objectivesListForDisplaying[indexPath.row]
@@ -959,6 +1152,28 @@ extension ChildProfileViewController: UITableViewDelegate ,UITableViewDataSource
         return cell
     }
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        if cell.reuseIdentifier == "centerCell" {
+            let view = cell.viewWithTag(2)
+            
+            
+            view?.layer.cornerRadius = 10
+            view?.layer.masksToBounds = true
+            let stackView = cell.viewWithTag(1)
+            
+            let centername = stackView?.viewWithTag(11) as! UILabel
+            let cenetrEmirate = stackView?.viewWithTag(22) as! UILabel
+            let cenetrNumber = stackView?.viewWithTag(33) as! UILabel
+            
+            
+            let centerItem = centers[indexPath.row]
+            centername.text = centerItem.center_name
+            cenetrEmirate.text = centerItem.center_address
+            cenetrNumber.text = centerItem.telephone
+            
+            
+            
+        }
         if cell.reuseIdentifier == "taskCell" {
             
             
@@ -976,6 +1191,17 @@ extension ChildProfileViewController: UITableViewDelegate ,UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        
+        if self.answeredSurveys.count == self.surveysList.count {
+                   
+                   if childItem.status == .DANGER {
+                       if objectivesListForDisplaying.count == 0 {
+                        return 140
+                    }
+            }
+        }
+        
         return 80
         
     }
@@ -1012,6 +1238,9 @@ extension ChildProfileViewController: UITableViewDelegate ,UITableViewDataSource
         }else if segue.identifier == "toAddObjective" {
             
             let dest = segue.destination as! addObjectiveViewController
+            dest.delegate = self
+            dest.isEdit = isEditObjective
+            dest.selectedObjective = self.selectedObjective
             dest.childItem = self.childItem
             
         }
@@ -1019,6 +1248,17 @@ extension ChildProfileViewController: UITableViewDelegate ,UITableViewDataSource
     }
 }
 extension ChildProfileViewController: answerObjective {
+    
+    func editObjective(cell: taskCell) {
+        if let indexPath = self.tableView.indexPath(for: cell) {
+            
+            isEditObjective = true
+            self.selectedObjective = objectivesListForDisplaying[indexPath.row]
+            self.performSegue(withIdentifier: "toAddObjective", sender: self)
+            
+            //self.tableView.reloadData()
+        }
+    }
     func answerObjective(o: Objective, answerString: String , cell: taskCell) {
         
         

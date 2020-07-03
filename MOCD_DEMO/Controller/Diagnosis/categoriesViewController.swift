@@ -345,7 +345,7 @@ extension categoriesViewController: answerQuestionnair {
     
     func answerQuestion(q: Question , answerString: String) -> Question {
         
-        
+        self.submitAnswers()
         q.selectedAnswer?.checkedString = answerString
         
         var question = questions.filter { (qObject) -> Bool in

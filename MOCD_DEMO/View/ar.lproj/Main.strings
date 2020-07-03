@@ -69,7 +69,7 @@
 "WlN-me-ZCc.text" = "199K";
 
 /* Class = "UILabel"; text = "No children added. add children to see their helth status "; ObjectID = "XKF-dI-ln2"; */
-"XKF-dI-ln2.text" = "لايوجد أطفال , قم بإضافة أطفال لمتابعة حالتهم الصحية";
+"XKF-dI-ln2.text" = "لم تقم بإضافة اي طفل , قم بإضافة أطفالك لتتبع نمائهم في مختلف الجوانب";
 
 /* Class = "UILabel"; text = "Choose story"; ObjectID = "XTC-XF-Isg"; */
 "XTC-XF-Isg.text" = "Choose story";
@@ -108,7 +108,7 @@
 "kzf-0o-bXf.text" = "Need Assistance";
 
 /* Class = "UILabel"; text = "MINISTRY OF COMMUNITY DEVELOPMENT"; ObjectID = "m4e-TX-Ohb"; */
-"m4e-TX-Ohb.text" = "وزارة تنمية وتطوير المجتمع";
+"m4e-TX-Ohb.text" = "وزارة تنمية المجتمع";
 
 /* Class = "UILabel"; text = "The World of an abstract artist"; ObjectID = "n4e-1X-pap"; */
 "n4e-1X-pap.text" = "The World of an abstract artist";
@@ -126,10 +126,10 @@
 "t4e-eh-4SQ.title" = "نمو";
 
 /* Class = "UILabel"; text = "MINISTRY OF COMMUNITY DEVELOPMENT"; ObjectID = "tmq-UK-IZU"; */
-"tmq-UK-IZU.text" = "وزارة تنمية وتطوير المجتمع";
+"tmq-UK-IZU.text" = "وزارة تنمية المجتمع";
 
 /* Class = "UILabel"; text = "done"; ObjectID = "viI-Td-IUD"; */
-"viI-Td-IUD.text" = "done";
+"viI-Td-IUD.text" = "yes";
 
 /* Class = "UILabel"; text = "Welcome"; ObjectID = "vme-2Y-zOd"; */
 "vme-2Y-zOd.text" = "مرحبا";
@@ -161,3 +161,8 @@
 
 "N1m-hU-rqB.placeholder" = "الاسم الاول";
 "Ov8-fU-xbl.placeholder" = "اسم العائلة";
+"P1M-k2-6gN.text" = "إضافة هدف جديد";
+"tbU-TO-PBM.title" = "رجوع" ;
+"LI7-3f-I74.normalTitle" = "إضافة";
+"rjW-0h-IBj.text" = "تفعيل عملية التحقق الأمني بخطوتين" ;
+"n5Y-ZU-Iek.text" = "هذا التطبيق للإطفال الذين اعمارهم مادون ٦٦ شهرا";

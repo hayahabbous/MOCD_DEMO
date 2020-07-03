@@ -3,10 +3,10 @@
 "Eal-cR-DAc.text" = "EXAMPLE TASK 01";
 
 /* Class = "UILabel"; text = "Need Assistance"; ObjectID = "KoL-Wd-OC9"; */
-"KoL-Wd-OC9.text" = "أحتاج للمساعدة";
+"KoL-Wd-OC9.text" = "بحاجة لمساعدة";
 
 /* Class = "UILabel"; text = "not done"; ObjectID = "PkB-7o-oDA"; */
-"PkB-7o-oDA.text" = "لم يتم";
+"PkB-7o-oDA.text" = "ليس بعد";
 
 /* Class = "UILabel"; text = "done"; ObjectID = "iqO-Wp-XQh"; */
 "iqO-Wp-XQh.text" = "تم";

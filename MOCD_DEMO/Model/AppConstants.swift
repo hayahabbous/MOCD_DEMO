@@ -113,8 +113,15 @@ class AppConstants: NSObject {
     
     static let MOCDUserData = "MOCDUserData"
     static var AssessmentsArray:[AspectElement] = []
-    static let WEB_SERVER_IMAGE_MOCD_URL: String  = "http://mocdservices.dcxportal.com"
-    static let WEB_SERVER_MOCD_URL: String  = "http://mocdservices.dcxportal.com/api/"
+    static let WEB_SERVER_IMAGE_MOCD_URL: String  = "http://mocdservicesdev.dcxportal.com"
+    static let WEB_SERVER_MOCD_URL: String  = "http://mocdservicesdev.dcxportal.com/api/"
+    
+    
+    static let WEB_SERVER_MOCD_SERVICES_CARD_DEV = "http://MOCDServicesDev.DCXPortal.com/api/dcservice/"
+    static let WEB_SERVER_MOCD_SERVICES_SOCIAL_DEV = "http://MOCDServicesDev.DCXPortal.com/api/socialsecurity/"
+    
+    
+    
     static let DToken: String = "6RGT36D10Q637059759964359851B1I1"
     static let WEB_SERVER_URL: String = "https://sale96.back4app.io/classes/"
     static let APPLICATION_ID: String = "756mkuKktWxGeQt2ZupZyUMUH4kfNg4HQ6mfs9HH"

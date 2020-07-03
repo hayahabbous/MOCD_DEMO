@@ -58,15 +58,15 @@
 		</dict>
 	</dict>
 	<key>NSAppleMusicUsageDescription</key>
-	<string>photo library usage</string>
+	<string>need access to set profile photo</string>
 	<key>NSCameraUsageDescription</key>
-	<string>camera usage </string>
+	<string>need access to set profile photo</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>photo library usage</string>
+	<string>need access to set profile photo</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>photo library usage</string>
+	<string>need access to set profile photo</string>
 	<key>NSPhotoLibraryUsageDescription </key>
-	<string>photo library usage </string>
+	<string>need access to set profile photo</string>
 	<key>NSRemindersUsageDescription</key>
 	<string>Allow user to access reminders feature.</string>
 	<key>UILaunchStoryboardName</key>

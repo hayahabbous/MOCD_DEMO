@@ -19,7 +19,7 @@ class SearchViewController: UIViewController {
     @IBOutlet var backImageView: UIImageView!
     @IBOutlet var profileImageView: UIImageView!
     let activityData = ActivityData()
-    
+    var delegate: reloadNemowPage!
     @IBOutlet var nameLabel: UILabel!
     var childItem: ChildObject!
     var centerId: String!
@@ -90,10 +90,13 @@ class SearchViewController: UIViewController {
                 
                 
                 DispatchQueue.main.async {
+                    
+                    self.delegate.reloadNemow()
+                    self.dismiss(animated: true, completion: nil)
                     Utils.showAlertWith(title: "Success", message: "you have added child successfully", style: .alert, viewController: self)
                     
                     
-                    self.navigationController?.popViewController(animated: true)
+                    
                 }
             }else {
                 DispatchQueue.main.async {

@@ -8,8 +8,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="selectTextField" customModule="MOCD_DEMO" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="selectTextField" customModule="MOCD_CONNECT" customModuleProvider="target">
             <connections>
+                <outlet property="starImage" destination="ESi-Tu-pYs" id="169-VB-7ob"/>
                 <outlet property="textField" destination="8Qy-Sh-dd2" id="Ys2-VP-S2f"/>
                 <outlet property="textLabel" destination="AMb-2h-cdK" id="3DU-7j-AEB"/>
             </connections>
@@ -62,7 +63,7 @@
                 <constraint firstItem="mEi-k8-ahA" firstAttribute="trailing" secondItem="NvF-36-cR2" secondAttribute="trailing" constant="30" id="qYE-Zj-7yc"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="mEi-k8-ahA"/>
-            <point key="canvasLocation" x="-322" y="-302"/>
+            <point key="canvasLocation" x="-499" y="-309"/>
         </view>
     </objects>
     <resources>

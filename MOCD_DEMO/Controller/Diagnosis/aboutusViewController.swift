@@ -14,7 +14,7 @@ import UIKit
 
 class aboutusViewController: UIViewController {
     
-    
+     var centers: [MOCDCenter] = []
     @IBOutlet var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +25,43 @@ class aboutusViewController: UIViewController {
         
         
         //setupView()
+        getCenters()
         
-        
+    }
+    
+    func getCenters() {
+        WebService.getCenters { (json) in
+            guard let code = json["code"] as? Int else {return}
+            guard let message = json["message"] as? String else {return}
+            
+            if code == 200 {
+            
+                guard let data = json["data"] as? [String:Any] else {return}
+                guard let results = data["result"] as? [[String:Any]] else {return}
+                //guard let list = results["list"] as? [[String:Any]] else {return}
+               
+                for c in results {
+                    let centerItem: MOCDCenter = MOCDCenter()
+                    
+                    centerItem.center_address = c["center_address"] as? String ?? ""
+                    centerItem.center_name = c["center_name"] as? String ?? ""
+                    centerItem.email = c["email"] as? String ?? ""
+                    centerItem.id = c["id"] as? String ?? ""
+                    centerItem.latitude = c["latitude"] as? String ?? ""
+                    centerItem.longitude = c["longitude"] as? String ?? ""
+                    centerItem.telephone = c["telephone"] as? String ?? ""
+                    
+                    
+                    self.centers.append(centerItem)
+                    
+                }
+                
+                DispatchQueue.main.async {
+                  
+                    self.tableView.reloadData()
+                }
+            }
+        }
     }
     func setupView() {
         let logoImageView = UIImageView()
@@ -50,24 +85,28 @@ class aboutusViewController: UIViewController {
 }
 extension aboutusViewController: UITableViewDelegate , UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         
-        return 4
+        return centers.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
         var cellIdentifier = ""
+        
+        /*
         if indexPath.section == 0 {
             cellIdentifier = "telCell"
         }else{
             cellIdentifier = "centerCell"
-        }
+        }*/
+        
+        cellIdentifier = "centerCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
         
         
@@ -106,23 +145,37 @@ extension aboutusViewController: UITableViewDelegate , UITableViewDataSource {
         }
         
         if cell.reuseIdentifier == "centerCell" {
-            let view = cell.viewWithTag(1)
+            let view = cell.viewWithTag(2)
+            
+            
             view?.layer.cornerRadius = 10
             view?.layer.masksToBounds = true
-            view?.layer.borderColor = UIColor.lightGray.cgColor
-            view?.layer.borderWidth = 1
+            let stackView = cell.viewWithTag(1)
+            
+            let centername = stackView?.viewWithTag(11) as! UILabel
+            let cenetrEmirate = stackView?.viewWithTag(22) as! UILabel
+            let cenetrNumber = stackView?.viewWithTag(33) as! UILabel
+            
+            
+            let centerItem = centers[indexPath.row ]
+            centername.text = centerItem.center_name
+            cenetrEmirate.text = centerItem.center_address
+            cenetrNumber.text = centerItem.telephone
+            
+            
         }
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        /*
         if section == 0 {
             return ""
-        }
+        }*/
         return "Centers"
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 1 {
-            return 100
+        if indexPath.section == 0 {
+            return 140
         }
         
         return 44

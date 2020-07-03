@@ -102,8 +102,9 @@ class AssessmentNewCollectionViewCell: UICollectionViewCell  {
         yesButton.setTitleColor(.white, for: .normal)
         noButton.setTitleColor(.black, for: .normal)
         
-        self.delegate.changequestionState(index: index)
+        
         questionItem.selectedAnswer = questionItem.answersItem[0]
+        self.delegate.changequestionState(index: index)
         isYesSelected = true
         
         

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="multipleTextField" customModule="MOCD_DEMO" customModuleProvider="target">
+            <connections>
+                <outlet property="firstCheckBox" destination="Rxd-j8-jWM" id="4cu-PW-Fln"/>
+                <outlet property="firstLabel" destination="XKG-HF-uK5" id="gDx-oA-qvQ"/>
+                <outlet property="secondCheckBox" destination="6IY-D2-qkY" id="hWH-8k-QMN"/>
+                <outlet property="secondLabel" destination="AwL-uG-dJz" id="f4h-yn-E9x"/>
+                <outlet property="textLabel" destination="Lyi-fD-lxH" id="jWF-bX-jtk"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="5Y3-O9-Xvf">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lyi-fD-lxH">
+                    <rect key="frame" x="20" y="46" width="70" height="18"/>
+                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                    <color key="textColor" red="0.66799789669999998" green="0.47512125970000002" blue="0.25860109930000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="staroflife.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Dqp-uI-GUd">
+                    <rect key="frame" x="98" y="51" width="10" height="8"/>
+                    <color key="tintColor" red="0.6998657975" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="10" id="PNq-F3-Bwt"/>
+                        <constraint firstAttribute="height" constant="10" id="gEM-Mj-ilq"/>
+                    </constraints>
+                </imageView>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="tRT-NI-tVM">
+                    <rect key="frame" x="20" y="80" width="146.5" height="25"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rxd-j8-jWM" customClass="M13Checkbox" customModule="M13Checkbox">
+                            <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <color key="tintColor" red="0.66799789669999998" green="0.47512125970000002" blue="0.25860109930000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="25" id="t2h-1K-Zmv"/>
+                                <constraint firstAttribute="width" constant="25" id="u0V-4t-0zg"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="_IBBoxType" value="circle"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="_IBMarkType" value="1"/>
+                                <userDefinedRuntimeAttribute type="color" keyPath="secondaryCheckmarkTintColor">
+                                    <color key="value" red="0.66799789669999998" green="0.47512125970000002" blue="0.25860109930000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="secondaryTintColor">
+                                    <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="string" keyPath="_IBStateChangeAnimation" value="Fill"/>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ذكر" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XKG-HF-uK5">
+                            <rect key="frame" x="41" y="2.5" width="22.5" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6IY-D2-qkY" customClass="M13Checkbox" customModule="M13Checkbox">
+                            <rect key="frame" x="79.5" y="0.0" width="25" height="25"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <color key="tintColor" red="0.66799789669999998" green="0.47512125970000002" blue="0.25860109930000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="25" id="RlO-MV-Qjw"/>
+                                <constraint firstAttribute="width" constant="25" id="SxW-fb-oFt"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="_IBBoxType" value="circle"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="_IBMarkType" value="1"/>
+                                <userDefinedRuntimeAttribute type="color" keyPath="secondaryCheckmarkTintColor">
+                                    <color key="value" red="0.66799789669999998" green="0.47512125970000002" blue="0.25860109930000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="secondaryTintColor">
+                                    <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="string" keyPath="_IBStateChangeAnimation" value="Fill"/>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="أنثى" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AwL-uG-dJz">
+                            <rect key="frame" x="120.5" y="2.5" width="26" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="Dqp-uI-GUd" firstAttribute="leading" secondItem="Lyi-fD-lxH" secondAttribute="trailing" constant="8" id="1Hz-SJ-GhL"/>
+                <constraint firstItem="Dqp-uI-GUd" firstAttribute="centerY" secondItem="Lyi-fD-lxH" secondAttribute="centerY" id="403-5L-6Ho"/>
+                <constraint firstItem="tRT-NI-tVM" firstAttribute="leading" secondItem="Lyi-fD-lxH" secondAttribute="leading" id="SOE-4a-1xV"/>
+                <constraint firstItem="tRT-NI-tVM" firstAttribute="top" secondItem="Lyi-fD-lxH" secondAttribute="bottom" constant="16" id="Tct-6r-NLk"/>
+                <constraint firstItem="Lyi-fD-lxH" firstAttribute="leading" secondItem="070-7K-UJb" secondAttribute="leading" constant="20" id="rUh-Mu-hns"/>
+                <constraint firstItem="Lyi-fD-lxH" firstAttribute="top" secondItem="070-7K-UJb" secondAttribute="top" constant="2" id="rpP-gj-r5A"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="070-7K-UJb"/>
+            <point key="canvasLocation" x="-397.10144927536237" y="-282.58928571428572"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="staroflife.fill" catalog="system" width="62" height="64"/>
+    </resources>
+</document>

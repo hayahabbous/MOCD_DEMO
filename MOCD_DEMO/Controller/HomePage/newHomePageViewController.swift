@@ -75,9 +75,9 @@ class newHomePageViewController: UIViewController  , reloadHomePage{
         let leftButton = UIBarButtonItem(customView: logoview)
         
         
-        
+        self.navigationItem.rightBarButtonItems = [rightBarButton]
         if mocd_user?.userToken != nil {
-            self.navigationItem.rightBarButtonItems = [rightBarButton]
+            
             self.navigationItem.leftBarButtonItems = [leftButton]
         }
         
@@ -127,7 +127,7 @@ class newHomePageViewController: UIViewController  , reloadHomePage{
         appsCollectionView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: self.superCollectionView.frame.height)
            
         if let layout = appsCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-               layout.scrollDirection = .vertical //.horizontal  // .vertical
+               layout.scrollDirection = .horizontal  // .vertical
            }
         
         appsCollectionView.reloadData()
@@ -232,7 +232,7 @@ extension newHomePageViewController: UICollectionViewDelegate,UICollectionViewDa
                 
                 return 1
             }
-            return 1 //+ catgeories.count
+            return 1 + catgeories.count
         }
         if collectionView == self.appsCollectionView {
             
@@ -432,8 +432,8 @@ extension newHomePageViewController: UICollectionViewDelegate,UICollectionViewDa
         if collectionView == superCollectionView {
             if indexPath.item == 0 {
                 
-                return CGSize(width: self.superCollectionView.frame.width, height: self.superCollectionView.frame.height) // height is 300
-                //return CGSize(width: self.superCollectionView.frame.width, height: 300) // height is 300
+               // return CGSize(width: self.superCollectionView.frame.width, height: self.superCollectionView.frame.height) // height is 300
+                return CGSize(width: self.superCollectionView.frame.width, height: 300) // height is 300
             }else{
                 
                 var height = 0
@@ -468,7 +468,7 @@ extension newHomePageViewController: UICollectionViewDelegate,UICollectionViewDa
         }else if collectionView == self.appsCollectionView  {
             
             var heightR = Double(self.appsCollectionView.frame.width)
-             var collectionViewHeight =  Double(self.appsCollectionView.frame.width - 30.0)
+            var collectionViewHeight =  200.0 //Double(self.appsCollectionView.frame.width - 30.0)
             switch indexPath.row {
             case 0:
                 heightR = Double((UserDefaults.standard.value(forKey: AppConstants.isNemowEnabled) as? Bool ?? true) ?  collectionViewHeight : 0.0)
@@ -482,7 +482,7 @@ extension newHomePageViewController: UICollectionViewDelegate,UICollectionViewDa
             default:
                 print("")
             }
-             return CGSize(width: heightR , height: 200)//width 200 // collectionViewWidth
+             return CGSize(width: heightR , height: 300)//width 200 // collectionViewWidth
              
              
              

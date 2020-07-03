@@ -52,8 +52,57 @@ extension serviceCollectionViewCell: UITableViewDelegate , UITableViewDataSource
         
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //homePage.selectedCategoryItem = category.servicesArray[indexPath.row]
-        //homePage.performSegue(withIdentifier: "toNewCard", sender: self)
+        
+        
+        switch indexPath.row {
+            
+            
+        case 0:
+            if category.id == "1" {
+                homePage.selectedCategoryItem = category.servicesArray[indexPath.row]
+                           
+                homePage.performSegue(withIdentifier: "toNewCard", sender: self)
+            }else{
+                homePage.selectedCategoryItem = category.servicesArray[indexPath.row]
+                homePage.performSegue(withIdentifier: "toSocialAid", sender: self)
+            }
+           
+            
+         case 1:
+            homePage.selectedCategoryItem = category.servicesArray[indexPath.row]
+            homePage.performSegue(withIdentifier: "toLostCard", sender: self)
+            
+        case 2:
+            
+            if category.id == "1" {
+                homePage.selectedCategoryItem = category.servicesArray[indexPath.row]
+                homePage.performSegue(withIdentifier: "toRenewal", sender: self)
+            }else{
+                homePage.selectedCategoryItem = category.servicesArray[indexPath.row]
+                homePage.performSegue(withIdentifier: "toMarriage", sender: self)
+            }
+            
+        case 3:
+            homePage.selectedCategoryItem = category.servicesArray[indexPath.row]
+            homePage.performSegue(withIdentifier: "toEdaad", sender: self)
+            
+            
+        case 4:
+            homePage.selectedCategoryItem = category.servicesArray[indexPath.row]
+            homePage.performSegue(withIdentifier: "toMassWedding", sender: self)
+            
+            
+            
+ 
+            
+            
+            
+        default:
+            print("no selection")
+            
+        }
+        
+        
     }
     
 }

@@ -214,10 +214,10 @@ class SettingViewController: UIViewController ,UITableViewDelegate ,UITableViewD
         
         
         
-        let logOutAlertActionController = UIAlertController(title:"", message: NSLocalizedString("Are you sure you want to signout ?", comment:""), preferredStyle: .alert )
+        let logOutAlertActionController = UIAlertController(title:"", message: NSLocalizedString("Are you sure you want to signout ?".localize, comment:""), preferredStyle: .alert )
                
                
-        let yesAlerActionOption = UIAlertAction(title:NSLocalizedString("Sure",comment:""), style: UIAlertAction.Style.default, handler: { (UIAlertAction) -> Void in
+        let yesAlerActionOption = UIAlertAction(title:NSLocalizedString("Sure".localize,comment:""), style: UIAlertAction.Style.default, handler: { (UIAlertAction) -> Void in
                 DispatchQueue.main.async {
                      
                     NVActivityIndicatorPresenter.sharedInstance.startAnimating(self.activityData)
@@ -226,6 +226,7 @@ class SettingViewController: UIViewController ,UITableViewDelegate ,UITableViewD
             DispatchQueue.main.async {
                 NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
                 UserDefaults.standard.set(nil, forKey: AppConstants.MOCDUserData)
+                LocalNotificationHelperT.sharedInstance.removeAllPendingNotifications()
             }
             if let window = self.view.window{
             
@@ -241,6 +242,7 @@ class SettingViewController: UIViewController ,UITableViewDelegate ,UITableViewD
             }
             
             let username = self.mocd_user?.username ?? ""
+            
                 /*
                 WebService.logout(username: username){ (json) in
                     
@@ -283,12 +285,25 @@ class SettingViewController: UIViewController ,UITableViewDelegate ,UITableViewD
             
         })
         
-        let noAlertActionOption = UIAlertAction(title:NSLocalizedString("No",comment:""), style: .default, handler: nil)
+        let noAlertActionOption = UIAlertAction(title:NSLocalizedString("No".localize,comment:""), style: .default, handler: nil)
         
         logOutAlertActionController.addAction(yesAlerActionOption)
         logOutAlertActionController.addAction(noAlertActionOption)
         
-        self.present(logOutAlertActionController, animated: true, completion: nil)
+        
+        if mocd_user?.userToken != nil {
+            
+            self.present(logOutAlertActionController, animated: true, completion: nil)
+        }else{
+            let rootViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "LoginViewController")
+            self.view.window!.rootViewController = rootViewController
+            rootViewController.modalPresentationStyle = .fullScreen
+            self.dismiss(animated: true, completion: {() -> Void in
+                self.present(rootViewController, animated: true, completion: {() -> Void in
+                })
+            })
+        }
+        
         
         
                            

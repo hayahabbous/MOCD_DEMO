@@ -15,6 +15,7 @@ class textFieldMandatory: UIView , NibLoadable{
     
     
 
+    @IBOutlet var starImage: UIImageView!
     @IBOutlet var descLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
     
@@ -29,6 +30,13 @@ class textFieldMandatory: UIView , NibLoadable{
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupFromNib()
+    }
+    
+    override  func awakeFromNib() {
+        super.awakeFromNib()
+        
+        
+        textField.textAlignment = AppConstants.isArabic() ?  .right :  .left
     }
 }
 public protocol NibLoadable {

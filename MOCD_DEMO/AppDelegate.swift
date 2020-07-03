@@ -173,7 +173,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.red], for:.selected)
         
         //self.setDrawerController()
-        
+        /*
         LanguageManager.sharedInstance.setSupportedLanguages(["en", "ar"])
         LanguageManager.sharedInstance.setNotificationEnable(false)
         
@@ -205,7 +205,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         
-        
+        */
         if #available(iOS 10.0, *) {
             
             // Register ourselves as a delegate so we can be notified when actions pressed

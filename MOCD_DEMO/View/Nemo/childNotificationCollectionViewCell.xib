@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,13 +17,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EDDEN NEED MORE ATTENTION" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ht-VM-c7J">
-                        <rect key="frame" x="102" y="22" width="447" height="20.5"/>
+                        <rect key="frame" x="102" y="22" width="447" height="70"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="edens health need attention ,visit your closest medical center to get a check up" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Hh-0l-W7r">
-                        <rect key="frame" x="102" y="46.5" width="447" height="13.5"/>
+                        <rect key="frame" x="102" y="96" width="447" height="13.5"/>
                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="11"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
@@ -47,6 +47,7 @@
             </view>
             <color key="backgroundColor" red="0.80392156862745101" green="0.29411764705882354" blue="0.26666666666666666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="8ht-VM-c7J" firstAttribute="centerY" secondItem="3PX-Ei-nyf" secondAttribute="centerY" id="6oX-t5-nlV"/>
                 <constraint firstItem="9DK-h0-JRt" firstAttribute="trailing" secondItem="3Hh-0l-W7r" secondAttribute="trailing" constant="16" id="Bqq-yr-I2c"/>
                 <constraint firstItem="8ht-VM-c7J" firstAttribute="leading" secondItem="KED-dV-onU" secondAttribute="trailing" constant="22" id="DW6-z2-wst"/>
                 <constraint firstItem="KED-dV-onU" firstAttribute="centerY" secondItem="9DK-h0-JRt" secondAttribute="centerY" id="HqN-tG-FnR"/>

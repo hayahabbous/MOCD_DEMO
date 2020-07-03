@@ -28,3 +28,39 @@ class MOCDCountry: NSObject {
     var CountryNameAr: String = ""
     var CountryCode: String = ""
 }
+
+class MOCDCenter: NSObject {
+    
+    
+    
+    var center_address: String = ""
+    var center_name: String = ""
+    var email: String = ""
+    var id: String = ""
+    var latitude: String = ""
+    var longitude: String = ""
+    var telephone: String = ""
+    var working_hours: String = ""
+    
+    
+    
+
+}
+class MOCDEmirate: NSObject {
+    var id: String = ""
+    var emirate_ar: String = ""
+    var emirate_en: String = ""
+    
+    
+  
+}
+
+class MOCDCenterService: NSObject {
+    var EmirateId: String = ""
+    var CenterId: String = ""
+    var OfficeNameAR: String = ""
+    var OfficeNameEN: String = ""
+    
+   
+  
+}

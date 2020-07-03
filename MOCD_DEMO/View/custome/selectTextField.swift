@@ -13,6 +13,7 @@ class selectTextField: UIView , NibLoadable{
     
     
 
+    @IBOutlet var starImage: UIImageView!
     @IBOutlet weak var textField: UITextField!
     
     @IBOutlet weak var textLabel: UILabel!
@@ -27,5 +28,12 @@ class selectTextField: UIView , NibLoadable{
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupFromNib()
+    }
+    
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        textField.textAlignment = AppConstants.isArabic() ?  .right :  .left
     }
 }

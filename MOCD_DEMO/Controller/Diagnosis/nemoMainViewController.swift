@@ -22,8 +22,12 @@ protocol answerQuestionnair{
 
 protocol answerObjective{
     func answerObjective(o: Objective, answerString: String , cell: taskCell)
+    
+    func editObjective(cell: taskCell)
 }
-
+protocol reloadNemowPage {
+    func reloadNemow()
+}
 
 
 class nemoMainViewController: UIViewController ,quetionnairDelegate , MyCellDelegate {
@@ -279,8 +283,10 @@ class nemoMainViewController: UIViewController ,quetionnairDelegate , MyCellDele
     var imagename = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setupSearch()
+        if mocd_user?.isCenter == "1" || mocd_user?.isCenter == "true" {
+      
+            setupSearch()
+        }
 
         first_name_label.text = "\(mocd_user?.firstName ?? "") \(mocd_user?.lastName ?? "") "
         
@@ -367,6 +373,13 @@ class nemoMainViewController: UIViewController ,quetionnairDelegate , MyCellDele
         searchBar.delegate = self
         
         searchBar.showsCancelButton = true
+        
+        if #available(iOS 13.0, *) {
+            searchBar.searchTextField.textAlignment = AppConstants.isArabic() ? .right : .left
+        }
+        
+        
+    
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -406,7 +419,13 @@ class nemoMainViewController: UIViewController ,quetionnairDelegate , MyCellDele
         
         logoview.addSubview(logoavatarImage)
         let leftButton = UIBarButtonItem(customView: logoview)
-        self.navigationItem.leftBarButtonItems = [leftButton]
+        
+        if mocd_user?.isCenter == "1" || mocd_user?.isCenter == "true" {
+            self.navigationItem.leftBarButtonItems = []
+        }else{
+            self.navigationItem.leftBarButtonItems = [leftButton]
+        }
+        
     }
     func getSurveys() {
         NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
@@ -463,6 +482,7 @@ class nemoMainViewController: UIViewController ,quetionnairDelegate , MyCellDele
     }
     
     func searchForChild() {
+        self.view.endEditing(true)
         NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
         
         WebService.searchChild(emiratesId: searchText) { (json) in
@@ -484,7 +504,11 @@ class nemoMainViewController: UIViewController ,quetionnairDelegate , MyCellDele
                 
                 guard let id = r["id"] as? String else {
                     
-                    Utils.showAlertWith(title: "Not found", message: "", viewController: self)
+                    
+                    DispatchQueue.main.async {
+                        Utils.showAlertWith(title: "Not found", message: "", viewController: self)
+                    }
+                    
                     
                     return
                 }
@@ -707,29 +731,58 @@ class nemoMainViewController: UIViewController ,quetionnairDelegate , MyCellDele
                         }
                     }
                     
-                    for t in self.tasksList {
-                        //LocalNotificationHelperT.sharedInstance.createReminderNotification(t.taskId, t.childItem.firstName, t.task_text_en, hour: 19,minute: 53, notificationDate: Date(), .Daily)//10
-                        
-                        
-                        switch t.objective?.routine_time {
-                        case .NONE:
-                            print("none")
-                        case .FIVE_AM_TOW_PM:
-                            LocalNotificationHelperT.sharedInstance.createReminderNotification(t.taskId, t.childItem.firstName, t.task_text_en, hour: 10,minute: 1, notificationDate: Date(), .Daily)//10
-                        case .TOW_PM_FIVE_PM:
-                            LocalNotificationHelperT.sharedInstance.createReminderNotification(t.taskId, t.childItem.firstName, t.task_text_en, hour: 16,minute: 1, notificationDate: Date(), .Daily)//16
-                        case .FIVE_PM_NINE_PM:
-                            LocalNotificationHelperT.sharedInstance.createReminderNotification(t.taskId, t.childItem.firstName, t.task_text_en,hour: 19,minute: 1 ,notificationDate: Date(), .Daily)//19
-                        case .NINE_PM_FIVE_AM_NEXT_DAY:
-                            LocalNotificationHelperT.sharedInstance.createReminderNotification(t.taskId, t.childItem.firstName, t.task_text_en, hour: 21,minute: 1, notificationDate: Date() ,.Daily)//21
-                        default:
-                            print("default")
-                        }
-                        
-                    }
+                    
                     
                 }
                 
+                var isFirst = false
+                var isSecond = false
+                var isThird = false
+                var isFourth = false
+                for t in self.tasksList {
+                    //LocalNotificationHelperT.sharedInstance.createReminderNotification(t.taskId, t.childItem.firstName, t.task_text_en, hour: 19,minute: 53, notificationDate: Date(), .Daily)//10
+                    
+                    
+                   
+                    switch t.objective?.routine_time {
+                    case .NONE:
+                        print("none")
+                    case .FIVE_AM_TOW_PM:
+                        
+                        if !isFirst {
+                            LocalNotificationHelperT.sharedInstance.createReminderNotification(t.taskId, t.childItem.firstName, t.task_text_en, hour: 10,minute: 1, notificationDate: Date(), .Daily)//10
+                            isFirst = true
+                        }
+                        
+                        
+                        
+                    case .TOW_PM_FIVE_PM:
+                        
+                        if !isSecond{
+                            LocalNotificationHelperT.sharedInstance.createReminderNotification(t.taskId, t.childItem.firstName, t.task_text_en, hour: 16,minute: 1, notificationDate: Date(), .Daily)//16
+                            isSecond = true
+                        }
+                        
+                    case .FIVE_PM_NINE_PM:
+                        if !isThird {
+                            LocalNotificationHelperT.sharedInstance.createReminderNotification(t.taskId, t.childItem.firstName, t.task_text_en,hour: 19,minute: 1 ,notificationDate: Date(), .Daily)//19
+                            
+                            isThird = true
+                        }
+                        
+                    case .NINE_PM_FIVE_AM_NEXT_DAY:
+                        
+                        if !isFourth {
+                            LocalNotificationHelperT.sharedInstance.createReminderNotification(t.taskId, t.childItem.firstName, t.task_text_en, hour: 21,minute: 1, notificationDate: Date() ,.Daily)//21
+                            
+                            isFourth = true
+                        }
+                        
+                    default:
+                        print("default")
+                    }
+                    
+                }
                 
                 
                 //filter tasks list according to time
@@ -1388,7 +1441,7 @@ extension nemoMainViewController: UICollectionViewDelegate,UICollectionViewDataS
             
             
             let dest = segue.destination as! SearchViewController
-            
+            dest.delegate = self
             dest.childItem = self.resultChild
             dest.centerId = mocd_user?.DId ?? ""
             
@@ -1399,7 +1452,13 @@ extension nemoMainViewController: UICollectionViewDelegate,UICollectionViewDataS
         
     }
 }
-
+extension nemoMainViewController: reloadNemowPage {
+    func reloadNemow() {
+        self.loadChild()
+    }
+    
+    
+}
 
 extension String {
     /*
@@ -1486,7 +1545,7 @@ extension nemoMainViewController: UISearchBarDelegate {
             
         }
         
-        
+        searchBar.endEditing(true)
         searchActive = false;
     }
     
@@ -1499,6 +1558,7 @@ extension nemoMainViewController: UISearchBarDelegate {
         
        
         searchText = searchBar.text ?? ""
+        self.searchBar.endEditing(true)
         
         searchForChild()
     }

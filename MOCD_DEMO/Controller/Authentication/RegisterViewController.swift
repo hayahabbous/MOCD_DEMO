@@ -110,51 +110,51 @@ class RegisterViewController: UIViewController {
     func setupFields() {
         
         
-        firstNameView.textLabel.text = "First Name"
-        firstNameView.textField.placeholder = "First Name"
+        firstNameView.textLabel.text = "First Name".localize
+        firstNameView.textField.placeholder = "First Name".localize
         
         
-        lastNameView.textLabel.text = "Last Name"
-        lastNameView.textField.placeholder = "Last Name"
+        lastNameView.textLabel.text = "Last Name".localize
+        lastNameView.textField.placeholder = "Last Name".localize
         
         
-        nationalityView.textLabel.text = "Nationality"
-        nationalityView.textField.placeholder = "Please Select"
+        nationalityView.textLabel.text = "Nationality".localize
+        nationalityView.textField.placeholder = "Please Select".localize
         nationalityView.textField.inputView = nationalitiesPickerView
         
-        genderView.textLabel.text = "Gender"
+        genderView.textLabel.text = "Gender".localize
    
         
-        emailView.textLabel.text = "Email"
-        emailView.textField.placeholder = "Email"
+        emailView.textLabel.text = "Email".localize
+        emailView.textField.placeholder = "Email".localize
         
         
-        mobileView.textLabel.text = "Mobile No"
-        mobileView.textField.placeholder = "Mobile No"
+        mobileView.textLabel.text = "Mobile No".localize
+        mobileView.textField.placeholder = "Mobile No".localize
         
         
-        emiratesIDView.textLabel.text = "Emirates ID"
-        emiratesIDView.textField.placeholder = "Emirates ID"
+        emiratesIDView.textLabel.text = "Emirates ID".localize
+        emiratesIDView.textField.placeholder = "Emirates ID".localize
         
         
-        securityQuestionsView.textLabel.text = "Security Question"
-        securityQuestionsView.textField.placeholder = "Please Select"
+        securityQuestionsView.textLabel.text = "Security Question".localize
+        securityQuestionsView.textField.placeholder = "Please Select".localize
         securityQuestionsView.textField.inputView = securityPicker
         
-        answerView.textLabel.text = "Answer"
-        answerView.textField.placeholder = "Answer"
+        answerView.textLabel.text = "Answer".localize
+        answerView.textField.placeholder = "Answer".localize
         
         
-        usernameView.textLabel.text = "Username"
-        usernameView.textField.placeholder = "Username"
+        usernameView.textLabel.text = "Username".localize
+        usernameView.textField.placeholder = "Username".localize
         
-        passwordView.textLabel.text = "Password"
-        passwordView.textField.placeholder = "Password"
+        passwordView.textLabel.text = "Password".localize
+        passwordView.textField.placeholder = "Password".localize
         passwordView.textField.isSecureTextEntry = true
         passwordView.descLabel.isHidden = false
         
-        confirmPasswordView.textLabel.text = "Password Confirmation"
-        confirmPasswordView.textField.placeholder = "Password Confirmation"
+        confirmPasswordView.textLabel.text = "Password Confirmation".localize
+        confirmPasswordView.textField.placeholder = "Password Confirmation".localize
         confirmPasswordView.textField.isSecureTextEntry = true
         
     }
@@ -207,7 +207,8 @@ class RegisterViewController: UIViewController {
            
            
            
-       }
+       
+    }
     
     
     @objc func onClickedToolbeltButton(_ sender: Any){
@@ -215,7 +216,7 @@ class RegisterViewController: UIViewController {
     }
     
     func getNationalities() {
-        WebService.getNationalities { (json) in
+        WebService.getCountries { (json) in
             guard let code = json["code"] as? Int else {return}
             guard let message = json["message"] as? String else {return}
             
@@ -298,48 +299,48 @@ class RegisterViewController: UIViewController {
         self.confirm_password = confirmPasswordView.textField.text ?? ""
         if first_name == "" || first_name.count == 0 {
             
-            Utils.showErrorMessage(NSLocalizedString("Please enter a valid first name", comment:""), withTitle: NSLocalizedString("firstname is empty", comment:""), andInViewController: self)
+            Utils.showErrorMessage(NSLocalizedString("Please enter a valid first name".localize, comment:""), withTitle: NSLocalizedString("firstname is empty".localize, comment:""), andInViewController: self)
             isEmpty = true
         }else if last_name == "" || last_name.count == 0 {
             
-            Utils.showErrorMessage(NSLocalizedString("Please enter a valid last name", comment:""), withTitle: NSLocalizedString("lastname is empty", comment:""), andInViewController: self)
+            Utils.showErrorMessage(NSLocalizedString("Please enter a valid last name".localize, comment:""), withTitle: NSLocalizedString("lastname is empty".localize, comment:""), andInViewController: self)
             isEmpty = true
         }else if password == "" || password.count == 0 {
-            Utils.showErrorMessage(NSLocalizedString("Please enter a valid password", comment:""), withTitle: NSLocalizedString("password is empty", comment:""), andInViewController: self)
+            Utils.showErrorMessage(NSLocalizedString("Please enter a valid password".localize, comment:""), withTitle: NSLocalizedString("password is empty".localize, comment:""), andInViewController: self)
             isEmpty = true
         }else if confirm_password == "" || confirm_password.count == 0 {
-            Utils.showErrorMessage(NSLocalizedString("Please enter a valid confirm password", comment:""), withTitle: NSLocalizedString("confirm password is empty", comment:""), andInViewController: self)
+            Utils.showErrorMessage(NSLocalizedString("Please enter a valid confirm password".localize, comment:""), withTitle: NSLocalizedString("confirm password is empty".localize, comment:""), andInViewController: self)
             isEmpty = true
         }else if username == "" || username.count == 0 {
-            Utils.showErrorMessage(NSLocalizedString("Please enter a valid username", comment:""), withTitle: NSLocalizedString("username is empty", comment:""), andInViewController: self)
+            Utils.showErrorMessage(NSLocalizedString("Please enter a valid username".localize, comment:""), withTitle: NSLocalizedString("username is empty".localize, comment:""), andInViewController: self)
             isEmpty = true
         }else if user_email == "" || user_email.count == 0 {
-            Utils.showErrorMessage(NSLocalizedString("Please enter a valid email ", comment:""), withTitle: NSLocalizedString("email is empty", comment:""), andInViewController: self)
+            Utils.showErrorMessage(NSLocalizedString("Please enter a valid email ".localize, comment:""), withTitle: NSLocalizedString("email is empty".localize, comment:""), andInViewController: self)
             isEmpty = true
         }else if user_mobile == "" || user_mobile.count == 0 {
-            Utils.showErrorMessage(NSLocalizedString("Please enter a valid mobile", comment:""), withTitle: NSLocalizedString("mobile is empty", comment:""), andInViewController: self)
+            Utils.showErrorMessage(NSLocalizedString("Please enter a valid mobile".localize, comment:""), withTitle: NSLocalizedString("mobile is empty".localize, comment:""), andInViewController: self)
            isEmpty = true
         }else if emirates_id == "" || emirates_id.count == 0 {
-            Utils.showErrorMessage(NSLocalizedString("Please enter a valid emirates ID", comment:""), withTitle: NSLocalizedString("emirates ID is empty", comment:""), andInViewController: self)
+            Utils.showErrorMessage(NSLocalizedString("Please enter a valid emirates ID".localize, comment:""), withTitle: NSLocalizedString("emirates ID is empty".localize, comment:""), andInViewController: self)
             isEmpty = true
         }else if question_answer == "" || question_answer.count == 0 {
-            Utils.showErrorMessage(NSLocalizedString("Please enter a valid answer", comment:""), withTitle: NSLocalizedString("answer is empty", comment:""), andInViewController: self)
+            Utils.showErrorMessage(NSLocalizedString("Please enter a valid answer".localize, comment:""), withTitle: NSLocalizedString("answer is empty".localize, comment:""), andInViewController: self)
           isEmpty = true
         }else if nationality_id == "" || nationality_id.count == 0 {
-            Utils.showErrorMessage(NSLocalizedString("Please enter a valid nationality", comment:""), withTitle: NSLocalizedString("nationality is empty", comment:""), andInViewController: self)
+            Utils.showErrorMessage(NSLocalizedString("Please enter a valid nationality".localize, comment:""), withTitle: NSLocalizedString("nationality is empty".localize, comment:""), andInViewController: self)
           isEmpty = true
         }else if gender_id == "" || gender_id.count == 0 {
-            Utils.showErrorMessage(NSLocalizedString("Please enter a valid gender ", comment:""), withTitle: NSLocalizedString("gender is empty", comment:""), andInViewController: self)
+            Utils.showErrorMessage(NSLocalizedString("Please enter a valid gender ".localize, comment:""), withTitle: NSLocalizedString("gender is empty".localize, comment:""), andInViewController: self)
             isEmpty = true
         }else if question_id == "" || question_id.count == 0 {
-            Utils.showErrorMessage(NSLocalizedString("Please enter a valid question ", comment:""), withTitle: NSLocalizedString("question is empty", comment:""), andInViewController: self)
+            Utils.showErrorMessage(NSLocalizedString("Please enter a valid question ".localize, comment:""), withTitle: NSLocalizedString("question is empty".localize, comment:""), andInViewController: self)
            isEmpty = true
         }else if password != confirm_password {
-            Utils.showErrorMessage(NSLocalizedString("Psswords dismatch ", comment:""), withTitle: NSLocalizedString("Password and Password Confirmation are not the same", comment:""), andInViewController: self)
+            Utils.showErrorMessage(NSLocalizedString("Psswords dismatch ".localize, comment:""), withTitle: NSLocalizedString("Password and Password Confirmation are not the same".localize, comment:""), andInViewController: self)
             isEmpty = true
         }
         if !Utils.isValidPassword(password) {
-           Utils.showErrorMessage(NSLocalizedString("Please enter a password contains at least 8 digits one number and one character ", comment:""), withTitle: NSLocalizedString("Password is not valid", comment:""), andInViewController: self)
+           Utils.showErrorMessage(NSLocalizedString("Please enter a password contains at least 8 digits one number and one character ".localize, comment:""), withTitle: NSLocalizedString("Password is not valid".localize, comment:""), andInViewController: self)
             isEmpty = true
         }
         
@@ -354,14 +355,41 @@ class RegisterViewController: UIViewController {
         
         RequestResponseWebServices.addUser(first_name: first_name, last_name: last_name, password: password, username: username, nationality_id: nationality_id, gender_id: gender_id, user_email: user_email, user_mobile: user_mobile, emirates_id: emirates_id, question_id: question_id, question_answer: question_answer, enable_tow_factor_auth: enable_two_factor_authentication, item: galleryItem, view: self.view) { (json, _ , error) in
             
-            if error != nil {
+            
+            
+            print(json)
+            
+            
+            guard let code = json["code"] as? Int else {return}
+            guard let data = json["data"] as? [String:Any] else {return}
+            
+            guard let result = data["result"] as? [String:Any] else {return}
+            
+            
+            if code != 10 {
+                let ResponseDescription = result["ResponseDescription"] as? String ?? ""
+                let ResponseTitle = result["ResponseTitle"] as? String ?? ""
+                
+                
                 DispatchQueue.main.async {
-                    Utils.showAlertWith(title: "Error", message: error.debugDescription, viewController: self)
+                    Utils.showAlertWith(title: ResponseTitle, message: ResponseDescription, viewController: self)
                 }
-            }else {
+            }else{
                 DispatchQueue.main.async {
                     self.navigationController?.popViewController(animated: true)
                 }
+            }
+            
+            
+            
+            
+            
+            if error != nil {
+                DispatchQueue.main.async {
+                    
+                }
+            }else {
+                
             }
             print(json)
         }
@@ -373,7 +401,7 @@ class RegisterViewController: UIViewController {
     @IBAction func profileImageEditButtonPressed(_ sender: AnyObject) {
        
        
-    let alert:UIAlertController=UIAlertController(title: "Choose Image", message: nil, preferredStyle:
+    let alert:UIAlertController=UIAlertController(title: "Choose Image".localize, message: nil, preferredStyle:
         
         UIAlertController.Style.actionSheet)
        
@@ -407,6 +435,13 @@ class RegisterViewController: UIViewController {
        
     imagePicker.delegate = self
     
+        
+        
+        if let popoverController = alert.popoverPresentationController {
+            popoverController.sourceView = self.view //to set the source of your alert
+            popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0) // you can set this as per your requirement.
+            popoverController.permittedArrowDirections = [] //to hide the arrow of any particular direction
+        }
     alert.addAction(cameraAction)
     
     alert.addAction(gallaryAction)

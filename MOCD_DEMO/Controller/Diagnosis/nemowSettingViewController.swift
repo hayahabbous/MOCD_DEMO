@@ -13,6 +13,8 @@ import UIKit
 class nemowSettingViewController: UIViewController {
     
     @IBOutlet var tableView: UITableView!
+    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -21,7 +23,10 @@ class nemowSettingViewController: UIViewController {
         
         
         //setupView()
+
     }
+    
+    
     func setupView() {
         let logoImageView = UIImageView()
         logoImageView.image = UIImage(named: "mocd_logo")
@@ -67,9 +72,10 @@ extension nemowSettingViewController: UITableViewDelegate , UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
-            self.performSegue(withIdentifier: "tocontactUs", sender: self)
-        }else{
             self.performSegue(withIdentifier: "toAboutus", sender: self)
+        }else{
+            
+            self.performSegue(withIdentifier: "tocontactUs", sender: self)
         }
     }
 }

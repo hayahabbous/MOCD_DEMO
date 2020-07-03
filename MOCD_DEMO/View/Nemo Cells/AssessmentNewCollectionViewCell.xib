@@ -18,13 +18,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1tn-C5-m2m">
-                        <rect key="frame" x="16" y="15" width="530" height="19.5"/>
-                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                        <rect key="frame" x="16" y="8" width="530" height="18"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="Hvo-qI-BK5">
-                        <rect key="frame" x="214.5" y="50.5" width="125" height="50"/>
+                        <rect key="frame" x="214.5" y="38" width="125" height="50"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ewn-1d-GOe">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -60,8 +60,8 @@
                     </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="1tn-C5-m2m" firstAttribute="top" secondItem="csi-ci-Wcc" secondAttribute="top" constant="15" id="Cmo-TF-nEH"/>
-                    <constraint firstItem="Hvo-qI-BK5" firstAttribute="top" secondItem="1tn-C5-m2m" secondAttribute="bottom" constant="16" id="Lbi-cO-rOy"/>
+                    <constraint firstItem="1tn-C5-m2m" firstAttribute="top" secondItem="csi-ci-Wcc" secondAttribute="top" constant="8" id="Cmo-TF-nEH"/>
+                    <constraint firstItem="Hvo-qI-BK5" firstAttribute="top" secondItem="1tn-C5-m2m" secondAttribute="bottom" constant="12" id="Lbi-cO-rOy"/>
                     <constraint firstAttribute="trailing" secondItem="1tn-C5-m2m" secondAttribute="trailing" constant="8" id="cv5-8I-sfy"/>
                     <constraint firstItem="Hvo-qI-BK5" firstAttribute="centerX" secondItem="csi-ci-Wcc" secondAttribute="centerX" id="gKn-IZ-DeN"/>
                     <constraint firstItem="1tn-C5-m2m" firstAttribute="leading" secondItem="csi-ci-Wcc" secondAttribute="leading" constant="16" id="kF9-HG-gfm"/>

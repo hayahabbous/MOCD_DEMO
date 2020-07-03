@@ -39,12 +39,12 @@ class LoginViewController: UIViewController {
         self.setupView()
         
         
-        userNameView.textLabel.text = "Username"
-        userNameView.textField.placeholder = "Username"
+        userNameView.textLabel.text = "Username".localize
+        userNameView.textField.placeholder = "Username".localize
         
         
-        passwordView.textLabel.text = "Password"
-        passwordView.textField.placeholder = "Password"
+        passwordView.textLabel.text = "Password".localize
+        passwordView.textField.placeholder = "Password".localize
         passwordView.textField.isSecureTextEntry = true
         
 
@@ -99,13 +99,13 @@ class LoginViewController: UIViewController {
         
        
         if username.count == 0 {
-            Utils.showErrorMessage(NSLocalizedString("Please enter username", comment:"") , withTitle:NSLocalizedString("username is empty", comment:"") , andInViewController: self)
+            Utils.showErrorMessage(NSLocalizedString("Please enter username".localize, comment:"") , withTitle:NSLocalizedString("username is empty", comment:"") , andInViewController: self)
             return false
         }
         
         if  password.count == 0 {
             
-            Utils.showErrorMessage(NSLocalizedString("Please enter a valid password", comment:"") , withTitle:NSLocalizedString("Password is empty", comment:"") , andInViewController: self)
+            Utils.showErrorMessage(NSLocalizedString("Please enter a valid password".localize, comment:"") , withTitle:NSLocalizedString("Password is empty".localize, comment:"") , andInViewController: self)
             return false
         }
         return isOK
@@ -142,7 +142,7 @@ class LoginViewController: UIViewController {
                 
                 guard let userId = result["UserId"] as? String else {
                     DispatchQueue.main.async {
-                        Utils.showAlertWith(title: "Error", message: "Username or Password not correct", viewController: self)
+                        Utils.showAlertWith(title: "Error".localize, message: "Username or Password not correct".localize, viewController: self)
                     }
                     
                     return
