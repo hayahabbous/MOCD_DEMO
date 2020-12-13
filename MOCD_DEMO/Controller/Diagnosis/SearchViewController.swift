@@ -11,14 +11,14 @@ import UIKit
 import NVActivityIndicatorView
 
 
-class SearchViewController: UIViewController {
+class SearchViewController: UIViewController,NVActivityIndicatorViewable {
     
     @IBOutlet var backView: UIView!
     @IBOutlet var cancelButton: UIButton!
     @IBOutlet var addButton: UIButton!
     @IBOutlet var backImageView: UIImageView!
     @IBOutlet var profileImageView: UIImageView!
-    let activityData = ActivityData()
+    let nvactivity = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
     var delegate: reloadNemowPage!
     @IBOutlet var nameLabel: UILabel!
     var childItem: ChildObject!
@@ -74,14 +74,17 @@ class SearchViewController: UIViewController {
     }
     func addChildToCenter() {
         
-        NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
+        let size = CGSize(width: 30, height: 30)
+            
+            
+            self.startAnimating(size, message: "Loading ...", messageFont: nil, type: .ballBeat)
         
         
         WebService.insertCenetrChild(centerId: centerId, child_id: childItem.objectID) { (json) in
             
             print(json)
             DispatchQueue.main.async {
-                NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+                self.stopAnimating(nil)
             }
             guard let code = json["code"] as? Int else {return}
             guard let message = json["message"] as? String else {return}

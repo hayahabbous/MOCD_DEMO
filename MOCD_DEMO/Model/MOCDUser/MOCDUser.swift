@@ -27,6 +27,7 @@ class MOCDUser: NSObject {
     
     var isCenter: String?
     var DId: String?
+    var UserIdentityNo: String?
     override init() {
         
     }
@@ -43,6 +44,7 @@ class MOCDUser: NSObject {
         if (userdictionary["UserPhone"]) is NSNull { userdictionary["UserPhone"] = ""} else { }
         if (userdictionary["UserEmail"]) is NSNull { userdictionary["UserEmail"] = ""} else { }
         if (userdictionary["UserMobile"]) is NSNull { userdictionary["UserMobile"] = ""} else { }
+        if (userdictionary["UserIdentityNo"]) is NSNull { userdictionary["UserIdentityNo"] = ""} else { }
         
         
         //if (userdictionary["username"]) is NSNull {userdictionary["username"] = "" } else { }
@@ -98,6 +100,7 @@ class MOCDUser: NSObject {
         appUser.isCenter = String(describing:dicData["isCenter"] ?? "")
         appUser.UserId = String(describing:dicData["UserId"] ?? "")
         appUser.DId = String(describing:dicData["dID"] ?? "")
+        appUser.UserIdentityNo = String(describing:dicData["UserIdentityNo"] ?? "")
         return appUser
     }
     

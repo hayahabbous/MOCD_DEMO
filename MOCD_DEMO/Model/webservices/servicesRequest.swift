@@ -17,9 +17,10 @@ import Alamofire
 class servicesRequest {
     
     
-    static func CreateDisabledCardRequest_ByObject(NationalityId:String ,IdentificationNo: String ,UID: String ,FirstNameAR:String ,FatherNameAR:String ,GrandfatherNameAR:String ,FamilyNameAR:String ,FirstNameEN:String ,FatherNameEN:String ,GrandfatherNameEN:String ,FamilyNameEN:String ,GenderId:String ,DateOfBirth:String ,IsStudent:String ,MaritalStatusId:String ,AccommodationTypeId:String ,Address:String ,EmirateId:String ,POBox:String ,MobileNo:String ,OtherMobileNo:String ,PhoneNo:String ,Email:String ,MakaniNo:String ,XCoord:String ,YCoord:String ,DiagnosisAuthorityId:String ,DiagnosisInformation:String , DisabilityTypeId:String ,DisabilityLevelId:String ,SupportingEquipment:String ,NeedSupporter:String ,CanLiveAlone:String ,ReportIssuedBy:String,Speciality:String ,ReportDate:String ,SecurityToken:String ,UserId:String ,ServiceDocTypeIds:String ,item: Gallery? ,view: UIView ,completation: @escaping ([String:Any] , NSMutableArray ,_ error: Error?)->Void ){
+    static func CreateDisabledCardRequest_ByObject(ApplicantTypeId: String ,NationalityId:String ,IdentificationNo: String ,UID: String ,FirstNameAR:String ,FatherNameAR:String ,GrandfatherNameAR:String ,FamilyNameAR:String ,FirstNameEN:String ,FatherNameEN:String ,GrandfatherNameEN:String ,FamilyNameEN:String ,GenderId:String ,DateOfBirth:String ,IsStudent:String ,MaritalStatusId:String ,AccommodationTypeId:String ,Address:String ,EmirateId:String ,POBox:String ,MobileNo:String ,OtherMobileNo:String ,PhoneNo:String ,Email:String ,MakaniNo:String ,XCoord:String ,YCoord:String ,DiagnosisAuthorityId:String ,DiagnosisInformation:String , DisabilityTypeId:String ,DisabilityLevelId:String ,SupportingEquipment:String ,NeedSupporter:String ,CanLiveAlone:String ,ReportIssuedBy:String,Speciality:String ,ReportDate:String,OrganizationId:String ,ResidenceExpiryDate:String,WorkingStatusId:String,WorkFieldId:String,Company:String,InstitutionId:String,CenterId:String ,SecurityToken:String ,UserId:String ,ServiceDocTypeIds:String ,filesArray: [URL],item: Gallery? ,view: UIView ,completation: @escaping ([String:Any] , NSMutableArray ,_ error: Error?)->Void ){
           
            
+  
            
         let apiString = "CreateDisabledCardRequest_ByObject"
            
@@ -30,12 +31,14 @@ class servicesRequest {
         
         let mocd_user = MOCDUser.getMOCDUser()
            
-           
+    
     
            
+    
+        
         var parametersArray: [String:Any]? = [:]
            
-          
+          parametersArray?["ApplicantTypeId"] = ApplicantTypeId
         
         parametersArray?["NationalityId"] = NationalityId
         
@@ -109,6 +112,16 @@ class servicesRequest {
         parametersArray?["Speciality"] = Speciality
         
         
+        
+        parametersArray?["OrganizationId"] = OrganizationId
+        parametersArray?["ResidenceExpiryDate"] = ResidenceExpiryDate
+        parametersArray?["WorkingStatusId"] = WorkingStatusId
+        parametersArray?["WorkFieldId"] = WorkFieldId
+        parametersArray?["Company"] = Company
+        parametersArray?["InstitutionId"] = InstitutionId
+        parametersArray?["CenterId"] = CenterId
+        
+        
         parametersArray?["ReportDate"] = ReportDate
         
         parametersArray?["SecurityToken"] = SecurityToken
@@ -121,6 +134,26 @@ class servicesRequest {
              
             do {
                
+                
+                for n in 0..<filesArray.count {
+                    let url = filesArray[n]
+                    try formData.appendPart(withFileURL: url, name: "", fileName: url.lastPathComponent, mimeType: "")
+                    //guard let data = FileManager.default.contents(atPath: url.path) else {continue}
+                    
+                    //formData.appendPart(withFileData: data, name:"files[\(n)]", fileName: url.lastPathComponent, mimeType: Utils.mimeTypeForPath(path: url.path))
+                }
+                /*
+                for url in filesArray {
+                    
+                    
+                    guard let data = FileManager.default.contents(atPath: url.path) else {continue}
+                    
+                    formData.appendPart(withFileData: data, name:"files", fileName: url.lastPathComponent, mimeType: Utils.mimeTypeForPath(path: url.path))
+                    
+                    //try formData.appendPart(withFileURL: url, name: "", fileName: url.lastPathComponent, mimeType: "")
+                    
+                    
+                }*/
                   /*
                 if item?.path.count >  0 {
                 
@@ -168,7 +201,7 @@ class servicesRequest {
                
             }
          
-             
+             formData.appendPart(withForm: ApplicantTypeId.data(using: String.Encoding.utf8)!, name: "ApplicantTypeId")
             
             formData.appendPart(withForm: NationalityId.data(using: String.Encoding.utf8)!, name: "NationalityId")
             
@@ -242,7 +275,20 @@ class servicesRequest {
             formData.appendPart(withForm: ServiceDocTypeIds.data(using: String.Encoding.utf8)!, name: "ServiceDocTypeIds")
             
                
+            
+            formData.appendPart(withForm: OrganizationId.data(using: String.Encoding.utf8)!, name: "OrganizationId")
+            formData.appendPart(withForm: ResidenceExpiryDate.data(using: String.Encoding.utf8)!, name: "ResidenceExpiryDate")
+            formData.appendPart(withForm: WorkingStatusId.data(using: String.Encoding.utf8)!, name: "WorkingStatusId")
+            formData.appendPart(withForm: WorkFieldId.data(using: String.Encoding.utf8)!, name: "WorkFieldId")
+            formData.appendPart(withForm: Company.data(using: String.Encoding.utf8)!, name: "Company")
+            formData.appendPart(withForm: InstitutionId.data(using: String.Encoding.utf8)!, name: "InstitutionId")
+            formData.appendPart(withForm: CenterId.data(using: String.Encoding.utf8)!, name: "CenterId")
                
+            
+            
+            
+            
+            
               
             
             print(formData)
@@ -251,7 +297,8 @@ class servicesRequest {
         
         let sessionManager = AFURLSessionManager(sessionConfiguration: URLSessionConfiguration.default)
            
-        
+        //sessionManager.responseSerializer = AFJSONResponseSerializer(readingOptions: .allowFragments)
+       
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
         let reachable = appDelegate.reach
@@ -279,10 +326,16 @@ class servicesRequest {
               
             var mocd_user = MOCDUser.getMOCDUser()
             
-            request.allHTTPHeaderFields = ["DToken":"6RGT36D10Q637059759964359851B1I1" ,"UserToken":"\(mocd_user?.userToken ?? "")" ,
+            request.allHTTPHeaderFields = ["DToken":"6RGT36D10Q637059759964359851B1I1" ,"UserToken":"\(mocd_user?.userToken ?? "")"
             ]
-              
-            
+        
+            let boundary = UUID().uuidString
+            //request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+            //request.setValue("gzip, deflate, br", forHTTPHeaderField: "Accept-Encoding")
+            //request.setValue("*/*", forHTTPHeaderField: "Accept")
+            //request.setValue("web", forHTTPHeaderField: "User-Agent")
+            let r = request.allHTTPHeaderFields
+            print(request.allHTTPHeaderFields)
             let task = sessionManager.uploadTask(withStreamedRequest: request as URLRequest, progress: { (progress) in
                  
                 DispatchQueue.main.async {

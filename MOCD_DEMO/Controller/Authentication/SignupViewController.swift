@@ -14,7 +14,7 @@ import SkyFloatingLabelTextField
 import Reachability
 import NVActivityIndicatorView
 
-class SignupViewController: UIViewController {
+class SignupViewController: UIViewController ,NVActivityIndicatorViewable {
     
     
     
@@ -25,7 +25,7 @@ class SignupViewController: UIViewController {
     var gendersArray: [String: String] = [:]
     var nationalitiesArray: [String: String] = [:]
     var emiratesArray: [String: String] = [:]
-    var activityData = ActivityData()
+    let nvactivity = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
     var username: String = ""
     var first_name: String = ""
     var last_name: String = ""
@@ -360,7 +360,7 @@ class SignupViewController: UIViewController {
         
         
         if password != confPassword {
-            Utils.showErrorMessage(NSLocalizedString("Psswords dismatch ", comment:""), withTitle: NSLocalizedString("Password and Password Confirmation are not the same", comment:""), andInViewController: self)
+            Utils.showErrorMessage(NSLocalizedString("Password mismatch", comment:""), withTitle: NSLocalizedString("Password and Password Confirmation are not the same", comment:""), andInViewController: self)
             return false
         }
         if !isValidPassword(password) {
@@ -376,13 +376,16 @@ class SignupViewController: UIViewController {
     func signup() {
         
         
-        NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
+        let size = CGSize(width: 30, height: 30)
+            
+            
+            self.startAnimating(size, message: "Loading ...", messageFont: nil, type: .ballBeat)
         WebService.signup(firstName: self.first_name, lastName: last_name, email: self.email, username: self.username, emiratesId: self.emiratesID, phone: self.phone, emirate: self.emirate, password: self.password, address: self.address, gender: self.gender, nationality: self.nationalities) { (json) in
             
             
             
             DispatchQueue.main.async {
-                NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+                self.stopAnimating(nil)
             }
             
             guard let code = json["code"] as? Int else {return}
@@ -424,7 +427,10 @@ class SignupViewController: UIViewController {
         user["username"] = self.email
     
         
-        NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
+        let size = CGSize(width: 30, height: 30)
+            
+            
+            self.startAnimating(size, message: "Loading ...", messageFont: nil, type: .ballBeat)
         let reach = Reachability.Connection.self
         if reach != .none {
             //self.activityIndicator.startAnimating()
@@ -433,7 +439,7 @@ class SignupViewController: UIViewController {
                 user.signUpInBackground(block: {(succeeded, error)  in
                     
                     DispatchQueue.main.async {
-                        NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+                        self.stopAnimating(nil)
                     }
                     if succeeded {
                         //TODO Fix Chat issue

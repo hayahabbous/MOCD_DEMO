@@ -14,7 +14,7 @@ import PDFKit
 
 
 
-class sListViewController: UIViewController ,UISearchResultsUpdating {
+class sListViewController: UIViewController ,UISearchResultsUpdating ,NVActivityIndicatorViewable{
     
     var selectedStory: story = story()
     var storiesList :[story] = []
@@ -24,7 +24,7 @@ class sListViewController: UIViewController ,UISearchResultsUpdating {
                               "Broncos", "Chiefs", "Raiders", "Chargers", "Cardinals", "Rams", "49ers", "Seahawks"].sorted()
     var filteredNFLTeams: [story]?
     let searchController = UISearchController(searchResultsController: nil)
-    let activityData = ActivityData()
+    let nvactivity = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
     func updateSearchResults(for searchController: UISearchController) {
         if let searchText = searchController.searchBar.text, !searchText.isEmpty {
             filteredNFLTeams = storiesList.filter { team in
@@ -100,13 +100,17 @@ class sListViewController: UIViewController ,UISearchResultsUpdating {
     }
     
     func getStories() {
-        NVActivityIndicatorPresenter.sharedInstance.startAnimating(self.activityData)
         
+        //NVActivityIndicatorPresenter.sharedInstance.startAnimating(self.activityData)
+        let size = CGSize(width: 30, height: 30)
+            
+            
+            self.startAnimating(size, message: "Loading ...", messageFont: nil, type: .ballBeat)
         WebService.getStories { (json) in
             
             print(json)
             DispatchQueue.main.async {
-                NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+                self.stopAnimating(nil)
             }
             
             guard let code = json["code"] as? Int else {return}

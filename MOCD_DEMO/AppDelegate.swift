@@ -60,6 +60,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         
+        
+        
         //Medical Agenda
         setupMAG()
         setupED()
@@ -79,7 +81,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         }
        
-        
+        WebService.getTokenJson { (json) in
+            
+            
+            print(json)
+            guard let code = json["code"] as? Int else {return}
+            guard let message = json["message"] as? String else {return}
+            
+            if code == 1 {
+                guard let data = json["data"] as? [String:Any] else {return}
+                guard let results = data["result"] as? [String:Any] else {return}
+                
+                AppConstants.MASTER_TOKEN = results["accessToken"] as? String ?? ""
+                
+                print("MASTER TOKEN :: \(AppConstants.MASTER_TOKEN)")
+            }
+        }
             
         
         //self.reach!.reachableOnWWAN = false

@@ -17,7 +17,7 @@ class socialInformationViewController: UIViewController {
     @IBOutlet var nationalityPicker: UIPickerView!
     var toolBar = UIToolbar()
     
-    
+    var socialAidItem: socialAid = socialAid()
     var materialsArray: [MOCDMaterialStatusSocial] = []
     var eduactaionsArray: [MOCDEducationSocial] = []
     var nationalitiesArray: [MOCDNationalitySocial] = []
@@ -52,57 +52,57 @@ class socialInformationViewController: UIViewController {
     
     func setupField(){
         
-        nameArView.textLabel.text = "Name [AR]"
-        nameArView.textField.placeholder = "Name [AR]"
+        nameArView.textLabel.text = "Name [AR]".localize
+        nameArView.textField.placeholder = "Name [AR]".localize
         
         
-        nameEnView.textLabel.text = "Name [En]"
-        nameEnView.textField.placeholder = "Name [En]"
+        nameEnView.textLabel.text = "Name [En]".localize
+        nameEnView.textField.placeholder = "Name [En]".localize
         
         
-        familyNoView.textLabel.text = "Family No"
-        familyNoView.textField.placeholder = "Family No"
+        familyNoView.textLabel.text = "Family No".localize
+        familyNoView.textField.placeholder = "Family No".localize
         
-        townNoView.textLabel.text = "Town No"
-        townNoView.textField.placeholder = "Town No"
+        townNoView.textLabel.text = "Town No".localize
+        townNoView.textField.placeholder = "Town No".localize
         
-        dateOfBirthView.textLabel.text = "Date Of Birth"
+        dateOfBirthView.textLabel.text = "Date Of Birth".localize
         dateOfBirthView.viewController = self
-        genderView.textLabel.text = "Gender"
-        genderView.firstLabel.text = "Female"
-        genderView.secondLabel.text = "Male"
+        genderView.textLabel.text = "Gender".localize
+        genderView.firstLabel.text = "Female".localize
+        genderView.secondLabel.text = "Male".localize
         
         
         
-        materialStatusView.textLabel.text = "Material Status"
-        materialStatusView.textField.placeholder = "Please Select"
+        materialStatusView.textLabel.text = "Material Status".localize
+        materialStatusView.textField.placeholder = "Please Select".localize
         
         
-        educationView.textLabel.text = "Education"
-        educationView.textField.placeholder = "Please Select"
+        educationView.textLabel.text = "Education".localize
+        educationView.textField.placeholder = "Please Select".localize
         
         
-        nationalityView.textLabel.text = "Nationality"
-        nationalityView.textField.placeholder = "Please Select"
+        nationalityView.textLabel.text = "Nationality".localize
+        nationalityView.textField.placeholder = "Please Select".localize
         
         
         
-        occupationView.textLabel.text = "Occupation"
-        occupationView.textField.placeholder = "Occupation"
+        occupationView.textLabel.text = "Occupation".localize
+        occupationView.textField.placeholder = "Occupation".localize
         
-        emailView.textLabel.text = "Email"
-        emailView.textField.placeholder = "Email"
-        
-        
-        motherNameView.textLabel.text = "Mother Name [AR]"
-        motherNameView.textField.placeholder = "Mother Name [AR]"
-        
-        telephoneView.textLabel.text = "Telephone"
-        telephoneView.textField.placeholder = "Telephone"
+        emailView.textLabel.text = "Email".localize
+        emailView.textField.placeholder = "Email".localize
         
         
-        mobileNoView.textLabel.text = "Mobile No"
-        mobileNoView.textField.placeholder = "Mobile No"
+        motherNameView.textLabel.text = "Mother Name [AR]".localize
+        motherNameView.textField.placeholder = "Mother Name [AR]".localize
+        
+        telephoneView.textLabel.text = "Telephone".localize
+        telephoneView.textField.placeholder = "Telephone".localize
+        
+        
+        mobileNoView.textLabel.text = "Mobile No".localize
+        mobileNoView.textField.placeholder = "Mobile No".localize
         
         
         let gradient = CAGradientLayer()
@@ -291,9 +291,70 @@ class socialInformationViewController: UIViewController {
             
         }
     }
-    @IBAction func nextButtonAction(_ sender: Any) {
+    
+    func validateFields() -> Bool{
         
+        //return true
+        
+        
+        socialAidItem.ApplicantNameAR = nameArView.textField.text ?? ""
+        socialAidItem.ApplicantNameEN = nameEnView.textField.text ?? ""
+        socialAidItem.FamilyNo = familyNoView.textField.text ?? ""
+        socialAidItem.TownNo = townNoView.textField.text ?? ""
+        socialAidItem.DateOfBirth = dateOfBirthView.textField.text ?? ""
+        socialAidItem.GenderId = self.genderView.firstCheckBox.checkState == .checked ? "2" : "1"
+        socialAidItem.Occupation = occupationView.textField.text ?? ""
+        socialAidItem.EmailAddress = emailView.textField.text ?? ""
+        socialAidItem.MotherNameAR = motherNameView.textField.text ?? ""
+        socialAidItem.PhoneNo = telephoneView.textField.text ?? ""
+        socialAidItem.MobileNo = mobileNoView.textField.text ?? ""
+        
+        
+        
+        
+        let df = DateFormatter()
+        df.dateFormat = "MM/dd/yyyy"
+        socialAidItem.DateOfBirth  = df.string(from: dateOfBirthView.date )
+        
+        
+        if socialAidItem.ApplicantNameAR == "" ||
+            socialAidItem.ApplicantNameEN == "" ||
+            socialAidItem.FamilyNo == "" ||
+            socialAidItem.TownNo == "" ||
+            socialAidItem.DateOfBirth == "" ||
+            socialAidItem.GenderId == "" ||
+            socialAidItem.Occupation == "" ||
+            socialAidItem.EmailAddress == "" ||
+            socialAidItem.MotherNameAR == "" ||
+            socialAidItem.PhoneNo == "" ||
+            socialAidItem.MobileNo == "" ||
+            socialAidItem.MaritalStatusId == "" ||
+            socialAidItem.NationalityId == "" ||
+            socialAidItem.EducationId == "" 
+            {
+            
+            Utils.showAlertWith(title: "Error".localize, message: "Please Fill All Fields".localize, viewController: self)
+            return false
+            
+            
+        }
+        
+        
+        return true
+        
+    }
+    @IBAction func nextButtonAction(_ sender: Any) {
+        if !validateFields() {
+            return
+        }
         self.performSegue(withIdentifier: "toPassportInfo", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toPassportInfo" {
+            let dest = segue.destination as! socialPassportViewController
+            dest.socialAidItem = self.socialAidItem
+        }
     }
 }
 extension socialInformationViewController: UIPickerViewDelegate , UIPickerViewDataSource {
@@ -344,13 +405,13 @@ extension socialInformationViewController: UIPickerViewDelegate , UIPickerViewDa
               //self.emirate = item.id
            
             //childItem.emirateID = item.id
+            socialAidItem.MaritalStatusId = item.MaritalStatusId
             self.materialStatusView.textField.text = AppConstants.isArabic() ? item.MaritalStatusAR :  item.MaritalStatusEN
         }else if pickerView == educationPicker{
             let item = eduactaionsArray[row]
             
-              //self.emirate = item.id
            
-            //childItem.emirateID = item.id
+            socialAidItem.EducationId = item.EducationId
             self.educationView.textField.text = AppConstants.isArabic() ? item.EducationTitleAR :  item.EducationTitleEN
         }else if pickerView == nationalityPicker{
             let item = nationalitiesArray[row]
@@ -358,6 +419,7 @@ extension socialInformationViewController: UIPickerViewDelegate , UIPickerViewDa
               //self.emirate = item.id
            
             //childItem.emirateID = item.id
+            socialAidItem.NationalityId = item.NationalityId
             self.nationalityView.textField.text = AppConstants.isArabic() ? item.NationalityTitleAR :  item.NationalityTitleEN
         }
         

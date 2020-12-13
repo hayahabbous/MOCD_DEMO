@@ -13,7 +13,7 @@ import NVActivityIndicatorView
 
 
 
-class addObjectiveViewController: UIViewController {
+class addObjectiveViewController: UIViewController ,NVActivityIndicatorViewable{
     
     
     
@@ -24,7 +24,7 @@ class addObjectiveViewController: UIViewController {
     var delegate: answerAssessment!
     var mocd_user = MOCDUser.getMOCDUser()
     var toolBar = UIToolbar()
-    let activityData = ActivityData()
+    let nvactivity = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
     var routinesArray: [Routine] = []
     var aspectsArray: [Aspect] = []
     var objective_text: String!
@@ -158,13 +158,16 @@ class addObjectiveViewController: UIViewController {
         self.view.endEditing(true)
     }
     func getRoutines() {
-        NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
+        let size = CGSize(width: 30, height: 30)
+            
+            
+            self.startAnimating(size, message: "Loading ...", messageFont: nil, type: .ballBeat)
         
         
         WebService.getRoutines { (json) in
             print(json)
             DispatchQueue.main.async {
-                NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+                self.stopAnimating(nil)
             }
             
             guard let code = json["code"] as? Int else {return}
@@ -209,13 +212,16 @@ class addObjectiveViewController: UIViewController {
     
     
     func getAspects() {
-        NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
+        let size = CGSize(width: 30, height: 30)
+            
+            
+            self.startAnimating(size, message: "Loading ...", messageFont: nil, type: .ballBeat)
         
         WebService.getAspects { (json) in
             
             print(json)
             DispatchQueue.main.async {
-                NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+                self.stopAnimating(nil)
             }
 
             guard let code = json["code"] as? Int else {return}
@@ -295,13 +301,16 @@ class addObjectiveViewController: UIViewController {
         }
         
         if isEdit {
-            NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
+            let size = CGSize(width: 30, height: 30)
+            
+            
+            self.startAnimating(size, message: "Loading ...", messageFont: nil, type: .ballBeat)
             WebService.updateTask(taskId: selectedObjective?.tasks[0].taskId ?? "", new_task: task_text) { (json) in
                  print(json)
                                
                                
                 DispatchQueue.main.async {
-                    NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+                    self.stopAnimating(nil)
                     self.delegate.reloadChild()
                     self.dismiss(animated: true, completion: nil)
                                        
@@ -310,7 +319,10 @@ class addObjectiveViewController: UIViewController {
             }
         }else{
             
-            NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
+            let size = CGSize(width: 30, height: 30)
+            
+            
+            self.startAnimating(size, message: "Loading ...", messageFont: nil, type: .ballBeat)
             
             WebService.insertNewObjective(objective_text_ar: objective_text, objective_text_en: objective_text, min_age: "\((Int(childItem.age) ?? 0) - 2)", max_age: "\((Int(childItem.age) ?? 0) + 2)", user_id: mocd_user?.DId ?? "0", child_id: childItem.objectID, aspect_id: selectedAspect.aspect_id , routine_id: selectedRoutine.routine_id ,task: task_text) { (json) in
                 
@@ -319,7 +331,7 @@ class addObjectiveViewController: UIViewController {
                 
                 DispatchQueue.main.async {
                     
-                    NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+                    self.stopAnimating(nil)
                     
                     self.delegate.reloadChild()
                     self.dismiss(animated: true, completion: nil)

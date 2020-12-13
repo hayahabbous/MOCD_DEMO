@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ci5-zL-WOr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ci5-zL-WOr">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -390,7 +390,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cz1-E4-IU6" customClass="SkyFloatingLabelTextFieldWithIcon" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="14" y="629" width="376" height="34"/>
+                                                <rect key="frame" x="14" y="630.5" width="376" height="34"/>
                                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -424,7 +424,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8tM-By-EaD" customClass="SkyFloatingLabelTextFieldWithIcon" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="14" y="596" width="376" height="17"/>
+                                                <rect key="frame" x="14" y="596" width="376" height="18.5"/>
                                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -458,7 +458,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nationality" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zVL-ng-aFj" customClass="SkyFloatingLabelTextFieldWithIcon" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="14" y="719" width="376" height="17"/>
+                                                <rect key="frame" x="14" y="722" width="376" height="18.5"/>
                                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -708,7 +708,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mOh-eI-D32" customClass="SkyFloatingLabelTextFieldWithIcon" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="14" y="686" width="376" height="17"/>
+                                                <rect key="frame" x="14" y="687.5" width="376" height="18.5"/>
                                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -796,7 +796,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PGU-ge-DVY">
-                                        <rect key="frame" x="159" y="752" width="120" height="40"/>
+                                        <rect key="frame" x="159" y="756.5" width="120" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="P9A-9d-x1x"/>
                                             <constraint firstAttribute="width" constant="120" id="shs-5o-sGa"/>
@@ -1251,7 +1251,7 @@
                                                 </cells>
                                             </collectionView>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ur2-fI-Xtr">
-                                                <rect key="frame" x="0.0" y="392" width="414" height="200"/>
+                                                <rect key="frame" x="0.0" y="400" width="414" height="200"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="200" id="qQP-e0-XYu"/>
@@ -1302,6 +1302,64 @@
                                                     <action selector="profileAction:" destination="jTT-06-efq" eventType="touchUpInside" id="h89-hK-pdC"/>
                                                 </connections>
                                             </button>
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qxa-bd-bbA">
+                                                <rect key="frame" x="0.0" y="640" width="414" height="200"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="200" id="6IY-8y-hjR"/>
+                                                </constraints>
+                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ker-IY-50v">
+                                                    <size key="itemSize" width="411" height="102"/>
+                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                </collectionViewFlowLayout>
+                                                <cells>
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="c0a-eN-kJm">
+                                                        <rect key="frame" x="0.0" y="49" width="411" height="102"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                            <rect key="frame" x="0.0" y="0.0" width="411" height="102"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No children added. add children to see their helth status " textAlignment="center" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qf2-YK-PhV">
+                                                                    <rect key="frame" x="20" y="12" width="371" height="16"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add" translatesAutoresizingMaskIntoConstraints="NO" id="6sh-Ry-hlA">
+                                                                    <rect key="frame" x="165.5" y="36.5" width="80" height="80"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="80" id="Mb5-WI-gcH"/>
+                                                                        <constraint firstAttribute="height" constant="80" id="W8k-Ej-1GE"/>
+                                                                    </constraints>
+                                                                </imageView>
+                                                            </subviews>
+                                                        </view>
+                                                        <constraints>
+                                                            <constraint firstItem="Qf2-YK-PhV" firstAttribute="leading" secondItem="c0a-eN-kJm" secondAttribute="leading" constant="20" id="8wJ-Ou-VVq"/>
+                                                            <constraint firstItem="Qf2-YK-PhV" firstAttribute="top" secondItem="c0a-eN-kJm" secondAttribute="top" constant="12" id="CTh-6Y-KFV"/>
+                                                            <constraint firstItem="Qf2-YK-PhV" firstAttribute="centerX" secondItem="c0a-eN-kJm" secondAttribute="centerX" id="IxA-SS-frz"/>
+                                                            <constraint firstAttribute="trailing" secondItem="Qf2-YK-PhV" secondAttribute="trailing" constant="20" id="dE3-8Q-Zrj"/>
+                                                            <constraint firstItem="6sh-Ry-hlA" firstAttribute="top" secondItem="Qf2-YK-PhV" secondAttribute="bottom" constant="8.3333333333333357" id="tdQ-sa-pjK"/>
+                                                            <constraint firstItem="6sh-Ry-hlA" firstAttribute="centerX" secondItem="Qf2-YK-PhV" secondAttribute="centerX" id="xMV-R0-Wf8"/>
+                                                        </constraints>
+                                                    </collectionViewCell>
+                                                </cells>
+                                            </collectionView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Center Children" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B20-Je-P1V">
+                                                <rect key="frame" x="8" y="370" width="126" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Added Children" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XaD-ED-VUB">
+                                                <rect key="frame" x="8" y="611" width="124" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -1311,16 +1369,23 @@
                                             <constraint firstItem="iej-vt-XKL" firstAttribute="bottom" secondItem="f9t-st-tha" secondAttribute="bottom" id="Ci6-cS-x7s"/>
                                             <constraint firstItem="eK7-IQ-lur" firstAttribute="top" secondItem="W1Y-II-ghB" secondAttribute="top" id="DhK-DV-DGK"/>
                                             <constraint firstItem="eK7-IQ-lur" firstAttribute="leading" secondItem="W1Y-II-ghB" secondAttribute="leading" id="DtJ-YC-lgj"/>
+                                            <constraint firstItem="B20-Je-P1V" firstAttribute="leading" secondItem="W1Y-II-ghB" secondAttribute="leading" constant="8" id="Eqj-eD-Hff"/>
                                             <constraint firstItem="YKO-88-opo" firstAttribute="centerY" secondItem="f9t-st-tha" secondAttribute="centerY" id="FtP-eF-wiR"/>
+                                            <constraint firstItem="qxa-bd-bbA" firstAttribute="top" secondItem="ur2-fI-Xtr" secondAttribute="bottom" constant="40" id="KXL-ax-o8I"/>
                                             <constraint firstItem="ur2-fI-Xtr" firstAttribute="leading" secondItem="1fW-57-gTL" secondAttribute="leading" id="MyJ-EZ-EEO"/>
+                                            <constraint firstItem="qxa-bd-bbA" firstAttribute="leading" secondItem="ur2-fI-Xtr" secondAttribute="leading" id="OGA-fH-GJN"/>
+                                            <constraint firstItem="qxa-bd-bbA" firstAttribute="trailing" secondItem="ur2-fI-Xtr" secondAttribute="trailing" id="Pjf-fg-IdH"/>
                                             <constraint firstItem="eK7-IQ-lur" firstAttribute="top" secondItem="W1Y-II-ghB" secondAttribute="top" id="TEc-wy-Y8Z"/>
+                                            <constraint firstItem="XaD-ED-VUB" firstAttribute="top" secondItem="ur2-fI-Xtr" secondAttribute="bottom" constant="11" id="TRL-12-ck7"/>
+                                            <constraint firstItem="XaD-ED-VUB" firstAttribute="leading" secondItem="W1Y-II-ghB" secondAttribute="leading" constant="8" id="a5d-Qr-b8q"/>
                                             <constraint firstItem="f9t-st-tha" firstAttribute="centerY" secondItem="eK7-IQ-lur" secondAttribute="bottom" id="dG2-Z3-WEr"/>
                                             <constraint firstItem="YKO-88-opo" firstAttribute="centerX" secondItem="f9t-st-tha" secondAttribute="centerX" id="e5T-1s-k0e"/>
                                             <constraint firstAttribute="height" constant="800" id="fmK-Ws-OM4"/>
-                                            <constraint firstItem="ur2-fI-Xtr" firstAttribute="top" secondItem="1fW-57-gTL" secondAttribute="bottom" constant="32" id="gDs-2f-9Gz"/>
+                                            <constraint firstItem="ur2-fI-Xtr" firstAttribute="top" secondItem="1fW-57-gTL" secondAttribute="bottom" constant="40" id="gDs-2f-9Gz"/>
                                             <constraint firstItem="1fW-57-gTL" firstAttribute="top" secondItem="YKO-88-opo" secondAttribute="bottom" id="h4e-hD-Srt"/>
                                             <constraint firstAttribute="trailing" secondItem="eK7-IQ-lur" secondAttribute="trailing" id="jSn-T1-pKb"/>
                                             <constraint firstAttribute="trailing" secondItem="1fW-57-gTL" secondAttribute="trailing" id="rOa-le-KfV"/>
+                                            <constraint firstItem="B20-Je-P1V" firstAttribute="top" secondItem="1fW-57-gTL" secondAttribute="bottom" constant="10" id="uZT-0v-bPY"/>
                                             <constraint firstItem="f9t-st-tha" firstAttribute="centerX" secondItem="eK7-IQ-lur" secondAttribute="centerX" id="vS8-vw-oVi"/>
                                             <constraint firstItem="1fW-57-gTL" firstAttribute="leading" secondItem="W1Y-II-ghB" secondAttribute="leading" id="xJo-O7-3dP"/>
                                             <constraint firstItem="iej-vt-XKL" firstAttribute="top" secondItem="f9t-st-tha" secondAttribute="top" id="yhS-73-gTk"/>
@@ -1388,9 +1453,14 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="addesdChildrenLabel" destination="XaD-ED-VUB" id="u2r-ir-5Q4"/>
                         <outlet property="backImageView" destination="eK7-IQ-lur" id="zg9-bZ-VoB"/>
                         <outlet property="backgroundImage" destination="FxM-VU-hN1" id="dDm-Rq-PZB"/>
-                        <outlet property="childrensCollectionView" destination="ur2-fI-Xtr" id="puM-Hc-BX9"/>
+                        <outlet property="centerChildrenCollectionView" destination="ur2-fI-Xtr" id="1dz-do-hgh"/>
+                        <outlet property="centerChildrenLabel" destination="B20-Je-P1V" id="AEc-a7-7gw"/>
+                        <outlet property="centerCollectionHeight" destination="gDs-2f-9Gz" id="gW3-BF-7jf"/>
+                        <outlet property="centerCollectionHeightLength" destination="qQP-e0-XYu" id="dbM-jL-lDr"/>
+                        <outlet property="childrensCollectionView" destination="qxa-bd-bbA" id="27e-Yb-sZg"/>
                         <outlet property="circularImageView" destination="YKO-88-opo" id="MzQ-9C-E3D"/>
                         <outlet property="first_name_label" destination="R9Y-Xh-arF" id="MB3-1F-Xre"/>
                         <outlet property="notificationHeightConstraints" destination="i9d-mf-Ab5" id="mVc-48-Bxw"/>
@@ -1414,7 +1484,7 @@
                     <textInputTraits key="textInputTraits"/>
                 </searchBar>
             </objects>
-            <point key="canvasLocation" x="4474" y="826"/>
+            <point key="canvasLocation" x="4473.913043478261" y="825.66964285714278"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="ZJS-Ff-cc8">
@@ -2049,10 +2119,10 @@ Nomow App is a screening tool of child development can be used families, before 
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zPz-cg-XZ1">
-                                <rect key="frame" x="128" y="175" width="40" height="30"/>
+                                <rect key="frame" x="128" y="175" width="0.0" height="30"/>
                                 <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="JbV-a2-K5l"/>
+                                    <constraint firstAttribute="width" id="JbV-a2-K5l"/>
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="trash" catalog="system">
@@ -2061,7 +2131,7 @@ Nomow App is a screening tool of child development can be used families, before 
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Fl-UC-ukz">
-                                <rect key="frame" x="176" y="175" width="60" height="30"/>
+                                <rect key="frame" x="136" y="175" width="60" height="30"/>
                                 <color key="backgroundColor" red="0.66799789669999998" green="0.47512125970000002" blue="0.25860109930000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="Cyt-gl-gpb"/>
@@ -2789,6 +2859,7 @@ Nomow App is a screening tool of child development can be used families, before 
                         <segue destination="fXh-U4-HJl" kind="show" identifier="toMarriage" id="lyx-U4-74F"/>
                         <segue destination="8q9-gd-VEt" kind="show" identifier="toEdaad" id="ls3-nr-tLU"/>
                         <segue destination="g4k-Nk-ezs" kind="show" identifier="toMassWedding" id="VSF-sJ-i2f"/>
+                        <segue destination="6i0-8y-O0q" kind="show" identifier="toCertificate" id="CGQ-Il-6pm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iPH-Qn-MWd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2804,6 +2875,16 @@ Nomow App is a screening tool of child development can be used families, before 
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rgQ-G7-mwV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3197" y="1334"/>
+        </scene>
+        <!--issueCertificate-->
+        <scene sceneID="TYs-0Q-qFe">
+            <objects>
+                <viewControllerPlaceholder storyboardName="issueCertificate" id="6i0-8y-O0q" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="BkT-rn-MYs"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dvu-fo-UZf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2956" y="1374"/>
         </scene>
         <!--edadProgram-->
         <scene sceneID="OBq-1O-2yC">
@@ -2998,19 +3079,19 @@ Nomow App is a screening tool of child development can be used families, before 
                                                     <rect key="frame" x="20" y="11" width="376" height="97"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" tag="11" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="file_colored" translatesAutoresizingMaskIntoConstraints="NO" id="ixH-EJ-1Sn">
-                                                            <rect key="frame" x="0.0" y="0.0" width="64" height="97"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="64" height="50"/>
                                                         </imageView>
                                                         <imageView clipsSubviews="YES" tag="22" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="process" translatesAutoresizingMaskIntoConstraints="NO" id="czl-d2-5mN">
-                                                            <rect key="frame" x="78" y="0.0" width="64" height="97"/>
+                                                            <rect key="frame" x="78" y="0.0" width="64" height="50"/>
                                                         </imageView>
                                                         <imageView clipsSubviews="YES" tag="33" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="conditions" translatesAutoresizingMaskIntoConstraints="NO" id="w1m-1m-iFl">
-                                                            <rect key="frame" x="156" y="0.0" width="64" height="97"/>
+                                                            <rect key="frame" x="156" y="0.0" width="64" height="50"/>
                                                         </imageView>
                                                         <imageView clipsSubviews="YES" tag="44" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="help" translatesAutoresizingMaskIntoConstraints="NO" id="cBU-uq-ykW">
-                                                            <rect key="frame" x="234" y="0.0" width="64" height="97"/>
+                                                            <rect key="frame" x="234" y="0.0" width="64" height="50"/>
                                                         </imageView>
                                                         <imageView clipsSubviews="YES" tag="55" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="usage" translatesAutoresizingMaskIntoConstraints="NO" id="QyH-V5-shA">
-                                                            <rect key="frame" x="312" y="0.0" width="64" height="97"/>
+                                                            <rect key="frame" x="312" y="0.0" width="64" height="50"/>
                                                         </imageView>
                                                     </subviews>
                                                 </stackView>
@@ -3382,7 +3463,7 @@ Nomow App is a screening tool of child development can be used families, before 
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BG" translatesAutoresizingMaskIntoConstraints="NO" id="V9J-VU-G2q">
-                                                <rect key="frame" x="0.0" y="-2154" width="1364" height="2954"/>
+                                                <rect key="frame" x="0.0" y="-677" width="682" height="1477"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="fill out the details :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WfN-xS-poP">
                                                 <rect key="frame" x="8" y="284" width="147" height="21"/>
@@ -3391,7 +3472,7 @@ Nomow App is a screening tool of child development can be used families, before 
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N1m-hU-rqB" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="8" y="313" width="359" height="17"/>
+                                                <rect key="frame" x="8" y="313" width="359" height="18.5"/>
                                                 <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -3418,7 +3499,7 @@ Nomow App is a screening tool of child development can be used families, before 
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ov8-fU-xbl" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="8" y="346" width="359" height="17"/>
+                                                <rect key="frame" x="8" y="347.5" width="359" height="18.5"/>
                                                 <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -3445,7 +3526,7 @@ Nomow App is a screening tool of child development can be used families, before 
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h7d-Pg-a1c" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="8" y="379" width="359" height="30"/>
+                                                <rect key="frame" x="8" y="382" width="359" height="30"/>
                                                 <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -3472,13 +3553,13 @@ Nomow App is a screening tool of child development can be used families, before 
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FAn-GO-7dp">
-                                                <rect key="frame" x="8" y="379" width="359" height="30"/>
+                                                <rect key="frame" x="8" y="382" width="359" height="30"/>
                                                 <connections>
                                                     <action selector="birthdateAction:" destination="DFa-qD-r0F" eventType="touchUpInside" id="AA1-a0-1te"/>
                                                 </connections>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NPp-0V-sJO" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="8" y="417" width="359" height="17"/>
+                                                <rect key="frame" x="8" y="420" width="359" height="18.5"/>
                                                 <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -3505,7 +3586,7 @@ Nomow App is a screening tool of child development can be used families, before 
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IP3-oR-oYB" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="8" y="450" width="359" height="39"/>
+                                                <rect key="frame" x="8" y="454.5" width="359" height="39"/>
                                                 <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="39" id="2sQ-Vv-du7"/>
@@ -3573,7 +3654,7 @@ Nomow App is a screening tool of child development can be used families, before 
                                                 </constraints>
                                             </imageView>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rdv-WJ-3ny" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="8" y="505" width="359" height="17"/>
+                                                <rect key="frame" x="8" y="509.5" width="359" height="18.5"/>
                                                 <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -3600,7 +3681,7 @@ Nomow App is a screening tool of child development can be used families, before 
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="this app is for the children who are less than 66 months old" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n5Y-ZU-Iek">
-                                                <rect key="frame" x="8" y="585.5" width="359" height="33.5"/>
+                                                <rect key="frame" x="8" y="593" width="359" height="33.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -3646,7 +3727,7 @@ Nomow App is a screening tool of child development can be used families, before 
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cmh-d5-Sff">
-                                        <rect key="frame" x="127.5" y="635" width="120" height="30"/>
+                                        <rect key="frame" x="127.5" y="642.5" width="120" height="30"/>
                                         <color key="backgroundColor" red="0.73333333329999995" green="0.61176470589999998" blue="0.38431372549999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="120" id="CkF-rN-ycl"/>
@@ -3660,7 +3741,7 @@ Nomow App is a screening tool of child development can be used families, before 
                                         </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BZi-M2-7ou" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                        <rect key="frame" x="8" y="538" width="359" height="17"/>
+                                        <rect key="frame" x="8" y="544" width="359" height="18.5"/>
                                         <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -4116,11 +4197,11 @@ Nomow App is a screening tool of child development can be used families, before 
                         <viewControllerLayoutGuide type="bottom" id="GjZ-ra-Zxz"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="N38-2u-O4y">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nnq-UH-b7U">
-                                <rect key="frame" x="0.0" y="121" width="414" height="600"/>
+                                <rect key="frame" x="0.0" y="148" width="414" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="600" id="bUF-sy-I7j"/>
@@ -4262,7 +4343,7 @@ Nomow App is a screening tool of child development can be used families, before 
                                 </cells>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bTa-rT-XqB">
-                                <rect key="frame" x="207" y="61" width="0.0" height="0.0"/>
+                                <rect key="frame" x="207" y="149" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -4583,10 +4664,10 @@ Nomow App is a screening tool of child development can be used families, before 
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BG" translatesAutoresizingMaskIntoConstraints="NO" id="nqe-yR-fxI">
-                                                <rect key="frame" x="0.0" y="-2154" width="1364" height="2954"/>
+                                                <rect key="frame" x="0.0" y="-677" width="682" height="1477"/>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zVX-j2-fE3">
-                                                <rect key="frame" x="127.5" y="453.5" width="120" height="30"/>
+                                                <rect key="frame" x="127.5" y="459.5" width="120" height="30"/>
                                                 <color key="backgroundColor" red="0.2369583207" green="0.59855216739999995" blue="0.58454734009999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="120" id="hza-QQ-T3W"/>
@@ -4606,7 +4687,7 @@ Nomow App is a screening tool of child development can be used families, before 
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SKn-yL-JzS" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="8" y="313" width="359" height="17"/>
+                                                <rect key="frame" x="8" y="313" width="359" height="18.5"/>
                                                 <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -4633,7 +4714,7 @@ Nomow App is a screening tool of child development can be used families, before 
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aac-0z-Dg3" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="8" y="338" width="359" height="17"/>
+                                                <rect key="frame" x="8" y="339.5" width="359" height="18.5"/>
                                                 <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -4660,7 +4741,7 @@ Nomow App is a screening tool of child development can be used families, before 
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z8A-CF-Qjz" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="8" y="371.5" width="359" height="17"/>
+                                                <rect key="frame" x="8" y="374.5" width="359" height="18.5"/>
                                                 <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -4687,7 +4768,7 @@ Nomow App is a screening tool of child development can be used families, before 
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WUw-cG-BVr" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="8" y="404.5" width="359" height="17"/>
+                                                <rect key="frame" x="8" y="409" width="359" height="18.5"/>
                                                 <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -4961,12 +5042,23 @@ Nomow App is a screening tool of child development can be used families, before 
             <point key="canvasLocation" x="-920.28985507246387" y="-229.07608695652175"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="tQm-eu-L2s"/>
+        <segue reference="MDd-jE-GnH"/>
+        <segue reference="HwD-YT-RQH"/>
+        <segue reference="K9w-OM-Glz"/>
+        <segue reference="pJw-EU-NSa"/>
+        <segue reference="vZF-Hz-u3I"/>
+        <segue reference="sF9-Rt-gqb"/>
+        <segue reference="9sS-mv-cNr"/>
+        <segue reference="6rb-Fp-yLI"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="BG" width="682" height="1477"/>
         <image name="add" width="57" height="57"/>
         <image name="afternoon" width="375" height="666"/>
         <image name="camera" width="30" height="30"/>
-        <image name="camera.fill" catalog="system" width="64" height="48"/>
+        <image name="camera.fill" catalog="system" width="128" height="96"/>
         <image name="conditions" width="50" height="50"/>
         <image name="file_colored" width="50" height="50"/>
         <image name="help" width="50" height="50"/>
@@ -4980,19 +5072,8 @@ Nomow App is a screening tool of child development can be used families, before 
         <image name="s2" width="1400" height="1400"/>
         <image name="step_background" width="28.5" height="28.5"/>
         <image name="story_background" width="650" height="390"/>
-        <image name="teletype.answer" catalog="system" width="64" height="42"/>
-        <image name="trash" catalog="system" width="60" height="64"/>
+        <image name="teletype.answer" catalog="system" width="128" height="86"/>
+        <image name="trash" catalog="system" width="121" height="128"/>
         <image name="usage" width="50" height="50"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="tQm-eu-L2s"/>
-        <segue reference="MDd-jE-GnH"/>
-        <segue reference="HwD-YT-RQH"/>
-        <segue reference="Kpe-Qb-jtU"/>
-        <segue reference="Ruu-cK-qli"/>
-        <segue reference="Bo4-UZ-ibe"/>
-        <segue reference="sF9-Rt-gqb"/>
-        <segue reference="9sS-mv-cNr"/>
-        <segue reference="6rb-Fp-yLI"/>
-    </inferredMetricsTieBreakers>
 </document>

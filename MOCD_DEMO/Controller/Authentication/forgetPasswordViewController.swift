@@ -11,9 +11,9 @@ import UIKit
 import NVActivityIndicatorView
 
 
-class forgetPasswordViewController: UIViewController {
+class forgetPasswordViewController: UIViewController ,NVActivityIndicatorViewable{
     
-    let activityData = ActivityData()
+    let nvactivity = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
     let firstBrownColor = UIColor(red: 170/256 , green: 121/256, blue: 66/256, alpha: 1.0)
     let secondBrownColor = UIColor(red: 207/256 , green: 179/256, blue: 63/256, alpha: 1.0)
     
@@ -43,8 +43,12 @@ class forgetPasswordViewController: UIViewController {
     func forgetPassword() {
     
         DispatchQueue.main.async {
-             NVActivityIndicatorPresenter.sharedInstance.startAnimating(self.activityData)
+             //NVActivityIndicatorPresenter.sharedInstance.startAnimating(self.activityData)
             //self.view.isUserInteractionEnabled = false
+            let size = CGSize(width: 30, height: 30)
+            
+            
+            self.startAnimating(size, message: "Loading ...", messageFont: nil, type: .ballBeat)
         }
         
         
@@ -57,7 +61,7 @@ class forgetPasswordViewController: UIViewController {
             
             
             DispatchQueue.main.async {
-                NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+                self.stopAnimating(nil)
                 //self.view.isUserInteractionEnabled = false
             }
             guard let code = json["code"] as? Int else {return}

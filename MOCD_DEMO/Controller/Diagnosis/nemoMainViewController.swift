@@ -30,7 +30,7 @@ protocol reloadNemowPage {
 }
 
 
-class nemoMainViewController: UIViewController ,quetionnairDelegate , MyCellDelegate {
+class nemoMainViewController: UIViewController ,quetionnairDelegate , MyCellDelegate ,NVActivityIndicatorViewable{
     
     
     
@@ -198,6 +198,8 @@ class nemoMainViewController: UIViewController ,quetionnairDelegate , MyCellDele
         
     }
     @IBOutlet var backgroundImage: UIImageView!
+    @IBOutlet var centerChildrenLabel: UILabel!
+    @IBOutlet var addesdChildrenLabel: UILabel!
     var searchbarOutlet: UIBarButtonItem!
     var isSearchAdded = false
     var searchText = ""
@@ -262,7 +264,7 @@ class nemoMainViewController: UIViewController ,quetionnairDelegate , MyCellDele
     }
     var surveysList: [MOCDSurvey] = []
     var selectedSurvey: MOCDSurvey = MOCDSurvey()
-    let activityData = ActivityData()
+    let nvactivity = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
     var mocd_user = MOCDUser.getMOCDUser()
     
     @IBOutlet var first_name_label: UILabel!
@@ -271,12 +273,17 @@ class nemoMainViewController: UIViewController ,quetionnairDelegate , MyCellDele
    
     @IBOutlet var parentProfileImageView: UIImageView!
     
+    @IBOutlet var centerCollectionHeightLength: NSLayoutConstraint!
+    @IBOutlet var centerCollectionHeight: NSLayoutConstraint!
     @IBOutlet var childrensCollectionView: UICollectionView!
     @IBOutlet var notificationsCollectionView: UICollectionView!
-
+    @IBOutlet var centerChildrenCollectionView: UICollectionView!
+    
     
     var resultChild: ChildObject!
     var childsArray: [ChildObject] = []
+    var addedChildrenArray: [ChildObject] = []
+    var centerChildren: [ChildObject] = []
     var selectedChild: ChildObject = ChildObject()
     var childNotificationsArray: [ChildObject] = []
     
@@ -360,8 +367,24 @@ class nemoMainViewController: UIViewController ,quetionnairDelegate , MyCellDele
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        loadChild()
         
+        
+        if mocd_user?.isCenter == "1" || mocd_user?.isCenter == "true" {
+       
+            loadChildForCenter()
+            centerChildrenLabel.isHidden = false
+            addesdChildrenLabel.isHidden = false
+            centerCollectionHeight.constant = 40
+            centerCollectionHeightLength.constant = 200
+            centerChildrenCollectionView.isHidden = false
+        }else{
+            loadChild()
+            centerChildrenLabel.isHidden = true
+            addesdChildrenLabel.isHidden = true
+            centerCollectionHeight.constant = 0
+            centerCollectionHeightLength.constant = 0
+            centerChildrenCollectionView.isHidden = true
+        }
         self.notificationsCollectionView.reloadData()
         self.childrensCollectionView.reloadData()
         
@@ -428,12 +451,15 @@ class nemoMainViewController: UIViewController ,quetionnairDelegate , MyCellDele
         
     }
     func getSurveys() {
-        NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
+        let size = CGSize(width: 30, height: 30)
+            
+            
+            self.startAnimating(size, message: "Loading ...", messageFont: nil, type: .ballBeat)
         
         WebService.getSurveysList { (json) in
             print(json)
             DispatchQueue.main.async {
-                NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+                self.stopAnimating(nil)
             }
             
             
@@ -483,13 +509,16 @@ class nemoMainViewController: UIViewController ,quetionnairDelegate , MyCellDele
     
     func searchForChild() {
         self.view.endEditing(true)
-        NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
+        let size = CGSize(width: 30, height: 30)
+            
+            
+            self.startAnimating(size, message: "Loading ...", messageFont: nil, type: .ballBeat)
         
         WebService.searchChild(emiratesId: searchText) { (json) in
             print(json)
             
             DispatchQueue.main.async {
-                NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+                self.stopAnimating(nil)
             }
             
             
@@ -552,12 +581,15 @@ class nemoMainViewController: UIViewController ,quetionnairDelegate , MyCellDele
         }
     }
     func loadChild() {
-        NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
+        let size = CGSize(width: 30, height: 30)
+            
+            
+            self.startAnimating(size, message: "Loading ...", messageFont: nil, type: .ballBeat)
         
         WebService.getChildsForParent(isCenter:  (mocd_user?.isCenter == "1" || mocd_user?.isCenter == "true".lowercased())) { (json) in
             print(json)
             DispatchQueue.main.async {
-                NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+                self.stopAnimating(nil)
             }
             guard let code = json["code"] as? Int else {return}
             guard let message = json["message"] as? String else {return}
@@ -567,7 +599,7 @@ class nemoMainViewController: UIViewController ,quetionnairDelegate , MyCellDele
                 guard let result = data["result"] as? [[String: Any]] else {return}
                 
                 self.childsArray = []
-                
+                self.tasksList = []
                 for r in result {
                     let child: ChildObject = ChildObject()
                     child.firstName = r["first_name"] as? String ?? ""
@@ -683,6 +715,35 @@ class nemoMainViewController: UIViewController ,quetionnairDelegate , MyCellDele
                         }
                     }
                     
+                    LocalNotificationHelperT.sharedInstance.removeAllPendingNotifications()
+                    for o in self.objectivesList {
+                        
+                        
+                    
+                        let a = self.answeredbjectivesList.filter { (r) -> Bool in
+                            r.objectiveId == o.objectiveId
+                        }.first
+                        
+                        if a != nil {
+                            if a?.result == "done" {
+                                print("objective is \(a?.objective_text_ar)")
+                                print("objective result is  \(a?.result)")
+                            }else{
+                                
+                                for t in o.tasks {
+                                    self.tasksList.append(t)
+                                }
+                                
+                            }
+                        }else{
+                            for t in o.tasks {
+                                self.tasksList.append(t)
+                            }
+                            
+                        }
+                        
+                    }
+                    /*
                     if self.answeredTasks.count > 0 && self.objectivesList.count > 0{
                         
                         
@@ -731,7 +792,7 @@ class nemoMainViewController: UIViewController ,quetionnairDelegate , MyCellDele
                         }
                     }
                     
-                    
+                    */
                     
                 }
                 
@@ -889,15 +950,536 @@ class nemoMainViewController: UIViewController ,quetionnairDelegate , MyCellDele
         }
     }
     
+    func loadChildForCenter() {
+           let size = CGSize(width: 30, height: 30)
+            
+            
+            self.startAnimating(size, message: "Loading ...", messageFont: nil, type: .ballBeat)
+           
+           WebService.getChildsForParent(isCenter:  (mocd_user?.isCenter == "1" || mocd_user?.isCenter == "true".lowercased())) { (json) in
+               print(json)
+               DispatchQueue.main.async {
+                   self.stopAnimating(nil)
+               }
+               guard let code = json["code"] as? Int else {return}
+               guard let message = json["message"] as? String else {return}
+               
+               if code == 200 {
+                   guard let data = json["data"] as? [String: Any] else{return}
+                   guard let result = data["result"] as? [String: Any] else {return}
+                   guard let addedChildren = result["addedChildren"] as? [[String: Any]] else {return}
+                
+                guard let centerChildren = result["centerChildren"] as? [[String: Any]] else {return}
+                   self.childsArray = []
+                self.addedChildrenArray = []
+                self.centerChildren = []
+                   
+                   for r in addedChildren {
+                       let child: ChildObject = ChildObject()
+                       child.firstName = r["first_name"] as? String ?? ""
+                       child.lastName = r["last_name"] as? String ?? ""
+                       child.mobile = r["mobile"] as? String ?? ""
+                       child.email = r["email"] as? String ?? ""
+                       child.address = r["address"] as? String ?? ""
+                       child.birthdate = r["date_of_birth"] as? String ?? ""
+                       child.objectID = r["id"] as? String ?? ""
+                       child.child_picture = r["child_picture"] as? String ?? ""
+                       
+                       child.emiratesId = r["emirates_id"] as? String ?? ""
+                       
+                       child.emirateStringAr = r["emirate_ar"] as? String ?? ""
+                       child.emirateStringEn = r["emirate_en"] as? String ?? ""
+                       
+                       
+                       
+                       child.status = CHILD_STATUS(value: r["overall_status"] as? String ?? "") ?? .NEED_TEST
+                       child.overallProgress = r["overall_progress"] as? String ?? ""
+                       child.age = r["age"] as? String ?? ""
+                       
+                       child.countryCode = r["country_code"] as? String ?? ""
+                       child.nationalityEn = r["country_enNationality"] as? String ?? ""
+                       child.nationalityAr = r["country_arNationality"] as? String ?? ""
+                       
+                       
+                       child.genderID = r["gender"] as? String ?? ""
+                       child.genderStringEn = r["gender_en"] as? String ?? ""
+                       child.genderStringAr = r["gender_ar"] as? String ?? ""
+                       
+                       child.emirateID = r["emirate"] as? String ?? ""
+                       
+                       //child.status =  CHILD_STATUS(value: currentObject["child_status"] as? String ?? "3") ?? .NEED_TEST
+                       //child.picture = currentObject["picture"] as? PFFileObject
+                       //child.child_age = Utils.checkDomains(month: child.birthdate.returnAge())
+                      
+                       self.addedChildrenArray.append(child)
+                       
+                       
+                       
+                       if let objetives = r["objective"] as? [[String:Any]] {
+
+                           self.objectivesList = []
+                           for o in objetives {
+                               let obj: Objective = Objective()
+                               
+                               obj.objectiveId = o["objective_id"] as? String  ?? ""
+                               obj.objective_text_ar = o["objective_text_ar"] as? String  ?? ""
+                               obj.objective_text_en = o["objective_text_en"] as? String  ?? ""
+                               
+                               obj.routine_ar = o["routine_ar"] as? String  ?? ""
+                               obj.routine_en = o["routine_ar"] as? String  ?? ""
+                               obj.routine_id = o["routine_id"] as? String ?? ""
+                               obj.routine_time = ROUTINE_TIME(value: obj.routine_id) ?? .NONE
+                               
+                               
+                               if let tasks = o["tasks"] as? [[String: Any]] {
+                                   var tList:[Task] = []
+                                                    
+                                   for t in tasks {
+                                   
+                                       let task: Task = Task()
+                                   
+                                       task.objectiveId = obj.objectiveId
+                                       task.taskId = t["id"] as? String ?? ""
+                                       task.task_text_ar = t["task_text_ar"] as? String ?? ""
+                                       task.task_text_en = t["task_text_en"] as? String ?? ""
+                                       task.childItem = child
+                                       task.objective = obj
+                                       tList.append(task)
+                                       
+                                   }
+                                   
+                                   obj.tasks = tList
+                               }
+                               
+                               self.objectivesList.append(obj)
+                           }
+                           
+                       }
+                       
+                       
+                       if let answered_objetives = r["answered_objectives"] as? [[String:Any]] {
+                           
+                           
+                           self.answeredbjectivesList = []
+                           for a_o in answered_objetives {
+                               let obj: Objective = Objective()
+                               
+                               obj.objectiveId = a_o["objective_id"] as? String  ?? ""
+                               obj.result = a_o["result"] as? String  ?? ""
+                               
+                               self.answeredbjectivesList.append(obj)
+                           }
+                           
+                       }
+                       
+                       if let answered_tasks = r["answered_tasks"] as? [[String:Any]] {
+                           self.answeredTasks = []
+                           
+                           for a_t in answered_tasks {
+                               let task: Task = Task()
+                               
+                               task.taskId = a_t["task_id"] as? String ?? ""
+                               task.task_text_ar = a_t["task_text_ar"] as? String ?? ""
+                               task.task_text_en = a_t["task_text_en"] as? String ?? ""
+                               task.objectiveId = a_t["objective_id"] as? String ?? ""
+                               task.result = a_t["result"] as? String ?? ""
+                               task.childItem = child
+                               self.answeredTasks.append(task)
+                               
+                           }
+                       }
+                       
+                       if self.answeredTasks.count > 0 && self.objectivesList.count > 0{
+                           
+                           
+                           //self.tasksList = []
+                           LocalNotificationHelperT.sharedInstance.removeAllPendingNotifications()
+                           for o in self.objectivesList {
+                               
+                               //loop on objective tasks
+                               for t in o.tasks{
+                                   
+                                   let a_t = self.answeredTasks.filter { (result) -> Bool in
+                                       result.taskId == t.taskId
+                                   }.first
+                                   
+                                   
+                                   if a_t == nil {
+                                       //append task to task list
+                                       self.tasksList.append(t)
+                                       
+                                       
+                                       
+                                       
+                                       
+                                   }else{
+                                       print("\(a_t?.task_text_en)")
+                                   }
+                                   
+                               }
+                               
+                           }
+                           
+                          
+                       }else if self.objectivesList.count > 0 {
+                           
+                           //self.tasksList = []
+                           for o in self.objectivesList {
+                               
+                               //loop on objective tasks
+                               for t in o.tasks{
+                                   
+                                   
+                                   //append task to task list
+                                   self.tasksList.append(t)
+                               }
+                               
+                           }
+                       }
+                       
+                       
+                       
+                   }
+                   for r in centerChildren {
+                       let child: ChildObject = ChildObject()
+                       child.firstName = r["first_name"] as? String ?? ""
+                       child.lastName = r["last_name"] as? String ?? ""
+                       child.mobile = r["mobile"] as? String ?? ""
+                       child.email = r["email"] as? String ?? ""
+                       child.address = r["address"] as? String ?? ""
+                       child.birthdate = r["date_of_birth"] as? String ?? ""
+                       child.objectID = r["id"] as? String ?? ""
+                       child.child_picture = r["child_picture"] as? String ?? ""
+                       
+                       child.emiratesId = r["emirates_id"] as? String ?? ""
+                       
+                       child.emirateStringAr = r["emirate_ar"] as? String ?? ""
+                       child.emirateStringEn = r["emirate_en"] as? String ?? ""
+                       
+                       
+                       
+                       child.status = CHILD_STATUS(value: r["overall_status"] as? String ?? "") ?? .NEED_TEST
+                       child.overallProgress = r["overall_progress"] as? String ?? ""
+                       child.age = r["age"] as? String ?? ""
+                       
+                       child.countryCode = r["country_code"] as? String ?? ""
+                       child.nationalityEn = r["country_enNationality"] as? String ?? ""
+                       child.nationalityAr = r["country_arNationality"] as? String ?? ""
+                       
+                       
+                       child.genderID = r["gender"] as? String ?? ""
+                       child.genderStringEn = r["gender_en"] as? String ?? ""
+                       child.genderStringAr = r["gender_ar"] as? String ?? ""
+                       
+                       child.emirateID = r["emirate"] as? String ?? ""
+                       
+                       //child.status =  CHILD_STATUS(value: currentObject["child_status"] as? String ?? "3") ?? .NEED_TEST
+                       //child.picture = currentObject["picture"] as? PFFileObject
+                       //child.child_age = Utils.checkDomains(month: child.birthdate.returnAge())
+                      
+                       self.centerChildren.append(child)
+                       
+                       
+                       
+                       if let objetives = r["objective"] as? [[String:Any]] {
+
+                           self.objectivesList = []
+                           for o in objetives {
+                               let obj: Objective = Objective()
+                               
+                               obj.objectiveId = o["objective_id"] as? String  ?? ""
+                               obj.objective_text_ar = o["objective_text_ar"] as? String  ?? ""
+                               obj.objective_text_en = o["objective_text_en"] as? String  ?? ""
+                               
+                               obj.routine_ar = o["routine_ar"] as? String  ?? ""
+                               obj.routine_en = o["routine_ar"] as? String  ?? ""
+                               obj.routine_id = o["routine_id"] as? String ?? ""
+                               obj.routine_time = ROUTINE_TIME(value: obj.routine_id) ?? .NONE
+                               
+                               
+                               if let tasks = o["tasks"] as? [[String: Any]] {
+                                   var tList:[Task] = []
+                                                    
+                                   for t in tasks {
+                                   
+                                       let task: Task = Task()
+                                   
+                                       task.objectiveId = obj.objectiveId
+                                       task.taskId = t["id"] as? String ?? ""
+                                       task.task_text_ar = t["task_text_ar"] as? String ?? ""
+                                       task.task_text_en = t["task_text_en"] as? String ?? ""
+                                       task.childItem = child
+                                       task.objective = obj
+                                       tList.append(task)
+                                       
+                                   }
+                                   
+                                   obj.tasks = tList
+                               }
+                               
+                               self.objectivesList.append(obj)
+                           }
+                           
+                       }
+                       
+                       
+                       if let answered_objetives = r["answered_objectives"] as? [[String:Any]] {
+                           
+                           
+                           self.answeredbjectivesList = []
+                           for a_o in answered_objetives {
+                               let obj: Objective = Objective()
+                               
+                               obj.objectiveId = a_o["objective_id"] as? String  ?? ""
+                               obj.result = a_o["result"] as? String  ?? ""
+                               
+                               self.answeredbjectivesList.append(obj)
+                           }
+                           
+                       }
+                       
+                       if let answered_tasks = r["answered_tasks"] as? [[String:Any]] {
+                           self.answeredTasks = []
+                           
+                           for a_t in answered_tasks {
+                               let task: Task = Task()
+                               
+                               task.taskId = a_t["task_id"] as? String ?? ""
+                               task.task_text_ar = a_t["task_text_ar"] as? String ?? ""
+                               task.task_text_en = a_t["task_text_en"] as? String ?? ""
+                               task.objectiveId = a_t["objective_id"] as? String ?? ""
+                               task.result = a_t["result"] as? String ?? ""
+                               task.childItem = child
+                               self.answeredTasks.append(task)
+                               
+                           }
+                       }
+                       
+                       if self.answeredTasks.count > 0 && self.objectivesList.count > 0{
+                           
+                           
+                           //self.tasksList = []
+                           LocalNotificationHelperT.sharedInstance.removeAllPendingNotifications()
+                           for o in self.objectivesList {
+                               
+                               //loop on objective tasks
+                               for t in o.tasks{
+                                   
+                                   let a_t = self.answeredTasks.filter { (result) -> Bool in
+                                       result.taskId == t.taskId
+                                   }.first
+                                   
+                                   
+                                   if a_t == nil {
+                                       //append task to task list
+                                       self.tasksList.append(t)
+                                       
+                                       
+                                       
+                                       
+                                       
+                                   }else{
+                                       print("\(a_t?.task_text_en)")
+                                   }
+                                   
+                               }
+                               
+                           }
+                           
+                          
+                       }else if self.objectivesList.count > 0 {
+                           
+                           //self.tasksList = []
+                           for o in self.objectivesList {
+                               
+                               //loop on objective tasks
+                               for t in o.tasks{
+                                   
+                                   
+                                   //append task to task list
+                                   self.tasksList.append(t)
+                               }
+                               
+                           }
+                       }
+                       
+                       
+                       
+                   }
+                   var isFirst = false
+                   var isSecond = false
+                   var isThird = false
+                   var isFourth = false
+                   for t in self.tasksList {
+                       //LocalNotificationHelperT.sharedInstance.createReminderNotification(t.taskId, t.childItem.firstName, t.task_text_en, hour: 19,minute: 53, notificationDate: Date(), .Daily)//10
+                       
+                       
+                      
+                       switch t.objective?.routine_time {
+                       case .NONE:
+                           print("none")
+                       case .FIVE_AM_TOW_PM:
+                           
+                           if !isFirst {
+                               LocalNotificationHelperT.sharedInstance.createReminderNotification(t.taskId, t.childItem.firstName, t.task_text_en, hour: 10,minute: 1, notificationDate: Date(), .Daily)//10
+                               isFirst = true
+                           }
+                           
+                           
+                           
+                       case .TOW_PM_FIVE_PM:
+                           
+                           if !isSecond{
+                               LocalNotificationHelperT.sharedInstance.createReminderNotification(t.taskId, t.childItem.firstName, t.task_text_en, hour: 16,minute: 1, notificationDate: Date(), .Daily)//16
+                               isSecond = true
+                           }
+                           
+                       case .FIVE_PM_NINE_PM:
+                           if !isThird {
+                               LocalNotificationHelperT.sharedInstance.createReminderNotification(t.taskId, t.childItem.firstName, t.task_text_en,hour: 19,minute: 1 ,notificationDate: Date(), .Daily)//19
+                               
+                               isThird = true
+                           }
+                           
+                       case .NINE_PM_FIVE_AM_NEXT_DAY:
+                           
+                           if !isFourth {
+                               LocalNotificationHelperT.sharedInstance.createReminderNotification(t.taskId, t.childItem.firstName, t.task_text_en, hour: 21,minute: 1, notificationDate: Date() ,.Daily)//21
+                               
+                               isFourth = true
+                           }
+                           
+                       default:
+                           print("default")
+                       }
+                       
+                   }
+                   
+                   
+                   //filter tasks list according to time
+                   
+                   let calendar = Calendar.current
+                   let now = Date()
+                   let tomorrow = DateComponents(year: now.year, month: now.month, day: now.day + 1)
+                   let dateTomorrow = Calendar.current.date(from: tomorrow)!
+                   let fiveAM_today = calendar.date(
+                     bySettingHour: 5,
+                     minute: 0,
+                     second: 0,
+                     of: now)!
+                   
+                   let fiveAM_tommorow = calendar.date(
+                   bySettingHour: 5,
+                   minute: 0,
+                   second: 0,
+                   of: dateTomorrow)!
+
+                   let towPM_today = calendar.date(
+                     bySettingHour: 14,
+                     minute: 0,
+                     second: 0,
+                     of: now)!
+                   
+                   
+                   
+                   let fivePM_today = calendar.date(
+                   bySettingHour: 17,
+                   minute: 0,
+                   second: 0,
+                   of: now)!
+                   
+                   
+                   let ninePM_today = calendar.date(
+                   bySettingHour: 21,
+                   minute: 0,
+                   second: 0,
+                   of: now)!
+                   
+                   
+                   
+                   
+                   if now >= fiveAM_today &&
+                     now <= towPM_today
+                   {
+                       self.tasksList = self.tasksList.filter { (o) -> Bool in
+                           o.objective?.routine_time == .FIVE_AM_TOW_PM
+                       }
+                     print("The time is between 5:00 AM and 14:00 PM")
+                   }else if now >= towPM_today &&
+                     now <= fivePM_today
+                   {
+                       self.tasksList = self.tasksList.filter { (o) -> Bool in
+                           o.objective?.routine_time == .TOW_PM_FIVE_PM
+                       }
+                       print("The time is between 2:00 PM and 5:00 PM")
+                   }else if now >= fivePM_today &&
+                       now <= ninePM_today {
+                       
+                       self.tasksList = self.tasksList.filter { (o) -> Bool in
+                           o.objective?.routine_time == .FIVE_PM_NINE_PM
+                       }
+                       print("The time is between 5:00 PM and 8:00 PM")
+                   }else if now >= ninePM_today &&
+                   now <= fiveAM_tommorow {
+                       self.tasksList = self.tasksList.filter { (o) -> Bool in
+                           o.objective?.routine_time == .NINE_PM_FIVE_AM_NEXT_DAY
+                       }
+                       print("The time is between 8:00 PM and 5:00 AM")
+                       
+                   }
+                   
+                   
+                   
+                   
+                   DispatchQueue.main.async {
+                       
+                    self.childsArray = self.addedChildrenArray
+                       self.childrensCollectionView.reloadData()
+                       self.notificationsCollectionView.reloadData()
+                        self.centerChildrenCollectionView.reloadData()
+                    
+                    
+                   
+                       if self.notificationsCollectionView.numberOfItems(inSection: 0) > 0  {
+                       
+                           self.notificationsCollectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .left, animated: false)
+                       
+                       }
+                       /*
+                       for c in self.childsArray {
+                           self.getChildsStatues(child: c)
+                       }
     
+    */
+                   }
+                   
+               }else{
+                   
+                   
+                   DispatchQueue.main.async {
+                       Utils.showAlertWith(title: "Error", message: message, viewController: self)
+                   }
+               }
+           }
+       }
     func submitTask(task: Task , indexPath: IndexPath) {
-        NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
+        
+        self.tasksList.remove(at: indexPath.row)
+        
+        
+        self.notificationsCollectionView.reloadData()
+        
+        /*
+        let size = CGSize(width: 30, height: 30)
+            
+            
+            self.startAnimating(size, message: "Loading ...", messageFont: nil, type: .ballBeat)
         WebService.submitObjective(objectiveId: task.objectiveId, taskId: task.taskId, childId: task.childItem.objectID, result: "done") { (json) in
             
             
             print(json)
             DispatchQueue.main.async {
-                NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+                self.stopAnimating(nil)
             }
             
             guard let code = json["code"] as? Int else {return}
@@ -918,11 +1500,14 @@ class nemoMainViewController: UIViewController ,quetionnairDelegate , MyCellDele
             }
             
         }
-        
+        */
     }
     func loadChilds() {
         /*
-        NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
+        let size = CGSize(width: 30, height: 30)
+            
+            
+            self.startAnimating(size, message: "Loading ...", messageFont: nil, type: .ballBeat)
         
         let childQuery: PFQuery = PFQuery(className: "Child")
         
@@ -930,7 +1515,7 @@ class nemoMainViewController: UIViewController ,quetionnairDelegate , MyCellDele
         childQuery.whereKey("parent", equalTo: PFUser.current()!)
         childQuery.findObjectsInBackground { (objects, error) in
             DispatchQueue.main.async {
-                NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+                self.stopAnimating(nil)
             }
             if error != nil {
                 
@@ -973,7 +1558,10 @@ class nemoMainViewController: UIViewController ,quetionnairDelegate , MyCellDele
         if child.child_age == .noNeedForTest {
             return
         }
-        NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
+        let size = CGSize(width: 30, height: 30)
+            
+            
+            self.startAnimating(size, message: "Loading ...", messageFont: nil, type: .ballBeat)
         let childQuery: PFQuery = PFQuery(className: "MonitorChild")
         childQuery.includeKey("child_id")
         childQuery.includeKey("aspect_id")
@@ -984,7 +1572,7 @@ class nemoMainViewController: UIViewController ,quetionnairDelegate , MyCellDele
         
         childQuery.findObjectsInBackground { (objects, error) in
             DispatchQueue.main.async {
-                NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+                self.stopAnimating(nil)
             }
             if error != nil {
                 
@@ -1106,6 +1694,24 @@ class nemoMainViewController: UIViewController ,quetionnairDelegate , MyCellDele
         }
         
         childrensCollectionView.reloadData()
+        
+        
+        
+        centerChildrenCollectionView.delegate = self
+        centerChildrenCollectionView.dataSource = self
+        
+        centerChildrenCollectionView.showsVerticalScrollIndicator = false
+        
+        centerChildrenCollectionView.register(UINib(nibName: "childCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "childCell")
+        centerChildrenCollectionView.register(UINib(nibName: "addChildCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "addCell")
+        
+        
+        
+        if let layout = centerChildrenCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.scrollDirection = .horizontal  // .horizontal
+        }
+        
+        centerChildrenCollectionView.reloadData()
     }
     
     
@@ -1153,6 +1759,17 @@ extension nemoMainViewController: UICollectionViewDelegate,UICollectionViewDataS
                 return 1
             }else {
                 return childsArray.count + 1
+            }
+            
+           
+        }
+        if collectionView == self.centerChildrenCollectionView {
+            //return childsArray.count + 1
+            
+            if centerChildren.count == 0 {
+                return 0
+            }else {
+                return centerChildren.count
             }
             
            
@@ -1305,48 +1922,83 @@ extension nemoMainViewController: UICollectionViewDelegate,UICollectionViewDataS
                 cell.healthLabel.text = healthstatus
                 cell.healthLabel.backgroundColor = colorHealth
                 cell.backStatusView.backgroundColor = colorHealth
-                /*
-                if indexPath.row == 1 {
-                    cell.childImageView.image = UIImage(named: "c1")
-                }else if indexPath.row == 2{
-                    cell.childImageView.image = UIImage(named: "c2")
-                }else if indexPath.row == 3{
-                    cell.childImageView.image = UIImage(named: "c3")
-                }
-                */
-                /*
-                if let userPicture = childItem.picture {
-                    userPicture.getDataInBackground({ (imageData: Data?, error: Error?) -> Void in
-                        let image = UIImage(data: imageData!)
-                        if image != nil {
-                            
-                            DispatchQueue.main.async {
-                                cell.childImageView.image = image
-                            }
-                        }
-                    })
-                }else{
-                    if indexPath.row == 1 {
-                        cell.childImageView.image = UIImage(named: "c1")
-                    }else if indexPath.row == 2{
-                        cell.childImageView.image = UIImage(named: "c2")
-                    }else if indexPath.row == 3{
-                        cell.childImageView.image = UIImage(named: "c3")
-                    }
-                }
-                */
+                
                 return cell
             }
             
-            
-            
-            
-            
-            
-            
-            //scell.backgroundColor = .red
             return cell
         }
+            
+            
+            if collectionView == centerChildrenCollectionView {
+                
+           
+                cellIdentifier = "childCell"
+                    
+                var cell = centerChildrenCollectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! childCollectionViewCell
+                    
+                
+                let childItem = centerChildren[indexPath.row]
+                
+                cell.nameLabel.text = childItem.firstName
+                
+                cell.yearLabel.text = "\(childItem.age)" + " Months".localize
+                    
+                    
+                    
+                    
+                var healthstatus = ""
+                
+                var colorHealth = UIColor.clear
+                
+                
+                let string = "\(AppConstants.WEB_SERVER_IMAGE_MOCD_URL)\(childItem.child_picture )"
+                
+                let url = URL(string: string)
+                
+                cell.childImageView.kf.setImage(with: url, placeholder: UIImage(named: "profile") ?? UIImage())
+                
+                if childItem.status == .NEED_TEST {
+                
+                    healthstatus = "need test".localize
+                    
+                    colorHealth = AppConstants.GRAY_COLOR
+                    
+                    
+                    
+                }
+                
+                else if childItem.status == .FINE {
+                
+                    healthstatus = "fine".localize
+                    
+                    colorHealth = AppConstants.GREEN_COLOR
+                    
+                }else if childItem.status == .UN_HEALTH {
+                
+                    healthstatus = "un-health".localize
+                    
+                    colorHealth = AppConstants.ORANGE_COLOR
+                    
+                }else if childItem.status == .DANGER {
+                
+                    healthstatus = "danger".localize
+                    
+                    colorHealth = AppConstants.F_RED_COLOR
+                    
+                }
+                 
+                cell.healthLabel.text = healthstatus
+                
+                cell.healthLabel.backgroundColor = colorHealth
+                
+                cell.backStatusView.backgroundColor = colorHealth
+                    
+                
+                return cell
+                
+        }
+              
         
         return collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
     }
@@ -1381,6 +2033,21 @@ extension nemoMainViewController: UICollectionViewDelegate,UICollectionViewDataS
                 }
                 self.performSegue(withIdentifier: "toChildProfile", sender: self)
             }
+        }else if collectionView == self.centerChildrenCollectionView {
+            selectedChild = centerChildren[indexPath.row ]
+            if indexPath.row == 1 {
+                imagename = "c1"
+                
+            }
+            
+            if indexPath.row == 2 {
+                imagename = "c2"
+            }
+            
+            if indexPath.row == 3 {
+                imagename = "c3"
+            }
+            self.performSegue(withIdentifier: "toChildProfile", sender: self)
         }else if collectionView == notificationsCollectionView {
             //selectedChild = childsArray[indexPath.row ]
             
@@ -1405,6 +2072,12 @@ extension nemoMainViewController: UICollectionViewDelegate,UICollectionViewDataS
             if childsArray.count == 0 {
                 return CGSize(width: collectionView.frame.width - 20  , height: 180)
             }
+            
+            return CGSize(width: 120  , height: 190)
+        }
+        
+        if collectionView == self.centerChildrenCollectionView  {
+           
             
             return CGSize(width: 120  , height: 190)
         }
@@ -1568,6 +2241,5 @@ extension nemoMainViewController: UISearchBarDelegate {
         self.searchText = searchText
         
     }
-    
     
 }

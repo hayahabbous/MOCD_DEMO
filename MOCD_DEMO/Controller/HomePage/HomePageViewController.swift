@@ -15,7 +15,7 @@ import NVActivityIndicatorView
 protocol reloadHomePage {
     func reloadHome()
 }
-class HomePageViewController: UIViewController ,UITableViewDelegate , UITableViewDataSource ,reloadHomePage{
+class HomePageViewController: UIViewController ,UITableViewDelegate , UITableViewDataSource ,reloadHomePage ,NVActivityIndicatorViewable{
     func reloadHome() {
         self.servicesCollectionView.reloadData()
         self.servicesCollectionView.collectionViewLayout.invalidateLayout()
@@ -32,7 +32,7 @@ class HomePageViewController: UIViewController ,UITableViewDelegate , UITableVie
     var nemoCollectionView: UICollectionView!
     var wisdomCollectionViewCell: UICollectionView!
     var medicalCollectionViewCell: UICollectionView!
-    let activityData = ActivityData()
+    let nvactivity = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -384,15 +384,18 @@ class HomePageViewController: UIViewController ,UITableViewDelegate , UITableVie
                
         let yesAlerActionOption = UIAlertAction(title:NSLocalizedString("Sure",comment:""), style: UIAlertAction.Style.default, handler: { (UIAlertAction) -> Void in
                 DispatchQueue.main.async {
-                     
-                    NVActivityIndicatorPresenter.sharedInstance.startAnimating(self.activityData)
+                     let size = CGSize(width: 30, height: 30)
+            
+            
+            self.startAnimating(size, message: "Loading ...", messageFont: nil, type: .ballBeat)
+                    //NVActivityIndicatorPresenter.sharedInstance.startAnimating(self.activityData)
                 }
             let username = self.mocd_user?.username ?? ""
                 
                 WebService.logout(username: username){ (json) in
                     
                     DispatchQueue.main.async {
-                        NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+                        self.stopAnimating(nil)
                     }
                     guard let code = json["code"] as? Int else {return}
                               
@@ -450,7 +453,7 @@ class HomePageViewController: UIViewController ,UITableViewDelegate , UITableVie
             PFUser.logOutInBackground(
                 block: {(error) in
                     DispatchQueue.main.async {
-                        NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+                        self.stopAnimating(nil)
                     }
                     
                     if let window = self.view.window{

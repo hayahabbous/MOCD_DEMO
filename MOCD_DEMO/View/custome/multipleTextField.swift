@@ -13,7 +13,7 @@ import M13Checkbox
 @IBDesignable
 class multipleTextField: UIView , NibLoadable{
     
-    var delegate: serviceProtocol!
+    var delegate: serviceProtocol?
 
     @IBOutlet var starImage: UIImageView!
     @IBOutlet var secondLabel: UILabel!
@@ -31,7 +31,7 @@ class multipleTextField: UIView , NibLoadable{
     }
     
     
-    
+    var refreshDelegate: refreshDelegate?
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet var firstCheckBox: M13Checkbox!
     
@@ -52,14 +52,16 @@ class multipleTextField: UIView , NibLoadable{
     @objc func didSelectCheckBox(sender: M13Checkbox) {
         
         
+        
+        
         if sender == firstCheckBox {
             switch firstCheckBox.checkState {
             case .checked:
                 secondCheckBox.setCheckState(.unchecked, animated: true)
-                delegate.checkboxChnaged(value: 1)
+                delegate?.checkboxChnaged(value: 1)
             case .unchecked:
                 secondCheckBox.setCheckState(.checked, animated: true)
-                delegate.checkboxChnaged(value: 2)
+                delegate?.checkboxChnaged(value: 2)
             case .mixed:
                 print("Mixed")
             
@@ -73,17 +75,17 @@ class multipleTextField: UIView , NibLoadable{
             switch secondCheckBox.checkState {
             case .checked:
                 firstCheckBox.setCheckState(.unchecked, animated: true)
-                delegate.checkboxChnaged(value: 2)
+                delegate?.checkboxChnaged(value: 2)
             case .unchecked:
                 firstCheckBox.setCheckState(.checked, animated: true)
-                delegate.checkboxChnaged(value: 1)
+                delegate?.checkboxChnaged(value: 1)
             case .mixed:
                 print("Mixed")
             
             }
             
         }
-        
+        refreshDelegate?.refreshMultipleView()
        
         /*
         if sender == firstCheckBox {

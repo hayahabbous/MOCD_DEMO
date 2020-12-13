@@ -154,3 +154,52 @@ extension Bundle {
         return bundle.myLocaLizedString(forKey: key, value: value, table: table)
     }
 }
+extension String {
+
+    func toDate(withFormat format: String = "MM/dd/yyyy")-> Date?{
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(identifier: "Asia/Tehran")
+        dateFormatter.locale = Locale(identifier: "fa-IR")
+        dateFormatter.calendar = Calendar(identifier: .gregorian)
+        dateFormatter.dateFormat = format
+        let date = dateFormatter.date(from: self)
+
+        return date
+
+    }
+}
+
+extension String {
+    func toDate() -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = NSLocale.current
+        dateFormatter.dateFormat = "MM/dd/YYYY"
+        let date = dateFormatter.date(from: self)
+        
+        return date
+    }
+    
+    
+    
+}
+extension Date {
+    func calculateAge() -> Int{
+        let now = Date()
+        let calendar = Calendar.current
+        let ageComponents = calendar.dateComponents([.year], from: self, to: now)
+        let age = ageComponents.year!
+        
+        return age
+    }
+    
+    
+    func calculateMonths() -> Int{
+        let now = Date()
+        let calendar = Calendar.current
+        let ageComponents = calendar.dateComponents([.month], from: self, to: now)
+        let age = ageComponents.month!
+        
+        return age
+    }
+}

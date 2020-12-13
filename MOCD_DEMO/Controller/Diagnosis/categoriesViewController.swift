@@ -13,7 +13,7 @@ import NVActivityIndicatorView
 import M13Checkbox
 
 
-class categoriesViewController: UIViewController {
+class categoriesViewController: UIViewController ,NVActivityIndicatorViewable{
     
     
     
@@ -21,7 +21,7 @@ class categoriesViewController: UIViewController {
     var selectedChild: ChildObject = ChildObject()
     var selectedSurvey: MOCDSurvey = MOCDSurvey()
     var questions:[Question] = []
-    let activityData = ActivityData()
+    let nvactivity = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
     @IBOutlet var collectionViewHeight: NSLayoutConstraint!
     var qDelegate: quetionnairDelegate!
     var animator: (LayoutAttributesAnimator, Bool, Int, Int)?
@@ -59,13 +59,16 @@ class categoriesViewController: UIViewController {
         getQuestionList()
     }
     func getQuestionList () {
-        NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
+        let size = CGSize(width: 30, height: 30)
+            
+            
+            self.startAnimating(size, message: "Loading ...", messageFont: nil, type: .ballBeat)
         
         WebService.getQuestions(surveyId: self.selectedSurvey.survey_id) { (json) in
             print(json)
             
             DispatchQueue.main.async {
-                NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+                self.stopAnimating(nil)
             }
             guard let code = json["code"] as? Int else {return}
             guard let message = json["message"] as? String else {return}
@@ -152,12 +155,15 @@ class categoriesViewController: UIViewController {
             parametersArray.add(dic)
         }
         
-         NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
+         let size = CGSize(width: 30, height: 30)
+            
+            
+            self.startAnimating(size, message: "Loading ...", messageFont: nil, type: .ballBeat)
         WebService.submitAnswers(survey_id:self.selectedSurvey.survey_id , child_id: self.selectedChild.objectID, answers: parametersArray) { (json) in
             print(json)
             
             DispatchQueue.main.async {
-                NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+                self.stopAnimating(nil)
             }
             guard let code = json["code"] as? Int else {return}
             guard let message = json["message"] as? String else {return}

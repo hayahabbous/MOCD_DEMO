@@ -18,7 +18,7 @@ class socialAccommodationViewController: UIViewController {
     @IBOutlet var houseCondition: UIPickerView!
     var toolBar = UIToolbar()
     
-    
+    var socialAidItem: socialAid = socialAid()
     var accommodationsArray: [MOCDAccommodationSocial] = []
     var ownershipArray: [MOCDOwnershipSocial] = []
     var personsArray: [MOCDPersonAccommodatedSocial] = []
@@ -49,49 +49,49 @@ class socialAccommodationViewController: UIViewController {
     
     func setupFeilds() {
       
-        accommodationTypeView.textLabel.text = "Accommodation Type"
-        accommodationTypeView.textField.placeholder = "Please Select"
+        accommodationTypeView.textLabel.text = "Accommodation Type".localize
+        accommodationTypeView.textField.placeholder = "Please Select".localize
         accommodationTypeView.starImage.isHidden = true
         
-        ownershipTypeView.textLabel.text = "Ownership Type"
-        ownershipTypeView.textField.placeholder = "Please Select"
+        ownershipTypeView.textLabel.text = "Ownership Type".localize
+        ownershipTypeView.textField.placeholder = "Please Select".localize
         ownershipTypeView.starImage.isHidden = true
         
         
-        roomsView.textLabel.text = "No. of Rooms"
-        roomsView.textField.placeholder = "No. of Rooms"
+        roomsView.textLabel.text = "No. of Rooms".localize
+        roomsView.textField.placeholder = "No. of Rooms".localize
         roomsView.starImage.isHidden = true
         
         
-        personsView.textLabel.text = "No. of Persons"
-        personsView.textField.placeholder = "No. of Persons"
+        personsView.textLabel.text = "No. of Persons".localize
+        personsView.textField.placeholder = "No. of Persons".localize
         personsView.starImage.isHidden = true
         
         
         
-        personsAccommodatedView.textLabel.text = "Persons Accommodated"
-        personsAccommodatedView.textField.placeholder = "Please Select"
+        personsAccommodatedView.textLabel.text = "Persons Accommodated".localize
+        personsAccommodatedView.textField.placeholder = "Please Select".localize
         personsAccommodatedView.starImage.isHidden = true
         
         
-        houseConditionView.textLabel.text = "House Condition"
-        houseConditionView.textField.placeholder = "Please Select"
+        houseConditionView.textLabel.text = "House Condition".localize
+        houseConditionView.textField.placeholder = "Please Select".localize
         houseConditionView.starImage.isHidden = true
         
         
         
-        latitiudeView.textLabel.text = "Latitude"
-        latitiudeView.textField.placeholder = "Latitude"
+        latitiudeView.textLabel.text = "Latitude".localize
+        latitiudeView.textField.placeholder = "Latitude".localize
         latitiudeView.starImage.isHidden = true
         
         
-        longitudeView.textLabel.text = "Longitude"
-        longitudeView.textField.placeholder = "Longitude"
+        longitudeView.textLabel.text = "Longitude".localize
+        longitudeView.textField.placeholder = "Longitude".localize
         longitudeView.starImage.isHidden = true
         
         
-        makaniNoView.textLabel.text = "Makani No"
-        makaniNoView.textField.placeholder = "Makani No"
+        makaniNoView.textLabel.text = "Makani No".localize
+        makaniNoView.textField.placeholder = "Makani No".localize
         makaniNoView.starImage.isHidden = true
         
         
@@ -331,8 +331,45 @@ class socialAccommodationViewController: UIViewController {
       
         }
     }
+    
+    func validateFields() -> Bool{
+        
+        //return true
+        
+        
+        socialAidItem.NoOfRooms = roomsView.textField.text ?? ""
+        socialAidItem.NoOfPersons = personsView.textField.text ?? ""
+        socialAidItem.Latitude = latitiudeView.textField.text ?? ""
+        socialAidItem.Longitude = longitudeView.textField.text ?? ""
+        socialAidItem.MakaniNo = makaniNoView.textField.text ?? ""
+     
+        
+        if socialAidItem.AccommodationTypeId == "" ||
+            socialAidItem.PersonsAccommodatedId == "" ||
+            socialAidItem.OwnershipTypeId == "" ||
+            socialAidItem.ConditionId == "" ||
+            socialAidItem.NoOfRooms == "" ||
+            socialAidItem.NoOfPersons == ""{
+            Utils.showAlertWith(title: "Error".localize, message: "Please Fill All Fields".localize, viewController: self)
+            return false
+        }
+        
+        return true
+        
+    }
     @IBAction func nextAction(_ sender: Any) {
+        //self.performSegue(withIdentifier: "toAttachment", sender: self)
+        if !validateFields() {
+            return
+        }
         self.performSegue(withIdentifier: "toIncome", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toIncome" {
+            let dest = segue.destination as! socialIncomeSourceViewController
+            dest.socialAidItem = self.socialAidItem
+        }
     }
 }
 extension socialAccommodationViewController: UIPickerViewDelegate , UIPickerViewDataSource {
@@ -390,6 +427,7 @@ extension socialAccommodationViewController: UIPickerViewDelegate , UIPickerView
               //self.emirate = item.id
            
             //childItem.emirateID = item.id
+            socialAidItem.AccommodationTypeId  = item.AccommodationTypeId
             self.accommodationTypeView.textField.text = AppConstants.isArabic() ? item.AccommodationTypeAR :  item.AccommodationTypeEN
         }else if pickerView == ownerShipPicker{
             let item = ownershipArray[row]
@@ -397,6 +435,7 @@ extension socialAccommodationViewController: UIPickerViewDelegate , UIPickerView
               //self.emirate = item.id
            
             //childItem.emirateID = item.id
+            socialAidItem.OwnershipTypeId  = item.OwnershipTypeId
             self.ownershipTypeView.textField.text = AppConstants.isArabic() ? item.OwnershipTypeTitleAr :  item.OwnershipTypeTitleEn
         }else if pickerView == personPicker{
             let item = personsArray[row]
@@ -404,6 +443,7 @@ extension socialAccommodationViewController: UIPickerViewDelegate , UIPickerView
               //self.emirate = item.id
            
             //childItem.emirateID = item.id
+            socialAidItem.PersonsAccommodatedId  = item.PersonsAccommodatedId
             self.personsAccommodatedView.textField.text = AppConstants.isArabic() ? item.PersonsAccommodatedTitleAr :  item.PersonsAccommodatedTitleEn
         }else if pickerView == houseCondition{
             let item = houseArray[row]
@@ -411,6 +451,7 @@ extension socialAccommodationViewController: UIPickerViewDelegate , UIPickerView
               //self.emirate = item.id
            
             //childItem.emirateID = item.id
+            socialAidItem.ConditionId  = item.ConditionId
             self.houseConditionView.textField.text = AppConstants.isArabic() ? item.ConditionTitleAr :  item.ConditionTitleEn
         }
         

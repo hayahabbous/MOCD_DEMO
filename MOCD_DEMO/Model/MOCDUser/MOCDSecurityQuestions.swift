@@ -54,6 +54,14 @@ class MOCDEmirate: NSObject {
     
   
 }
+class MOCDEmirateService: NSObject {
+    var EmirateId: String = ""
+    var EmirateTitleAr: String = ""
+    var EmirateTitleEn: String = ""
+    
+    
+  
+}
 
 class MOCDCenterService: NSObject {
     var EmirateId: String = ""

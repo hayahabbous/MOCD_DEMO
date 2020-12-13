@@ -1,0 +1,39 @@
+
+/* Class = "UIButton"; normalTitle = "Previous"; ObjectID = "E3o-W3-jGY"; */
+"E3o-W3-jGY.normalTitle" = "Previous";
+
+/* Class = "UIButton"; normalTitle = "Previous"; ObjectID = "Igo-uH-psT"; */
+"Igo-uH-psT.normalTitle" = "Previous";
+
+/* Class = "UILabel"; text = "Address Details "; ObjectID = "Kg8-pH-bJQ"; */
+"Kg8-pH-bJQ.text" = "Address Details ";
+
+/* Class = "UILabel"; text = "Attachments"; ObjectID = "PX7-40-aXM"; */
+"PX7-40-aXM.text" = "Attachments";
+
+/* Class = "UILabel"; text = "Request Type"; ObjectID = "UT8-G1-pcy"; */
+"UT8-G1-pcy.text" = "Request Type";
+
+/* Class = "UILabel"; text = "Address Details "; ObjectID = "Uxi-rO-J3B"; */
+"Uxi-rO-J3B.text" = "Address Details ";
+
+/* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "ZVr-To-gDk"; */
+"ZVr-To-gDk.normalTitle" = "Submit";
+
+/* Class = "UIButton"; normalTitle = "Previous"; ObjectID = "c1M-q2-EUD"; */
+"c1M-q2-EUD.normalTitle" = "Previous";
+
+/* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "edc-B9-HyM"; */
+"edc-B9-HyM.normalTitle" = "Submit";
+
+/* Class = "UIButton"; normalTitle = "NEXT"; ObjectID = "hh7-TQ-q1s"; */
+"hh7-TQ-q1s.normalTitle" = "NEXT";
+
+/* Class = "UINavigationItem"; title = "Application Form"; ObjectID = "iqi-Uf-qxA"; */
+"iqi-Uf-qxA.title" = "Application Form";
+
+/* Class = "UILabel"; text = "The Attachment file should be less than 5 MB."; ObjectID = "x0I-hi-QK9"; */
+"x0I-hi-QK9.text" = "The Attachment file should be less than 5 MB.";
+
+/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "zLt-fY-ehp"; */
+"zLt-fY-ehp.normalTitle" = "Next";

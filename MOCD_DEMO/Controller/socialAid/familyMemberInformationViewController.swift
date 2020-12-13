@@ -10,9 +10,20 @@ import Foundation
 import UIKit
 
 
-class familyMemberInformationViewController: UIViewController {
+class familyMemberInformationViewController: UIViewController  , addIncomeDelegate{
+    func addIncome(incomeItem: Incom) {
+        
+    }
     
+    func addFamily(familyItem: FamilyMember) {
+        familyItemsArray.append(familyItem)
+        
+        self.tableView.reloadData()
+    }
+    
+    var socialAidItem: socialAid = socialAid()
     @IBOutlet var tableView: UITableView!
+    var familyItemsArray: [FamilyMember] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -23,8 +34,58 @@ class familyMemberInformationViewController: UIViewController {
     }
     
     
-    @objc func submitAction() {
+    func saveMembers() {
+        var parametersArray =  NSMutableArray()
+               
         
+        for r in familyItemsArray {
+            let dic: NSMutableDictionary = NSMutableDictionary()
+            
+            dic.setValue("\(r.memberName)", forKey: "ApplicantNameAR")
+            dic.setValue("\(r.memberNameEn)", forKey: "ApplicantNameEN")
+            dic.setValue("\(r.dateOfBirth)", forKey: "DateOfBirth")
+            dic.setValue("\(r.genderId)", forKey: "GenderId")
+            dic.setValue("\(r.gender)", forKey: "GenderTitleAr")
+            dic.setValue("\(r.gender)", forKey: "GenderTitleEn")
+            dic.setValue("\(r.educationId)", forKey: "EducationId")
+            dic.setValue("\(r.relationId)", forKey: "Relation_ID")
+            dic.setValue("\(r.relation)", forKey: "RelationshipTitleAr")
+            dic.setValue("\(r.relation)", forKey: "RelationshipTitleEn")
+            dic.setValue("\(r.motherName)", forKey: "MotherNameAR")
+            dic.setValue("\(r.motherName)", forKey: "MotherNameEN")
+            dic.setValue("\(r.diseaseId)", forKey: "DiseaseId")
+            dic.setValue("\(r.nationalId)", forKey: "NationalId")
+            dic.setValue("\(r.mobile)", forKey: "MobileNo")
+            dic.setValue("\(r.email)", forKey: "EmailAddress")
+            
+            
+            parametersArray.add(dic)
+            
+            
+        }
+        socialAidItem.membersObject = parametersArray
+               
+        
+    }
+    
+    @IBAction func addFamilyAction(_ sender: Any) {
+        
+        self.performSegue(withIdentifier: "toAddFamily", sender: self)
+    }
+    @objc func submitAction() {
+        saveMembers()
+        self.performSegue(withIdentifier: "toAttachment", sender: self)
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toAddFamily" {
+            let dest = segue.destination as! addFamilyViewController
+            dest.delegate = self
+        }else if segue.identifier == "toAttachment" {
+            let dest = segue.destination as! socialAttachmentViewController
+            dest.socialAidItem = self.socialAidItem
+        }
     }
 }
 extension familyMemberInformationViewController: UITableViewDelegate,UITableViewDataSource {
@@ -32,7 +93,7 @@ extension familyMemberInformationViewController: UITableViewDelegate,UITableView
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 2 + familyItemsArray.count
         
     }
     
@@ -41,8 +102,10 @@ extension familyMemberInformationViewController: UITableViewDelegate,UITableView
         var cellIdentifier = ""
         if indexPath.row == 0 {
             cellIdentifier = "infoCell"
-        }else{
+        }else if indexPath.row == familyItemsArray.count + 1{
             cellIdentifier = "doneCell"
+        }else{
+            cellIdentifier = "familyCell"
         }
         
         return tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
@@ -80,13 +143,42 @@ extension familyMemberInformationViewController: UITableViewDelegate,UITableView
             
             
         }
+        if cell.reuseIdentifier == "familyCell" {
+            
+            let memberNameLabel = cell.viewWithTag(1) as! UILabel
+            let memberNameEnLabel = cell.viewWithTag(2) as! UILabel
+            let dateOfBirthLabel = cell.viewWithTag(3) as! UILabel
+            let genderLabel = cell.viewWithTag(4) as! UILabel
+            let educationLabel = cell.viewWithTag(5) as! UILabel
+            let relationshipLabel = cell.viewWithTag(6) as! UILabel
+            //let motherNameLabel = cell.viewWithTag(7) as! UILabel
+            //let nationalIdLabel = cell.viewWithTag(8) as! UILabel
+            //let mobileLabel = cell.viewWithTag(9) as! UILabel
+            //let emailLabel = cell.viewWithTag(10) as! UILabel
+            
+            let item = familyItemsArray[indexPath.row - 1]
+            memberNameLabel.text = item.memberName
+            memberNameEnLabel.text = item.memberNameEn
+            dateOfBirthLabel.text = item.dateOfBirth
+            genderLabel.text = item.gender
+            educationLabel.text = item.education
+            relationshipLabel.text = item.relation
+            //motherNameLabel.text = item.motherName
+            //nationalIdLabel.text = item.nationalId
+            //mobileLabel.text = item.mobile
+            //emailLabel.text = item.email
+            
+            
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
             return 60
-        }else  {
+        }else  if indexPath.row == familyItemsArray.count + 1{
             return 120
+        }else{
+            return 320
         }
         
         

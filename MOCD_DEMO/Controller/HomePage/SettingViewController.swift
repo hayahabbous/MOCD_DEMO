@@ -10,10 +10,10 @@ import Foundation
 import UIKit
 import NVActivityIndicatorView
 
-class SettingViewController: UIViewController ,UITableViewDelegate ,UITableViewDataSource {
+class SettingViewController: UIViewController ,UITableViewDelegate ,UITableViewDataSource ,NVActivityIndicatorViewable{
     
     var reloadDelegate: reloadHomePage!
-    let activityData = ActivityData()
+    let nvactivity = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
     var mocd_user = MOCDUser.getMOCDUser()
     @IBOutlet var tableView: UITableView!
     override func viewDidLoad() {
@@ -219,12 +219,15 @@ class SettingViewController: UIViewController ,UITableViewDelegate ,UITableViewD
                
         let yesAlerActionOption = UIAlertAction(title:NSLocalizedString("Sure".localize,comment:""), style: UIAlertAction.Style.default, handler: { (UIAlertAction) -> Void in
                 DispatchQueue.main.async {
-                     
-                    NVActivityIndicatorPresenter.sharedInstance.startAnimating(self.activityData)
+                     let size = CGSize(width: 30, height: 30)
+            
+            
+            self.startAnimating(size, message: "Loading ...", messageFont: nil, type: .ballBeat)
+                    //NVActivityIndicatorPresenter.sharedInstance.startAnimating(self.activityData)
                 }
             
             DispatchQueue.main.async {
-                NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+                self.stopAnimating(nil)
                 UserDefaults.standard.set(nil, forKey: AppConstants.MOCDUserData)
                 LocalNotificationHelperT.sharedInstance.removeAllPendingNotifications()
             }
@@ -247,7 +250,7 @@ class SettingViewController: UIViewController ,UITableViewDelegate ,UITableViewD
                 WebService.logout(username: username){ (json) in
                     
                     DispatchQueue.main.async {
-                        NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+                        self.stopAnimating(nil)
                     }
                     guard let code = json["code"] as? Int else {return}
                               
@@ -318,7 +321,7 @@ class SettingViewController: UIViewController ,UITableViewDelegate ,UITableViewD
             PFUser.logOutInBackground(
                 block: {(error) in
                     DispatchQueue.main.async {
-                        NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+                        self.stopAnimating(nil)
                     }
                     
                     if let window = self.view.window{

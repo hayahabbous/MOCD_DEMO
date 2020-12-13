@@ -18,7 +18,7 @@ protocol answerAssessment {
     func reloadChild()
     
 }
-class ChildProfileViewController: UIViewController ,answerAssessment{
+class ChildProfileViewController: UIViewController ,answerAssessment ,NVActivityIndicatorViewable{
     func changeIsOpenAssessment() {
         isOpenAssessmentWithoutAlert = false
     }
@@ -57,7 +57,9 @@ class ChildProfileViewController: UIViewController ,answerAssessment{
     var mocd_user = MOCDUser.getMOCDUser()
     @IBOutlet var goalsProgress: LinearProgressBar!
     
-    let activityData = ActivityData()
+    
+    let nvactivity = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+    
     var aspectValue = ""
     var childItem: ChildObject = ChildObject()
     var imageName = ""
@@ -296,13 +298,20 @@ class ChildProfileViewController: UIViewController ,answerAssessment{
                
         let yesAlerActionOption = UIAlertAction(title:NSLocalizedString("Sure",comment:""), style: UIAlertAction.Style.default, handler: { (UIAlertAction) -> Void in
             
-            NVActivityIndicatorPresenter.sharedInstance.startAnimating(self.activityData)
+            
+           
+            let size = CGSize(width: 30, height: 30)
+            
+            
+            self.startAnimating(size, message: "Loading ...", messageFont: nil, type: .ballBeat)
+            //NVActivityIndicatorPresenter.sharedInstance.startAnimating(self.activityData)
             
             
             WebService.deleteChild(childId: self.childItem.objectID) { (json) in
                 print(json)
                 DispatchQueue.main.async {
-                    NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+                    self.stopAnimating(nil)
+                    //self.stopAnimating(nil)
                 }
                 
                 guard let code = json["code"] as? Int else {return}
@@ -334,11 +343,14 @@ class ChildProfileViewController: UIViewController ,answerAssessment{
     }
     func getChildFull() {
         
-        NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
+        let size = CGSize(width: 30, height: 30)
+            
+            
+            self.startAnimating(size, message: "Loading ...", messageFont: nil, type: .ballBeat)
         WebService.getChild(childId: childItem.objectID) { (json) in
             print(json)
             DispatchQueue.main.async {
-                NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+                self.stopAnimating(nil)
             }
             
             guard let code = json["code"] as? Int else {return}
@@ -400,6 +412,7 @@ class ChildProfileViewController: UIViewController ,answerAssessment{
                     obj.objective_text_ar = r["objective_text_ar"] as? String  ?? ""
                     obj.objective_text_en = r["objective_text_en"] as? String  ?? ""
                     obj.child_id = r["child_id"] as? String  ?? ""
+                    obj.user_id = r["user_id"] as? String  ?? "0"
                     obj.routine_ar = r["routine_ar"] as? String  ?? ""
                     obj.routine_en = r["routine_ar"] as? String  ?? ""
         
@@ -488,6 +501,7 @@ class ChildProfileViewController: UIViewController ,answerAssessment{
                         
                         if result != nil {
                             
+                            
                             o.result = result?.result ?? ""
                             self.objectivesListForDisplaying.append(o)
                         }else {
@@ -495,6 +509,10 @@ class ChildProfileViewController: UIViewController ,answerAssessment{
                         }
                         
                     }
+                    
+                    self.objectivesListForDisplaying = self.objectivesList.filter({ (r) -> Bool in
+                        r.child_id != "0"
+                    })
                     
                     
                     DispatchQueue.main.async {
@@ -661,12 +679,15 @@ class ChildProfileViewController: UIViewController ,answerAssessment{
     
     func getSurveys() {
            
-      NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
+      let size = CGSize(width: 30, height: 30)
+            
+            
+            self.startAnimating(size, message: "Loading ...", messageFont: nil, type: .ballBeat)
       
       WebService.getSurveysList { (json) in
           print(json)
           DispatchQueue.main.async {
-              NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+              self.stopAnimating(nil)
           }
           
           
@@ -1263,13 +1284,16 @@ extension ChildProfileViewController: answerObjective {
         
         
        
-        NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
+        let size = CGSize(width: 30, height: 30)
+            
+            
+            self.startAnimating(size, message: "Loading ...", messageFont: nil, type: .ballBeat)
         WebService.answerObjectiveChild(objectiveId: o.objectiveId, childId: childItem.objectID, result: answerString) { (json) in
             
             
             print(json)
             DispatchQueue.main.async {
-                NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+                self.stopAnimating(nil)
             }
             
             guard let code = json["code"] as? Int else {return}

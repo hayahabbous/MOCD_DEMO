@@ -1,0 +1,39 @@
+
+/* Class = "UIButton"; normalTitle = "Previous"; ObjectID = "E3o-W3-jGY"; */
+"E3o-W3-jGY.normalTitle" = "السابق";
+
+/* Class = "UIButton"; normalTitle = "Previous"; ObjectID = "Igo-uH-psT"; */
+"Igo-uH-psT.normalTitle" = "السابق";
+
+/* Class = "UILabel"; text = "Address Details "; ObjectID = "Kg8-pH-bJQ"; */
+"Kg8-pH-bJQ.text" = "تفاصيل العنوان ";
+
+/* Class = "UILabel"; text = "Attachments"; ObjectID = "PX7-40-aXM"; */
+"PX7-40-aXM.text" = "الملفات";
+
+/* Class = "UILabel"; text = "Request Type"; ObjectID = "UT8-G1-pcy"; */
+"UT8-G1-pcy.text" = "نوع الطلب";
+
+/* Class = "UILabel"; text = "Address Details "; ObjectID = "Uxi-rO-J3B"; */
+"Uxi-rO-J3B.text" = "تفاصيل العنوان";
+
+/* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "ZVr-To-gDk"; */
+"ZVr-To-gDk.normalTitle" = "حفظ";
+
+/* Class = "UIButton"; normalTitle = "Previous"; ObjectID = "c1M-q2-EUD"; */
+"c1M-q2-EUD.normalTitle" = "Previous";
+
+/* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "edc-B9-HyM"; */
+"edc-B9-HyM.normalTitle" = "حفظ";
+
+/* Class = "UIButton"; normalTitle = "NEXT"; ObjectID = "hh7-TQ-q1s"; */
+"hh7-TQ-q1s.normalTitle" = "التالي";
+
+/* Class = "UINavigationItem"; title = "Application Form"; ObjectID = "iqi-Uf-qxA"; */
+"iqi-Uf-qxA.title" = "Application Form";
+
+/* Class = "UILabel"; text = "The Attachment file should be less than 5 MB."; ObjectID = "x0I-hi-QK9"; */
+"x0I-hi-QK9.text" = "حجم الملف يجب ان يكون اقل من ٥ ميغا بايت";
+
+/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "zLt-fY-ehp"; */
+"zLt-fY-ehp.normalTitle" = "التالي";

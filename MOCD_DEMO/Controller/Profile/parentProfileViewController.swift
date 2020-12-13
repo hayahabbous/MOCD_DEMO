@@ -14,7 +14,7 @@ import NVActivityIndicatorView
 
 
 
-class parentProfileViewController: UIViewController ,UITextFieldDelegate ,UINavigationControllerDelegate,UIImagePickerControllerDelegate ,WWCalendarTimeSelectorProtocol{
+class parentProfileViewController: UIViewController ,UITextFieldDelegate ,UINavigationControllerDelegate,UIImagePickerControllerDelegate ,WWCalendarTimeSelectorProtocol ,NVActivityIndicatorViewable{
     
     
     var imagePicker = UIImagePickerController()
@@ -43,7 +43,7 @@ class parentProfileViewController: UIViewController ,UITextFieldDelegate ,UINavi
     
     
     
-    let activityData = ActivityData()
+    let nvactivity = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
     var newChild: ChildObject = ChildObject()
     
     let unitsArray = ["USD","SAR","AED","KWD"]
@@ -133,7 +133,10 @@ class parentProfileViewController: UIViewController ,UITextFieldDelegate ,UINavi
     func saveFleb() {
         
         
-        NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
+        let size = CGSize(width: 30, height: 30)
+            
+            
+            self.startAnimating(size, message: "Loading ...", messageFont: nil, type: .ballBeat)
        
         /*
         
@@ -165,7 +168,7 @@ class parentProfileViewController: UIViewController ,UITextFieldDelegate ,UINavi
                     
                     
                     self.navigationController?.popViewController(animated: true)
-                    NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+                    self.stopAnimating(nil)
                     
                 }
             })

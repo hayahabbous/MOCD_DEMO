@@ -12,10 +12,11 @@ import UIKit
 
 class socialFinancialViewController: UIViewController {
     
-    
+    var socialAidItem: socialAid = socialAid()
     var toolBar = UIToolbar()
     var centersArray: [MOCDCenterService] = []
-    var emiratesArray: [MOCDEmirate] = []
+    var emiratesArray: [MOCDEmirateService] = []
+    var filiteredCenters: [MOCDCenterService] = []
     @IBOutlet var emiratePicker: UIPickerView!
     @IBOutlet var centerPicker: UIPickerView!
     @IBOutlet var emirateView: selectTextField!
@@ -35,21 +36,21 @@ class socialFinancialViewController: UIViewController {
     
     func setupField() {
         
-        emirateView.textLabel.text = "Emirate"
-        emirateView.textField.placeholder = "Please Select"
+        emirateView.textLabel.text = "Emirate".localize
+        emirateView.textField.placeholder = "Please Select".localize
         
         
-        centerView.textLabel.text = "Center"
-        centerView.textField.placeholder = "Please Select"
+        centerView.textLabel.text = "Center".localize
+        centerView.textField.placeholder = "Please Select".localize
         
         
         
-        areaView.textLabel.text = "Area"
-        areaView.textField.placeholder = "Area"
+        areaView.textLabel.text = "Area".localize
+        areaView.textField.placeholder = "Area".localize
         
         
-        caseReasonView.textLabel.text = "Case Reason"
-        caseReasonView.textField.placeholder = "Case Reason"
+        caseReasonView.textLabel.text = "Case Reason".localize
+        caseReasonView.textField.placeholder = "Case Reason".localize
         caseReasonView.starImage.isHidden = true
         
         
@@ -129,23 +130,24 @@ class socialFinancialViewController: UIViewController {
     }
     
     func getEmirates() {
-        WebService.getEmirates { (json) in
+        WebService.RetrieveEmirateSocial { (json) in
             print(json)
             guard let code = json["code"] as? Int else {return}
             guard let message = json["message"] as? String else {return}
             
             if code == 200 {
                 guard let data = json["data"] as? [String:Any] else {return}
-                guard let results = data["result"] as? [[String:Any]] else {return}
+                guard let results = data["result"] as? [String:Any] else {return}
+                guard let list = results["list"] as? [[String:Any]] else {return}
                 
-                var emiratesA: [String: String] = [:]
-                for r in results {
+                
+                for r in list {
                     
                     
-                    let emirateItem = MOCDEmirate()
-                    emirateItem.id = r["id"] as! String
-                    emirateItem.emirate_en = r["emirate_en"] as! String
-                    emirateItem.emirate_ar = r["emirate_ar"] as! String
+                    let emirateItem = MOCDEmirateService()
+                    emirateItem.EmirateId = String(describing: r["EmirateId"] ?? "" )
+                    emirateItem.EmirateTitleAr = String(describing: r["EmirateTitleAR"] ?? "")
+                    emirateItem.EmirateTitleEn = String(describing: r["EmirateTitleEN"] ?? "")
                     
                     self.emiratesArray.append(emirateItem)
                     
@@ -197,8 +199,45 @@ class socialFinancialViewController: UIViewController {
             
         }
     }
+    
+    func validateFields() -> Bool{
+        
+        //return true
+        
+        
+        socialAidItem.Area = areaView.textField.text ?? ""
+        socialAidItem.CaseReason = caseReasonView.textField.text ?? ""
+        
+        if emirateView.textField.text == "" ||
+            centerView.textField.text == "" ||
+            areaView.textField.text == ""
+            {
+            
+            Utils.showAlertWith(title: "Error".localize, message: "Please Fill All Fields".localize, viewController: self)
+            return false
+            
+            
+        }
+        
+        
+        return true
+        
+    }
     @IBAction func nextAction(_ sender: Any) {
+        
+        if !validateFields() {
+            return
+        }
         self.performSegue(withIdentifier: "toNational", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        
+        if segue.identifier == "toNational" {
+            let dest = segue.destination as! socialNationalViewController
+            dest.socialAidItem = self.socialAidItem
+        }
     }
 }
 extension socialFinancialViewController: UIPickerViewDelegate , UIPickerViewDataSource {
@@ -210,7 +249,10 @@ extension socialFinancialViewController: UIPickerViewDelegate , UIPickerViewData
         if pickerView == emiratePicker{
             return emiratesArray.count
         }else if pickerView == centerPicker{
-            return centersArray.count
+            if filiteredCenters.count > 0 {
+                return filiteredCenters.count
+            }
+            return 0
         }
         
         
@@ -221,11 +263,11 @@ extension socialFinancialViewController: UIPickerViewDelegate , UIPickerViewData
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView == emiratePicker{
             let item = emiratesArray[row]
-            let title = AppConstants.isArabic() ?  item.emirate_ar : item.emirate_en
+            let title = AppConstants.isArabic() ?  item.EmirateTitleAr : item.EmirateTitleEn
             
             return title
         }else if pickerView == centerPicker{
-             let item = centersArray[row]
+             let item = filiteredCenters[row]
             let title = AppConstants.isArabic() ?  item.OfficeNameAR : item.OfficeNameEN
             
             return title
@@ -241,13 +283,26 @@ extension socialFinancialViewController: UIPickerViewDelegate , UIPickerViewData
             
            
             //self.nationality_id = item.CountryId
-            self.emirateView.textField.text = AppConstants.isArabic() ?  item.emirate_ar : item.emirate_en
+            self.emirateView.textField.text = AppConstants.isArabic() ?  item.EmirateTitleAr : item.EmirateTitleEn
+            
+            self.filiteredCenters = centersArray.filter({ (center) -> Bool in
+                center.EmirateId == item.EmirateId
+            })
             
             
+            socialAidItem.EmirateId = item.EmirateId
+            
+            self.centerPicker.reloadAllComponents()
             
         } else if pickerView == centerPicker{
-            let item = centersArray[row]
+            
+            
+            if filiteredCenters.count == 0 {
+                return
+            }
+            let item = filiteredCenters[row]
             self.centerView.textField.text = AppConstants.isArabic() ?  item.OfficeNameAR : item.OfficeNameEN
+            socialAidItem.CenterId = item.CenterId
         }
         
     }

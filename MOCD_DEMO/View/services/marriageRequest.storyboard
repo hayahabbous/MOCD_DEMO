@@ -160,6 +160,7 @@
                     <size key="freeformSize" width="414" height="2500"/>
                     <connections>
                         <outlet property="dateOfBirthView" destination="arv-bJ-XiF" id="4Dg-Hk-HLd"/>
+                        <outlet property="educationPicker" destination="Fum-AM-g1K" id="aB8-wM-kjB"/>
                         <outlet property="educationalLevelView" destination="wgw-cp-3pT" id="Zdl-S0-CMB"/>
                         <outlet property="emailView" destination="GCk-XL-oEL" id="KQn-AW-M9i"/>
                         <outlet property="husbandNameEnView" destination="jjq-pw-yZD" id="o2A-x3-IZ4"/>
@@ -172,6 +173,14 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w3n-x0-2hW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <pickerView contentMode="scaleToFill" id="Fum-AM-g1K">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="216"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <connections>
+                        <outlet property="dataSource" destination="GjQ-J5-ORo" id="WLN-Bd-CUv"/>
+                        <outlet property="delegate" destination="GjQ-J5-ORo" id="1eY-qQ-E9u"/>
+                    </connections>
+                </pickerView>
             </objects>
             <point key="canvasLocation" x="5571.0144927536239" y="128.57142857142856"/>
         </scene>
@@ -339,6 +348,7 @@
                     <size key="freeformSize" width="414" height="2500"/>
                     <connections>
                         <outlet property="dateOfBirthView" destination="rMU-PK-ey3" id="XWq-WP-hPV"/>
+                        <outlet property="educationPicker" destination="lKY-sI-DVE" id="Zrh-vK-Qe7"/>
                         <outlet property="educationalLevelView" destination="rrn-YO-s3f" id="Y0V-NY-9AZ"/>
                         <outlet property="nationalNumberView" destination="wpP-ZS-rdW" id="emo-TK-8KA"/>
                         <outlet property="nextButton" destination="R6d-OU-NgE" id="apM-KX-gkQ"/>
@@ -350,6 +360,14 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qyH-Iy-4ef" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <pickerView contentMode="scaleToFill" id="lKY-sI-DVE">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="216"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <connections>
+                        <outlet property="dataSource" destination="wuW-Xv-QYv" id="d9F-CB-xku"/>
+                        <outlet property="delegate" destination="wuW-Xv-QYv" id="jpN-Cq-KfK"/>
+                    </connections>
+                </pickerView>
             </objects>
             <point key="canvasLocation" x="6428" y="123"/>
         </scene>
@@ -458,6 +476,7 @@
                     <navigationItem key="navigationItem" id="cSO-bT-snj"/>
                     <size key="freeformSize" width="414" height="2500"/>
                     <connections>
+                        <outlet property="courtPicker" destination="qSG-T6-NOo" id="9gA-7q-j21"/>
                         <outlet property="dateOfMarriageContractView" destination="WSJ-JZ-QKF" id="g8e-La-JKm"/>
                         <outlet property="nextButton" destination="Ig8-kR-nsZ" id="SLN-HF-G5K"/>
                         <outlet property="previousButton" destination="fOw-bf-XR4" id="bX3-np-LDR"/>
@@ -466,6 +485,14 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XdR-82-sk9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <pickerView contentMode="scaleToFill" id="qSG-T6-NOo">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="216"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <connections>
+                        <outlet property="dataSource" destination="A65-uT-ceE" id="BLl-Mc-msL"/>
+                        <outlet property="delegate" destination="A65-uT-ceE" id="sDI-7b-VAc"/>
+                    </connections>
+                </pickerView>
             </objects>
             <point key="canvasLocation" x="7410" y="129"/>
         </scene>
@@ -606,6 +633,7 @@
                     <connections>
                         <outlet property="NumberTown" destination="rkJ-Gt-bHG" id="Lba-Ep-f1a"/>
                         <outlet property="dateOfIssuanceView" destination="Att-Ot-RAo" id="40K-Tw-NQ9"/>
+                        <outlet property="emiratePicker" destination="eQB-iL-we0" id="6wy-n6-Zjy"/>
                         <outlet property="familyNoView" destination="j0s-YA-Kw4" id="7kn-Ej-Xbp"/>
                         <outlet property="nextButton" destination="96s-e5-Ze4" id="35n-94-upJ"/>
                         <outlet property="numberofFamilyBookView" destination="phH-sZ-tgg" id="1hl-eg-eiR"/>
@@ -615,6 +643,14 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rUh-U9-EQh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <pickerView contentMode="scaleToFill" id="eQB-iL-we0">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="216"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <connections>
+                        <outlet property="dataSource" destination="gjN-ht-upr" id="R2y-De-g8R"/>
+                        <outlet property="delegate" destination="gjN-ht-upr" id="z1k-7K-uzI"/>
+                    </connections>
+                </pickerView>
             </objects>
             <point key="canvasLocation" x="8207" y="123"/>
         </scene>
@@ -733,7 +769,9 @@
                     <navigationItem key="navigationItem" id="7Cj-y8-xb2"/>
                     <size key="freeformSize" width="414" height="2500"/>
                     <connections>
+                        <outlet property="emiratePicker" destination="ZkJ-Vy-K2S" id="d8X-gv-dzW"/>
                         <outlet property="employerCategoryView" destination="VVK-ng-aQy" id="VJr-na-ufU"/>
+                        <outlet property="employerPicker" destination="vF6-Do-iEl" id="W3H-A2-5q0"/>
                         <outlet property="emplyerView" destination="UoM-Ik-Xd2" id="XGq-Nw-xgG"/>
                         <outlet property="nextButton" destination="2GW-CB-pYj" id="SLO-p9-k19"/>
                         <outlet property="placeOfWorkView" destination="NE9-rC-Rs8" id="YoN-Sp-8cS"/>
@@ -742,6 +780,22 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Wc-jG-ZfJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <pickerView contentMode="scaleToFill" id="ZkJ-Vy-K2S">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="216"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <connections>
+                        <outlet property="dataSource" destination="OSf-cw-N8i" id="tLg-Dq-tpE"/>
+                        <outlet property="delegate" destination="OSf-cw-N8i" id="jhz-6F-EV6"/>
+                    </connections>
+                </pickerView>
+                <pickerView contentMode="scaleToFill" id="vF6-Do-iEl">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="216"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <connections>
+                        <outlet property="dataSource" destination="OSf-cw-N8i" id="yGP-SR-qTn"/>
+                        <outlet property="delegate" destination="OSf-cw-N8i" id="LZX-nS-zpS"/>
+                    </connections>
+                </pickerView>
             </objects>
             <point key="canvasLocation" x="9132" y="123"/>
         </scene>
@@ -863,6 +917,7 @@
                     <connections>
                         <outlet property="bankNameView" destination="897-ju-rsk" id="lHd-au-nUo"/>
                         <outlet property="ibanView" destination="9Cj-f7-Cu2" id="X5K-gu-79R"/>
+                        <outlet property="incomePicker" destination="go1-gW-OH4" id="Lmr-44-dal"/>
                         <outlet property="nextButton" destination="hHe-Mx-Onz" id="Z6B-Rn-Ya4"/>
                         <outlet property="previousButton" destination="Ax9-wx-DcW" id="E5b-Yr-gM8"/>
                         <outlet property="totalMonthlyIncomeView" destination="wi1-4t-X7g" id="RRu-Zy-2S4"/>
@@ -870,6 +925,14 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U1Z-EV-iXx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <pickerView contentMode="scaleToFill" id="go1-gW-OH4">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="216"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <connections>
+                        <outlet property="dataSource" destination="2Up-Iu-dGe" id="kQo-As-l7h"/>
+                        <outlet property="delegate" destination="2Up-Iu-dGe" id="DCG-5d-uyy"/>
+                    </connections>
+                </pickerView>
             </objects>
             <point key="canvasLocation" x="9986.9565217391319" y="105.80357142857143"/>
         </scene>
@@ -1016,11 +1079,22 @@
                         <outlet property="relativeOfHusbandView" destination="y8b-rr-S9q" id="9i6-1n-sPa"/>
                         <outlet property="relativeOfWifeView" destination="ACn-3q-feY" id="yNy-7b-ick"/>
                         <outlet property="specialNeedView" destination="TAs-HA-nYA" id="ZPz-wT-O8G"/>
+                        <segue destination="FAL-dI-M5h" kind="show" identifier="toDoc" id="UXK-Y5-tT7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H4O-hB-hpX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="11029" y="97"/>
+        </scene>
+        <!--masterDoc-->
+        <scene sceneID="ooG-fG-53S">
+            <objects>
+                <viewControllerPlaceholder storyboardName="masterDoc" id="FAL-dI-M5h" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="rzn-Kb-TCw"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tAG-3x-THT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="11912" y="-182"/>
         </scene>
     </scenes>
 </document>

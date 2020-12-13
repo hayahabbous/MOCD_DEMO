@@ -140,6 +140,7 @@
                     <size key="freeformSize" width="414" height="2500"/>
                     <connections>
                         <outlet property="dateView" destination="qzz-J3-qNu" id="1v8-vR-Vrq"/>
+                        <outlet property="emiratePicker" destination="Vkg-Hk-R0B" id="Qjl-PU-LVC"/>
                         <outlet property="emirateView" destination="nCZ-j2-pDP" id="kPT-aG-fCo"/>
                         <outlet property="husbandNameView" destination="Llc-UC-jXl" id="m8C-CD-wjh"/>
                         <outlet property="nationalNumberView" destination="iPA-0P-au6" id="Zn9-i6-qnR"/>
@@ -150,6 +151,14 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VCp-WT-3yJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <pickerView contentMode="scaleToFill" id="Vkg-Hk-R0B">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="216"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <connections>
+                        <outlet property="dataSource" destination="fja-vN-vhP" id="Juv-pI-ngu"/>
+                        <outlet property="delegate" destination="fja-vN-vhP" id="uR6-oj-SAI"/>
+                    </connections>
+                </pickerView>
             </objects>
             <point key="canvasLocation" x="5571.0144927536239" y="128.57142857142856"/>
         </scene>
@@ -280,11 +289,22 @@
                         <outlet property="mobileView" destination="j3h-zA-egY" id="YSH-fr-hDC"/>
                         <outlet property="nextButton" destination="NGN-0s-geV" id="LPu-jw-Xfw"/>
                         <outlet property="previousButton" destination="3Ds-wF-YLJ" id="v9U-le-2Sw"/>
+                        <segue destination="I1s-7Q-sGA" kind="show" identifier="toDoc" id="J88-4g-jKy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yeB-ro-eLR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6436" y="129"/>
+        </scene>
+        <!--masterDoc-->
+        <scene sceneID="d1n-ci-6Qz">
+            <objects>
+                <viewControllerPlaceholder storyboardName="masterDoc" id="I1s-7Q-sGA" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="8iY-Ek-sd1"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ffh-6L-V5G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7190" y="-166"/>
         </scene>
     </scenes>
 </document>

@@ -70,7 +70,7 @@ class Objective: NSObject {
     var routine_en:String  = ""
     var child_id: String = ""
     var result: String = ""
-    
+    var user_id:String = ""
     
     var routine_time: ROUTINE_TIME = .NONE
     var tasks: [Task] = []

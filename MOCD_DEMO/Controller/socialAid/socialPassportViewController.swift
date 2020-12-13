@@ -10,15 +10,33 @@ import Foundation
 import UIKit
 
 
-class socialPassportViewController: UIViewController {
+class socialPassportViewController: UIViewController , refreshDelegate {
+    func refreshDateView() {
+        let date = issueDateView.date
+        let datebyOneYear = Calendar.current.date(byAdding: .year, value: 5, to: Date())
+        
+        
+        
+        let df = DateFormatter()
+        df.dateFormat = "MM/dd/yyyy"
+        let now = df.string(from: datebyOneYear ?? Date())
+        
+        expiryDateView.textField.text = now
+        
+    }
+    
+    func refreshMultipleView() {
+        
+    }
+    
     
     
     var toolBar = UIToolbar()
     
     @IBOutlet var emiratePicker: UIPickerView!
-    var emiratesArray: [MOCDEmirate] = []
+    var emiratesArray: [MOCDEmirateService] = []
     
-    
+    var socialAidItem: socialAid = socialAid()
     @IBOutlet var passportNoView: textFieldMandatory!
     @IBOutlet var passportIssuePlaceView: selectTextField!
     @IBOutlet var issueDateView: dateTexteField!
@@ -36,22 +54,27 @@ class socialPassportViewController: UIViewController {
     }
     
     func setupField() {
-        passportNoView.textLabel.text = "Passport No"
-        passportNoView.textField.placeholder = "Passport No"
+        passportNoView.textLabel.text = "Passport No".localize
+        passportNoView.textField.placeholder = "Passport No".localize
         
         
-        passportIssuePlaceView.textLabel.text = "Passport Issue Place"
-        passportIssuePlaceView.textField.placeholder = "Please Select"
+        passportIssuePlaceView.textLabel.text = "Passport Issue Place".localize
+        passportIssuePlaceView.textField.placeholder = "Please Select".localize
         
         
-        issueDateView.textLabel.text = "Issue Date"
+        issueDateView.textLabel.text = "Issue Date".localize
         issueDateView.viewController = self
+        issueDateView.delegate = self
         
-        expiryDateView.textLabel.text = "Expiry Date"
+        expiryDateView.textLabel.text = "Expiry Date".localize
         expiryDateView.viewController = self
+        expiryDateView.isUserInteractionEnabled = false
+        expiryDateView.starImage.isHidden = true
         
-        immigrationNoView.textLabel.text = "Immigration No"
-        immigrationNoView.textField.placeholder = "Immigration No"
+        
+        
+        immigrationNoView.textLabel.text = "Immigration No".localize
+        immigrationNoView.textField.placeholder = "Immigration No".localize
         
         
         let gradient = CAGradientLayer()
@@ -73,23 +96,24 @@ class socialPassportViewController: UIViewController {
         self.previousButton.layer.masksToBounds = true
     }
     func getEmirates() {
-        WebService.getEmirates { (json) in
+        WebService.RetrieveEmirateSocial { (json) in
             print(json)
             guard let code = json["code"] as? Int else {return}
             guard let message = json["message"] as? String else {return}
             
             if code == 200 {
                 guard let data = json["data"] as? [String:Any] else {return}
-                guard let results = data["result"] as? [[String:Any]] else {return}
+                guard let results = data["result"] as? [String:Any] else {return}
+                guard let list = results["list"] as? [[String:Any]] else {return}
                 
-                var emiratesA: [String: String] = [:]
-                for r in results {
+                
+                for r in list {
                     
                     
-                    let emirateItem = MOCDEmirate()
-                    emirateItem.id = r["id"] as! String
-                    emirateItem.emirate_en = r["emirate_en"] as! String
-                    emirateItem.emirate_ar = r["emirate_ar"] as! String
+                    let emirateItem = MOCDEmirateService()
+                    emirateItem.EmirateId = String(describing: r["EmirateId"] ?? "" )
+                    emirateItem.EmirateTitleAr = String(describing: r["EmirateTitleAR"] ?? "")
+                    emirateItem.EmirateTitleEn = String(describing: r["EmirateTitleEN"] ?? "")
                     
                     self.emiratesArray.append(emirateItem)
                     
@@ -158,8 +182,53 @@ class socialPassportViewController: UIViewController {
     @objc func onClickedToolbeltButton(_ sender: Any){
         self.view.endEditing(true)
     }
+    
+    func validateFields() -> Bool{
+        
+        //return true
+        
+        
+        socialAidItem.PassportNo = passportNoView.textField.text ?? ""
+        socialAidItem.PassportIssueDate = issueDateView.textField.text ?? ""
+        socialAidItem.PassportExpiryDate = expiryDateView.textField.text ?? ""
+        socialAidItem.ImmigrationNo = immigrationNoView.textField.text ?? ""
+        
+        
+        let df = DateFormatter()
+        df.dateFormat = "MM/dd/yyyy"
+        socialAidItem.PassportIssueDate  = df.string(from: issueDateView.date )
+        socialAidItem.PassportExpiryDate  = df.string(from: expiryDateView.date)
+        
+        
+        
+        if socialAidItem.PassportNo == "" ||
+            socialAidItem.PassportIssueDate == "" ||
+            socialAidItem.ImmigrationNo == "" ||
+            socialAidItem.PassportIssuePlaceId == "" 
+            {
+            
+            Utils.showAlertWith(title: "Error".localize, message: "Please Fill All Fields".localize, viewController: self)
+            return false
+            
+            
+        }
+        
+        
+        return true
+        
+    }
     @IBAction func nextButton(_ sender: Any) {
+        if !validateFields() {
+            return
+        }
         self.performSegue(withIdentifier: "toAccomodation", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toAccomodation" {
+            let dest = segue.destination as! socialAccommodationViewController
+            dest.socialAidItem = self.socialAidItem
+        }
     }
 }
 extension socialPassportViewController: UIPickerViewDelegate , UIPickerViewDataSource {
@@ -180,7 +249,7 @@ extension socialPassportViewController: UIPickerViewDelegate , UIPickerViewDataS
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView == emiratePicker{
             let item = emiratesArray[row]
-            let title = AppConstants.isArabic() ?  item.emirate_ar : item.emirate_en
+            let title = AppConstants.isArabic() ?  item.EmirateTitleAr : item.EmirateTitleEn
             
             return title
         }
@@ -194,8 +263,9 @@ extension socialPassportViewController: UIPickerViewDelegate , UIPickerViewDataS
           
             
            
+            socialAidItem.PassportIssuePlaceId = item.EmirateId
             //self.nationality_id = item.CountryId
-            self.passportIssuePlaceView.textField.text = AppConstants.isArabic() ?  item.emirate_ar : item.emirate_en
+            self.passportIssuePlaceView.textField.text = AppConstants.isArabic() ?  item.EmirateTitleAr : item.EmirateTitleEn
             
             
             

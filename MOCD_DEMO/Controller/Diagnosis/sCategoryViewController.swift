@@ -11,9 +11,9 @@ import UIKit
 import NVActivityIndicatorView
 
 
-class sCategoryViewController: UIViewController {
+class sCategoryViewController: UIViewController ,NVActivityIndicatorViewable{
     
-    let activityData = ActivityData()
+    let nvactivity = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
     var storiesList :[story] = []
     var storycategoriesList :[storyCategory] = []
     var selectedCategory: storyCategory = storyCategory()
@@ -28,13 +28,16 @@ class sCategoryViewController: UIViewController {
     }
     
     func getStories() {
-        NVActivityIndicatorPresenter.sharedInstance.startAnimating(self.activityData)
-        
+        //NVActivityIndicatorPresenter.sharedInstance.startAnimating(self.activityData)
+        let size = CGSize(width: 30, height: 30)
+            
+            
+            self.startAnimating(size, message: "Loading ...", messageFont: nil, type: .ballBeat)
         WebService.getStories { (json) in
             
             print(json)
             DispatchQueue.main.async {
-                NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+                self.stopAnimating(nil)
             }
             
             guard let code = json["code"] as? Int else {return}

@@ -54,6 +54,20 @@ extension serviceCollectionViewCell: UITableViewDelegate , UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         
+        
+        let user = MOCDUser.getMOCDUser()
+        if user?.userToken == nil {
+            
+            
+            let rootViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "LoginViewController")
+            self.window!.rootViewController = rootViewController
+            rootViewController.modalPresentationStyle = .fullScreen
+            homePage.dismiss(animated: true, completion: {() -> Void in
+                self.homePage.present(rootViewController, animated: true, completion: {() -> Void in
+                })
+            })
+            return
+        }
         switch indexPath.row {
             
             
@@ -69,14 +83,29 @@ extension serviceCollectionViewCell: UITableViewDelegate , UITableViewDataSource
            
             
          case 1:
-            homePage.selectedCategoryItem = category.servicesArray[indexPath.row]
-            homePage.performSegue(withIdentifier: "toLostCard", sender: self)
+            
+             if category.id == "1" {
+                homePage.selectedCategoryItem = category.servicesArray[indexPath.row]
+                homePage.performSegue(withIdentifier: "toLostCard", sender: self)
+             }else{
+                homePage.selectedCategoryItem = category.servicesArray[indexPath.row]
+                homePage.performSegue(withIdentifier: "toCertificate", sender: self)
+             }
+            
+            
+            
+            
             
         case 2:
             
             if category.id == "1" {
                 homePage.selectedCategoryItem = category.servicesArray[indexPath.row]
-                homePage.performSegue(withIdentifier: "toRenewal", sender: self)
+                //homePage.performSegue(withIdentifier: "toRenewal", sender: self)
+                
+                let rootViewController = UIStoryboard(name: "newCard", bundle: Bundle.main).instantiateViewController(withIdentifier: "newCardIdentifer")
+                self.homePage.present(rootViewController, animated: true) {
+                    
+                }
             }else{
                 homePage.selectedCategoryItem = category.servicesArray[indexPath.row]
                 homePage.performSegue(withIdentifier: "toMarriage", sender: self)

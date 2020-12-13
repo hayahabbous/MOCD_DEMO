@@ -103,23 +103,39 @@ class AspectElement: NSObject {
 class AppConstants: NSObject {
     
     
-    
+    static var isLive: Bool = true
     static var isNemowEnabled = "isNemowEnabled"
     static var isEdkharEnabled = "isEdkharEnabled"
     static var isMGEnabled = "isMGEnabled"
     static var isStoriesEnabled = "isStoriesEnabled"
     
     
-    
+    static var MASTER_TOKEN = "5ea8b206-7241-445d-aecc-5e7cb800b34d"
     static let MOCDUserData = "MOCDUserData"
     static var AssessmentsArray:[AspectElement] = []
-    static let WEB_SERVER_IMAGE_MOCD_URL: String  = "http://mocdservicesdev.dcxportal.com"
-    static let WEB_SERVER_MOCD_URL: String  = "http://mocdservicesdev.dcxportal.com/api/"
+    static let WEB_SERVER_IMAGE_MOCD_URL: String  = AppConstants.isLive ? "http://mocdservices.dcxportal.com" : "http://mocdservicesdev.dcxportal.com"
+    static let WEB_SERVER_MOCD_URL: String  = AppConstants.isLive ? "http://mocdservices.dcxportal.com/api/" : "http://mocdservicesdev.dcxportal.com/api/"
+    
+    static let WEB_SERVER_MOCD_MARRIAGE_GRANT_DEV: String  = AppConstants.isLive ?  "https://api.mocd.gov.ae/Inbound/Rest/CRM/V2/Masters/" : "https://staging.mocd.gov.ae/Inbound/Rest/CRM/V3/Masters/"
+    static let WEB_SERVER_MOCD_MARRIAGE_GRANT_DEV_SERVICE: String  = AppConstants.isLive ? "https://api.mocd.gov.ae/Inbound/Rest/CRM/V2/" : "https://staging.mocd.gov.ae/Inbound/Rest/CRM/V3/"
+    
+    static let WEB_SERVER_MOCD_SERVICES_CARD_DEV = AppConstants.isLive ? "http://MOCDServices.DCXPortal.com/api/dcservice/" :
+    "http://MOCDServicesDev.DCXPortal.com/api/dcservice/"
+    static let WEB_SERVER_MOCD_SERVICES_SOCIAL_DEV = AppConstants.isLive ?  "http://MOCDServices.DCXPortal.com/api/socialsecurity/" : "http://MOCDServicesDev.DCXPortal.com/api/socialsecurity/"
+    
+    static let RequestingServiceGrantRequestDEV: String = "80e13c89-6992-e911-a2b5-00155d138354"
+    static let TypeOfRequestGrantRequestDEV: String = "1aad24fd-6a92-e911-a2b5-00155d138354"
+    
+    static let RequestingServiceMassWeddingDEV: String = "f2e102ac-6992-e911-a2b5-00155d138354"
+    static let TypeOfRequestMassWeddingDEV: String = "c8954e46-6b92-e911-a2b5-00155d138354"
     
     
-    static let WEB_SERVER_MOCD_SERVICES_CARD_DEV = "http://MOCDServicesDev.DCXPortal.com/api/dcservice/"
-    static let WEB_SERVER_MOCD_SERVICES_SOCIAL_DEV = "http://MOCDServicesDev.DCXPortal.com/api/socialsecurity/"
     
+    static let RequestingServiceEdaadDEV: String = "a6ce08ff-6992-e911-a2b5-00155d138354"
+    static let TypeOfRequestEdaadDEV: String = "b5726278-6b92-e911-a2b5-00155d138354"
+    
+    
+    static let ChannelType: String = "4"
     
     
     static let DToken: String = "6RGT36D10Q637059759964359851B1I1"
@@ -182,5 +198,16 @@ class Helper {
         let emailFormat = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailFormat)
         return emailPredicate.evaluate(with: enteredEmail)
+    }
+    
+    static func documentsPathForImages(filename: String) -> String {
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+        let documentsPath: String = paths[0]
+        
+        var url = URL(fileURLWithPath: documentsPath)
+        
+        url.appendPathComponent(filename, isDirectory: false)
+        print(url.pathComponents)
+        return url.path
     }
 }

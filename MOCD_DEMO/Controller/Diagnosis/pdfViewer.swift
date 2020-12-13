@@ -10,10 +10,10 @@ import Foundation
 import UIKit
 import PDFKit
 import NVActivityIndicatorView
-class pdfViewer: UIViewController {
+class pdfViewer: UIViewController ,NVActivityIndicatorViewable{
 
     @IBOutlet var pdfView: PDFView!
-    let activityData = ActivityData()
+    let nvactivity = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
     var s: story!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,13 +42,17 @@ class pdfViewer: UIViewController {
     func getPDF(from url: URL) {
              
         print("Download Started")
-        NVActivityIndicatorPresenter.sharedInstance.startAnimating(self.activityData)
+        let size = CGSize(width: 30, height: 30)
+            
+            
+            self.startAnimating(size, message: "Loading ...", messageFont: nil, type: .ballBeat)
+        //NVActivityIndicatorPresenter.sharedInstance.startAnimating(self.activityData)
         DispatchQueue.global().async {
         
             if let pdfDocument = PDFDocument(url: url) {
                 DispatchQueue.main.async {
                     
-                    NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+                    self.stopAnimating(nil)
                     self.pdfView.displayMode = .singlePageContinuous
                     self.pdfView.autoScales = true
                     self.pdfView.displayDirection = .horizontal

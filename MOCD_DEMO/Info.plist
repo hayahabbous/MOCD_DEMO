@@ -69,6 +69,8 @@
 	<string>need access to set profile photo</string>
 	<key>NSRemindersUsageDescription</key>
 	<string>Allow user to access reminders feature.</string>
+	<key>UIBackgroundModes</key>
+	<array/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

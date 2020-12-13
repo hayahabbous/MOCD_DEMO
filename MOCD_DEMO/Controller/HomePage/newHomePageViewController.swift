@@ -10,10 +10,11 @@ import Foundation
 import UIKit
 import NVActivityIndicatorView
 
-class newHomePageViewController: UIViewController  , reloadHomePage{
+
+class newHomePageViewController: UIViewController  , reloadHomePage ,NVActivityIndicatorViewable{
     var mocd_user = MOCDUser.getMOCDUser()
 
-    let activityData = ActivityData()
+    var nvactivity : NVActivityIndicatorView!
     @IBOutlet var superCollectionView: UICollectionView!
     var appsCollectionView: UICollectionView!
    
@@ -29,7 +30,7 @@ class newHomePageViewController: UIViewController  , reloadHomePage{
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        nvactivity = NVActivityIndicatorView(frame: self.view.frame)
         
     
         superCollectionView.isPrefetchingEnabled = false
@@ -137,8 +138,23 @@ class newHomePageViewController: UIViewController  , reloadHomePage{
     func getMOCDServices() {
         
         DispatchQueue.main.async {
-            NVActivityIndicatorPresenter.sharedInstance.startAnimating(self.activityData)
+            //NVActivityIndicatorPresenter.sharedInstance.startAnimating(self.activityData)
+            let size = CGSize(width: 30, height: 30)
             
+            
+            self.startAnimating(size, message: "Loading ...", messageFont: nil, type: .ballBeat)
+            
+            
+            
+               
+/*
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.5) {
+                NVActivityIndicatorPresenter.sharedInstance.setMessage("Authenticating...")
+            }
+
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
+                self.stopAnimating(nil)
+            }*/
         }
               
         WebService.getServices { (json) in
@@ -146,7 +162,7 @@ class newHomePageViewController: UIViewController  , reloadHomePage{
             print(json)
             
             DispatchQueue.main.async {
-                NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+                self.stopAnimating(nil)
             }
             
             guard let code = json["code"] as? Int else {return}
@@ -468,7 +484,7 @@ extension newHomePageViewController: UICollectionViewDelegate,UICollectionViewDa
         }else if collectionView == self.appsCollectionView  {
             
             var heightR = Double(self.appsCollectionView.frame.width)
-            var collectionViewHeight =  200.0 //Double(self.appsCollectionView.frame.width - 30.0)
+            let collectionViewHeight =  200.0 //Double(self.appsCollectionView.frame.width - 30.0)
             switch indexPath.row {
             case 0:
                 heightR = Double((UserDefaults.standard.value(forKey: AppConstants.isNemowEnabled) as? Bool ?? true) ?  collectionViewHeight : 0.0)

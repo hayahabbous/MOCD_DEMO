@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 import JGProgressHUD
-
+import MobileCoreServices
 class Utils: NSObject {
     
     
@@ -126,5 +126,62 @@ class Utils: NSObject {
         let REGEX: String
         REGEX = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}"
         return NSPredicate(format: "SELF MATCHES %@", REGEX).evaluate(with: YourEMailAddress)
+    }
+    
+    
+    class func mimeTypeForPath(path: String) -> String {
+        let url = NSURL(fileURLWithPath: path)
+        let pathExtension = url.pathExtension
+
+        if let uti = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, pathExtension! as NSString, nil)?.takeRetainedValue() {
+            if let mimetype = UTTypeCopyPreferredTagWithClass(uti, kUTTagClassMIMEType)?.takeRetainedValue() {
+                return mimetype as String
+            }
+        }
+        return "application/octet-stream"
+    }
+    
+    
+    static func documentsPathForImages(filename: String) -> String {
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+        let documentsPath: String = paths[0]
+        
+        var url = URL(fileURLWithPath: documentsPath)
+        
+        url.appendPathComponent(filename, isDirectory: false)
+        print(url.pathComponents)
+        return url.path
+    }
+    
+    static func saveBase64StringToFile(_ base64String: String , fileName: String) -> String {
+
+        guard
+            var documentsURL = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)).last,
+            let convertedData = Data(base64Encoded: base64String)
+            else {
+            //handle error when getting documents URL
+            return ""
+        }
+
+        //name your file however you prefer
+        documentsURL.appendPathComponent(fileName)
+
+        do {
+            try convertedData.write(to: documentsURL)
+        } catch {
+            //handle write error here
+        }
+
+        //if you want to get a quick output of where your
+        //file was saved from the simulator on your machine
+        //just print the documentsURL and go there in Finder
+        print(documentsURL)
+        
+        do {
+            return try documentsURL.absoluteString
+        } catch  {
+            return ""
+        }
+        
     }
 }

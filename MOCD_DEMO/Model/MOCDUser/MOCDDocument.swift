@@ -27,3 +27,22 @@ class MOCDDocument: NSObject {
     var filesArray: [URL] = []
    
 }
+
+
+class MOCDMasterDocument: NSObject {
+    
+    var Id: String = ""
+    var Name: String = ""
+    var NameinArabic: String = ""
+    var Typedoc: String = ""
+    var FileExtension: String = ""
+    var IsMandatory: String = ""
+    var IsMany: String = ""
+    
+   
+    var filesArray: [URL] = []
+    
+    
+  
+   
+}

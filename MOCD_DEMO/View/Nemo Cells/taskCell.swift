@@ -84,6 +84,8 @@ class taskCell: UITableViewCell {
             
             
             if selectedObj.child_id != "0" {
+                
+                /*
                 if selectedObj.result == "done" {
                     editButton.isHidden = true
                    editWidthConstraints.constant = 0
@@ -100,6 +102,14 @@ class taskCell: UITableViewCell {
                     editWidthConstraints.constant = 0
                     
                      
+                }*/
+                
+                if selectedObj.user_id == mocd_user.DId {
+                    editButton.isHidden = false
+                    editWidthConstraints.constant = 40
+                }else{
+                    editButton.isHidden = true
+                    editWidthConstraints.constant = 0
                 }
             }else{
                 editButton.isHidden = true

@@ -336,7 +336,7 @@ class RegisterViewController: UIViewController {
             Utils.showErrorMessage(NSLocalizedString("Please enter a valid question ".localize, comment:""), withTitle: NSLocalizedString("question is empty".localize, comment:""), andInViewController: self)
            isEmpty = true
         }else if password != confirm_password {
-            Utils.showErrorMessage(NSLocalizedString("Psswords dismatch ".localize, comment:""), withTitle: NSLocalizedString("Password and Password Confirmation are not the same".localize, comment:""), andInViewController: self)
+            Utils.showErrorMessage(NSLocalizedString("Password mismatch".localize, comment:""), withTitle: NSLocalizedString("Password and Password Confirmation are not the same".localize, comment:""), andInViewController: self)
             isEmpty = true
         }
         if !Utils.isValidPassword(password) {

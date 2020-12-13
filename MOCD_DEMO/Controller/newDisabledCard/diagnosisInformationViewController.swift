@@ -9,14 +9,14 @@
 import Foundation
 import UIKit
 import NVActivityIndicatorView
-
-class diagnosisInformationViewController: UIViewController {
+import Alamofire
+class diagnosisInformationViewController: UIViewController ,NVActivityIndicatorViewable{
     
     
-    
+    var newCardItem: newCardStruct!
     var toolBar = UIToolbar()
-    let activityData = ActivityData()
-    
+    let nvactivity = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+    var isRenewal: Bool = false
     var equipmentsArray: [MOCDEquipment] = []
     var authorityArray: [MOCDDisabilityAuthority] = []
     var disabilityTypeArray: [MOCDDisabilityType] = []
@@ -36,68 +36,97 @@ class diagnosisInformationViewController: UIViewController {
     @IBOutlet var reportIssuedView: textFieldMandatory!
     @IBOutlet var specialityView: textFieldMandatory!
     @IBOutlet var reportDateView: dateTexteField!
+   
+    
+    @IBOutlet var multipleDisabilityView: supportingField!
+    @IBOutlet var mDisabilityVHeight: NSLayoutConstraint!
+    @IBOutlet var mDisabilityHeight: NSLayoutConstraint!
     
     @IBOutlet var nextButton: UIButton!
     @IBOutlet var previousButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        hideView()
         setupFields()
         
-        
+    
         setupToolbar()
         
         getAuthority()
         getDisabilityType()
         getDisabilityLevel()
         getSupportingEquipment()
+        
+        
+        if isRenewal {
+            fillFields()
+        }
+        
     }
-    
+    func hideView() {
+        mDisabilityHeight.constant = 0
+           
+        mDisabilityVHeight.constant = 0
+       
+        
+        multipleDisabilityView.isHidden = true
+                  
+    }
     func setupFields(){
         
-        diagnosisAuthorityView.textLabel.text = "Diagnosis Authority"
-        diagnosisAuthorityView.textField.placeholder = "Please Select"
+        diagnosisAuthorityView.textLabel.text = "Diagnosis Authority".localize
+        diagnosisAuthorityView.textField.placeholder = "Please Select".localize
         
         
         
-        diagnosisInformationView.textLabel.text = "Diagnosis Information"
-        diagnosisInformationView.textField.placeholder = "Diagnosis Information"
+        diagnosisInformationView.textLabel.text = "Diagnosis Information".localize
+        diagnosisInformationView.textField.placeholder = "Diagnosis Information".localize
         
         
-        disabilityTypeView.textLabel.text = "Disabilities type"
-        disabilityTypeView.textField.placeholder = "Please Select"
+        disabilityTypeView.textLabel.text = "Disabilities type".localize
+        disabilityTypeView.textField.placeholder = "Please Select".localize
         
         
-        disabilityLevelView.textLabel.text = "Disability Level"
-        disabilityLevelView.textField.placeholder = "Please Select"
+        disabilityLevelView.textLabel.text = "Disability Level".localize
+        disabilityLevelView.textField.placeholder = "Please Select".localize
         disabilityLevelView.starImage.isHidden = true
       
-        needSupporterView.textLabel.text = "Need Supporter"
-        needSupporterView.firstLabel.text = "No"
-        needSupporterView.secondLabel.text = "Yes"
+        needSupporterView.textLabel.text = "Need Supporter".localize
+        needSupporterView.firstLabel.text = "No".localize
+        needSupporterView.secondLabel.text = "Yes".localize
         
         
-        canLiveAloneView.textLabel.text = "Can Live Alone?"
-        canLiveAloneView.firstLabel.text = "No"
-        canLiveAloneView.secondLabel.text = "Yes"
+        canLiveAloneView.textLabel.text = "Can Live Alone?".localize
+        canLiveAloneView.firstLabel.text = "No".localize
+        canLiveAloneView.secondLabel.text = "Yes".localize
         
         
-        reportIssuedView.textField.placeholder = "Report Issued By"
-        reportIssuedView.textLabel.text = "Report Issued By"
+        reportIssuedView.textField.placeholder = "Report Issued By".localize
+        reportIssuedView.textLabel.text = "Report Issued By".localize
         reportIssuedView.starImage.isHidden = true
         
         
-        specialityView.textField.placeholder = "Speciality"
-        specialityView.textLabel.text = "Speciality"
+        specialityView.textField.placeholder = "Speciality".localize
+        specialityView.textLabel.text = "Speciality".localize
         specialityView.starImage.isHidden = true
         
         
-        reportDateView.textLabel.text = "Report Date"
-        reportDateView.textField.placeholder = "DD/MM/YYYY"
+        reportDateView.textLabel.text = "Report Date".localize
+        reportDateView.textField.placeholder = "DD/MM/YYYY".localize
         reportDateView.starImage.isHidden = true
         reportDateView.viewController = self
         
         
+        
+        multipleDisabilityView.textLabel.text = "Multiple Disability".localize
+        multipleDisabilityView.firstlabel.text = "Intellectual".localize
+        multipleDisabilityView.secondLabel.text = "Physical".localize
+        multipleDisabilityView.thirdLabel.text = "ADHD".localize
+        multipleDisabilityView.fourthLabel.text = "Hearing".localize
+        multipleDisabilityView.fifthLabel.text = "Autism".localize
+        multipleDisabilityView.sixthLabel.text = "Hearing- Visual".localize
+        multipleDisabilityView.seventhLabel.text = "Visual".localize
+
         
         let gradient = CAGradientLayer()
         gradient.frame = self.nextButton.bounds
@@ -118,6 +147,17 @@ class diagnosisInformationViewController: UIViewController {
         self.previousButton.layer.masksToBounds = true
     }
     
+    
+    func fillFields() {
+        self.diagnosisInformationView.textField.text = self.newCardItem.DiagnosisInformation
+        self.reportIssuedView.textField.text = self.newCardItem.ReportIssuedBy
+        self.specialityView.textField.text = self.newCardItem.Speciality
+        self.reportDateView.textField.text = self.newCardItem.ReportDate
+        
+        
+        
+        
+    }
     func setupToolbar() {
         toolBar.tintColor = AppConstants.BROWN_COLOR
         toolBar.barStyle = .default
@@ -183,13 +223,16 @@ class diagnosisInformationViewController: UIViewController {
     }
     
     func getSupportingEquipment() {
-        NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
+        let size = CGSize(width: 30, height: 30)
+            
+            
+            self.startAnimating(size, message: "Loading ...", messageFont: nil, type: .ballBeat)
         
         
         WebService.RetrieveSupportingEquipment { (json) in
             print(json)
             DispatchQueue.main.async {
-                NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+                self.stopAnimating(nil)
             }
             
             guard let code = json["code"] as? Int else {return}
@@ -268,6 +311,18 @@ class diagnosisInformationViewController: UIViewController {
                 DispatchQueue.main.async {
                     
                     self.authorityPickerView.reloadAllComponents()
+                    
+                    
+                    if self.isRenewal {
+                        guard let mItem = self.authorityArray.filter({ (item) -> Bool in
+                            item.AuthId == self.newCardItem.DiagnosisAuthorityId
+                        }).first else {
+                            return
+                        }
+                        let title = AppConstants.isArabic() ? mItem.AuthTitleAr : mItem.AuthTitleEn
+                        self.diagnosisAuthorityView.textField.text = title
+                    }
+                    
                 }
             }
             
@@ -302,6 +357,18 @@ class diagnosisInformationViewController: UIViewController {
                 DispatchQueue.main.async {
                     
                     self.disabilityTypePickerView.reloadAllComponents()
+                    
+               
+                    if self.isRenewal {
+                        guard let mItem = self.disabilityTypeArray.filter({ (item) -> Bool in
+                            item.TypeId == self.newCardItem.DisabilityTypeId
+                        }).first else {
+                            return
+                        }
+                        let title = AppConstants.isArabic() ? mItem.TypeTitleAr : mItem.TypeTitleEn
+                        self.disabilityTypeView.textField.text = title
+                    }
+                    
                 }
             }
             
@@ -337,14 +404,87 @@ class diagnosisInformationViewController: UIViewController {
                 DispatchQueue.main.async {
                     
                     self.disabilityLevelPickerView.reloadAllComponents()
+                    
+                    
+                    if self.isRenewal {
+                        guard let mItem = self.disabilityLevelArray.filter({ (item) -> Bool in
+                            item.LevelId == self.newCardItem.DisabilityLevelId
+                        }).first else {
+                            return
+                        }
+                        let title = AppConstants.isArabic() ? mItem.LevelTitleAr : mItem.LevelTitleEn
+                        self.disabilityLevelView.textField.text = title
+                    }
+                    
                 }
             }
             
         }
     }
-    @IBAction func nextButtonAction(_ sender: Any) {
+    
+    func validateFields() -> Bool{
         
-        self.performSegue(withIdentifier: "toAttachemnent", sender: self)
+        self.newCardItem.DiagnosisInformation = self.diagnosisInformationView.textField.text ?? ""
+        
+        var supportingString = ""
+        if supportingView.firstCheckBox.checkState == .checked {
+            supportingString += equipmentsArray[0].EquipId + "|"
+        }
+        if supportingView.secondCheckBox.checkState == .checked {
+            supportingString += equipmentsArray[1].EquipId + "|"
+        }
+        if supportingView.thirdCheckBox.checkState == .checked {
+            supportingString += equipmentsArray[2].EquipId + "|"
+        }
+        if supportingView.fourthCheckBox.checkState == .checked {
+            supportingString += equipmentsArray[3].EquipId + "|"
+        }
+        if supportingView.fifthCheckBox.checkState == .checked {
+            supportingString += equipmentsArray[4].EquipId + "|"
+        }
+        
+        if supportingView.sixthCheckBox.checkState == .checked {
+            supportingString += equipmentsArray[5].EquipId + "|"
+        }
+        if supportingView.sevenCheckBox.checkState == .checked {
+            supportingString += equipmentsArray[6].EquipId + "|"
+        }
+        
+        
+        self.newCardItem.SupportingEquipment = supportingString
+        self.newCardItem.NeedSupporter = self.needSupporterView.firstCheckBox.checkState == .checked ? "false" : "true"
+        self.newCardItem.CanLiveAlone = self.canLiveAloneView.firstCheckBox.checkState == .checked ? "false" : "true"
+        self.newCardItem.ReportIssuedBy = self.reportIssuedView.textField.text ?? ""
+        self.newCardItem.Speciality = self.specialityView.textField.text ?? ""
+        self.newCardItem.ReportDate = self.reportDateView.textField.text ?? ""
+        
+        
+        
+        if self.newCardItem.DiagnosisAuthorityId == "" ||
+        self.newCardItem.DisabilityTypeId == "" ||
+        self.newCardItem.DiagnosisInformation == "" ||
+        self.newCardItem.SupportingEquipment == "" ||
+        self.newCardItem.NeedSupporter == "" ||
+            self.newCardItem.CanLiveAlone == ""  {
+            
+            Utils.showAlertWith(title: "Error".localize, message: "Please Fill All Fields".localize, viewController: self)
+            return false
+        }
+        return true 
+    }
+    @IBAction func nextButtonAction(_ sender: Any) {
+        if validateFields() {
+            self.performSegue(withIdentifier: "toAttachemnent", sender: self)
+        }
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toAttachemnent" {
+            let dest = segue.destination as! newCardAttachemnetViewController
+            dest.newCardItem = self.newCardItem
+            dest.isRenewal = isRenewal
+        }
     }
 }
 extension diagnosisInformationViewController: UIPickerViewDelegate , UIPickerViewDataSource {
@@ -396,6 +536,7 @@ extension diagnosisInformationViewController: UIPickerViewDelegate , UIPickerVie
            
             //childItem.emirateID = item.id
             self.diagnosisAuthorityView.textField.text = AppConstants.isArabic() ? item.AuthTitleAr :  item.AuthTitleEn
+            self.newCardItem.DiagnosisAuthorityId = item.AuthId
         }else if pickerView == disabilityLevelPickerView{
             let item = disabilityLevelArray[row]
             
@@ -403,6 +544,7 @@ extension diagnosisInformationViewController: UIPickerViewDelegate , UIPickerVie
            
             //childItem.emirateID = item.id
             self.disabilityLevelView.textField.text = AppConstants.isArabic() ? item.LevelTitleAr :  item.LevelTitleEn
+            self.newCardItem.DisabilityLevelId = item.LevelId
         }else if pickerView == disabilityTypePickerView{
             let item = disabilityTypeArray[row]
             
@@ -410,6 +552,25 @@ extension diagnosisInformationViewController: UIPickerViewDelegate , UIPickerVie
            
             //childItem.emirateID = item.id
             self.disabilityTypeView.textField.text = AppConstants.isArabic() ? item.TypeTitleAr :  item.TypeTitleEn
+            self.newCardItem.DisabilityTypeId = item.TypeId
+            
+            
+            if item.TypeTitleEn == "Multiple Disability" {
+                
+                mDisabilityHeight.constant = 250
+                    
+                 mDisabilityVHeight.constant = 30
+                
+                 
+                 multipleDisabilityView.isHidden = false
+            }else{
+                mDisabilityHeight.constant = 0
+                    
+                 mDisabilityVHeight.constant = 0
+                
+                 
+                 multipleDisabilityView.isHidden = true
+            }
         }
         
     }

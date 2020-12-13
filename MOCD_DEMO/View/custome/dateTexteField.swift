@@ -9,6 +9,11 @@
 import Foundation
 import UIKit
 
+protocol refreshDelegate {
+    func refreshDateView()
+    func refreshMultipleView()
+}
+
 @IBDesignable
 class dateTexteField: UIView ,WWCalendarTimeSelectorProtocol  , NibLoadable{
     
@@ -17,6 +22,11 @@ class dateTexteField: UIView ,WWCalendarTimeSelectorProtocol  , NibLoadable{
     @IBOutlet var textField: UITextField!
     @IBOutlet var calendarButton: UIButton!
     
+    
+    
+    var delegate: refreshDelegate?
+    
+    var date: Date = Date()
     var viewController: UIViewController!
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -68,7 +78,9 @@ class dateTexteField: UIView ,WWCalendarTimeSelectorProtocol  , NibLoadable{
         textField.text = date.stringFromFormat("MM/dd/yyyy")
         
         
-       
+        self.date = date
+        
+        delegate?.refreshDateView()
         
         let formatter = DateFormatter()
        

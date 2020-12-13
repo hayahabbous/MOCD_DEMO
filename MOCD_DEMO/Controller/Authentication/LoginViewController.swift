@@ -14,7 +14,7 @@ import Reachability
 import NVActivityIndicatorView
 
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController ,NVActivityIndicatorViewable{
     
     
     @IBOutlet var userNameView: textFieldMandatory!
@@ -31,7 +31,7 @@ class LoginViewController: UIViewController {
     //@IBOutlet var passwordTextField: SkyFloatingLabelTextFieldWithIcon!
     @IBOutlet var loginButton: UIButton!
     
-    let activityData = ActivityData()
+    let nvactivity = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
     var activityIndicator: NVActivityIndicatorView!
     
     override func viewDidLoad() {
@@ -114,7 +114,11 @@ class LoginViewController: UIViewController {
     func login() {
     
         DispatchQueue.main.async {
-             NVActivityIndicatorPresenter.sharedInstance.startAnimating(self.activityData)
+            let size = CGSize(width: 30, height: 30)
+            
+            
+            self.startAnimating(size, message: "Loading ...", messageFont: nil, type: .ballBeat)
+             //NVActivityIndicatorPresenter.sharedInstance.startAnimating(self.activityData)
             //self.view.isUserInteractionEnabled = false
         }
         
@@ -130,7 +134,7 @@ class LoginViewController: UIViewController {
             
             
             DispatchQueue.main.async {
-                NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+                self.stopAnimating(nil)
                 //self.view.isUserInteractionEnabled = false
             }
             guard let code = json["code"] as? Int else {return}
@@ -184,12 +188,15 @@ class LoginViewController: UIViewController {
             
             //self.activityIndicatroView.startAnimating()
             self.loginButton.isEnabled = false
-            NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
+            let size = CGSize(width: 30, height: 30)
+            
+            
+            self.startAnimating(size, message: "Loading ...", messageFont: nil, type: .ballBeat)
             DispatchQueue.main.async(execute: {() -> Void in
                 PFUser.logInWithUsername(inBackground: email, password: password, block: {(user, error) in
                     
                     DispatchQueue.main.async {
-                        NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+                        self.stopAnimating(nil)
                     }
                     if (user != nil) {
                         //TODO need to be checked after moving to Swift ...

@@ -10,7 +10,76 @@ import Foundation
 import UIKit
 import NVActivityIndicatorView
 
-class ApplicantCardDetailsVC: UIViewController ,serviceProtocol{
+
+struct newCardStruct {
+    
+    var ApplicantTypeId: String = "1"
+    var NationalityId:String = "1"
+    var IdentificationNo: String  = "7842543222223477232342"
+    var expireVisaDate: String = ""
+    var UID: String  = "123"
+    var FirstNameAR:String  = "test"
+    var FatherNameAR:String = "test"
+    var GrandfatherNameAR:String = "test"
+    var FamilyNameAR:String = "test"
+    var FirstNameEN:String = "test"
+    var FatherNameEN:String = "test"
+    var GrandfatherNameEN:String = "test"
+    var FamilyNameEN:String = "test"
+    var GenderId:String = "1"
+    var DateOfBirth:String = "09/02/2020"
+    var IsStudent:String = "true"
+    var MaritalStatusId:String = "1"
+    var AccommodationTypeId:String = "1"
+    var Address:String = "test"
+    var EmirateId:String = "1"
+    var POBox:String = "1234"
+    var MobileNo:String = "1234"
+    var OtherMobileNo:String = "1234"
+    var PhoneNo:String = "1234"
+    var Email:String = "h@g.com"
+    var MakaniNo:String = "12345"
+    var XCoord:String = "1234"
+    var YCoord:String = "1234"
+    var DiagnosisAuthorityId:String = "1"
+    var DiagnosisInformation:String = "test"
+    var DisabilityTypeId:String = "1"
+    var DisabilityLevelId:String = "1"
+    var SupportingEquipment:String = "1|2|"
+    var NeedSupporter:String = "false"
+    var CanLiveAlone:String = "false"
+    var ReportIssuedBy:String = "test"
+    var Speciality:String = "test"
+    var ReportDate:String = "09/02/2020"
+    var SecurityToken:String = "672382249327378423"
+    var UserId:String = ""
+    var OrganizationId: String = ""
+    var ResidenceExpiryDate: String = ""
+    var WorkingStatusId: String = ""
+    var WorkFieldId: String = ""
+    var Company: String = ""
+    var InstitutionId: String = ""
+    var CenterId: String = ""
+
+    var disabledCardNumber: String = ""
+    var cardIssueDate: String = ""
+    var cardExpiryDate: String = ""
+    
+    
+    
+    
+    var ServiceDocTypeIds:String = ""
+    var allFiles: [MOCDReceivedDocumen] = []
+}
+class ApplicantCardDetailsVC: UIViewController ,serviceProtocol ,NVActivityIndicatorViewable ,refreshDelegate{
+    func refreshDateView() {
+        
+    }
+    
+    func refreshMultipleView() {
+        
+    }
+    
     func checkboxChnaged(value: Int) {
         if value == 1 {
             organizationHeightConstraint.constant = 0
@@ -26,21 +95,35 @@ class ApplicantCardDetailsVC: UIViewController ,serviceProtocol{
     }
     
     
+    var isRenewal: Bool = false
+    var newCardItem: newCardStruct!
     @IBOutlet var organizationHeightConstraint: NSLayoutConstraint!
     var organizationsArray: [MOCDOrganization] = []
     @IBOutlet var organizationPickerView: UIPickerView!
     @IBOutlet var typeView: multipleTextField!
     @IBOutlet var organizationView: selectTextField!
+    @IBOutlet var issueDae: dateTexteField!
+    @IBOutlet var issueDateHeight: NSLayoutConstraint!
+    @IBOutlet var expiryDate: dateTexteField!
+    @IBOutlet var expiryDateHeight: NSLayoutConstraint!
     @IBOutlet var submitButton: UIButton!
-    let activityData = ActivityData()
+    let nvactivity = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
     var toolBar = UIToolbar()
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if isRenewal {
+            
+        }else{
+            newCardItem = newCardStruct()
+        }
         setupView()
         
         setupPickerView()
         
         self.getOrganization()
+        
+        
     }
     
     func setupView() {
@@ -110,15 +193,56 @@ class ApplicantCardDetailsVC: UIViewController ,serviceProtocol{
         self.view.endEditing(true)
     }
     func setupFields() {
-        typeView.textLabel.text = "Type"
-        typeView.firstLabel.text = "Personal"
-        typeView.secondLabel.text = "Establishment"
+        typeView.textLabel.text = "Type".localize
+        typeView.firstLabel.text = "Personal".localize
+        typeView.secondLabel.text = "Establishment".localize
         
         typeView.delegate = self
         
         
-        organizationView.textLabel.text = "Organization"
-        organizationView.textField.placeholder = "Please Select"
+        organizationView.textLabel.text = "Organization".localize
+        organizationView.textField.placeholder = "Please Select".localize
+        
+        
+        
+        
+        issueDae.textLabel.text = "Issue Date".localize
+        //birthDateView.textField.placeholder = "Date of Birth"
+        issueDae.viewController = self
+        issueDae.delegate = self
+        
+        
+        
+        
+        expiryDate.textLabel.text = "ExpiryDate".localize
+        //birthDateView.textField.placeholder = "Date of Birth"
+        expiryDate.viewController = self
+        expiryDate.delegate = self
+        
+        
+        
+        if isRenewal {
+            
+            issueDae.isHidden = false
+            issueDateHeight.constant = 60
+            
+            expiryDate.isHidden = false
+            expiryDateHeight.constant = 60
+            
+            
+            
+            issueDae.textField.text = self.newCardItem.cardIssueDate
+            expiryDate.textField.text = self.newCardItem.cardExpiryDate
+            
+            
+        }else{
+            issueDae.isHidden = true
+            issueDateHeight.constant = 0
+            
+            expiryDate.isHidden = true
+            expiryDateHeight.constant = 0
+        }
+        
         
         organizationView.isHidden = true
         
@@ -126,13 +250,16 @@ class ApplicantCardDetailsVC: UIViewController ,serviceProtocol{
     
     
     func getOrganization() {
-        NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
+        let size = CGSize(width: 30, height: 30)
+            
+            
+            self.startAnimating(size, message: "Loading ...", messageFont: nil, type: .ballBeat)
         
         
         WebService.RetrieveOrganizations { (json) in
             print(json)
             DispatchQueue.main.async {
-                NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+                self.stopAnimating(nil)
             }
             
             guard let code = json["code"] as? Int else {return}
@@ -167,16 +294,28 @@ class ApplicantCardDetailsVC: UIViewController ,serviceProtocol{
                 
                 DispatchQueue.main.async {
                                    
-                    Utils.showAlertWith(title: "Error", message: message, viewController: self)
+                    Utils.showAlertWith(title: "Error".localize, message: message, viewController: self)
                     
                 }
             }
 
         }
     }
+    
+    func validateFields(){
+        
+    }
     @IBAction func nextButtonAction(_ sender: Any) {
         
         self.performSegue(withIdentifier: "toDisabledDetails", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDisabledDetails" {
+            let dest = segue.destination as! DisabledCardDetailsVC
+            dest.newCardItem = self.newCardItem
+            dest.isRenewal = isRenewal
+        }
     }
 }
 extension ApplicantCardDetailsVC: UIPickerViewDelegate , UIPickerViewDataSource {
@@ -198,7 +337,8 @@ extension ApplicantCardDetailsVC: UIPickerViewDelegate , UIPickerViewDataSource 
         let item = organizationsArray[row]
         let title = AppConstants.isArabic() ? item.OrgTitleAr : item.OrgTitleEn
         organizationView.textField.text = title
-        
+     
+        self.newCardItem.OrganizationId = item.OrgId
     }
 
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {

@@ -11,10 +11,12 @@ import UIKit
 import NVActivityIndicatorView
 
 
-class newCardAttachemnetViewController: UIViewController {
+class newCardAttachemnetViewController: UIViewController ,UIImagePickerControllerDelegate, UINavigationControllerDelegate ,NVActivityIndicatorViewable{
     
+    let nvactivity = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+    var newCardItem: newCardStruct = newCardStruct()
     var docsArray: [MOCDDocument] = []
-    let activityData = ActivityData()
+    var isRenewal: Bool = false
     @IBOutlet var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,74 +30,248 @@ class newCardAttachemnetViewController: UIViewController {
     }
     
     
-    func getDocuments() {
-        NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
+    func checkIfRenewal() {
         
         
-        WebService.RetrieveNewDisabledCardDocumentTypes { (json) in
-            print(json)
-            DispatchQueue.main.async {
-                NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+        if isRenewal {
+           
+            
+            for r in newCardItem.allFiles {
+                guard let docItem = docsArray.filter({ (f) -> Bool in
+                    f.ServiceDocTypeId == r.ServiceDocTypeId
+                }).first else {
+                    continue
+                }
+                
+                if docItem.IsMany == "1"{
+                    
+                    docItem.filesArray.append(r.documentURL!)
+                    
+                }else{
+                    docItem.filesArray = [r.documentURL!]
+                }
+                
             }
             
-            guard let code = json["code"] as? Int else {return}
-            guard let message = json["message"] as? String else {return}
-            
-            if code == 200 {
-                
-                guard let data = json["data"] as? [String: Any] else{return}
-                guard let result = data["result"] as? [String: Any] else {return}
-                guard let list = result["list"] as? [[String: Any]] else {return}
-                
-                for r in list {
-                let docItem: MOCDDocument = MOCDDocument()
-                    
-                    
-                    docItem.DocTypeTitleEn = String(describing: r["DocTypeTitleEn"] ?? "")
-                    docItem.DocTypeTitleAr = String(describing: r["DocTypeTitleAr"] ?? "")
-                    docItem.ValidExtension = String(describing: r["ValidExtension"] ?? "")
-                    docItem.StatusTitleEN = String(describing: r["StatusTitleEN"] ?? "")
-                    docItem.StatusTitleAR = String(describing: r["StatusTitleAR"] ?? "")
-                    docItem.ServiceDocTypeId = String(describing: r["ServiceDocTypeId"] ?? "")
-                    docItem.ServiceId = String(describing: r["ServiceId"] ?? "")
-                    docItem.DocTypeId = String(describing: r["DocTypeId"] ?? "")
-                    docItem.StatusId = String(describing: r["StatusId"] ?? "")
-                    docItem.IsMandatory = String(describing: r["IsMandatory"] ?? "")
-                    docItem.IsMany = String(describing: r["IsMany"] ?? "")
-                    
-                      
-                    
-                    
-                    
-                    
-                    self.docsArray.append(docItem)
-                    
-                    
-                }
-                
-                DispatchQueue.main.async {
-                    
-                    self.tableView.reloadData()
-                    //self.organizationPickerView.reloadAllComponents()
-                }
-            }else{
-                
-                
-                DispatchQueue.main.async {
-                                   
-                    Utils.showAlertWith(title: "Error", message: message, viewController: self)
-                    
-                }
-            }
-
         }
     }
     
-    @objc func submitAction() {
-        servicesRequest.CreateDisabledCardRequest_ByObject(NationalityId: "1", IdentificationNo: "1234234248889", UID: "r34r34r", FirstNameAR: "vjfdvdfv", FatherNameAR: "vjfdvdfv", GrandfatherNameAR: "vjfdvdfv", FamilyNameAR: "vjfdvdfv", FirstNameEN: "vjfdvdfv", FatherNameEN: "vjfdvdfv", GrandfatherNameEN: "vjfdvdfv", FamilyNameEN: "vjfdvdfv", GenderId: "1", DateOfBirth: "05/08/2009", IsStudent: "false", MaritalStatusId: "1", AccommodationTypeId: "1", Address: "ndjskjvc1", EmirateId: "1", POBox: "fjdfds", MobileNo: "fjdfds", OtherMobileNo: "fjdfds", PhoneNo: "fjdfds", Email: "fjdfds@f.c", MakaniNo: "dsbvjsfdjsvs", XCoord: "dsbvjsfdjsvs", YCoord: "dsvj", DiagnosisAuthorityId: "1", DiagnosisInformation: "ffewf", DisabilityTypeId: "1", DisabilityLevelId: "1", SupportingEquipment: "fnksjvs", NeedSupporter: "false", CanLiveAlone: "false", ReportIssuedBy: "fbvjhf", Speciality: "fbvjhf", ReportDate: "05/08/2009", SecurityToken: "672382249327378423", UserId: "365e1b6e-85f4-45c1-b43c-55c7d769f2f8", ServiceDocTypeIds: "3710,2,19,", item: nil, view: self.view) { (json, _, error) in
+    func getDocuments() {
+        let size = CGSize(width: 30, height: 30)
             
-            print(json)
+            
+            self.startAnimating(size, message: "Loading ...", messageFont: nil, type: .ballBeat)
+        
+        if isRenewal{
+            WebService.RetrieveRenewDisabledCardDocumentTypes { (json) in
+                print(json)
+                DispatchQueue.main.async {
+                    self.stopAnimating(nil)
+                }
+                
+                guard let code = json["code"] as? Int else {return}
+                guard let message = json["message"] as? String else {return}
+                
+                if code == 200 {
+                    
+                    guard let data = json["data"] as? [String: Any] else{return}
+                    guard let result = data["result"] as? [String: Any] else {return}
+                    guard let list = result["list"] as? [[String: Any]] else {return}
+                    
+                    for r in list {
+                    let docItem: MOCDDocument = MOCDDocument()
+                        
+                        
+                        docItem.DocTypeTitleEn = String(describing: r["DocTypeTitleEn"] ?? "")
+                        docItem.DocTypeTitleAr = String(describing: r["DocTypeTitleAr"] ?? "")
+                        docItem.ValidExtension = String(describing: r["ValidExtension"] ?? "")
+                        docItem.StatusTitleEN = String(describing: r["StatusTitleEN"] ?? "")
+                        docItem.StatusTitleAR = String(describing: r["StatusTitleAR"] ?? "")
+                        docItem.ServiceDocTypeId = String(describing: r["ServiceDocTypeId"] ?? "")
+                        docItem.ServiceId = String(describing: r["ServiceId"] ?? "")
+                        docItem.DocTypeId = String(describing: r["DocTypeId"] ?? "")
+                        docItem.StatusId = String(describing: r["StatusId"] ?? "")
+                        docItem.IsMandatory = String(describing: r["IsMandatory"] ?? "")
+                        docItem.IsMany = String(describing: r["IsMany"] ?? "")
+                        
+                          
+                        
+                        
+                        
+                        
+                        self.docsArray.append(docItem)
+                        
+                        
+                    }
+                    
+                    DispatchQueue.main.async {
+                        
+                        self.checkIfRenewal()
+                        self.tableView.reloadData()
+                        //self.organizationPickerView.reloadAllComponents()
+                    }
+                }else{
+                    
+                    
+                    DispatchQueue.main.async {
+                                       
+                        Utils.showAlertWith(title: "Error", message: message, viewController: self)
+                        
+                    }
+                }
+
+            }
+        }else{
+            WebService.RetrieveNewDisabledCardDocumentTypes { (json) in
+                print(json)
+                DispatchQueue.main.async {
+                    self.stopAnimating(nil)
+                }
+                
+                guard let code = json["code"] as? Int else {return}
+                guard let message = json["message"] as? String else {return}
+                
+                if code == 200 {
+                    
+                    guard let data = json["data"] as? [String: Any] else{return}
+                    guard let result = data["result"] as? [String: Any] else {return}
+                    guard let list = result["list"] as? [[String: Any]] else {return}
+                    
+                    for r in list {
+                    let docItem: MOCDDocument = MOCDDocument()
+                        
+                        
+                        docItem.DocTypeTitleEn = String(describing: r["DocTypeTitleEn"] ?? "")
+                        docItem.DocTypeTitleAr = String(describing: r["DocTypeTitleAr"] ?? "")
+                        docItem.ValidExtension = String(describing: r["ValidExtension"] ?? "")
+                        docItem.StatusTitleEN = String(describing: r["StatusTitleEN"] ?? "")
+                        docItem.StatusTitleAR = String(describing: r["StatusTitleAR"] ?? "")
+                        docItem.ServiceDocTypeId = String(describing: r["ServiceDocTypeId"] ?? "")
+                        docItem.ServiceId = String(describing: r["ServiceId"] ?? "")
+                        docItem.DocTypeId = String(describing: r["DocTypeId"] ?? "")
+                        docItem.StatusId = String(describing: r["StatusId"] ?? "")
+                        docItem.IsMandatory = String(describing: r["IsMandatory"] ?? "")
+                        docItem.IsMany = String(describing: r["IsMany"] ?? "")
+                        
+                          
+                        
+                        
+                        
+                        
+                        self.docsArray.append(docItem)
+                        
+                        
+                    }
+                    
+                    DispatchQueue.main.async {
+                        
+                        self.tableView.reloadData()
+                        //self.organizationPickerView.reloadAllComponents()
+                    }
+                }else{
+                    
+                    
+                    DispatchQueue.main.async {
+                                       
+                        Utils.showAlertWith(title: "Error", message: message, viewController: self)
+                        
+                    }
+                }
+
+            }
         }
+        
+        
+    }
+    
+   
+    
+    @objc func submitAction() {
+        
+        
+        var mocd_user = MOCDUser.getMOCDUser()
+        var docTypeId = ""
+        var allFiles: [URL] = []
+        for item in docsArray {
+            
+            for fileItem in item.filesArray {
+                docTypeId += item.ServiceDocTypeId + ","
+                allFiles.append(fileItem.url)
+            }
+            
+        }
+        
+        
+        print(docTypeId)
+        print(allFiles)
+        if isRenewal {
+            
+            
+            let size = CGSize(width: 30, height: 30)
+            
+            
+            self.startAnimating(size, message: "Loading ...", messageFont: nil, type: .ballBeat)
+            disabledCardRequests.CreateRenewDisabledCardRequest_ByObject(ApplicantTypeId: self.newCardItem.ApplicantTypeId ,NationalityId: newCardItem.NationalityId, IdentificationNo: newCardItem.IdentificationNo, UID: newCardItem.UID, FirstNameAR: newCardItem.FirstNameAR, FatherNameAR: newCardItem.FatherNameAR, GrandfatherNameAR: newCardItem.GrandfatherNameAR, FamilyNameAR: newCardItem.FamilyNameAR, FirstNameEN: newCardItem.FirstNameEN, FatherNameEN: newCardItem.FatherNameEN, GrandfatherNameEN: newCardItem.GrandfatherNameEN, FamilyNameEN: newCardItem.FamilyNameEN, GenderId: newCardItem.GenderId, DateOfBirth: newCardItem.DateOfBirth, IsStudent: newCardItem.IsStudent, MaritalStatusId: newCardItem.MaritalStatusId, AccommodationTypeId: newCardItem.AccommodationTypeId, Address: newCardItem.Address, EmirateId: newCardItem.EmirateId, POBox: newCardItem.POBox, MobileNo: newCardItem.MobileNo, OtherMobileNo: newCardItem.OtherMobileNo, PhoneNo: newCardItem.PhoneNo, Email: newCardItem.Email, MakaniNo: newCardItem.MakaniNo, XCoord: newCardItem.XCoord, YCoord: newCardItem.YCoord, DiagnosisAuthorityId: newCardItem.DiagnosisAuthorityId, DiagnosisInformation: newCardItem.DiagnosisInformation, DisabilityTypeId: newCardItem.DisabilityTypeId, DisabilityLevelId: newCardItem.DisabilityLevelId, SupportingEquipment: newCardItem.SupportingEquipment, NeedSupporter: newCardItem.NeedSupporter, CanLiveAlone: newCardItem.CanLiveAlone, ReportIssuedBy: newCardItem.ReportIssuedBy, Speciality: newCardItem.Speciality, ReportDate: newCardItem.ReportDate,OrganizationId: self.newCardItem.OrganizationId , ResidenceExpiryDate: self.newCardItem.ResidenceExpiryDate ,WorkingStatusId: self.newCardItem.WorkingStatusId , WorkFieldId: self.newCardItem.WorkFieldId,Company: self.newCardItem.WorkingStatusId , InstitutionId: self.newCardItem.InstitutionId , CenterId: self.newCardItem.CenterId, SecurityToken: newCardItem.SecurityToken, UserId: mocd_user?.UserId ?? "",DisabledCardNo: self.newCardItem.disabledCardNumber , cardIssueDate: self.newCardItem.cardIssueDate , cardExpiryDate: self.newCardItem.cardExpiryDate, ServiceDocTypeIds: docTypeId,filesArray:allFiles, item: nil, view: self.view) { (json, _, error) in
+                           
+                          
+                print(json)
+                           
+                
+                DispatchQueue.main.async {
+                
+                    self.stopAnimating(nil)
+                 
+                }
+                guard let code = json["code"] as? Int else {return}
+                
+                let message = json["message"] as? String ?? ""
+                
+                if code == 10 {
+                
+                    self.navigationController?.dismiss(animated: true) {
+                    
+                        Utils.showAlertWith(title: "Success", message: message, viewController: self)
+                        
+                    }
+                    
+                }else{
+                
+                    Utils.showAlertWith(title: "Error", message: message, viewController: self)
+                        
+                }
+            }
+            
+        }else{
+            let size = CGSize(width: 30, height: 30)
+            
+            
+            self.startAnimating(size, message: "Loading ...", messageFont: nil, type: .ballBeat)
+            
+
+            servicesRequest.CreateDisabledCardRequest_ByObject(ApplicantTypeId: self.newCardItem.ApplicantTypeId, NationalityId: newCardItem.NationalityId, IdentificationNo: newCardItem.IdentificationNo, UID: newCardItem.UID, FirstNameAR: newCardItem.FirstNameAR, FatherNameAR: newCardItem.FatherNameAR, GrandfatherNameAR: newCardItem.GrandfatherNameAR, FamilyNameAR: newCardItem.FamilyNameAR, FirstNameEN: newCardItem.FirstNameEN, FatherNameEN: newCardItem.FatherNameEN, GrandfatherNameEN: newCardItem.GrandfatherNameEN, FamilyNameEN: newCardItem.FamilyNameEN, GenderId: newCardItem.GenderId, DateOfBirth: newCardItem.DateOfBirth, IsStudent: newCardItem.IsStudent, MaritalStatusId: newCardItem.MaritalStatusId, AccommodationTypeId: newCardItem.AccommodationTypeId, Address: newCardItem.Address, EmirateId: newCardItem.EmirateId, POBox: newCardItem.POBox, MobileNo: newCardItem.MobileNo, OtherMobileNo: newCardItem.OtherMobileNo, PhoneNo: newCardItem.PhoneNo, Email: newCardItem.Email, MakaniNo: newCardItem.MakaniNo, XCoord: newCardItem.XCoord, YCoord: newCardItem.YCoord, DiagnosisAuthorityId: newCardItem.DiagnosisAuthorityId, DiagnosisInformation: newCardItem.DiagnosisInformation, DisabilityTypeId: newCardItem.DisabilityTypeId, DisabilityLevelId: newCardItem.DisabilityLevelId, SupportingEquipment: newCardItem.SupportingEquipment, NeedSupporter: newCardItem.NeedSupporter, CanLiveAlone: newCardItem.CanLiveAlone, ReportIssuedBy: newCardItem.ReportIssuedBy, Speciality: newCardItem.Speciality, ReportDate: newCardItem.ReportDate,OrganizationId: self.newCardItem.OrganizationId , ResidenceExpiryDate: self.newCardItem.ResidenceExpiryDate ,WorkingStatusId: self.newCardItem.WorkingStatusId , WorkFieldId: self.newCardItem.WorkFieldId,Company: self.newCardItem.WorkingStatusId , InstitutionId: self.newCardItem.InstitutionId , CenterId: self.newCardItem.CenterId, SecurityToken:  newCardItem.SecurityToken, UserId: mocd_user?.UserId ?? "", ServiceDocTypeIds: docTypeId,filesArray:allFiles, item: nil, view: self.view) { (json, _, error) in
+                
+                print(json)
+                
+                DispatchQueue.main.async {
+                    self.stopAnimating(nil)
+                    
+                    
+                }
+                
+                guard let code = json["code"] as? Int else {return}
+                let message = json["message"] as? String ?? ""
+                if code == 10 {
+                    self.navigationController?.dismiss(animated: true) {
+                        Utils.showAlertWith(title: "Success", message: message, viewController: self)
+                    }
+                }else{
+                    Utils.showAlertWith(title: "Error".localize, message: message, viewController: self)
+                }
+                
+            }
+        }
+        
+ 
     }
 }
 extension newCardAttachemnetViewController: UITableViewDelegate , UITableViewDataSource {
