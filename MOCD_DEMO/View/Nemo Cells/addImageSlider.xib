@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="addImageSlider" id="1yq-jv-YNu" customClass="addImageSlider" customModule="Sale96" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="328" height="200"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="328" height="200"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ce1-TK-7aK">
+                        <rect key="frame" x="0.0" y="0.0" width="328" height="200"/>
+                    </imageView>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GwG-Cf-JLf">
+                        <rect key="frame" x="0.0" y="168" width="328" height="32"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="32" id="L2K-OE-dxr"/>
+                        </constraints>
+                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="as4-4G-aRC">
+                        <rect key="frame" x="300" y="8" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="0vh-Wf-l4o"/>
+                            <constraint firstAttribute="height" constant="20" id="2Fn-Cn-ATw"/>
+                        </constraints>
+                        <state key="normal" image="delete"/>
+                        <connections>
+                            <action selector="deleteImgAction:" destination="1yq-jv-YNu" eventType="touchUpInside" id="M2R-nL-6gk"/>
+                        </connections>
+                    </button>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="vOw-Th-Qbh" firstAttribute="trailing" secondItem="GwG-Cf-JLf" secondAttribute="trailing" id="BEM-X6-xsn"/>
+                <constraint firstItem="Ce1-TK-7aK" firstAttribute="bottom" secondItem="GwG-Cf-JLf" secondAttribute="bottom" id="But-I0-HJt"/>
+                <constraint firstItem="Ce1-TK-7aK" firstAttribute="leading" secondItem="GwG-Cf-JLf" secondAttribute="leading" id="Luf-2v-GoZ"/>
+                <constraint firstItem="vOw-Th-Qbh" firstAttribute="bottom" secondItem="GwG-Cf-JLf" secondAttribute="bottom" id="RKn-oc-e4j"/>
+                <constraint firstItem="Ce1-TK-7aK" firstAttribute="trailing" secondItem="as4-4G-aRC" secondAttribute="trailing" constant="8" id="cwj-0I-e1F"/>
+                <constraint firstItem="Ce1-TK-7aK" firstAttribute="top" secondItem="1yq-jv-YNu" secondAttribute="top" id="cxw-We-3F7"/>
+                <constraint firstItem="as4-4G-aRC" firstAttribute="top" secondItem="1yq-jv-YNu" secondAttribute="top" constant="8" id="lCc-qB-I8T"/>
+                <constraint firstItem="GwG-Cf-JLf" firstAttribute="leading" secondItem="vOw-Th-Qbh" secondAttribute="leading" id="nMS-aY-2dJ"/>
+                <constraint firstItem="Ce1-TK-7aK" firstAttribute="trailing" secondItem="GwG-Cf-JLf" secondAttribute="trailing" id="zeo-5q-eDb"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vOw-Th-Qbh"/>
+            <size key="customSize" width="328" height="200"/>
+            <connections>
+                <outlet property="deleteImage" destination="as4-4G-aRC" id="YCF-ex-ga1"/>
+                <outlet property="descTextField" destination="GwG-Cf-JLf" id="we3-cd-gZz"/>
+                <outlet property="img" destination="Ce1-TK-7aK" id="t90-FL-WIl"/>
+            </connections>
+            <point key="canvasLocation" x="-435.19999999999999" y="123.23838080959521"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="delete" width="30" height="30"/>
+    </resources>
+</document>

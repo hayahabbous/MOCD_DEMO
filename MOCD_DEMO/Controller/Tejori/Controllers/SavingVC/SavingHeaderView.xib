@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="MyriadPro-Regular.otf">
+            <string>MyriadPro-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="SavingHeaderView" id="iN0-l3-epB" customClass="SavingHeaderView" customModule="SmartTejoori" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VJa-n9-XkY">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SAVING LIST" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="few-82-1Mu">
+                            <rect key="frame" x="63" y="9" width="250" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="250" id="UeF-yJ-nGR"/>
+                                <constraint firstAttribute="height" constant="21" id="sPx-EQ-oeO"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="14"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.0039215686269999999" green="0.36724845540000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="few-82-1Mu" firstAttribute="centerY" secondItem="VJa-n9-XkY" secondAttribute="centerY" id="dv5-IG-hvB"/>
+                        <constraint firstItem="few-82-1Mu" firstAttribute="centerX" secondItem="VJa-n9-XkY" secondAttribute="centerX" id="tGc-NE-ZYj"/>
+                        <constraint firstAttribute="height" constant="40" id="zv9-Mo-2yf"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="VJa-n9-XkY" secondAttribute="trailing" id="kLp-jd-OgZ"/>
+                <constraint firstItem="VJa-n9-XkY" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="mqq-yb-cDN"/>
+                <constraint firstItem="VJa-n9-XkY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="tCB-OR-eUv"/>
+            </constraints>
+            <connections>
+                <outlet property="lblSavingHeaderTitle" destination="few-82-1Mu" id="kVq-Rk-b7z"/>
+            </connections>
+            <point key="canvasLocation" x="65" y="48"/>
+        </view>
+    </objects>
+</document>

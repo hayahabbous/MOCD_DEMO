@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AssessmentCollectionViewCell" id="z0W-Vq-4EO" customClass="AssessmentCollectionViewCell" customModule="MOCD_DEMO" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="428" height="176"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                <rect key="frame" x="0.0" y="0.0" width="428" height="176"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How many children you have ?" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cxx-qk-UUK">
+                        <rect key="frame" x="20" y="16" width="388" height="18"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z1M-6y-1us">
+                        <rect key="frame" x="20" y="42" width="24.333333333333329" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sometimes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E45-oS-j1d">
+                        <rect key="frame" x="20" y="68" width="76.666666666666671" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not Yet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sK6-ar-Ycs">
+                        <rect key="frame" x="19.999999999999996" y="94" width="50.666666666666657" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t5K-KY-NXd" customClass="M13Checkbox" customModule="M13Checkbox">
+                        <rect key="frame" x="388" y="42" width="20" height="18"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="0.28761938949999999" green="0.72652105440000003" blue="0.70952203160000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="wJe-1D-nhZ"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="_IBMarkType" value="2"/>
+                            <userDefinedRuntimeAttribute type="string" keyPath="_IBBoxType" value="Square"/>
+                            <userDefinedRuntimeAttribute type="color" keyPath="secondaryTintColor">
+                                <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="secondaryCheckmarkTintColor">
+                                <color key="value" red="0.28761938949999999" green="0.72652105440000003" blue="0.70952203160000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r4R-JA-kAJ" customClass="M13Checkbox" customModule="M13Checkbox">
+                        <rect key="frame" x="388" y="68" width="20" height="26"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="0.28761938949999999" green="0.72652105440000003" blue="0.70952203160000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="jHv-nV-fvV"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="_IBMarkType" value="2"/>
+                            <userDefinedRuntimeAttribute type="string" keyPath="_IBBoxType" value="Square"/>
+                            <userDefinedRuntimeAttribute type="color" keyPath="secondaryTintColor">
+                                <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="secondaryCheckmarkTintColor">
+                                <color key="value" red="0.28761938949999999" green="0.72652105440000003" blue="0.70952203160000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SLk-tJ-mXz" customClass="M13Checkbox" customModule="M13Checkbox">
+                        <rect key="frame" x="388" y="94" width="20" height="18"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="0.28761938949999999" green="0.72652105440000003" blue="0.70952203160000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="_IBBoxType" value="Square"/>
+                            <userDefinedRuntimeAttribute type="color" keyPath="secondaryTintColor">
+                                <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="secondaryCheckmarkTintColor">
+                                <color key="value" red="0.28761938949999999" green="0.72652105440000003" blue="0.70952203160000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="Cxx-qk-UUK" firstAttribute="leading" secondItem="Z1M-6y-1us" secondAttribute="leading" id="845-IY-rAL"/>
+                <constraint firstItem="sK6-ar-Ycs" firstAttribute="leading" secondItem="E45-oS-j1d" secondAttribute="leading" id="8AN-Xf-QEp"/>
+                <constraint firstItem="SLk-tJ-mXz" firstAttribute="leading" secondItem="r4R-JA-kAJ" secondAttribute="leading" id="8WH-qH-Hm6"/>
+                <constraint firstItem="t5K-KY-NXd" firstAttribute="bottom" secondItem="Z1M-6y-1us" secondAttribute="bottom" id="GrD-Qi-jug"/>
+                <constraint firstItem="Cxx-qk-UUK" firstAttribute="leading" secondItem="z0W-Vq-4EO" secondAttribute="leading" constant="20" id="HYa-Gx-88N"/>
+                <constraint firstItem="sK6-ar-Ycs" firstAttribute="top" secondItem="E45-oS-j1d" secondAttribute="bottom" constant="8" id="Iii-6G-Ao6"/>
+                <constraint firstItem="E45-oS-j1d" firstAttribute="top" secondItem="Z1M-6y-1us" secondAttribute="bottom" constant="8" id="L3K-EX-bhU"/>
+                <constraint firstItem="SLk-tJ-mXz" firstAttribute="top" secondItem="sK6-ar-Ycs" secondAttribute="top" id="LAX-o4-gSi"/>
+                <constraint firstItem="SLk-tJ-mXz" firstAttribute="trailing" secondItem="t5K-KY-NXd" secondAttribute="trailing" id="NMP-n0-VLl"/>
+                <constraint firstItem="r4R-JA-kAJ" firstAttribute="trailing" secondItem="t5K-KY-NXd" secondAttribute="trailing" id="WHn-2Y-id5"/>
+                <constraint firstItem="vnN-w8-jPp" firstAttribute="trailing" secondItem="Cxx-qk-UUK" secondAttribute="trailing" constant="20" id="adL-P2-5zb"/>
+                <constraint firstItem="SLk-tJ-mXz" firstAttribute="top" secondItem="r4R-JA-kAJ" secondAttribute="bottom" id="dFH-7B-kp6"/>
+                <constraint firstItem="vnN-w8-jPp" firstAttribute="trailing" secondItem="t5K-KY-NXd" secondAttribute="trailing" constant="20" id="jWb-z3-uvZ"/>
+                <constraint firstItem="t5K-KY-NXd" firstAttribute="top" secondItem="Z1M-6y-1us" secondAttribute="top" id="oYi-l7-vgT"/>
+                <constraint firstItem="Cxx-qk-UUK" firstAttribute="top" secondItem="z0W-Vq-4EO" secondAttribute="top" constant="16" id="sZe-LD-BlX"/>
+                <constraint firstItem="r4R-JA-kAJ" firstAttribute="top" secondItem="E45-oS-j1d" secondAttribute="top" id="t4n-ta-W1y"/>
+                <constraint firstItem="Z1M-6y-1us" firstAttribute="top" secondItem="Cxx-qk-UUK" secondAttribute="bottom" constant="8" symbolic="YES" id="vQU-Y1-7H8"/>
+                <constraint firstItem="E45-oS-j1d" firstAttribute="leading" secondItem="Z1M-6y-1us" secondAttribute="leading" id="xdj-ZS-QhL"/>
+                <constraint firstItem="SLk-tJ-mXz" firstAttribute="bottom" secondItem="sK6-ar-Ycs" secondAttribute="bottom" id="xyF-b0-4oI"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vnN-w8-jPp"/>
+            <size key="customSize" width="428" height="176"/>
+            <connections>
+                <outlet property="aCheckBox" destination="t5K-KY-NXd" id="KyB-cj-rgx"/>
+                <outlet property="answerOneLabel" destination="Z1M-6y-1us" id="CU1-mG-xAc"/>
+                <outlet property="answerThreeLabel" destination="sK6-ar-Ycs" id="13m-Gc-FaK"/>
+                <outlet property="answerTwoLabel" destination="E45-oS-j1d" id="uk8-U9-QP6"/>
+                <outlet property="bCheckBox" destination="r4R-JA-kAJ" id="E5J-eE-h5e"/>
+                <outlet property="cCheckBox" destination="SLk-tJ-mXz" id="Qjt-gJ-rjz"/>
+                <outlet property="questionNameLabel" destination="Cxx-qk-UUK" id="EhS-Xz-9MI"/>
+            </connections>
+            <point key="canvasLocation" x="-7.2463768115942031" y="126.5625"/>
+        </collectionViewCell>
+    </objects>
+</document>
