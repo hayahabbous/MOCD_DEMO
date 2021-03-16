@@ -29,6 +29,8 @@ import Alamofire
             urlString = AppConstants.WEB_SERVER_MOCD_MARRIAGE_GRANT_DEV_SERVICE + WebServiceUrl
         }else if endpoint == "social" {
             urlString = AppConstants.WEB_SERVER_MOCD_SERVICES_SOCIAL_DEV + WebServiceUrl
+        }else if endpoint == "otp" {
+            urlString = AppConstants.WEB_SERVER_MOCD_MARRIAGE_GRANT_OTP + WebServiceUrl
         }else{
             urlString = AppConstants.WEB_SERVER_MOCD_URL + endpoint + "/" + WebServiceUrl
         }
@@ -150,6 +152,8 @@ import Alamofire
         }else if serviceType == "newCard" {
          
             urlString  = AppConstants.WEB_SERVER_MOCD_SERVICES_CARD_DEV + WebServiceUrl + "/"
+        }else if endpoint == "otp" {
+            urlString = AppConstants.WEB_SERVER_MOCD_MARRIAGE_GRANT_OTP + WebServiceUrl + "/"
         }else if serviceType == "social"{
             urlString  = AppConstants.WEB_SERVER_MOCD_SERVICES_SOCIAL_DEV + WebServiceUrl + "/"
         }else if serviceType == "master"{

@@ -9,9 +9,9 @@
 import Foundation
 import UIKit
 import M13Checkbox
+import NVActivityIndicatorView
 
-
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController ,NVActivityIndicatorViewable {
     
     @IBOutlet var securityPicker: UIPickerView!
     var imagePicker = UIImagePickerController()
@@ -45,6 +45,9 @@ class RegisterViewController: UIViewController {
     
     
     
+    var isUAEPass: Bool = false
+    var uaePassUserId: String = ""
+    var userid: String = ""
     
     var first_name: String = ""
     var last_name: String = ""
@@ -157,6 +160,15 @@ class RegisterViewController: UIViewController {
         confirmPasswordView.textField.placeholder = "Password Confirmation".localize
         confirmPasswordView.textField.isSecureTextEntry = true
         
+        
+        if isUAEPass {
+            firstNameView.textField.text = self.first_name
+            lastNameView.textField.text = self.last_name
+            emiratesIDView.textField.text = self.emirates_id
+            mobileView.textField.text = self.user_mobile
+            emailView.textField.text = self.user_email
+
+        }
     }
     func setupToolbar() {
         
@@ -363,21 +375,34 @@ class RegisterViewController: UIViewController {
             guard let code = json["code"] as? Int else {return}
             guard let data = json["data"] as? [String:Any] else {return}
             
-            guard let result = data["result"] as? [String:Any] else {return}
+            guard let message = json["message"] as? String else {return}
             
             
             if code != 10 {
-                let ResponseDescription = result["ResponseDescription"] as? String ?? ""
-                let ResponseTitle = result["ResponseTitle"] as? String ?? ""
+                //let ResponseDescription = result["ResponseDescription"] as? String ?? ""
+                //let ResponseTitle = result["ResponseTitle"] as? String ?? ""
                 
                 
                 DispatchQueue.main.async {
-                    Utils.showAlertWith(title: ResponseTitle, message: ResponseDescription, viewController: self)
+                    Utils.showAlertWith(title: "Error", message: message, viewController: self)
                 }
             }else{
-                DispatchQueue.main.async {
-                    self.navigationController?.popViewController(animated: true)
+                
+                guard let result = data["result"] as? String else {return}
+                
+                self.userid = result
+                
+                if self.isUAEPass{
+                    self.mapuUser(uaePassUserID: self.uaePassUserId, userId: self.userid)
+                }else{
+                    DispatchQueue.main.async {
+                        self.navigationController?.popViewController(animated: true)
+                    }
                 }
+            
+            
+                
+                
             }
             
             
@@ -392,6 +417,58 @@ class RegisterViewController: UIViewController {
                 
             }
             print(json)
+        }
+    }
+    
+    func mapuUser(uaePassUserID: String ,userId: String) {
+    
+        DispatchQueue.main.async {
+            let size = CGSize(width: 30, height: 30)
+            
+            
+            self.startAnimating(size, message: "Loading ...", messageFont: nil, type: .ballBeat)
+             //NVActivityIndicatorPresenter.sharedInstance.startAnimating(self.activityData)
+            //self.view.isUserInteractionEnabled = false
+        }
+        
+        
+
+        WebService.CreateUAEPassUserMapping(uaePassUserId: uaePassUserID, uaePassUserType: "SOAP3", userId: userId ) { (json) in
+            print(json)
+            
+            
+            DispatchQueue.main.async {
+                self.stopAnimating(nil)
+                //self.view.isUserInteractionEnabled = false
+            }
+            
+            
+            guard let code = json["code"] as? Int else {return}
+            guard let message = json["message"] as? String else {return}
+            
+            if code == 10 {
+               
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "Success", message: message, preferredStyle: .alert)
+                    
+                    let okAction = UIAlertAction(title: "Ok", style: .default) { (action) in
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                    
+                    alert.addAction(okAction)
+                    
+                    self.present(alert, animated: true, completion: nil)
+                }
+                
+                
+                
+                
+                
+            }else{
+                DispatchQueue.main.async {
+                    Utils.showAlertWith(title: "Error", message: message, viewController: self)
+                }
+            }
         }
     }
     @IBAction func submitButtonAction(_ sender: Any) {

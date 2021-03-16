@@ -30,9 +30,24 @@ class LoginViewController: UIViewController ,NVActivityIndicatorViewable{
     //@IBOutlet var userTextField: SkyFloatingLabelTextFieldWithIcon!
     //@IBOutlet var passwordTextField: SkyFloatingLabelTextFieldWithIcon!
     @IBOutlet var loginButton: UIButton!
+    @IBOutlet var uaePassButton: UIButton!
     
     let nvactivity = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
     var activityIndicator: NVActivityIndicatorView!
+    
+    
+    
+    var isUAEPass: Bool = false
+    var uaePassUserId: String = ""
+    var uaePassEmail: String = ""
+    var firstname: String = ""
+    var lastName: String = ""
+    var email: String = ""
+    var mobileNumber: String = ""
+    var emiratesID: String = ""
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,6 +78,11 @@ class LoginViewController: UIViewController ,NVActivityIndicatorViewable{
         
     }
     
+    @IBAction func uaePassAction(_ sender: Any) {
+        
+        //self.retrieveUser(email: "datacell11@g.com", userID: "123456678")
+        self.actionLoginWithUaePass(sender)
+    }
     func setupView() {
         let gradient = CAGradientLayer()
         gradient.frame = self.loginButton.bounds
@@ -74,6 +94,17 @@ class LoginViewController: UIViewController ,NVActivityIndicatorViewable{
         self.loginButton.layer.masksToBounds = true
         
         
+        
+        
+        //self.uaePassButton.applyGradient(colours: [firstBrownColor, secondBrownColor])
+        //self.loginButton.backgroundColor = .green
+        self.uaePassButton.layer.cornerRadius = 20
+        self.uaePassButton.layer.masksToBounds = true
+        self.uaePassButton.backgroundColor = .white
+        self.uaePassButton.setTitleColor(.black, for: .normal)
+        self.uaePassButton.layer.borderWidth = 1.0
+        self.uaePassButton.layer.borderColor = UIColor.black.cgColor
+        self.uaePassButton.setTitle("Sign in with UAE PASS".localize, for: .normal)
         
         self.logoImageView.layer.borderWidth = 0.1
         self.logoImageView.layer.borderColor = UIColor.lightGray.cgColor
@@ -158,6 +189,75 @@ class LoginViewController: UIViewController ,NVActivityIndicatorViewable{
             
                 DispatchQueue.main.async {
                     
+                    
+                    
+                    if self.isUAEPass {
+                        self.mapuUser(uaePassUserID: self.uaePassUserId, userId: userId)
+                    }else{
+                        let rootViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "mainViewController")
+                        self.view.window!.rootViewController = rootViewController
+                        rootViewController.modalPresentationStyle = .fullScreen
+                        self.dismiss(animated: true, completion: {() -> Void in
+                            self.present(rootViewController, animated: true, completion: {() -> Void in
+                            })
+                        })
+                    }
+                    
+                }
+                
+                
+            }else{
+                DispatchQueue.main.async {
+                    Utils.showAlertWith(title: "Error", message: message, viewController: self)
+                }
+            }
+        }
+    }
+    
+    func retrieveUser(email: String  , userID: String) {
+    
+        DispatchQueue.main.async {
+            let size = CGSize(width: 30, height: 30)
+            
+            
+            self.startAnimating(size, message: "Loading ...", messageFont: nil, type: .ballBeat)
+             //NVActivityIndicatorPresenter.sharedInstance.startAnimating(self.activityData)
+            //self.view.isUserInteractionEnabled = false
+        }
+        
+        
+        WebService.RetrieveUAEPassUser(email: email, uaePassUserId: userID) { (json) in
+            print(json)
+            
+            
+            DispatchQueue.main.async {
+                self.stopAnimating(nil)
+                //self.view.isUserInteractionEnabled = false
+            }
+            
+            
+            guard let code = json["code"] as? Int else {return}
+            guard let message = json["message"] as? String else {return}
+            
+            if code > 0 {
+                guard let data = json["data"] as? [String: Any] else{return}
+                guard let result = data["result"] as? [String: Any] else {return}
+                guard let responseDescription = result["ResponseDescription"] as? [String: Any] else {return}
+                
+                guard let userId = responseDescription["UserId"] as? String else {
+                    DispatchQueue.main.async {
+                        Utils.showAlertWith(title: "Error".localize, message: "Username or Password not correct".localize, viewController: self)
+                    }
+                    
+                    return
+                }
+                
+                var _: MOCDUser = MOCDUser(dict: result)
+                
+                self.user = MOCDUser.getMOCDUser()
+            
+                DispatchQueue.main.async {
+                    
                     let rootViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "mainViewController")
                     self.view.window!.rootViewController = rootViewController
                     rootViewController.modalPresentationStyle = .fullScreen
@@ -168,9 +268,104 @@ class LoginViewController: UIViewController ,NVActivityIndicatorViewable{
                 }
                 
                 
-            }else{
+            }else if code == -100 {
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "Do you have an Account?".localize, message: "if you have an account please enter your credentials or you can create a new account ".localize, preferredStyle: .alert)
+                    
+                    let signupAction = UIAlertAction(title: "SIGN UP".localize, style: .default) { (action) in
+                        
+                        
+                        self.isUAEPass = true
+                        self.uaePassUserId = userID
+                        self.performSegue(withIdentifier: "toRegister", sender: self)
+                    }
+                    
+                    
+                    let signinAction = UIAlertAction(title: "SIGN IN".localize, style: .default) { (action) in
+                        
+                        self.isUAEPass = true
+                        self.uaePassUserId = userID
+                        self.uaePassEmail = email
+                        //self.mapuUser(uaePassUserID: <#T##String#>, userId: <#T##String#>)
+                        
+                    }
+                    
+                    alert.addAction(signupAction)
+                    alert.addAction(signinAction)
+                    
+                    
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }else {
                 DispatchQueue.main.async {
                     Utils.showAlertWith(title: "Error", message: message, viewController: self)
+                }
+            }
+        }
+    }
+    func mapuUser(uaePassUserID: String ,userId: String) {
+    
+        DispatchQueue.main.async {
+            let size = CGSize(width: 30, height: 30)
+            
+            
+            self.startAnimating(size, message: "Loading ...", messageFont: nil, type: .ballBeat)
+             //NVActivityIndicatorPresenter.sharedInstance.startAnimating(self.activityData)
+            //self.view.isUserInteractionEnabled = false
+        }
+        
+        
+
+        WebService.CreateUAEPassUserMapping(uaePassUserId: uaePassUserID, uaePassUserType: "SOAP3", userId: userId ) { (json) in
+            print(json)
+            
+            
+            DispatchQueue.main.async {
+                self.stopAnimating(nil)
+                //self.view.isUserInteractionEnabled = false
+            }
+            
+            
+            guard let code = json["code"] as? Int else {return}
+            guard let message = json["message"] as? String else {return}
+            
+            if code > 0 {
+                
+                DispatchQueue.main.async {
+                    self.retrieveUser(email: self.uaePassEmail, userID: self.uaePassUserId)
+                }
+                
+                /*
+                guard let data = json["data"] as? [String: Any] else{return}
+                guard let result = data["result"] as? [String: Any] else {return}
+                
+                guard let userId = result["UserId"] as? String else {
+                    DispatchQueue.main.async {
+                        Utils.showAlertWith(title: "Error".localize, message: "Username or Password not correct".localize, viewController: self)
+                    }
+                    
+                    return
+                }
+                
+                var _: MOCDUser = MOCDUser(dict: result)
+                
+                self.user = MOCDUser.getMOCDUser()
+            
+                DispatchQueue.main.async {
+                    
+                    let rootViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "mainViewController")
+                    self.view.window!.rootViewController = rootViewController
+                    rootViewController.modalPresentationStyle = .fullScreen
+                    self.dismiss(animated: true, completion: {() -> Void in
+                        self.present(rootViewController, animated: true, completion: {() -> Void in
+                        })
+                    })
+                }
+                */
+                
+            }else{
+                DispatchQueue.main.async {
+                    Utils.showAlertWith(title: "Error".localize, message: message, viewController: self)
                 }
             }
         }
@@ -281,5 +476,94 @@ class LoginViewController: UIViewController ,NVActivityIndicatorViewable{
             self.present(rootViewController, animated: true, completion: {() -> Void in
             })
         })
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toRegister" {
+            let dest = segue.destination as! RegisterViewController
+            dest.isUAEPass = self.isUAEPass
+            dest.uaePassUserId = self.uaePassUserId
+            dest.user_email = self.email
+            dest.first_name = self.firstname
+            dest.last_name = self.lastName
+            dest.emirates_id = self.emiratesID
+            dest.user_mobile = self.mobileNumber
+        }
+    }
+    
+    @objc public var uaePassAccessToken: String!
+    
+    @IBAction func actionLoginWithUaePass(_ sender: Any) {
+        
+        let webVC = self.storyboard?.instantiateViewController(withIdentifier: "UAEPassWebViewController") as? UAEPassWebViewController
+        webVC?.urlString = UAEPassConfiguration.getServiceUrlForType(serviceType: .loginURL)
+        webVC?.onUAEPassSuccessBlock = {(code: String?) -> Void in
+            if let code = code {
+                self.startAnimating(message: "Generating Login Token", type: .pacman)
+                self.getUaePassTokenForCode(code: code)
+            }
+        }
+        webVC?.onUAEPassFailureBlock = {(response: String?) -> Void in
+        }
+        if let viewController = webVC {
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
+    }
+    
+    func getUaePassTokenForCode(code: String) {
+        Service1.shared.getUAEPassToken(code: code, completion: { (uaePassToken) in
+            self.stopAnimating()
+            
+            if uaePassToken.isEmpty {
+                self.showErrorAlert(title: "Error", message: "Unable to get user token, Please try again.")
+                return
+            }
+            self.uaePassAccessToken = uaePassToken
+            self.getUaePassProfileForToken(token: uaePassToken)
+            
+        }) { (error) in
+            self.stopAnimating()
+            self.showErrorAlert(title: "Error", message: error.rawValue)
+        }
+    }
+    
+    
+    func getUaePassProfileForToken(token: String) {
+        Service1.shared.getUAEPassUserProfile(token: token, completion: { (userProfile) in
+            if let userProfile = userProfile {
+                self.showProfileDetails(userProfile: userProfile, userToken: token)
+            } else {
+                self.showErrorAlert(title: "Error", message: "Couldn't get user profile, Please try again later")
+            }
+        }) { (error) in
+            self.showErrorAlert(title: "Error", message: error.rawValue)
+        }
+    }
+
+    func showProfileDetails(userProfile: UAEPassUserProfile, userToken: String) {
+        
+        self.firstname = userProfile.firstnameEN ?? ""
+        self.lastName = userProfile.lastnameEN ?? ""
+        self.email = userProfile.email ?? ""
+        self.mobileNumber = userProfile.mobile ?? ""
+        self.emiratesID = userProfile.idn ?? ""
+        self.retrieveUser(email: userProfile.email ?? "", userID: userProfile.uuid ?? "")
+        /*
+        let userProfileVC = self.storyboard?.instantiateViewController(withIdentifier: "UserProfileViewController") as? UserProfileViewController
+        userProfileVC?.userProfile = userProfile
+        userProfileVC?.userToken = userToken
+        if let userProfileVC = userProfileVC {
+            self.navigationController?.pushViewController(userProfileVC, animated: true)
+        } else {
+            self.showErrorAlert(title: "Error", message: "Can't find User Profile View, Please check your storyboard")
+        }*/
+    }
+    
+    func showErrorAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        let action1 = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
+        }
+        alertController.addAction(action1)
+        self.present(alertController, animated: true, completion: nil)
     }
 }

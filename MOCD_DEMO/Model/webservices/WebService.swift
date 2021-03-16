@@ -62,6 +62,74 @@ public class WebService{
             completetion(json)
         }
     }
+    static func getPersonalProfile(id: String , completetion: @escaping ([String:Any]) -> Void) {
+     
+        let webResource = "getPersonProfile"
+        var parametersArray: [[String:Any]] = [[:]]
+        
+        parametersArray.append(["id": id])
+
+        
+        
+        RequestResponseWebServices.requestByGET(WebServiceUrl: webResource, params: &parametersArray, endpoint: "user") { (json) in
+            completetion(json)
+        }
+    }
+    static func generateOTP(mobileNumber: String , completetion: @escaping ([String:Any]) -> Void) {
+     
+        let webResource = "generateOTP"
+        var parametersArray: [[String:Any]] = [[:]]
+        
+        parametersArray.append(["mobilenumber": mobileNumber])
+
+        
+        
+        RequestResponseWebServices.requestByGET(WebServiceUrl: webResource, params: &parametersArray, endpoint: "otp") { (json) in
+            completetion(json)
+        }
+    }
+    static func validateOTP(otp: String , mobileNumber: String , completetion: @escaping ([String:Any]) -> Void) {
+     
+        let webResource = "validateOTP"
+        var parametersArray: [[String:Any]] = [[:]]
+        
+        parametersArray.append(["mobilenumber": mobileNumber])
+        parametersArray.append(["otp": otp])
+
+        
+        
+        RequestResponseWebServices.requestByGET(WebServiceUrl: webResource, params: &parametersArray, endpoint: "otp") { (json) in
+            completetion(json)
+        }
+    }
+    static func RetrieveUAEPassUser(email: String ,uaePassUserId: String , completetion: @escaping ([String:Any]) -> Void) {
+     
+        let webResource = "RetrieveUAEPassUser"
+        var parametersArray: [[String:Any]] = [[:]]
+        
+        parametersArray.append(["email": email])
+        parametersArray.append(["uaePassUserId": uaePassUserId])
+        
+        
+        RequestResponseWebServices.requestByPOST(WebServiceUrl: webResource, params: &parametersArray, endpoint: "user") { (json) in
+            completetion(json)
+        }
+    }
+    
+    static func CreateUAEPassUserMapping(uaePassUserId: String ,uaePassUserType: String ,userId: String , completetion: @escaping ([String:Any]) -> Void) {
+     
+        let webResource = "CreateUAEPassUserMapping"
+        var parametersArray: [[String:Any]] = [[:]]
+        
+        parametersArray.append(["uaePassUserId": uaePassUserId])
+        parametersArray.append(["uaePassUserType": uaePassUserType])
+        parametersArray.append(["userId": userId])
+        
+        
+        RequestResponseWebServices.requestByPOST(WebServiceUrl: webResource, params: &parametersArray, endpoint: "user") { (json) in
+            completetion(json)
+        }
+    }
     
     static func logout(username: String ,completetion: @escaping ([String:Any]) -> Void) {
      
@@ -1140,6 +1208,8 @@ public class WebService{
             completetion(json)
         }
     }
+    
+    
     
     
     static func SubmitMassWeddingRequest(HusbandNationalId: String ,WifeNationalId: String , MarriageContractDate: String , Court: String ,

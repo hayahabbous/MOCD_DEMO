@@ -34,7 +34,7 @@ target 'MOCD_DEMO' do
     pod 'SVProgressHUD'
     pod 'SwiftyDropbox'
     pod 'SSZipArchive'
-   
+    pod 'CryptoSwift', '~> 1.3.8'
     pod 'Charts'
     pod 'ChartsRealm'
     

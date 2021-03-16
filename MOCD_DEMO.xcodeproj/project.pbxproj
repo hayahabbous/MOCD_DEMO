@@ -345,6 +345,31 @@
 		52C54A7F238D42CF000653CF /* addChildCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52C54A81238D42CF000653CF /* addChildCollectionViewCell.xib */; };
 		52C54A86238D4BCB000653CF /* newAssessmentCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52C54A88238D4BCB000653CF /* newAssessmentCollectionViewCell.xib */; };
 		52C799B6237812410013CD14 /* UIPickerTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C799B5237812410013CD14 /* UIPickerTextField.m */; };
+		52CAE49025FF77C40041492F /* uaePassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAE47025FF77C20041492F /* uaePassViewController.swift */; };
+		52CAE49125FF77C40041492F /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAE47125FF77C20041492F /* UserProfileViewController.swift */; };
+		52CAE49225FF77C40041492F /* UAEPassConfigProduction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAE47325FF77C20041492F /* UAEPassConfigProduction.swift */; };
+		52CAE49325FF77C40041492F /* UAEPassConfigQA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAE47425FF77C20041492F /* UAEPassConfigQA.swift */; };
+		52CAE49425FF77C40041492F /* UAEPassConfigProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAE47525FF77C20041492F /* UAEPassConfigProtocol.swift */; };
+		52CAE49525FF77C40041492F /* ServiceErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAE47625FF77C20041492F /* ServiceErrorType.swift */; };
+		52CAE49625FF77C40041492F /* UAEPassConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAE47725FF77C20041492F /* UAEPassConfiguration.swift */; };
+		52CAE49725FF77C40041492F /* UAEPassUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAE47925FF77C20041492F /* UAEPassUserProfile.swift */; };
+		52CAE49825FF77C40041492F /* SignatureLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAE47B25FF77C20041492F /* SignatureLocation.swift */; };
+		52CAE49925FF77C40041492F /* UAEPAssSigningParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAE47C25FF77C20041492F /* UAEPAssSigningParameters.swift */; };
+		52CAE49A25FF77C40041492F /* SignatureField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAE47D25FF77C20041492F /* SignatureField.swift */; };
+		52CAE49B25FF77C40041492F /* SignatureRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAE47E25FF77C30041492F /* SignatureRectangle.swift */; };
+		52CAE49C25FF77C40041492F /* SignatureDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAE47F25FF77C30041492F /* SignatureDetails.swift */; };
+		52CAE49D25FF77C40041492F /* SignaturePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAE48025FF77C30041492F /* SignaturePage.swift */; };
+		52CAE49E25FF77C40041492F /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAE48125FF77C30041492F /* Appearance.swift */; };
+		52CAE49F25FF77C40041492F /* UploadSignDocumentResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAE48225FF77C30041492F /* UploadSignDocumentResponse.swift */; };
+		52CAE4A025FF77C40041492F /* UAEPassToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAE48325FF77C30041492F /* UAEPassToken.swift */; };
+		52CAE4A125FF77C40041492F /* UAEPassSigningRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAE48425FF77C30041492F /* UAEPassSigningRequest.swift */; };
+		52CAE4A225FF77C40041492F /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAE48625FF77C30041492F /* Router.swift */; };
+		52CAE4A325FF77C40041492F /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAE48825FF77C30041492F /* UIApplication+Extension.swift */; };
+		52CAE4A425FF77C40041492F /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAE48925FF77C30041492F /* URL+Extension.swift */; };
+		52CAE4A525FF77C40041492F /* UAEPassWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAE48A25FF77C30041492F /* UAEPassWebViewController.swift */; };
+		52CAE4A625FF77C40041492F /* ReadJsonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAE48C25FF77C30041492F /* ReadJsonHelper.swift */; };
+		52CAE4A725FF77C40041492F /* HandleURLScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAE48D25FF77C30041492F /* HandleURLScheme.swift */; };
+		52CAE4A825FF77C40041492F /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAE48F25FF77C30041492F /* Service.swift */; };
 		52DAD4A224B20DCA00E1B043 /* socialAttachmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DAD4A124B20DCA00E1B043 /* socialAttachmentViewController.swift */; };
 		52DAD4A524B2163300E1B043 /* certificateRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DAD4A424B2163300E1B043 /* certificateRequestViewController.swift */; };
 		52DAD4A724B2293400E1B043 /* certificateInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DAD4A624B2293400E1B043 /* certificateInformationViewController.swift */; };
@@ -730,6 +755,31 @@
 		52C54A8C238D4BF6000653CF /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/newAssessmentCollectionViewCell.strings; sourceTree = "<group>"; };
 		52C799B4237812410013CD14 /* UIPickerTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIPickerTextField.h; path = MOCD_DEMO/View/UIPickerTextField.h; sourceTree = SOURCE_ROOT; };
 		52C799B5237812410013CD14 /* UIPickerTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIPickerTextField.m; path = MOCD_DEMO/View/UIPickerTextField.m; sourceTree = SOURCE_ROOT; };
+		52CAE47025FF77C20041492F /* uaePassViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = uaePassViewController.swift; sourceTree = "<group>"; };
+		52CAE47125FF77C20041492F /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		52CAE47325FF77C20041492F /* UAEPassConfigProduction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UAEPassConfigProduction.swift; sourceTree = "<group>"; };
+		52CAE47425FF77C20041492F /* UAEPassConfigQA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UAEPassConfigQA.swift; sourceTree = "<group>"; };
+		52CAE47525FF77C20041492F /* UAEPassConfigProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UAEPassConfigProtocol.swift; sourceTree = "<group>"; };
+		52CAE47625FF77C20041492F /* ServiceErrorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceErrorType.swift; sourceTree = "<group>"; };
+		52CAE47725FF77C20041492F /* UAEPassConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UAEPassConfiguration.swift; sourceTree = "<group>"; };
+		52CAE47925FF77C20041492F /* UAEPassUserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UAEPassUserProfile.swift; sourceTree = "<group>"; };
+		52CAE47B25FF77C20041492F /* SignatureLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignatureLocation.swift; sourceTree = "<group>"; };
+		52CAE47C25FF77C20041492F /* UAEPAssSigningParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UAEPAssSigningParameters.swift; sourceTree = "<group>"; };
+		52CAE47D25FF77C20041492F /* SignatureField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignatureField.swift; sourceTree = "<group>"; };
+		52CAE47E25FF77C30041492F /* SignatureRectangle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignatureRectangle.swift; sourceTree = "<group>"; };
+		52CAE47F25FF77C30041492F /* SignatureDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignatureDetails.swift; sourceTree = "<group>"; };
+		52CAE48025FF77C30041492F /* SignaturePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignaturePage.swift; sourceTree = "<group>"; };
+		52CAE48125FF77C30041492F /* Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
+		52CAE48225FF77C30041492F /* UploadSignDocumentResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadSignDocumentResponse.swift; sourceTree = "<group>"; };
+		52CAE48325FF77C30041492F /* UAEPassToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UAEPassToken.swift; sourceTree = "<group>"; };
+		52CAE48425FF77C30041492F /* UAEPassSigningRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UAEPassSigningRequest.swift; sourceTree = "<group>"; };
+		52CAE48625FF77C30041492F /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		52CAE48825FF77C30041492F /* UIApplication+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
+		52CAE48925FF77C30041492F /* URL+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
+		52CAE48A25FF77C30041492F /* UAEPassWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UAEPassWebViewController.swift; sourceTree = "<group>"; };
+		52CAE48C25FF77C30041492F /* ReadJsonHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadJsonHelper.swift; sourceTree = "<group>"; };
+		52CAE48D25FF77C30041492F /* HandleURLScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HandleURLScheme.swift; sourceTree = "<group>"; };
+		52CAE48F25FF77C30041492F /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		52DAD4A124B20DCA00E1B043 /* socialAttachmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = socialAttachmentViewController.swift; sourceTree = "<group>"; };
 		52DAD4A424B2163300E1B043 /* certificateRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = certificateRequestViewController.swift; sourceTree = "<group>"; };
 		52DAD4A624B2293400E1B043 /* certificateInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = certificateInformationViewController.swift; sourceTree = "<group>"; };
@@ -1869,6 +1919,94 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
+		52CAE46F25FF77C20041492F /* uaepass */ = {
+			isa = PBXGroup;
+			children = (
+				52CAE47025FF77C20041492F /* uaePassViewController.swift */,
+				52CAE47125FF77C20041492F /* UserProfileViewController.swift */,
+				52CAE47225FF77C20041492F /* UAEPassClient */,
+				52CAE47825FF77C20041492F /* Models */,
+				52CAE48525FF77C30041492F /* UAEPassRouter */,
+				52CAE48725FF77C30041492F /* Extensions */,
+				52CAE48A25FF77C30041492F /* UAEPassWebViewController.swift */,
+				52CAE48B25FF77C30041492F /* Helpers */,
+				52CAE48E25FF77C30041492F /* UAEPassService */,
+			);
+			path = uaepass;
+			sourceTree = "<group>";
+		};
+		52CAE47225FF77C20041492F /* UAEPassClient */ = {
+			isa = PBXGroup;
+			children = (
+				52CAE47325FF77C20041492F /* UAEPassConfigProduction.swift */,
+				52CAE47425FF77C20041492F /* UAEPassConfigQA.swift */,
+				52CAE47525FF77C20041492F /* UAEPassConfigProtocol.swift */,
+				52CAE47625FF77C20041492F /* ServiceErrorType.swift */,
+				52CAE47725FF77C20041492F /* UAEPassConfiguration.swift */,
+			);
+			path = UAEPassClient;
+			sourceTree = "<group>";
+		};
+		52CAE47825FF77C20041492F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				52CAE47925FF77C20041492F /* UAEPassUserProfile.swift */,
+				52CAE47A25FF77C20041492F /* SigningModels */,
+				52CAE48225FF77C30041492F /* UploadSignDocumentResponse.swift */,
+				52CAE48325FF77C30041492F /* UAEPassToken.swift */,
+				52CAE48425FF77C30041492F /* UAEPassSigningRequest.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		52CAE47A25FF77C20041492F /* SigningModels */ = {
+			isa = PBXGroup;
+			children = (
+				52CAE47B25FF77C20041492F /* SignatureLocation.swift */,
+				52CAE47C25FF77C20041492F /* UAEPAssSigningParameters.swift */,
+				52CAE47D25FF77C20041492F /* SignatureField.swift */,
+				52CAE47E25FF77C30041492F /* SignatureRectangle.swift */,
+				52CAE47F25FF77C30041492F /* SignatureDetails.swift */,
+				52CAE48025FF77C30041492F /* SignaturePage.swift */,
+				52CAE48125FF77C30041492F /* Appearance.swift */,
+			);
+			path = SigningModels;
+			sourceTree = "<group>";
+		};
+		52CAE48525FF77C30041492F /* UAEPassRouter */ = {
+			isa = PBXGroup;
+			children = (
+				52CAE48625FF77C30041492F /* Router.swift */,
+			);
+			path = UAEPassRouter;
+			sourceTree = "<group>";
+		};
+		52CAE48725FF77C30041492F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				52CAE48825FF77C30041492F /* UIApplication+Extension.swift */,
+				52CAE48925FF77C30041492F /* URL+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		52CAE48B25FF77C30041492F /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				52CAE48C25FF77C30041492F /* ReadJsonHelper.swift */,
+				52CAE48D25FF77C30041492F /* HandleURLScheme.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		52CAE48E25FF77C30041492F /* UAEPassService */ = {
+			isa = PBXGroup;
+			children = (
+				52CAE48F25FF77C30041492F /* Service.swift */,
+			);
+			path = UAEPassService;
+			sourceTree = "<group>";
+		};
 		52DAD4A324B215F400E1B043 /* certificate */ = {
 			isa = PBXGroup;
 			children = (
@@ -1937,6 +2075,7 @@
 		52F6830B22BA500400B54391 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				52CAE46F25FF77C20041492F /* uaepass */,
 				5224496622B385DD0010C8FD /* LoginViewController.swift */,
 				5224496822B3F57D0010C8FD /* SignupViewController.swift */,
 				522A9A772403DACC00BB4110 /* forgetPasswordViewController.swift */,
@@ -2183,6 +2322,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				523D41E322BD5B34008EEB6E /* PYearMostSpendingCategoryModel.swift in Sources */,
+				52CAE49725FF77C40041492F /* UAEPassUserProfile.swift in Sources */,
 				528B9F2F2313E08E00D346A0 /* NSDate+Timepiece.swift in Sources */,
 				523D41BE22BD5B33008EEB6E /* SignupVC.swift in Sources */,
 				523D41CA22BD5B33008EEB6E /* SideMenuVCT.swift in Sources */,
@@ -2198,9 +2338,11 @@
 				523D408722BCCE2B008EEB6E /* FilePathConvertible.swift in Sources */,
 				5252172022B8BA5A00658497 /* wisdomCollectionViewCell.swift in Sources */,
 				522A9A782403DACC00BB4110 /* forgetPasswordViewController.swift in Sources */,
+				52CAE49325FF77C40041492F /* UAEPassConfigQA.swift in Sources */,
 				5252173122B9094500658497 /* TPKeyboardAvoidingTableView.m in Sources */,
 				523D402422BCCD7F008EEB6E /* SocialActivitiesCell.swift in Sources */,
 				5224496E22B3FDEA0010C8FD /* servicesCollectionView.swift in Sources */,
+				52CAE49A25FF77C40041492F /* SignatureField.swift in Sources */,
 				523D41BA22BD5B33008EEB6E /* AddUserVCT.swift in Sources */,
 				529B09E024A4ECAD005AAEE5 /* socialNationalViewController.swift in Sources */,
 				5224496722B385DD0010C8FD /* LoginViewController.swift in Sources */,
@@ -2219,6 +2361,7 @@
 				52724531237C220000FA9612 /* GalleryItem.swift in Sources */,
 				523D41D622BD5B34008EEB6E /* PreviousMonthModel.swift in Sources */,
 				523D41D722BD5B34008EEB6E /* IncomeTypeModel.swift in Sources */,
+				52CAE4A225FF77C40041492F /* Router.swift in Sources */,
 				523D41D522BD5B34008EEB6E /* DatabaseEdkhar.swift in Sources */,
 				523D41C022BD5B33008EEB6E /* AppointmentVCT.swift in Sources */,
 				523D41AC22BD5B33008EEB6E /* ReportVCT.swift in Sources */,
@@ -2235,12 +2378,15 @@
 				523D41A822BD5B33008EEB6E /* CurrentMonthVC.swift in Sources */,
 				523D41E922BD5B34008EEB6E /* FF_IncomeDistribution.swift in Sources */,
 				523D407F22BCCE2B008EEB6E /* MMDatePickerPopoverVC.swift in Sources */,
+				52CAE4A725FF77C40041492F /* HandleURLScheme.swift in Sources */,
 				5232BE2123D83964008EE972 /* serviceCardViewController.swift in Sources */,
 				521F855424A6633100DA118F /* socialInformationViewController.swift in Sources */,
 				523D401A22BCCD7F008EEB6E /* ChecklistVC.swift in Sources */,
 				52F432C222B2AE8D00D54EF1 /* MOCD_DEMO.xcdatamodeld in Sources */,
 				52E343FB238673BA00CA4519 /* taskCell.swift in Sources */,
 				523D407E22BCCE2B008EEB6E /* MMDatePicker.swift in Sources */,
+				52CAE4A425FF77C40041492F /* URL+Extension.swift in Sources */,
+				52CAE49825FF77C40041492F /* SignatureLocation.swift in Sources */,
 				523D41EB22BD5B34008EEB6E /* QuoteModel.swift in Sources */,
 				523D402822BCCD7F008EEB6E /* AppointmentCell.swift in Sources */,
 				523D400D22BCCD7F008EEB6E /* AddNoteVC.swift in Sources */,
@@ -2252,6 +2398,7 @@
 				523D41E822BD5B34008EEB6E /* PreviousMonthExpenseModel.swift in Sources */,
 				523D41AE22BD5B33008EEB6E /* TabbarVCT.swift in Sources */,
 				52FB328823E485760092D4B9 /* aboutusViewController.swift in Sources */,
+				52CAE49D25FF77C40041492F /* SignaturePage.swift in Sources */,
 				5244D1D122B7B99B00EEA152 /* Utils.swift in Sources */,
 				523D08152373F7DF003672D8 /* MOCDUser.swift in Sources */,
 				523D41B922BD5B33008EEB6E /* SavingCell.swift in Sources */,
@@ -2269,6 +2416,7 @@
 				523D41EE22BD5B34008EEB6E /* PreviousYearSavingListModel.swift in Sources */,
 				523D405222BCCDF6008EEB6E /* userInfoModel.swift in Sources */,
 				5224496B22B3F9F00010C8FD /* HomePageViewController.swift in Sources */,
+				52CAE4A025FF77C40041492F /* UAEPassToken.swift in Sources */,
 				523D41A922BD5B33008EEB6E /* PreviousMonthDetailVC.swift in Sources */,
 				523D40F822BCCEE5008EEB6E /* FontConstant.swift in Sources */,
 				523D408022BCCE2B008EEB6E /* MMDatePickerPopover.swift in Sources */,
@@ -2279,6 +2427,7 @@
 				523D401522BCCD7F008EEB6E /* IndependentListVC.swift in Sources */,
 				5224497522B4DF800010C8FD /* e_servicesCollectionViewCell.swift in Sources */,
 				521AF9F824A35A8B00F9932A /* renewalCardViewController.swift in Sources */,
+				52CAE49C25FF77C40041492F /* SignatureDetails.swift in Sources */,
 				5273F68724CED5A70082E6AE /* masterDocViewController.swift in Sources */,
 				523D41DB22BD5B34008EEB6E /* SpendingTypeModel.swift in Sources */,
 				523D408622BCCE2B008EEB6E /* PDFGenerator.swift in Sources */,
@@ -2297,6 +2446,7 @@
 				52BF97F52406511000C87745 /* ApplicantCardDetailsVC.swift in Sources */,
 				523D41C522BD5B33008EEB6E /* UserListVCT.swift in Sources */,
 				529F007C24C59D9200A92C21 /* certificateAttachemntViewController.swift in Sources */,
+				52CAE4A125FF77C40041492F /* UAEPassSigningRequest.swift in Sources */,
 				52C2A59722BF4F46009FA231 /* EServicesViewController.swift in Sources */,
 				5207A2C32404FA2400E61713 /* RegisterViewController.swift in Sources */,
 				5244D1C922B7719B00EEA152 /* AppConstants.swift in Sources */,
@@ -2306,6 +2456,7 @@
 				523D400F22BCCD7F008EEB6E /* NotesVC.swift in Sources */,
 				523D403222BCCD7F008EEB6E /* UserListCell.swift in Sources */,
 				523D41AD22BD5B33008EEB6E /* FinancialFactsVC.swift in Sources */,
+				52CAE49F25FF77C40041492F /* UploadSignDocumentResponse.swift in Sources */,
 				523D405022BCCDF6008EEB6E /* medicinePlanModel.swift in Sources */,
 				523D402622BCCD7F008EEB6E /* AddAppointmentVC.swift in Sources */,
 				523D41CB22BD5B33008EEB6E /* SideMenuCellT.swift in Sources */,
@@ -2313,6 +2464,7 @@
 				523D404722BCCDF6008EEB6E /* ReminderModel.swift in Sources */,
 				5252173822BA27E000658497 /* addImageSlider.swift in Sources */,
 				523D41A722BD5B33008EEB6E /* YearCell.swift in Sources */,
+				52CAE49425FF77C40041492F /* UAEPassConfigProtocol.swift in Sources */,
 				523D402F22BCCD7F008EEB6E /* SideMenuVC.swift in Sources */,
 				523D41E222BD5B34008EEB6E /* PreviousYearSpendingTypeModel.swift in Sources */,
 				523D403122BCCD7F008EEB6E /* SideMenuRightVC.swift in Sources */,
@@ -2327,10 +2479,13 @@
 				523D41C822BD5B33008EEB6E /* AddReminderVC.swift in Sources */,
 				523D41BD22BD5B33008EEB6E /* SignInVC.swift in Sources */,
 				52E374C52498CCA300CC74CF /* MOCDDocument.swift in Sources */,
+				52CAE4A625FF77C40041492F /* ReadJsonHelper.swift in Sources */,
 				52E374C7249909E600CC74CF /* MOCDService.swift in Sources */,
 				523D402722BCCD7F008EEB6E /* AppointmentVC.swift in Sources */,
 				527E6F3B238D1815009AB184 /* cn1.swift in Sources */,
+				52CAE49E25FF77C40041492F /* Appearance.swift in Sources */,
 				52B7D8202497615700C328F1 /* newCardAttachemnetViewController.swift in Sources */,
+				52CAE49B25FF77C40041492F /* SignatureRectangle.swift in Sources */,
 				523D405122BCCDF6008EEB6E /* notesModel.swift in Sources */,
 				523D41F022BD5B34008EEB6E /* LocalNotificationHelperT.swift in Sources */,
 				523D41DA22BD5B34008EEB6E /* SavingModel.swift in Sources */,
@@ -2361,6 +2516,7 @@
 				523D41C222BD5B33008EEB6E /* FeedbackVCT.swift in Sources */,
 				52B66C7B24ACCA040043FFCA /* massWeddingInfoViewController.swift in Sources */,
 				523D408822BCCE2B008EEB6E /* PDFPage.swift in Sources */,
+				52CAE49925FF77C40041492F /* UAEPAssSigningParameters.swift in Sources */,
 				523D402022BCCD7F008EEB6E /* CalenderVC.swift in Sources */,
 				523D401F22BCCD7F008EEB6E /* DIYCalendarCell.swift in Sources */,
 				523D41EC22BD5B34008EEB6E /* StateListModel.swift in Sources */,
@@ -2384,6 +2540,7 @@
 				524B9A1624B32B8E000F0CC8 /* lostCardAttachemntViewcontroller.swift in Sources */,
 				523D404F22BCCDF6008EEB6E /* CountryListModel.swift in Sources */,
 				523D41C922BD5B33008EEB6E /* AboutUsVCT.swift in Sources */,
+				52CAE4A525FF77C40041492F /* UAEPassWebViewController.swift in Sources */,
 				523D41DC22BD5B34008EEB6E /* MostSpendingMonthModel.swift in Sources */,
 				523D41ED22BD5B34008EEB6E /* PreviousYearModel.swift in Sources */,
 				524F545824AF6A2F006D0FBE /* disabledCardRequests.swift in Sources */,
@@ -2403,9 +2560,11 @@
 				523D41E022BD5B34008EEB6E /* TargetModel.swift in Sources */,
 				523D41DD22BD5B34008EEB6E /* userInfoManagerT.swift in Sources */,
 				523D41D322BD5B34008EEB6E /* SocialActivitiesVCT.swift in Sources */,
+				52CAE4A825FF77C40041492F /* Service.swift in Sources */,
 				523D41D022BD5B34008EEB6E /* IncomeCell.swift in Sources */,
 				523D403022BCCD7F008EEB6E /* SideMenuCell.swift in Sources */,
 				5207A2C12404F82100E61713 /* SecurityQuestions.swift in Sources */,
+				52CAE49125FF77C40041492F /* UserProfileViewController.swift in Sources */,
 				523D41F422BD5B34008EEB6E /* MonthYearPickerView.swift in Sources */,
 				52B66C6B24AC91070043FFCA /* abstractEnrollmentViewController.swift in Sources */,
 				5252172422B8CDCC00658497 /* extensions.swift in Sources */,
@@ -2417,18 +2576,22 @@
 				523D41BB22BD5B33008EEB6E /* TutorialVCT.swift in Sources */,
 				521F855624A6696400DA118F /* socialPassportViewController.swift in Sources */,
 				52258480249636180046EC7D /* supportingField.swift in Sources */,
+				52CAE49025FF77C40041492F /* uaePassViewController.swift in Sources */,
 				523D404D22BCCDF6008EEB6E /* userInfoManager.swift in Sources */,
 				523D41DE22BD5B34008EEB6E /* SpendingModel.swift in Sources */,
 				52F6830822BA386E00B54391 /* AssessmentCollectionViewCell.swift in Sources */,
 				523D401422BCCD7F008EEB6E /* IndependentCell.swift in Sources */,
 				523D41BC22BD5B33008EEB6E /* PageItemControllerT.swift in Sources */,
 				528B9F312313E08E00D346A0 /* Duration.swift in Sources */,
+				52CAE4A325FF77C40041492F /* UIApplication+Extension.swift in Sources */,
 				5244D1CD22B7747500EEA152 /* childCollectionViewCell.swift in Sources */,
 				52B66C7424ACC99A0043FFCA /* edaadApplicantDetailsViewController.swift in Sources */,
 				5252172E22B9094500658497 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				521BAF2C22D204FD00B7A8FA /* UIBezierPathExtension.swift in Sources */,
+				52CAE49225FF77C40041492F /* UAEPassConfigProduction.swift in Sources */,
 				523D41C322BD5B33008EEB6E /* CommanVC.swift in Sources */,
 				5252173522BA266800658497 /* AddChildViewController.swift in Sources */,
+				52CAE49525FF77C40041492F /* ServiceErrorType.swift in Sources */,
 				523D41A422BD5B33008EEB6E /* NotesVCT.swift in Sources */,
 				528B9F2D2313E08E00D346A0 /* Int+Timepiece.swift in Sources */,
 				52B66C6924AC90BC0043FFCA /* marriageContractDataViewController.swift in Sources */,
@@ -2451,6 +2614,7 @@
 				5207A2BF2404F7EE00E61713 /* MOCDNationalities.swift in Sources */,
 				523D41D922BD5B34008EEB6E /* ReminderModelT.swift in Sources */,
 				521BAF2B22D204FD00B7A8FA /* CALayerExtension.swift in Sources */,
+				52CAE49625FF77C40041492F /* UAEPassConfiguration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2671,7 +2835,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.9;
+				CURRENT_PROJECT_VERSION = 1.0;
 				DEVELOPMENT_TEAM = RYD66E6YP6;
 				INFOPLIST_FILE = MOCD_DEMO/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -2683,7 +2847,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/Realm/core",
 				);
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.datacellme.mocd;
 				PRODUCT_NAME = "MOCD CONNECT";
 				SWIFT_OBJC_BRIDGING_HEADER = "MOCD_DEMO/View/MOCD_DEMO-Bridging-Header.h";
@@ -2700,7 +2864,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.9;
+				CURRENT_PROJECT_VERSION = 1.0;
 				DEVELOPMENT_TEAM = RYD66E6YP6;
 				INFOPLIST_FILE = MOCD_DEMO/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -2712,7 +2876,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/Realm/core",
 				);
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.datacellme.mocd;
 				PRODUCT_NAME = "MOCD CONNECT";
 				SWIFT_OBJC_BRIDGING_HEADER = "MOCD_DEMO/View/MOCD_DEMO-Bridging-Header.h";

@@ -292,3 +292,8 @@
 "Identification No should start with 784" = "";
 "Identification No should be 15 characters" = "";
 "You already have a submitted request" = "لديك طلب مقدم سابقاً";
+"Sign in with UAE PASS" = "تسجيل الدخول بالهويةالرقمية";
+"Do you have an Account?" = "هل لديك حساب؟";
+"if you have an account please enter your credentials or you can create a new account " = "اذا كان لديك حساب الرجاء إدخال معلومات تسجيل الدخول او يمكنك إنشاء حساب جديد";
+"SIGN UP" = "إنشاء حساب";
+"SIGN IN" = "تسجيل دخول";

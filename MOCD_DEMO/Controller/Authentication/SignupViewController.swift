@@ -69,6 +69,13 @@ class SignupViewController: UIViewController ,NVActivityIndicatorViewable {
     @IBOutlet var addressTextField: SkyFloatingLabelTextFieldWithIcon!
     @IBOutlet var nationalitiesTextField: SkyFloatingLabelTextFieldWithIcon!
     @IBOutlet var loginButton: UIButton!
+    
+    
+    
+    var isUAEPass: Bool = false
+    var uaePassUserId: String = ""
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let gradient = CAGradientLayer()
@@ -474,6 +481,68 @@ class SignupViewController: UIViewController ,NVActivityIndicatorViewable {
             })
         }
     }*/
+    
+    func mapuUser(uaePassUserID: String ,userId: String) {
+    
+        DispatchQueue.main.async {
+            let size = CGSize(width: 30, height: 30)
+            
+            
+            self.startAnimating(size, message: "Loading ...", messageFont: nil, type: .ballBeat)
+             //NVActivityIndicatorPresenter.sharedInstance.startAnimating(self.activityData)
+            //self.view.isUserInteractionEnabled = false
+        }
+        
+        
+
+        WebService.CreateUAEPassUserMapping(uaePassUserId: uaePassUserID, uaePassUserType: "SOAP3", userId: userId ) { (json) in
+            print(json)
+            
+            
+            DispatchQueue.main.async {
+                self.stopAnimating(nil)
+                //self.view.isUserInteractionEnabled = false
+            }
+            
+            /*
+            guard let code = json["code"] as? Int else {return}
+            guard let message = json["message"] as? String else {return}
+            
+            if code == 200 {
+                guard let data = json["data"] as? [String: Any] else{return}
+                guard let result = data["result"] as? [String: Any] else {return}
+                
+                guard let userId = result["UserId"] as? String else {
+                    DispatchQueue.main.async {
+                        Utils.showAlertWith(title: "Error".localize, message: "Username or Password not correct".localize, viewController: self)
+                    }
+                    
+                    return
+                }
+                
+                var _: MOCDUser = MOCDUser(dict: result)
+                
+                self.user = MOCDUser.getMOCDUser()
+            
+                DispatchQueue.main.async {
+                    
+                    let rootViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "mainViewController")
+                    self.view.window!.rootViewController = rootViewController
+                    rootViewController.modalPresentationStyle = .fullScreen
+                    self.dismiss(animated: true, completion: {() -> Void in
+                        self.present(rootViewController, animated: true, completion: {() -> Void in
+                        })
+                    })
+                }
+                
+                
+            }else{
+                DispatchQueue.main.async {
+                    Utils.showAlertWith(title: "Error", message: message, viewController: self)
+                }
+            }*/
+        }
+    }
     @IBAction func dismissView(_ sender: Any) {
         self.view.endEditing(true)
     }

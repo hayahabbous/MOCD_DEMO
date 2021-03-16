@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 import NVActivityIndicatorView
+import CryptoSwift
+
 
 struct marriageService {
     
@@ -73,8 +75,53 @@ class husbandInformationViewController: UIViewController ,NVActivityIndicatorVie
         setupToolbar()
         
         getEducationLevelMaster()
+        
+        let user = MOCDUser.getMOCDUser()
+        getPersonProfile(id: user?.DId ?? "")
+        
+        cipherText()
+        
     }
-    
+    func cipherText() {
+        let password: [UInt8] = Array("s33krit".utf8)
+        let salt: [UInt8] = Array("nacllcan".utf8)
+
+        /* Generate a key from a `password`. Optional if you already have a key */
+        let key = try! PKCS5.PBKDF2(
+            password: password,
+            salt: salt,
+            iterations: 4096,
+            keyLength: 32, /* AES-256 */
+            variant: .sha256
+        ).calculate()
+
+        /* Generate random IV value. IV is public value. Either need to generate, or get it from elsewhere */
+        let iv = AES.randomIV(AES.blockSize)
+
+        /* AES cryptor instance */
+        let aes = try! AES(key: key, blockMode: CBC(iv: iv), padding: .pkcs7)
+
+        /* Encrypt Data */
+        let inputData = Data()
+        let encryptedBytes = try! aes.encrypt(inputData.bytes)
+        let encryptedData = Data(encryptedBytes)
+
+        /* Decrypt Data */
+        let decryptedBytes = try! aes.decrypt(encryptedData.bytes)
+        let decryptedData = Data(decryptedBytes)
+        
+        let s = String(describing: "Zvrsjn#:Pbhdz32R@'=&\\WW*")
+        do {
+            let aes = try AES(key: s , iv: "drowssapdrowssap") // aes128
+            let ciphertext = try aes.encrypt(Array("Nullam quis risus eget urna mollis ornare vel eu leo.".utf8))
+            
+            
+            print(ciphertext)
+            
+            let ciphertext1 = try aes.encrypt(ciphertext).toBase64()
+            print(ciphertext1)
+        } catch { }
+    }
     func setupField()
     {
         
@@ -168,6 +215,23 @@ class husbandInformationViewController: UIViewController ,NVActivityIndicatorVie
         
         
         WebService.getToken { (json) in
+            print(json)
+            DispatchQueue.main.async {
+                self.stopAnimating(nil)
+            }
+            
+
+        }
+    }
+    
+    func getPersonProfile(id: String) {
+        let size = CGSize(width: 30, height: 30)
+            
+            
+            self.startAnimating(size, message: "Loading ...", messageFont: nil, type: .ballBeat)
+        
+        
+        WebService.getPersonalProfile(id: id) { (json) in
             print(json)
             DispatchQueue.main.async {
                 self.stopAnimating(nil)

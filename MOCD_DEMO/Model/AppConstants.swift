@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-
+import NVActivityIndicatorView
 
 enum CHILD_AGES : Int{
     case none = 0
@@ -103,7 +103,7 @@ class AspectElement: NSObject {
 class AppConstants: NSObject {
     
     
-    static var isLive: Bool = true
+    static var isLive: Bool = false
     static var isNemowEnabled = "isNemowEnabled"
     static var isEdkharEnabled = "isEdkharEnabled"
     static var isMGEnabled = "isMGEnabled"
@@ -115,6 +115,10 @@ class AppConstants: NSObject {
     static var AssessmentsArray:[AspectElement] = []
     static let WEB_SERVER_IMAGE_MOCD_URL: String  = AppConstants.isLive ? "http://mocdservices.dcxportal.com" : "http://mocdservicesdev.dcxportal.com"
     static let WEB_SERVER_MOCD_URL: String  = AppConstants.isLive ? "http://mocdservices.dcxportal.com/api/" : "http://mocdservicesdev.dcxportal.com/api/"
+    
+    
+    static let WEB_SERVER_MOCD_MARRIAGE_GRANT_OTP = "https://api.mocd.gov.ae/Inbound/Rest/OTP/v1/"
+    
     
     static let WEB_SERVER_MOCD_MARRIAGE_GRANT_DEV: String  = AppConstants.isLive ?  "https://api.mocd.gov.ae/Inbound/Rest/CRM/V2/Masters/" : "https://staging.mocd.gov.ae/Inbound/Rest/CRM/V3/Masters/"
     static let WEB_SERVER_MOCD_MARRIAGE_GRANT_DEV_SERVICE: String  = AppConstants.isLive ? "https://api.mocd.gov.ae/Inbound/Rest/CRM/V2/" : "https://staging.mocd.gov.ae/Inbound/Rest/CRM/V3/"
@@ -191,6 +195,9 @@ class AppConstants: NSObject {
     
     
     static var backgroundImage: UIImage = UIImage(named: "morning")!
+    
+    
+    
 }
 
 class Helper {
