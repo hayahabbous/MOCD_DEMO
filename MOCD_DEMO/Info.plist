@@ -31,6 +31,7 @@
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>uaepassqa</string>
 		<string>dbapi-2</string>
 		<string>dbapi-8-emm</string>
 	</array>

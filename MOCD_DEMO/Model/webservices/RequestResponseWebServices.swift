@@ -153,7 +153,7 @@ import Alamofire
          
             urlString  = AppConstants.WEB_SERVER_MOCD_SERVICES_CARD_DEV + WebServiceUrl + "/"
         }else if endpoint == "otp" {
-            urlString = AppConstants.WEB_SERVER_MOCD_MARRIAGE_GRANT_OTP + WebServiceUrl + "/"
+            urlString = AppConstants.WEB_SERVER_MOCD_MARRIAGE_GRANT_OTP + WebServiceUrl + "?"
         }else if serviceType == "social"{
             urlString  = AppConstants.WEB_SERVER_MOCD_SERVICES_SOCIAL_DEV + WebServiceUrl + "/"
         }else if serviceType == "master"{
@@ -163,7 +163,7 @@ import Alamofire
         }
       
         
-        if endpoint == "GetDocumentListByService" {
+        if endpoint == "GetDocumentListByService" || endpoint == "otp" {
             
             if params.count > 0 {
                 for parameter in params {

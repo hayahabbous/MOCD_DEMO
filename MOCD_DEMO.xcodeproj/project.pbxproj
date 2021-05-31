@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -392,7 +392,43 @@
 		52FCD8162389B85E00257FE9 /* pdfViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FCD8152389B85E00257FE9 /* pdfViewer.swift */; };
 		52FCD818238BA26B00257FE9 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FCD817238BA26B00257FE9 /* SettingViewController.swift */; };
 		52FCD81D238BAB0400257FE9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 52FCD81F238BAB0400257FE9 /* Localizable.strings */; };
+		9B1575A3262898F100986C75 /* vistingElderly.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B1575A2262898F100986C75 /* vistingElderly.storyboard */; };
+		9B1575A5262899A400986C75 /* visitingElderlyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1575A4262899A400986C75 /* visitingElderlyViewController.swift */; };
+		9B1595F926289CDA009777D0 /* visitingPersonDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1595F826289CDA009777D0 /* visitingPersonDetailsViewController.swift */; };
+		9B20343C265B946D00476E26 /* newEdaadProgram.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B20343B265B946D00476E26 /* newEdaadProgram.storyboard */; };
+		9B20343E265B96EC00476E26 /* edaadhusbandInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B20343D265B96EC00476E26 /* edaadhusbandInformationViewController.swift */; };
+		9B203440265B96FF00476E26 /* eddadwifeInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B20343F265B96FF00476E26 /* eddadwifeInformationViewController.swift */; };
+		9B203442265B971100476E26 /* edaadabstractEnrollmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B203441265B971100476E26 /* edaadabstractEnrollmentViewController.swift */; };
+		9B203444265B9FDD00476E26 /* newMassWedding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B203443265B9FDD00476E26 /* newMassWedding.storyboard */; };
+		9B931866260BF244001CFF36 /* HappinessMeter.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B8F528F26068FFF0002DDE0 /* HappinessMeter.xcframework */; };
+		9B931867260BF244001CFF36 /* HappinessMeter.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9B8F528F26068FFF0002DDE0 /* HappinessMeter.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9BB0B5682622C736004D528F /* elderlyRegestiration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BB0B5672622C736004D528F /* elderlyRegestiration.storyboard */; };
+		9BB0B56C2622C85E004D528F /* registirationInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB0B56B2622C85E004D528F /* registirationInfoViewController.swift */; };
+		9BB0B56E2622D56E004D528F /* elderlyPersonDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB0B56D2622D56E004D528F /* elderlyPersonDetailsViewController.swift */; };
+		9BB0B5702622D584004D528F /* familyDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB0B56F2622D584004D528F /* familyDetailsViewController.swift */; };
+		9BB0B5722622D59D004D528F /* responsiblePersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB0B5712622D59D004D528F /* responsiblePersonViewController.swift */; };
+		9BB0B5742622D5B4004D528F /* emergencyContactPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB0B5732622D5B4004D528F /* emergencyContactPerson.swift */; };
+		9BC9AB82260292180069357D /* OTP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BC9AB81260292180069357D /* OTP.storyboard */; };
+		9BC9AB85260293720069357D /* emiratesIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC9AB84260293720069357D /* emiratesIDViewController.swift */; };
+		9BC9AB882602951C0069357D /* validateOTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC9AB872602951C0069357D /* validateOTPViewController.swift */; };
+		9BD5E5DC2627918F009CF54E /* nursingHome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BD5E5DB2627918F009CF54E /* nursingHome.storyboard */; };
+		9BD5E5DF2627921E009CF54E /* nursingHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD5E5DE2627921E009CF54E /* nursingHomeViewController.swift */; };
+		9BD5E5E126279233009CF54E /* nursingPersonDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD5E5E026279233009CF54E /* nursingPersonDetailsViewController.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		9B931868260BF244001CFF36 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				9B931867260BF244001CFF36 /* HappinessMeter.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		5207A2BE2404F7EE00E61713 /* MOCDNationalities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MOCDNationalities.swift; sourceTree = "<group>"; };
@@ -808,6 +844,27 @@
 		52FCD820238BAB0600257FE9 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5BDB05F37BA20893471A16E4 /* Pods-MOCD_DEMO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MOCD_DEMO.release.xcconfig"; path = "Target Support Files/Pods-MOCD_DEMO/Pods-MOCD_DEMO.release.xcconfig"; sourceTree = "<group>"; };
 		6B7FAE0A82F86D36C9672CEF /* Pods_MOCD_DEMO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MOCD_DEMO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B1575A2262898F100986C75 /* vistingElderly.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = vistingElderly.storyboard; sourceTree = "<group>"; };
+		9B1575A4262899A400986C75 /* visitingElderlyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = visitingElderlyViewController.swift; sourceTree = "<group>"; };
+		9B1595F826289CDA009777D0 /* visitingPersonDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = visitingPersonDetailsViewController.swift; sourceTree = "<group>"; };
+		9B20343B265B946D00476E26 /* newEdaadProgram.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = newEdaadProgram.storyboard; sourceTree = "<group>"; };
+		9B20343D265B96EC00476E26 /* edaadhusbandInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = edaadhusbandInformationViewController.swift; sourceTree = "<group>"; };
+		9B20343F265B96FF00476E26 /* eddadwifeInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eddadwifeInformationViewController.swift; sourceTree = "<group>"; };
+		9B203441265B971100476E26 /* edaadabstractEnrollmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = edaadabstractEnrollmentViewController.swift; sourceTree = "<group>"; };
+		9B203443265B9FDD00476E26 /* newMassWedding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = newMassWedding.storyboard; sourceTree = "<group>"; };
+		9B8F528F26068FFF0002DDE0 /* HappinessMeter.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = HappinessMeter.xcframework; path = ../../../Downloads/HappinessMeter.xcframework; sourceTree = "<group>"; };
+		9BB0B5672622C736004D528F /* elderlyRegestiration.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = elderlyRegestiration.storyboard; sourceTree = "<group>"; };
+		9BB0B56B2622C85E004D528F /* registirationInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = registirationInfoViewController.swift; sourceTree = "<group>"; };
+		9BB0B56D2622D56E004D528F /* elderlyPersonDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = elderlyPersonDetailsViewController.swift; sourceTree = "<group>"; };
+		9BB0B56F2622D584004D528F /* familyDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = familyDetailsViewController.swift; sourceTree = "<group>"; };
+		9BB0B5712622D59D004D528F /* responsiblePersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = responsiblePersonViewController.swift; sourceTree = "<group>"; };
+		9BB0B5732622D5B4004D528F /* emergencyContactPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = emergencyContactPerson.swift; sourceTree = "<group>"; };
+		9BC9AB81260292180069357D /* OTP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OTP.storyboard; sourceTree = "<group>"; };
+		9BC9AB84260293720069357D /* emiratesIDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = emiratesIDViewController.swift; sourceTree = "<group>"; };
+		9BC9AB872602951C0069357D /* validateOTPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = validateOTPViewController.swift; sourceTree = "<group>"; };
+		9BD5E5DB2627918F009CF54E /* nursingHome.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = nursingHome.storyboard; sourceTree = "<group>"; };
+		9BD5E5DE2627921E009CF54E /* nursingHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nursingHomeViewController.swift; sourceTree = "<group>"; };
+		9BD5E5E026279233009CF54E /* nursingPersonDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nursingPersonDetailsViewController.swift; sourceTree = "<group>"; };
 		EB6FE86C42A31319551C9491 /* Pods-MOCD_DEMO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MOCD_DEMO.debug.xcconfig"; path = "Target Support Files/Pods-MOCD_DEMO/Pods-MOCD_DEMO.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -817,6 +874,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DFF24C2B2336A91E352C376 /* Pods_MOCD_DEMO.framework in Frameworks */,
+				9B931866260BF244001CFF36 /* HappinessMeter.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -844,6 +902,11 @@
 				521AF9EF24A355E700F9932A /* edadProgram.storyboard */,
 				521AF9F124A3560400F9932A /* massWedding.storyboard */,
 				5273F68324CED5090082E6AE /* masterDoc.storyboard */,
+				9BB0B5672622C736004D528F /* elderlyRegestiration.storyboard */,
+				9BD5E5DB2627918F009CF54E /* nursingHome.storyboard */,
+				9B1575A2262898F100986C75 /* vistingElderly.storyboard */,
+				9B20343B265B946D00476E26 /* newEdaadProgram.storyboard */,
+				9B203443265B9FDD00476E26 /* newMassWedding.storyboard */,
 			);
 			path = services;
 			sourceTree = "<group>";
@@ -924,6 +987,10 @@
 		5224497222B4DF1E0010C8FD /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				9B20343A265B939300476E26 /* new Edaad */,
+				9BC9AB81260292180069357D /* OTP.storyboard */,
+				9BB0B5692622C807004D528F /* Elderly */,
+				9BC9AB83260293570069357D /* otp */,
 				5273F68524CED58B0082E6AE /* masterDoc */,
 				52DAD4A324B215F400E1B043 /* certificate */,
 				52B66C7724ACC9BD0043FFCA /* massWedding */,
@@ -2021,6 +2088,7 @@
 		52F432AD22B2AE8D00D54EF1 = {
 			isa = PBXGroup;
 			children = (
+				9B8F528F26068FFF0002DDE0 /* HappinessMeter.xcframework */,
 				52F432B822B2AE8D00D54EF1 /* MOCD_DEMO */,
 				52F432B722B2AE8D00D54EF1 /* Products */,
 				A0176977468B5FF4A0111C39 /* Pods */,
@@ -2097,6 +2165,65 @@
 			path = HomePage;
 			sourceTree = "<group>";
 		};
+		9B1575A6262899AF00986C75 /* visitingElderly */ = {
+			isa = PBXGroup;
+			children = (
+				9B1575A4262899A400986C75 /* visitingElderlyViewController.swift */,
+				9B1595F826289CDA009777D0 /* visitingPersonDetailsViewController.swift */,
+			);
+			path = visitingElderly;
+			sourceTree = "<group>";
+		};
+		9B20343A265B939300476E26 /* new Edaad */ = {
+			isa = PBXGroup;
+			children = (
+				9B20343D265B96EC00476E26 /* edaadhusbandInformationViewController.swift */,
+				9B20343F265B96FF00476E26 /* eddadwifeInformationViewController.swift */,
+				9B203441265B971100476E26 /* edaadabstractEnrollmentViewController.swift */,
+			);
+			path = "new Edaad";
+			sourceTree = "<group>";
+		};
+		9BB0B5692622C807004D528F /* Elderly */ = {
+			isa = PBXGroup;
+			children = (
+				9B1575A6262899AF00986C75 /* visitingElderly */,
+				9BD5E5DD262791E3009CF54E /* ElderlyNursingHome */,
+				9BB0B56A2622C815004D528F /* ElderlyRegistiration */,
+			);
+			path = Elderly;
+			sourceTree = "<group>";
+		};
+		9BB0B56A2622C815004D528F /* ElderlyRegistiration */ = {
+			isa = PBXGroup;
+			children = (
+				9BB0B56B2622C85E004D528F /* registirationInfoViewController.swift */,
+				9BB0B56D2622D56E004D528F /* elderlyPersonDetailsViewController.swift */,
+				9BB0B56F2622D584004D528F /* familyDetailsViewController.swift */,
+				9BB0B5712622D59D004D528F /* responsiblePersonViewController.swift */,
+				9BB0B5732622D5B4004D528F /* emergencyContactPerson.swift */,
+			);
+			path = ElderlyRegistiration;
+			sourceTree = "<group>";
+		};
+		9BC9AB83260293570069357D /* otp */ = {
+			isa = PBXGroup;
+			children = (
+				9BC9AB84260293720069357D /* emiratesIDViewController.swift */,
+				9BC9AB872602951C0069357D /* validateOTPViewController.swift */,
+			);
+			path = otp;
+			sourceTree = "<group>";
+		};
+		9BD5E5DD262791E3009CF54E /* ElderlyNursingHome */ = {
+			isa = PBXGroup;
+			children = (
+				9BD5E5DE2627921E009CF54E /* nursingHomeViewController.swift */,
+				9BD5E5E026279233009CF54E /* nursingPersonDetailsViewController.swift */,
+			);
+			path = ElderlyNursingHome;
+			sourceTree = "<group>";
+		};
 		A0176977468B5FF4A0111C39 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -2129,6 +2256,7 @@
 				52F432B322B2AE8D00D54EF1 /* Frameworks */,
 				52F432B422B2AE8D00D54EF1 /* Resources */,
 				1776831AE7D211874BDBE7F5 /* [CP] Embed Pods Frameworks */,
+				9B931868260BF244001CFF36 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2206,8 +2334,10 @@
 				523D40E222BCCE83008EEB6E /* MyriadPro-SemiboldSemiExt.otf in Resources */,
 				523D40DF22BCCE83008EEB6E /* MyriadPro-LightSemiExt.otf in Resources */,
 				523D40D522BCCE83008EEB6E /* MyriadPro-LightSemiCn.otf in Resources */,
+				9B1575A3262898F100986C75 /* vistingElderly.storyboard in Resources */,
 				523D40D922BCCE83008EEB6E /* MyriadPro-LightSemiCnIt.otf in Resources */,
 				523D3FCF22BCC0FD008EEB6E /* MedicalAgenda.storyboard in Resources */,
+				9BD5E5DC2627918F009CF54E /* nursingHome.storyboard in Resources */,
 				52F6830922BA386E00B54391 /* AssessmentCollectionViewCell.xib in Resources */,
 				527A782B23E5C3CE00E4A086 /* AssessmentNewCollectionViewCell.xib in Resources */,
 				5289E0782481424E0004869A /* dateTexteField.xib in Resources */,
@@ -2230,12 +2360,15 @@
 				5224498222B633310010C8FD /* childNotificationCollectionViewCell.xib in Resources */,
 				5252172222B8BA6700658497 /* wisdomCollectionViewCell.xib in Resources */,
 				52B2853B2417EAC700B6F787 /* taskCollectionViewCell.xib in Resources */,
+				9BB0B5682622C736004D528F /* elderlyRegestiration.storyboard in Resources */,
 				52B66C6024AB790D0043FFCA /* fileCell.xib in Resources */,
+				9B20343C265B946D00476E26 /* newEdaadProgram.storyboard in Resources */,
 				5224496F22B3FDEA0010C8FD /* servicesCollectionView.xib in Resources */,
 				523D40CD22BCCE83008EEB6E /* MyriadPro-BoldSemiExtIt.otf in Resources */,
 				522A9A742403AF3100BB4110 /* textFieldMandatory.xib in Resources */,
 				5224497722B4DFB60010C8FD /* e_servicesCollectionViewCell.xib in Resources */,
 				523D40DE22BCCE83008EEB6E /* MyriadPro-BlackSemiExtIt.otf in Resources */,
+				9BC9AB82260292180069357D /* OTP.storyboard in Resources */,
 				523D40DB22BCCE83008EEB6E /* MyriadPro-Regular.otf in Resources */,
 				52F432BF22B2AE8D00D54EF1 /* Main.storyboard in Resources */,
 				52FCD81D238BAB0400257FE9 /* Localizable.strings in Resources */,
@@ -2254,6 +2387,7 @@
 				523D40C022BCCE83008EEB6E /* aboutus_ar.html in Resources */,
 				52C2714524F502BD0003C785 /* supportingField.xib in Resources */,
 				523D40FD22BD4B22008EEB6E /* Tejori.storyboard in Resources */,
+				9B203444265B9FDD00476E26 /* newMassWedding.storyboard in Resources */,
 				523D40CE22BCCE83008EEB6E /* MyriadPro-SemiboldSemiExtIt.otf in Resources */,
 				52B7D81C24975F4800C328F1 /* browseTableViewCell.xib in Resources */,
 				523D40EB22BCCE83008EEB6E /* MyriadPro-BlackSemiCnIt.otf in Resources */,
@@ -2350,6 +2484,7 @@
 				523D41D122BD5B34008EEB6E /* AddSocialActivitieVCT.swift in Sources */,
 				523D404E22BCCDF6008EEB6E /* QuoteOfTheMonthModel.swift in Sources */,
 				523D401022BCCD7F008EEB6E /* RootNavigationController.swift in Sources */,
+				9BD5E5E126279233009CF54E /* nursingPersonDetailsViewController.swift in Sources */,
 				526C06482486BC9000714E2B /* browseTextField.swift in Sources */,
 				522966F922D47D5B00B4DF52 /* ChildProfileViewController.swift in Sources */,
 				52DAD4A224B20DCA00E1B043 /* socialAttachmentViewController.swift in Sources */,
@@ -2363,6 +2498,7 @@
 				523D41D722BD5B34008EEB6E /* IncomeTypeModel.swift in Sources */,
 				52CAE4A225FF77C40041492F /* Router.swift in Sources */,
 				523D41D522BD5B34008EEB6E /* DatabaseEdkhar.swift in Sources */,
+				9B20343E265B96EC00476E26 /* edaadhusbandInformationViewController.swift in Sources */,
 				523D41C022BD5B33008EEB6E /* AppointmentVCT.swift in Sources */,
 				523D41AC22BD5B33008EEB6E /* ReportVCT.swift in Sources */,
 				524F545C24AF73BD006D0FBE /* marriageGrantRequests.swift in Sources */,
@@ -2375,6 +2511,7 @@
 				523D400E22BCCD7F008EEB6E /* NotesCell.swift in Sources */,
 				523D405322BCCDF6008EEB6E /* DiseaseModel.swift in Sources */,
 				52B66C7124AC92260043FFCA /* marriageOtherInformationViewController.swift in Sources */,
+				9B203442265B971100476E26 /* edaadabstractEnrollmentViewController.swift in Sources */,
 				523D41A822BD5B33008EEB6E /* CurrentMonthVC.swift in Sources */,
 				523D41E922BD5B34008EEB6E /* FF_IncomeDistribution.swift in Sources */,
 				523D407F22BCCE2B008EEB6E /* MMDatePickerPopoverVC.swift in Sources */,
@@ -2382,6 +2519,7 @@
 				5232BE2123D83964008EE972 /* serviceCardViewController.swift in Sources */,
 				521F855424A6633100DA118F /* socialInformationViewController.swift in Sources */,
 				523D401A22BCCD7F008EEB6E /* ChecklistVC.swift in Sources */,
+				9BB0B5702622D584004D528F /* familyDetailsViewController.swift in Sources */,
 				52F432C222B2AE8D00D54EF1 /* MOCD_DEMO.xcdatamodeld in Sources */,
 				52E343FB238673BA00CA4519 /* taskCell.swift in Sources */,
 				523D407E22BCCE2B008EEB6E /* MMDatePicker.swift in Sources */,
@@ -2420,6 +2558,7 @@
 				523D41A922BD5B33008EEB6E /* PreviousMonthDetailVC.swift in Sources */,
 				523D40F822BCCEE5008EEB6E /* FontConstant.swift in Sources */,
 				523D408022BCCE2B008EEB6E /* MMDatePickerPopover.swift in Sources */,
+				9BB0B5722622D59D004D528F /* responsiblePersonViewController.swift in Sources */,
 				523D402322BCCD7F008EEB6E /* AddSocialActivitieVC.swift in Sources */,
 				528B9F302313E08E00D346A0 /* String+Timepiece.swift in Sources */,
 				5224497D22B6245F0010C8FD /* nemoMainViewController.swift in Sources */,
@@ -2432,6 +2571,7 @@
 				523D41DB22BD5B34008EEB6E /* SpendingTypeModel.swift in Sources */,
 				523D408622BCCE2B008EEB6E /* PDFGenerator.swift in Sources */,
 				523D41AB22BD5B33008EEB6E /* PreviousMonthCell.swift in Sources */,
+				9B203440265B96FF00476E26 /* eddadwifeInformationViewController.swift in Sources */,
 				524A037E2440E2A00021A5EE /* MOCDSecurityQuestions.swift in Sources */,
 				52B66C6724AC907E0043FFCA /* wifeInformationViewController.swift in Sources */,
 				52A06D5C230D22DE00E6F202 /* sListViewController.swift in Sources */,
@@ -2439,6 +2579,7 @@
 				523D41D822BD5B34008EEB6E /* IncomeModel.swift in Sources */,
 				5244EAE42483986300673977 /* addressDetailsViewController.swift in Sources */,
 				523D40F922BCCEE5008EEB6E /* GeneralConstants.swift in Sources */,
+				9BC9AB882602951C0069357D /* validateOTPViewController.swift in Sources */,
 				52B66C6D24AC91470043FFCA /* statmenetOfWorkViewController.swift in Sources */,
 				523D401722BCCD7F008EEB6E /* MedicinPlanListVC.swift in Sources */,
 				5252173022B9094500658497 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
@@ -2465,6 +2606,7 @@
 				5252173822BA27E000658497 /* addImageSlider.swift in Sources */,
 				523D41A722BD5B33008EEB6E /* YearCell.swift in Sources */,
 				52CAE49425FF77C40041492F /* UAEPassConfigProtocol.swift in Sources */,
+				9B1595F926289CDA009777D0 /* visitingPersonDetailsViewController.swift in Sources */,
 				523D402F22BCCD7F008EEB6E /* SideMenuVC.swift in Sources */,
 				523D41E222BD5B34008EEB6E /* PreviousYearSpendingTypeModel.swift in Sources */,
 				523D403122BCCD7F008EEB6E /* SideMenuRightVC.swift in Sources */,
@@ -2496,6 +2638,7 @@
 				523D41C622BD5B33008EEB6E /* ReminderCell.swift in Sources */,
 				52BF97F7240656A900C87745 /* DisabledCardDetailsVC.swift in Sources */,
 				523D404C22BCCDF6008EEB6E /* appointmentModelManager.swift in Sources */,
+				9B1575A5262899A400986C75 /* visitingElderlyViewController.swift in Sources */,
 				523D403322BCCD7F008EEB6E /* AddUserVC.swift in Sources */,
 				527A782923E5C3C300E4A086 /* AssessmentNewCollectionViewCell.swift in Sources */,
 				523D402E22BCCD7F008EEB6E /* ReportVC.swift in Sources */,
@@ -2508,6 +2651,7 @@
 				52B66C5E24AB381C0043FFCA /* servicesRequest.swift in Sources */,
 				523D401B22BCCD7F008EEB6E /* ChecklistCell.swift in Sources */,
 				52671B5422BE120900F48A95 /* AppDelegate_ex.swift in Sources */,
+				9BB0B56C2622C85E004D528F /* registirationInfoViewController.swift in Sources */,
 				52FCD8162389B85E00257FE9 /* pdfViewer.swift in Sources */,
 				523D408322BCCE2B008EEB6E /* PDFPageRenderable.swift in Sources */,
 				523D401922BCCD7F008EEB6E /* AddMedicinPlanVC.swift in Sources */,
@@ -2549,11 +2693,13 @@
 				5272452C237BEB4900FA9612 /* ProgressHelper.swift in Sources */,
 				524DA33A24AE712F00EF10E0 /* addFamilyViewController.swift in Sources */,
 				52F682CB22BA381500B54391 /* AssessmentViewController.swift in Sources */,
+				9BB0B56E2622D56E004D528F /* elderlyPersonDetailsViewController.swift in Sources */,
 				523D41A222BD5B33008EEB6E /* AddNoteVCT.swift in Sources */,
 				522A9A762403B0CA00BB4110 /* textFieldMandatory.swift in Sources */,
 				52B66C6524AC90050043FFCA /* husbandInformationViewController.swift in Sources */,
 				52B66C7624ACC9B90043FFCA /* edaadContactDetailsViewController.swift in Sources */,
 				5224496922B3F57D0010C8FD /* SignupViewController.swift in Sources */,
+				9BB0B5742622D5B4004D528F /* emergencyContactPerson.swift in Sources */,
 				52E9EA0B2418D509000C8BB7 /* addObjectiveViewController.swift in Sources */,
 				52FB328623E47FAA0092D4B9 /* nemowSettingViewController.swift in Sources */,
 				523D402122BCCD7F008EEB6E /* QuoteOfThemMonthVC.swift in Sources */,
@@ -2572,6 +2718,7 @@
 				523D08112373F6F2003672D8 /* RequestResponseWebServices.swift in Sources */,
 				52DAD4A524B2163300E1B043 /* certificateRequestViewController.swift in Sources */,
 				523D41A522BD5B33008EEB6E /* PreviousYearDetailVC.swift in Sources */,
+				9BC9AB85260293720069357D /* emiratesIDViewController.swift in Sources */,
 				524F545A24AF6EC3006D0FBE /* socialSecurityRequests.swift in Sources */,
 				523D41BB22BD5B33008EEB6E /* TutorialVCT.swift in Sources */,
 				521F855624A6696400DA118F /* socialPassportViewController.swift in Sources */,
@@ -2594,6 +2741,7 @@
 				52CAE49525FF77C40041492F /* ServiceErrorType.swift in Sources */,
 				523D41A422BD5B33008EEB6E /* NotesVCT.swift in Sources */,
 				528B9F2D2313E08E00D346A0 /* Int+Timepiece.swift in Sources */,
+				9BD5E5DF2627921E009CF54E /* nursingHomeViewController.swift in Sources */,
 				52B66C6924AC90BC0043FFCA /* marriageContractDataViewController.swift in Sources */,
 				52B285392417EAA600B6F787 /* taskCollectionViewCell.swift in Sources */,
 				5252173322BA20DA00658497 /* ChildObject.swift in Sources */,
@@ -2835,7 +2983,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0;
+				CURRENT_PROJECT_VERSION = 1.4;
 				DEVELOPMENT_TEAM = RYD66E6YP6;
 				INFOPLIST_FILE = MOCD_DEMO/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -2864,7 +3012,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0;
+				CURRENT_PROJECT_VERSION = 1.4;
 				DEVELOPMENT_TEAM = RYD66E6YP6;
 				INFOPLIST_FILE = MOCD_DEMO/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;

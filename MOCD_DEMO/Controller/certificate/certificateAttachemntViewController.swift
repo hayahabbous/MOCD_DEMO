@@ -135,11 +135,21 @@ class certificateAttachemntViewController: UIViewController ,UIImagePickerContro
             guard let code = json["code"] as? Int else {return}
             let message = json["message"] as? String ?? ""
             if code == 10 {
-                self.navigationController?.dismiss(animated: true) {
-                    Utils.showAlertWith(title: "Success", message: message, viewController: self)
+                
+                
+                DispatchQueue.main.async {
+                    self.navigationController?.dismiss(animated: true) {
+                        Utils.showAlertWith(title: "Success", message: message, viewController: self)
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "openHappinessMeter"), object: nil)
+                       
+                    }
                 }
+                
             }else{
-                Utils.showAlertWith(title: "Error", message: message, viewController: self)
+                DispatchQueue.main.async {
+                    Utils.showAlertWith(title: "Error", message: message, viewController: self)
+                }
+                
             }
         }
        

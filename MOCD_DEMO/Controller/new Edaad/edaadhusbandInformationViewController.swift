@@ -1,9 +1,9 @@
 //
-//  husbandInformationViewController.swift
+//  edaadhusbandInformationViewController.swift
 //  MOCD_DEMO
 //
-//  Created by macbook pro on 7/1/20.
-//  Copyright © 2020 Datacellme. All rights reserved.
+//  Created by haya habbous on 24/05/2021.
+//  Copyright © 2021 Datacellme. All rights reserved.
 //
 
 import Foundation
@@ -12,44 +12,8 @@ import NVActivityIndicatorView
 import CryptoSwift
 
 
-struct marriageService {
-    
-    var HusbandNationalId: String = ""
-    var WifeNationalId: String = ""
-    var Court: String = ""
-    var EmployerCategory: String = ""
-    var MarriageContractDate: String = ""
-    var HusbandFullNameArabic: String = ""
-    var HusbandFullNameEnglish: String = ""
-    var HusbandBirthDate: String = ""
-    var HusbandEducationLevel: String = ""
-    var HusbandMobile1: String = ""
-    var HusbandMobile2: String = ""
-    var HusbandEmail: String = ""
-    var WifeFullNameArabic: String = ""
-    var WifeFullNameEnglish: String = ""
-    var WifeBirthDate: String = ""
-    var WifeEducationLevel: String = ""
-    var WifeMobile1: String = ""
-    var WifeEmail: String = ""
-    var FamilyBookNumber: String = ""
-    var TownNumber: String = ""
-    var FamilyNumber: String = ""
-    var FamilyBookIssueDate: String = ""
-    var FamilyBookIssuePlace: String = ""
-    var Employer: String = ""
-    var WorkPlace: String = ""
-    var Totalmonthlyincome: String = ""
-    var BankName: String = ""
-    var IBAN: String = ""
-    
-    
-    var marriageContractDate: Date = Date()
-    var familyBookDate: Date = Date()
 
-}
-
-class husbandInformationViewController: UIViewController ,NVActivityIndicatorViewable{
+class edaadhusbandInformationViewController: UIViewController ,NVActivityIndicatorViewable{
     
     
     @IBOutlet var courtPicker: UIPickerView!
@@ -450,14 +414,14 @@ class husbandInformationViewController: UIViewController ,NVActivityIndicatorVie
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toWifeInformation" {
-            let dest = segue.destination as! wifeInformationViewController
+            let dest = segue.destination as! eddadwifeInformationViewController
             dest.marriageItem = self.marriageItem
             dest.myString = "MMMMMMM"
             print(dest.marriageItem)
         }
     }
 }
-extension husbandInformationViewController: UIPickerViewDelegate , UIPickerViewDataSource {
+extension edaadhusbandInformationViewController: UIPickerViewDelegate , UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -512,59 +476,4 @@ extension husbandInformationViewController: UIPickerViewDelegate , UIPickerViewD
     }
 
    
-}
-extension String {
-    func aesEncrypt(key: String, iv: String) throws -> String{
-        
-        var result = ""
-        
-        do{
-            let aes = try AES(key: Array("Zvrsjn#:Pbhdz32R@'=&\\WW*".utf8), blockMode: ECB())
-            let encrypted = try aes.encrypt(Array(self.utf8))
-            
-            result = encrypted.toBase64()!
-            print("AES Encryption Result: \(result)")
-        } catch {
-            
-            print("Error: \(error)")
-        }
-        
-        return result
-        
-        
-    }
-    
-    
-    func aesDecrypt() throws -> String {
-        var result = ""
-        
-        do{
-            let encrypted = self
-            let key: [UInt8] = Array("Zvrsjn#:Pbhdz32R@'=&\\WW*".utf8) as [UInt8]
-            let aes = try! AES(key: key, blockMode: ECB())
-            let decrypted = try aes.decrypt(Array(base64: encrypted))
-            result = String(data: Data(decrypted), encoding: .utf8) ?? ""
-            print("AES Decryption Result: \(result)")
-        }catch {
-            
-            print("Error: \(error)")
-        }
-        
-        return result
-        
-    }
-    
-/*
-    func aesDecrypt(key: String, iv: String) throws -> String {
-        let data = NSData(base64Encoded: self, options: NSData.Base64DecodingOptions(rawValue: 0))
-        let dec = try AES(key: key, iv: iv, blockMode:.CBC).decrypt(data!.arrayOfBytes(), padding: PKCS7())
-        let decData = NSData(bytes: dec, length: Int(dec.count))
-        let result = NSString(data: decData, encoding: NSUTF8StringEncoding)
-        return String(result!)
-    }*/
-}
-extension Data {
-    func hexEncodedString() -> String {
-        return map { String(format: "%02hhx", $0) }.joined()
-    }
 }

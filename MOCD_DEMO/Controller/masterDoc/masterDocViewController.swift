@@ -27,6 +27,12 @@ class masterDocViewController: UIViewController ,UIImagePickerControllerDelegate
     var requestType: String = ""
     
     var contentString: String = ""
+    
+    
+    var requestId: String = ""
+    var appReference: String = ""
+    var isElderly: Bool = false
+    
     @IBOutlet var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +56,15 @@ class masterDocViewController: UIViewController ,UIImagePickerControllerDelegate
         case "2":
             serviceId = AppConstants.RequestingServiceMassWeddingDEV
             serviceTypeId = AppConstants.TypeOfRequestMassWeddingDEV
+        case "3":
+            serviceId = AppConstants.RequestingServiceElderly
+            serviceTypeId = AppConstants.TypeOfRequestMobileUnit
+        case "4":
+            serviceId = AppConstants.RequestingServiceElderly
+            serviceTypeId = AppConstants.TypeOfRequestNursinghome
+        case "5":
+            serviceId = AppConstants.RequestingServiceElderly
+            serviceTypeId = AppConstants.TypeOfRequestAppointmentservice
         default:
             print("")
         }
@@ -110,7 +125,12 @@ class masterDocViewController: UIViewController ,UIImagePickerControllerDelegate
                     
                     
                     if self.docsArray.count == 0 {
-                        self.submitRequest()
+                        if self.isElderly {
+                            self.submitElderlyRequest()
+                        }else{
+                            self.submitRequest()
+                        }
+                        
                         
                     }
                     self.tableView.reloadData()
@@ -178,7 +198,11 @@ class masterDocViewController: UIViewController ,UIImagePickerControllerDelegate
             DispatchQueue.main.async {
                 self.stopAnimating(nil)
                 
-                self.submitRequest()
+                if self.isElderly {
+                    self.submitElderlyRequest()
+                }else{
+                    self.submitRequest()
+                }
             }
             
         }
@@ -209,7 +233,51 @@ class masterDocViewController: UIViewController ,UIImagePickerControllerDelegate
                     self.stopAnimating(nil)
                      //Utils.showAlertWith(title: ResponseTitle, message: AppConstants.isArabic() ? ResponseDescriptionAr : ResponseDescriptionEn, viewController: self)
                     self.navigationController?.dismiss(animated: true, completion: {
-                       
+                        
+                        DispatchQueue.main.async {
+                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "openHappinessMeter"), object: nil)
+                        }
+                        
+                    })
+                }
+            }else {
+                DispatchQueue.main.async {
+                
+                    self.stopAnimating(nil)
+                       Utils.showAlertWith(title: ResponseTitle, message: AppConstants.isArabic() ? ResponseDescriptionAr : ResponseDescriptionEn, viewController: self)
+                   }
+                   return
+            }
+            
+            
+            
+        }
+    }
+    
+    func submitElderlyRequest() {
+        let size = CGSize(width: 30, height: 30)
+            
+            
+            self.startAnimating(size, message: "Loading ...", messageFont: nil, type: .ballBeat)
+        
+        WebService.SubmitElderlyRequest(RequestId: self.requestId, AppReference: self.appReference, IsUpdate: "true") { (json) in
+            print(json)
+            
+            guard let Code = json["Code"] as? Int else {return}
+            guard let ResponseDescriptionEn = json["ResponseDescriptionEn"] as? String else {return}
+            guard let ResponseDescriptionAr = json["ResponseDescriptionAr"] as? String else {return}
+            guard let ResponseTitle = json["ResponseTitle"] as? String else {return}
+            
+            if Code == 200 {
+                DispatchQueue.main.async {
+                    self.stopAnimating(nil)
+                     //Utils.showAlertWith(title: ResponseTitle, message: AppConstants.isArabic() ? ResponseDescriptionAr : ResponseDescriptionEn, viewController: self)
+                    self.navigationController?.dismiss(animated: true, completion: {
+                        
+                        DispatchQueue.main.async {
+                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "openHappinessMeter"), object: nil)
+                        }
+                        
                     })
                 }
             }else {

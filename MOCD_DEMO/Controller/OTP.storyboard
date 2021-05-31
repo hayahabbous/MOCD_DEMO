@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mC0-Gy-S5L">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Application Form-->
+        <scene sceneID="u3i-0k-yC5">
+            <objects>
+                <viewController id="8Jh-eG-IT2" customClass="emiratesIDViewController" customModule="MOCD_CONNECT" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Unm-ZU-rJJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AyQ-y9-YDI" customClass="textFieldMandatory" customModule="MOCD_CONNECT" customModuleProvider="target">
+                                <rect key="frame" x="20" y="359" width="374" height="80"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="J9b-hH-T0l"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EPC-WQ-8aI">
+                                <rect key="frame" x="147" y="455" width="120" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="LsT-ps-L9L"/>
+                                    <constraint firstAttribute="height" constant="40" id="M8c-mq-YCA"/>
+                                </constraints>
+                                <state key="normal" title="Verify">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="doneaction:" destination="8Jh-eG-IT2" eventType="touchUpInside" id="C4B-RY-cJJ"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Emirates ID Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fxV-fl-TaH">
+                                <rect key="frame" x="105" y="285" width="204" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter your Emirates ID Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fkS-xL-ed1">
+                                <rect key="frame" x="62.5" y="322" width="289" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="5NH-3b-od5"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="EPC-WQ-8aI" firstAttribute="centerX" secondItem="AyQ-y9-YDI" secondAttribute="centerX" id="7cw-VO-5hi"/>
+                            <constraint firstItem="AyQ-y9-YDI" firstAttribute="top" secondItem="fkS-xL-ed1" secondAttribute="bottom" constant="16" id="Hhu-j6-GBa"/>
+                            <constraint firstItem="5NH-3b-od5" firstAttribute="trailing" secondItem="AyQ-y9-YDI" secondAttribute="trailing" constant="20" id="Oxj-Nu-DBG"/>
+                            <constraint firstItem="fxV-fl-TaH" firstAttribute="centerX" secondItem="5NH-3b-od5" secondAttribute="centerX" id="Ret-1x-IIQ"/>
+                            <constraint firstItem="EPC-WQ-8aI" firstAttribute="top" secondItem="AyQ-y9-YDI" secondAttribute="bottom" constant="16" id="SWN-TU-ueA"/>
+                            <constraint firstItem="fkS-xL-ed1" firstAttribute="top" secondItem="fxV-fl-TaH" secondAttribute="bottom" constant="16" id="VVi-Vy-hBr"/>
+                            <constraint firstItem="AyQ-y9-YDI" firstAttribute="centerX" secondItem="5NH-3b-od5" secondAttribute="centerX" id="VZu-Ta-fdU"/>
+                            <constraint firstItem="EPC-WQ-8aI" firstAttribute="centerY" secondItem="5NH-3b-od5" secondAttribute="centerY" id="Yjm-Ez-Cu0"/>
+                            <constraint firstItem="fkS-xL-ed1" firstAttribute="centerX" secondItem="5NH-3b-od5" secondAttribute="centerX" id="mbU-m6-j2r"/>
+                            <constraint firstItem="AyQ-y9-YDI" firstAttribute="leading" secondItem="5NH-3b-od5" secondAttribute="leading" constant="20" id="y8z-ws-G8R"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="phU-ti-zmi" appends="YES" id="P8Y-9k-CmS"/>
+                        </connections>
+                    </view>
+                    <navigationItem key="navigationItem" title="Application Form" id="jkt-fk-XqX"/>
+                    <connections>
+                        <outlet property="emiratesIDView" destination="AyQ-y9-YDI" id="ab4-Be-nOK"/>
+                        <outlet property="nextButton" destination="EPC-WQ-8aI" id="o7M-mf-qS6"/>
+                        <segue destination="Jwa-D9-CJS" kind="show" identifier="toValidate" id="BYy-Ku-aHp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="waM-LK-C3O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="phU-ti-zmi">
+                    <connections>
+                        <action selector="dismissAxction:" destination="8Jh-eG-IT2" id="yca-K1-Ys9"/>
+                        <outlet property="delegate" destination="8Jh-eG-IT2" id="QUb-ZX-uS8"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="939.13043478260875" y="-42.1875"/>
+        </scene>
+        <!--ValidateOTP View Controller-->
+        <scene sceneID="dJp-0t-wmp">
+            <objects>
+                <viewController id="Jwa-D9-CJS" customClass="validateOTPViewController" customModule="MOCD_CONNECT" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TOq-Yb-WEh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NtT-lb-BRh" customClass="textFieldMandatory" customModule="MOCD_CONNECT" customModuleProvider="target">
+                                <rect key="frame" x="20" y="359" width="374" height="80"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="RUB-0F-ezj"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="COw-iZ-adL">
+                                <rect key="frame" x="147" y="455" width="120" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="d90-Sj-6w7"/>
+                                    <constraint firstAttribute="width" constant="120" id="k8t-CG-ebF"/>
+                                </constraints>
+                                <state key="normal" title="Next">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="doneAction:" destination="Jwa-D9-CJS" eventType="touchUpInside" id="UIN-JV-x9D"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OTP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xWh-xW-vaC">
+                                <rect key="frame" x="189.5" y="265" width="35" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter the OTP you received on your mobile number " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vi3-dT-N1j">
+                                <rect key="frame" x="-8" y="302" width="430" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="xxa-Sw-VA0"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="COw-iZ-adL" firstAttribute="top" secondItem="NtT-lb-BRh" secondAttribute="bottom" constant="16" id="53M-zm-m6i"/>
+                            <constraint firstItem="COw-iZ-adL" firstAttribute="centerX" secondItem="NtT-lb-BRh" secondAttribute="centerX" id="9oY-7E-aZV"/>
+                            <constraint firstItem="COw-iZ-adL" firstAttribute="centerY" secondItem="xxa-Sw-VA0" secondAttribute="centerY" id="Ee8-A3-5Qt"/>
+                            <constraint firstItem="xxa-Sw-VA0" firstAttribute="leading" secondItem="vi3-dT-N1j" secondAttribute="leading" constant="8" id="I8Q-TI-WBz"/>
+                            <constraint firstItem="NtT-lb-BRh" firstAttribute="centerX" secondItem="xxa-Sw-VA0" secondAttribute="centerX" id="JNq-m5-jaU"/>
+                            <constraint firstItem="NtT-lb-BRh" firstAttribute="top" secondItem="vi3-dT-N1j" secondAttribute="bottom" constant="16" id="OUK-fd-yEd"/>
+                            <constraint firstItem="NtT-lb-BRh" firstAttribute="leading" secondItem="xxa-Sw-VA0" secondAttribute="leading" constant="20" id="S9W-M7-z48"/>
+                            <constraint firstItem="xxa-Sw-VA0" firstAttribute="trailing" secondItem="NtT-lb-BRh" secondAttribute="trailing" constant="20" id="XpS-b6-y9T"/>
+                            <constraint firstItem="xWh-xW-vaC" firstAttribute="centerX" secondItem="xxa-Sw-VA0" secondAttribute="centerX" id="enW-FZ-SjA"/>
+                            <constraint firstItem="vi3-dT-N1j" firstAttribute="top" secondItem="xWh-xW-vaC" secondAttribute="bottom" constant="16" id="gPI-iX-jXz"/>
+                            <constraint firstItem="vi3-dT-N1j" firstAttribute="centerX" secondItem="xxa-Sw-VA0" secondAttribute="centerX" id="iV5-RN-lUT"/>
+                            <constraint firstItem="vi3-dT-N1j" firstAttribute="trailing" secondItem="xxa-Sw-VA0" secondAttribute="trailing" constant="8" id="wIA-P9-MAS"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="80t-St-1mh" appends="YES" id="yoe-Bu-N6U"/>
+                        </connections>
+                    </view>
+                    <navigationItem key="navigationItem" id="jTN-ba-H7j"/>
+                    <connections>
+                        <outlet property="doneButton" destination="COw-iZ-adL" id="feW-mT-mD0"/>
+                        <outlet property="validateView" destination="NtT-lb-BRh" id="C89-Wq-Heo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wmw-rn-IRl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="80t-St-1mh">
+                    <connections>
+                        <action selector="dismissAxction:" destination="Jwa-D9-CJS" id="qqV-JP-Y0u"/>
+                        <outlet property="delegate" destination="Jwa-D9-CJS" id="nUc-j1-TKu"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1806" y="-42"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="c5X-nH-6At">
+            <objects>
+                <navigationController storyboardIdentifier="emiratesIDViewController" automaticallyAdjustsScrollViewInsets="NO" id="mC0-Gy-S5L" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kfw-k1-F3X">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="8Jh-eG-IT2" kind="relationship" relationship="rootViewController" id="jLY-nP-Z3O"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qI7-g8-gNe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="28.985507246376812" y="-42.1875"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

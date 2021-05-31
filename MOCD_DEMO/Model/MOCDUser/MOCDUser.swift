@@ -105,3 +105,20 @@ class MOCDUser: NSObject {
     }
     
 }
+class personalInfo: NSObject {
+    
+ 
+    
+    var mobileNumber: String = ""
+    var workPhone: String = ""
+    var dateofbirth: String = ""
+    var firstNameArabic: String = ""
+    var firstNameEnglish: String = ""
+    var secondNameArabic: String = ""
+    var secondNameEnglish: String = ""
+    var fullArabicName: String = ""
+    var fullEnglishName: String = ""
+    var emiratesID: String = ""
+    var email: String = ""
+    
+}

@@ -173,7 +173,7 @@ class wifeInformationViewController: UIViewController ,NVActivityIndicatorViewab
     }
     
     func validateFields() -> Bool{
-        //return true
+       
         
         marriageItem.WifeFullNameArabic = wifeNameView.textField.text ?? ""
         marriageItem.WifeFullNameEnglish = wifeNameEnView.textField.text ?? ""
@@ -214,7 +214,7 @@ class wifeInformationViewController: UIViewController ,NVActivityIndicatorViewab
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toContarct" {
-            let dest = segue.destination as! marriageContractDataViewController
+            let dest = segue.destination as! abstractEnrollmentViewController
             dest.marriageItem = self.marriageItem
         }
     }

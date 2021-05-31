@@ -13,6 +13,11 @@ import NVActivityIndicatorView
 
 class RegisterViewController: UIViewController ,NVActivityIndicatorViewable {
     
+    
+    @IBOutlet weak var confirmPasswordHeight: NSLayoutConstraint!
+    @IBOutlet weak var passwordHeight: NSLayoutConstraint!
+    @IBOutlet weak var usernameHeight: NSLayoutConstraint!
+    @objc public var uaePassAccessToken: String!
     @IBOutlet var securityPicker: UIPickerView!
     var imagePicker = UIImagePickerController()
     var toolBar = UIToolbar()
@@ -42,7 +47,7 @@ class RegisterViewController: UIViewController ,NVActivityIndicatorViewable {
     @IBOutlet var confirmPasswordView: textFieldMandatory!
     @IBOutlet var twoFactorAuthCheckBox: M13Checkbox!
     @IBOutlet var submitButton: UIButton!
-    
+    @IBOutlet var uaePassButton: UIButton!
     
     
     var isUAEPass: Bool = false
@@ -98,6 +103,14 @@ class RegisterViewController: UIViewController ,NVActivityIndicatorViewable {
         cameraImageView.layer.borderWidth = 2
         cameraImageView.layer.borderColor = UIColor.white.cgColor
         
+        
+        self.uaePassButton.layer.cornerRadius = 20
+        self.uaePassButton.layer.masksToBounds = true
+        self.uaePassButton.backgroundColor = .white
+        self.uaePassButton.setTitleColor(.black, for: .normal)
+        self.uaePassButton.layer.borderWidth = 1.0
+        self.uaePassButton.layer.borderColor = UIColor.black.cgColor
+        self.uaePassButton.setTitle("Sign in with UAE PASS".localize, for: .normal)
         
         let gradient = CAGradientLayer()
         gradient.frame = self.submitButton.bounds
@@ -168,6 +181,21 @@ class RegisterViewController: UIViewController ,NVActivityIndicatorViewable {
             mobileView.textField.text = self.user_mobile
             emailView.textField.text = self.user_email
 
+            self.firstNameView.textField.isEnabled = false
+            self.lastNameView.textField.isEnabled = false
+            self.emailView.textField.isEnabled = false
+            self.mobileView.textField.isEnabled = false
+            self.emiratesIDView.textField.isEnabled = false
+            
+            
+            self.usernameView.isHidden = true
+            self.passwordView.isHidden = true
+            self.confirmPasswordView.isHidden = true
+            
+            
+            self.passwordHeight.constant = 0
+            self.confirmPasswordHeight.constant = 0
+            self.usernameHeight.constant = 0
         }
     }
     func setupToolbar() {
@@ -226,7 +254,180 @@ class RegisterViewController: UIViewController ,NVActivityIndicatorViewable {
     @objc func onClickedToolbeltButton(_ sender: Any){
         self.view.endEditing(true)
     }
+    @IBAction func uaePassAction(_ sender: Any) {
+        
+        //self.retrieveUser(email: "datacell11@g.com", userID: "123456678")
+        self.actionLoginWithUaePass(sender)
+    }
+    @IBAction func actionLoginWithUaePass(_ sender: Any) {
+        
+        let webVC = self.storyboard?.instantiateViewController(withIdentifier: "UAEPassWebViewController") as? UAEPassWebViewController
+        webVC?.urlString = UAEPassConfiguration.getServiceUrlForType(serviceType: .loginURL)
+        webVC?.onUAEPassSuccessBlock = {(code: String?) -> Void in
+            if let code = code {
+                self.startAnimating(message: "Generating Login Token", type: .pacman)
+                self.getUaePassTokenForCode(code: code)
+            }
+        }
+        webVC?.onUAEPassFailureBlock = {(response: String?) -> Void in
+            
+            let alert = UIAlertController(title: "Error".localize, message: response, preferredStyle: .alert)
+            
+            let okAction = UIAlertAction(title: "Ok".localize, style: .default) { (action) in
+                
+            }
+            
+            alert.addAction(okAction)
+            self.navigationController?.present(alert, animated: true, completion: nil)
+            
+            
+        }
+        if let viewController = webVC {
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
+    }
+    func getUaePassTokenForCode(code: String) {
+        Service1.shared.getUAEPassToken(code: code, completion: { (uaePassToken) in
+            self.stopAnimating()
+            
+            if uaePassToken.isEmpty {
+                self.showErrorAlert(title: "Error", message: "Unable to get user token, Please try again.")
+                return
+            }
+            self.uaePassAccessToken = uaePassToken
+            self.getUaePassProfileForToken(token: uaePassToken)
+            
+        }) { (error) in
+            self.stopAnimating()
+            self.showErrorAlert(title: "Error", message: error.rawValue)
+        }
+    }
+    func getUaePassProfileForToken(token: String) {
+        Service1.shared.getUAEPassUserProfile(token: token, completion: { (userProfile) in
+            if let userProfile = userProfile {
+                self.showProfileDetails(userProfile: userProfile, userToken: token)
+            } else {
+                self.showErrorAlert(title: "Error", message: "Couldn't get user profile, Please try again later")
+            }
+        }) { (error) in
+            self.showErrorAlert(title: "Error", message: error.rawValue)
+        }
+    }
+    func showProfileDetails(userProfile: UAEPassUserProfile, userToken: String) {
+        
+        self.isUAEPass = true
+        self.firstNameView.textField.text = userProfile.firstnameEN ?? ""
+        self.lastNameView.textField.text = userProfile.lastnameEN ?? ""
+        self.emailView.textField.text = userProfile.email ?? ""
+        self.mobileView.textField.text = userProfile.mobile ?? ""
+        self.emiratesIDView.textField.text = userProfile.idn ?? ""
+        
+        
+        
+        self.firstNameView.textField.isEnabled = false
+        self.lastNameView.textField.isEnabled = false
+        self.emailView.textField.isEnabled = false
+        self.mobileView.textField.isEnabled = false
+        self.emiratesIDView.textField.isEnabled = false
+        
+        
+        self.usernameView.isHidden = true
+        self.passwordView.isHidden = true
+        self.confirmPasswordView.isHidden = true
+        
+        
+        self.passwordHeight.constant = 0
+        self.confirmPasswordHeight.constant = 0
+        self.usernameHeight.constant = 0
+        
+        self.retrieveUser(email: "", userID: userProfile.uuid ?? "")
+        
+        /*
+        self.firstname = userProfile.firstnameEN ?? ""
+        self.lastName = userProfile.lastnameEN ?? ""
+        self.email = userProfile.email ?? ""
+        self.mobileNumber = userProfile.mobile ?? ""
+        self.emiratesID = userProfile.idn ?? ""
+        self.retrieveUser(email: userProfile.email ?? "", userID: userProfile.uuid ?? "")*/
+        /*
+        let userProfileVC = self.storyboard?.instantiateViewController(withIdentifier: "UserProfileViewController") as? UserProfileViewController
+        userProfileVC?.userProfile = userProfile
+        userProfileVC?.userToken = userToken
+        if let userProfileVC = userProfileVC {
+            self.navigationController?.pushViewController(userProfileVC, animated: true)
+        } else {
+            self.showErrorAlert(title: "Error", message: "Can't find User Profile View, Please check your storyboard")
+        }*/
+    }
     
+    func retrieveUser(email: String  , userID: String) {
+    
+        DispatchQueue.main.async {
+            let size = CGSize(width: 30, height: 30)
+            
+            
+            self.startAnimating(size, message: "Loading ...", messageFont: nil, type: .ballBeat)
+             //NVActivityIndicatorPresenter.sharedInstance.startAnimating(self.activityData)
+            //self.view.isUserInteractionEnabled = false
+        }
+        
+        
+        WebService.RetrieveUAEPassUser(email: "", uaePassUserId: userID) { (json) in // email should be empty and user id should be pass by parmaeter
+            print(json)
+            
+            
+            DispatchQueue.main.async {
+                self.stopAnimating(nil)
+                //self.view.isUserInteractionEnabled = false
+            }
+            
+            
+            guard let code = json["code"] as? Int else {return}
+            guard let message = json["message"] as? String else {return}
+            
+            
+            //user is found
+            if code > 0 {
+                
+                guard let data = json["data"] as? [String: Any] else{return}
+                guard let result = data["result"] as? [String: Any] else {return}
+                guard let responseDescription = result["ResponseDescription"] as? [String: Any] else {return}
+                
+                guard let userId = responseDescription["UserId"] as? String else {
+                    DispatchQueue.main.async {
+                        Utils.showAlertWith(title: "Error".localize, message: "Username or Password not correct".localize, viewController: self)
+                    }
+                    
+                    return
+                }
+                
+                var _: MOCDUser = MOCDUser(dict: result)
+                
+                //self.user = MOCDUser.getMOCDUser()
+            
+                DispatchQueue.main.async {
+                    
+                    let rootViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "mainViewController")
+                    self.view.window!.rootViewController = rootViewController
+                    rootViewController.modalPresentationStyle = .fullScreen
+                    self.dismiss(animated: true, completion: {() -> Void in
+                        self.present(rootViewController, animated: true, completion: {() -> Void in
+                        })
+                    })
+                }
+                
+                
+            }else if code == -100 {
+                DispatchQueue.main.async {
+                    
+                }
+            }else {
+                DispatchQueue.main.async {
+                    Utils.showAlertWith(title: "Error", message: message, viewController: self)
+                }
+            }
+        }
+    }
     func getNationalities() {
         WebService.getCountries { (json) in
             guard let code = json["code"] as? Int else {return}
@@ -317,13 +518,13 @@ class RegisterViewController: UIViewController ,NVActivityIndicatorViewable {
             
             Utils.showErrorMessage(NSLocalizedString("Please enter a valid last name".localize, comment:""), withTitle: NSLocalizedString("lastname is empty".localize, comment:""), andInViewController: self)
             isEmpty = true
-        }else if password == "" || password.count == 0 {
+        }else if (password == "" || password.count == 0) && !isUAEPass {
             Utils.showErrorMessage(NSLocalizedString("Please enter a valid password".localize, comment:""), withTitle: NSLocalizedString("password is empty".localize, comment:""), andInViewController: self)
             isEmpty = true
-        }else if confirm_password == "" || confirm_password.count == 0 {
+        }else if (confirm_password == "" || confirm_password.count == 0) && !isUAEPass {
             Utils.showErrorMessage(NSLocalizedString("Please enter a valid confirm password".localize, comment:""), withTitle: NSLocalizedString("confirm password is empty".localize, comment:""), andInViewController: self)
             isEmpty = true
-        }else if username == "" || username.count == 0 {
+        }else if (username == "" || username.count == 0)  && !isUAEPass{
             Utils.showErrorMessage(NSLocalizedString("Please enter a valid username".localize, comment:""), withTitle: NSLocalizedString("username is empty".localize, comment:""), andInViewController: self)
             isEmpty = true
         }else if user_email == "" || user_email.count == 0 {
@@ -347,16 +548,20 @@ class RegisterViewController: UIViewController ,NVActivityIndicatorViewable {
         }else if question_id == "" || question_id.count == 0 {
             Utils.showErrorMessage(NSLocalizedString("Please enter a valid question ".localize, comment:""), withTitle: NSLocalizedString("question is empty".localize, comment:""), andInViewController: self)
            isEmpty = true
-        }else if password != confirm_password {
+        }else if (password != confirm_password) && !isUAEPass {
             Utils.showErrorMessage(NSLocalizedString("Password mismatch".localize, comment:""), withTitle: NSLocalizedString("Password and Password Confirmation are not the same".localize, comment:""), andInViewController: self)
             isEmpty = true
         }
-        if !Utils.isValidPassword(password) {
+        if !Utils.isValidPassword(password)  && !isUAEPass{
            Utils.showErrorMessage(NSLocalizedString("Please enter a password contains at least 8 digits one number and one character ".localize, comment:""), withTitle: NSLocalizedString("Password is not valid".localize, comment:""), andInViewController: self)
             isEmpty = true
         }
         
         
+        if isUAEPass {
+            self.username = UUID().uuidString
+            self.password = "12345678"
+        }
         if !isEmpty {
             registerUser()
         }
@@ -528,7 +733,13 @@ class RegisterViewController: UIViewController ,NVActivityIndicatorViewable {
     self.present(alert, animated: true, completion: nil)
        
    }
-    
+    func showErrorAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        let action1 = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
+        }
+        alertController.addAction(action1)
+        self.present(alertController, animated: true, completion: nil)
+    }
     
     
 }
@@ -597,6 +808,8 @@ extension RegisterViewController: UINavigationControllerDelegate,UIImagePickerCo
         
         picker.dismiss(animated: true, completion: nil);
     }
+    
+    
 }
 extension RegisterViewController: UIPickerViewDelegate , UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

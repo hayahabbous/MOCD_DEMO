@@ -34,6 +34,8 @@ class marriageOtherInformationViewController: UIViewController ,NVActivityIndica
     
     func setupField()
     {
+        
+     
         specialNeedView.textLabel.text = "Categroy of Special Needs".localize
         specialNeedView.firstLabel.text = "No".localize
         specialNeedView.secondLabel.text = "Yes".localize

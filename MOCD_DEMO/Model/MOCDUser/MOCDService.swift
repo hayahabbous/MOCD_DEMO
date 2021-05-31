@@ -206,3 +206,11 @@ class MOCDReceivedDocumen: NSObject {
     
     
 }
+class MOCDNationalitiesMaster: NSObject {
+    var ICA_ID: String = ""
+    var Id: String = ""
+    var Name: String = ""
+    var NameinArabic: String = ""
+    
+   
+}

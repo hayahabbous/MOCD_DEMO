@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 import NVActivityIndicatorView
-
+import HappinessMeter
 
 class newHomePageViewController: UIViewController  , reloadHomePage ,NVActivityIndicatorViewable{
     var mocd_user = MOCDUser.getMOCDUser()
@@ -30,6 +30,15 @@ class newHomePageViewController: UIViewController  , reloadHomePage ,NVActivityI
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+      
+        HM.initHappinessMeter(token: "bazaicobei3pee6Yohngahy6ahqu5beet9bohYoopoo7ohghoh3wohdaibuuNg6E")
+        NotificationCenter.default.addObserver(self, selector: #selector(openService(notif:)), name: NSNotification.Name(rawValue: "openService"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(openHappinessMeter(notif:)), name: NSNotification.Name(rawValue: "openHappinessMeter"), object: nil)
+        
+        
         nvactivity = NVActivityIndicatorView(frame: self.view.frame)
         
     
@@ -89,7 +98,55 @@ class newHomePageViewController: UIViewController  , reloadHomePage ,NVActivityI
         
         setupNavigationBar()
     }
+    @objc func openService(notif: NSNotification) {
+          //Insert code here
+        
+        
+        if self.selectedCategoryItem.id == "9" {
+            self.performSegue(withIdentifier: "toMarriage", sender: self)
+        }else if self.selectedCategoryItem.id == "11" {
+            self.performSegue(withIdentifier: "toEdaad", sender: self)
+        }else if self.selectedCategoryItem.id == "12" {
+            self.performSegue(withIdentifier: "toMassWedding", sender: self)
+        }
+        
+    }
     
+    @objc func openHappinessMeter(notif: NSNotification) {
+       
+        //Insert code here
+    
+        
+        guard  let hm = selectedCategoryItem.hm else {
+            return
+        }
+        do{
+            let builder = HMConfigurationBuilder{
+                $0.type = .service
+                $0.language = "en"
+                $0.email = mocd_user?.email ?? ""
+                $0.customerId = mocd_user?.UserId ?? ""
+                $0.transactionId = ""
+                $0.emiratesId = mocd_user?.emiratesId ?? ""
+                $0.phone = mocd_user?.phone ?? ""
+                $0.entitySequenceId = hm.entitySequenceId
+                $0.mainServiceSequenceId = hm.mainServiceSequenceId
+                $0.subServiceSequenceId = hm.subServiceSequenceId
+                $0.subServiceComplimentarySequenceId = hm.subServiceComplimentarySequenceId
+                $0.serviceNameEn = selectedCategoryItem.service_name_en
+                $0.serviceNameAr = selectedCategoryItem.service_name_ar
+                $0.fullSequenceCode = hm.fullSequenceCode
+            }
+            
+            let conf = try HMConfiguration(builder: builder)
+            HM.showSurvey(in: self, with: conf)
+        }catch {
+            
+        }
+        
+       
+        
+    }
     @objc func profileAction(_ sender: Any) {
         //self.logout()
         
@@ -193,6 +250,7 @@ class newHomePageViewController: UIViewController  , reloadHomePage ,NVActivityI
                             sr.category_id = s["category_id"] as? String ?? ""
                             sr.service_code = s["service_code"] as? String ?? ""
                            
+                            sr.hm = sr.sethmMeter(id: sr.service_code)
                             c.servicesArray.append(sr)
                         }
                     }
@@ -226,7 +284,7 @@ class newHomePageViewController: UIViewController  , reloadHomePage ,NVActivityI
         }
         if segue.identifier == "toserviceCard" {
             
-            var dest = segue.destination as! serviceCardViewController
+            let dest = segue.destination as! serviceCardViewController
             dest.cItem = self.selectedCategoryItem
         }
     }

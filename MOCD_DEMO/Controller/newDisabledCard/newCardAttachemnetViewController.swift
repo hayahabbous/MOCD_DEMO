@@ -230,7 +230,10 @@ class newCardAttachemnetViewController: UIViewController ,UIImagePickerControlle
                 
                     self.navigationController?.dismiss(animated: true) {
                     
-                        Utils.showAlertWith(title: "Success", message: message, viewController: self)
+                        DispatchQueue.main.async {
+                            Utils.showAlertWith(title: "Success", message: message, viewController: self)
+                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "openHappinessMeter"), object: nil)
+                        }
                         
                     }
                     
@@ -262,7 +265,10 @@ class newCardAttachemnetViewController: UIViewController ,UIImagePickerControlle
                 let message = json["message"] as? String ?? ""
                 if code == 10 {
                     self.navigationController?.dismiss(animated: true) {
-                        Utils.showAlertWith(title: "Success", message: message, viewController: self)
+                        DispatchQueue.main.async {
+                            Utils.showAlertWith(title: "Success", message: message, viewController: self)
+                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "openHappinessMeter"), object: nil)
+                        }
                     }
                 }else{
                     Utils.showAlertWith(title: "Error".localize, message: message, viewController: self)

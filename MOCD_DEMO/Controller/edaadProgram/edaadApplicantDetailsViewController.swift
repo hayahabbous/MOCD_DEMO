@@ -56,9 +56,13 @@ class edaadApplicantDetailsViewController: UIViewController ,NVActivityIndicator
     func setupField() {
         husbandNameView.textLabel.text = "Husband Name".localize
         husbandNameView.textField.placeholder = "Husband Name".localize
+        husbandNameView.textField.text = AppConstants.personalUser?.fullEnglishName ?? ""
+        
         
         nationalNumberView.textLabel.text = "National Number For the Husband".localize
         nationalNumberView.textField.placeholder = "National Number For the Husband".localize
+        nationalNumberView.textField.text = AppConstants.personalUser?.emiratesID ?? ""
+        
         
         dateView.textLabel.text = "Date of the Marriage Contract".localize
         dateView.viewController = self
@@ -223,6 +227,7 @@ class edaadApplicantDetailsViewController: UIViewController ,NVActivityIndicator
         }
         
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toContactDetails" {
             let dest = segue.destination as! edaadContactDetailsViewController

@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-
+import HappinessMeter
 
 
 class serviceCollectionViewCell: UICollectionViewCell {
@@ -76,9 +76,11 @@ extension serviceCollectionViewCell: UITableViewDelegate , UITableViewDataSource
                 homePage.selectedCategoryItem = category.servicesArray[indexPath.row]
                            
                 homePage.performSegue(withIdentifier: "toNewCard", sender: self)
-            }else{
+            }else if category.id == "2" {
                 homePage.selectedCategoryItem = category.servicesArray[indexPath.row]
                 homePage.performSegue(withIdentifier: "toSocialAid", sender: self)
+            }else{
+                goTo(indexPath: indexPath)
             }
            
             
@@ -87,9 +89,11 @@ extension serviceCollectionViewCell: UITableViewDelegate , UITableViewDataSource
              if category.id == "1" {
                 homePage.selectedCategoryItem = category.servicesArray[indexPath.row]
                 homePage.performSegue(withIdentifier: "toLostCard", sender: self)
-             }else{
+             }else if category.id == "2"{
                 homePage.selectedCategoryItem = category.servicesArray[indexPath.row]
                 homePage.performSegue(withIdentifier: "toCertificate", sender: self)
+             }else{
+                goTo(indexPath: indexPath)
              }
             
             
@@ -106,20 +110,39 @@ extension serviceCollectionViewCell: UITableViewDelegate , UITableViewDataSource
                 self.homePage.present(rootViewController, animated: true) {
                     
                 }
-            }else{
+            }else if category.id == "2"{
+                
+                
+                
+                
+                let item = category.servicesArray[indexPath.row]
+                
+                homePage.selectedCategoryItem = category.servicesArray[indexPath.row]
+                
+                //NotificationCenter.default.post(name: NSNotification.Name(rawValue: "openHappinessMeter"), object: nil)
+                //homePage.performSegue(withIdentifier: "toOTP", sender: self)
+                
                 homePage.selectedCategoryItem = category.servicesArray[indexPath.row]
                 homePage.performSegue(withIdentifier: "toMarriage", sender: self)
+ 
+ 
+            }else{
+                goTo(indexPath: indexPath)
             }
             
         case 3:
-            homePage.selectedCategoryItem = category.servicesArray[indexPath.row]
-            homePage.performSegue(withIdentifier: "toEdaad", sender: self)
             
+            
+            homePage.selectedCategoryItem = category.servicesArray[indexPath.row]
+            homePage.performSegue(withIdentifier: "toNewEdaad", sender: self)
+            
+            //homePage.performSegue(withIdentifier: "toEdaad", sender: self)
+            //homePage.performSegue(withIdentifier: "toOTP", sender: self)
             
         case 4:
             homePage.selectedCategoryItem = category.servicesArray[indexPath.row]
-            homePage.performSegue(withIdentifier: "toMassWedding", sender: self)
-            
+            //homePage.performSegue(withIdentifier: "toMassWedding", sender: self)
+            homePage.performSegue(withIdentifier: "toOTP", sender: self)
             
             
  
@@ -132,6 +155,24 @@ extension serviceCollectionViewCell: UITableViewDelegate , UITableViewDataSource
         }
         
         
+    }
+    
+
+    func goTo(indexPath: IndexPath){
+        homePage.selectedCategoryItem = category.servicesArray[indexPath.row]
+        switch homePage.selectedCategoryItem.service_code {
+        case "EH":
+           
+            homePage.performSegue(withIdentifier: "toElderlyReg", sender: self)
+        case "REC":
+            
+            homePage.performSegue(withIdentifier: "toNursing", sender: self)
+        case "EA":
+           
+            homePage.performSegue(withIdentifier: "toVisiting", sender: self)
+        default:
+            print("non service")
+        }
     }
     
 }

@@ -1,9 +1,9 @@
 //
-//  abstractEnrollmentViewController.swift
+//  edaadabstractEnrollmentViewController.swift
 //  MOCD_DEMO
 //
-//  Created by macbook pro on 7/1/20.
-//  Copyright © 2020 Datacellme. All rights reserved.
+//  Created by haya habbous on 24/05/2021.
+//  Copyright © 2021 Datacellme. All rights reserved.
 //
 
 import Foundation
@@ -12,14 +12,14 @@ import NVActivityIndicatorView
 
 
 
-class abstractEnrollmentViewController: UIViewController,NVActivityIndicatorViewable {
+class edaadabstractEnrollmentViewController: UIViewController,NVActivityIndicatorViewable {
     
     var marriageItem: marriageService = marriageService()
     @IBOutlet var emiratePicker: UIPickerView!
     var emiratesArray: [MOCDEducationLevelMaster] = []
     var toolBar = UIToolbar()
     let nvactivity = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-    
+    var contentString: String = ""
     
     @IBOutlet var numberofFamilyBookView: textFieldMandatory!
     @IBOutlet var NumberTown: textFieldMandatory!
@@ -210,17 +210,75 @@ class abstractEnrollmentViewController: UIViewController,NVActivityIndicatorView
         if !validateFields() {
             return
         }
-        self.performSegue(withIdentifier: "toSatatment", sender: self)
+        //self.performSegue(withIdentifier: "toSatatment", sender: self)
+        saveAction(sender)
     }
-    
+    @IBAction func saveAction(_ sender: Any) {
+        
+        //self.performSegue(withIdentifier: "toDoc", sender: self)
+        
+        
+        if !validateFields() {
+            return
+        }
+        let size = CGSize(width: 30, height: 30)
+            
+            
+            self.startAnimating(size, message: "Loading ...", messageFont: nil, type: .ballBeat)
+        WebService.SubmitEdaadRequest(HusbandNationalId: marriageItem.HusbandNationalId, WifeNationalId: marriageItem.WifeNationalId, MarriageContractDate: marriageItem.MarriageContractDate, HusbandFullNameEnglish: marriageItem.HusbandFullNameEnglish, HusbandEmail: marriageItem.HusbandEmail, WifeFullNameEnglish: marriageItem.WifeFullNameEnglish, FamilyBookIssuePlace: marriageItem.FamilyBookIssuePlace) { (json) in
+            
+            print(json)
+            
+            DispatchQueue.main.async {
+            
+                self.stopAnimating(nil)
+            }
+            guard let Code = json["Code"] as? Int else {return}
+            guard let ResponseDescriptionEn = json["ResponseDescriptionEn"] as? String else {return}
+            guard let ResponseDescriptionAr = json["ResponseDescriptionAr"] as? String else {return}
+            guard let ResponseTitle = json["ResponseTitle"] as? String else {return}
+            
+            
+            
+            guard let content = json["Content"] as? String else {
+                
+                DispatchQueue.main.async {
+             
+                    Utils.showAlertWith(title: ResponseTitle, message: AppConstants.isArabic() ? ResponseDescriptionAr : ResponseDescriptionEn, viewController: self)
+                }
+                return
+                
+            }
+            if Code != 200 {
+                DispatchQueue.main.async {
+                
+                       Utils.showAlertWith(title: ResponseTitle, message: AppConstants.isArabic() ? ResponseDescriptionAr : ResponseDescriptionEn, viewController: self)
+                   }
+                   return
+            }
+            DispatchQueue.main.async {
+            
+                
+                self.contentString = content
+                
+                self.performSegue(withIdentifier: "toDoc", sender: self)
+            }
+            
+        }
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toSatatment" {
             let dest = segue.destination as! statmenetOfWorkViewController
             dest.marriageItem = self.marriageItem
         }
+        if segue.identifier == "toDoc" {
+            let dest = segue.destination as! masterDocViewController
+            dest.requestType = "1"
+            dest.contentString = self.contentString
+        }
     }
 }
-extension abstractEnrollmentViewController: UIPickerViewDelegate , UIPickerViewDataSource {
+extension edaadabstractEnrollmentViewController: UIPickerViewDelegate , UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }

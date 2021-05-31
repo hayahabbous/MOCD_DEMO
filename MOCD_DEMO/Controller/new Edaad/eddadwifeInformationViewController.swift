@@ -1,9 +1,9 @@
 //
-//  abstractEnrollmentViewController.swift
+//  eddadwifeInformationViewController.swift
 //  MOCD_DEMO
 //
-//  Created by macbook pro on 7/1/20.
-//  Copyright © 2020 Datacellme. All rights reserved.
+//  Created by haya habbous on 24/05/2021.
+//  Copyright © 2021 Datacellme. All rights reserved.
 //
 
 import Foundation
@@ -11,53 +11,52 @@ import UIKit
 import NVActivityIndicatorView
 
 
-
-class abstractEnrollmentViewController: UIViewController,NVActivityIndicatorViewable {
+class eddadwifeInformationViewController: UIViewController ,NVActivityIndicatorViewable{
     
     var marriageItem: marriageService = marriageService()
-    @IBOutlet var emiratePicker: UIPickerView!
-    var emiratesArray: [MOCDEducationLevelMaster] = []
+    @IBOutlet var educationPicker: UIPickerView!
+    var educationsArray: [MOCDEducationLevelMaster] = []
     var toolBar = UIToolbar()
     let nvactivity = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-    
-    
-    @IBOutlet var numberofFamilyBookView: textFieldMandatory!
-    @IBOutlet var NumberTown: textFieldMandatory!
-    @IBOutlet var familyNoView: textFieldMandatory!
-    @IBOutlet var dateOfIssuanceView: dateTexteField!
-    @IBOutlet var placeIssuanceView: selectTextField!
+    @IBOutlet var wifeNameView: textFieldMandatory!
+    var myString = ""
+    @IBOutlet var wifeNameEnView: textFieldMandatory!
+    @IBOutlet var dateOfBirthView: dateTexteField!
+    @IBOutlet var nationalNumberView: textFieldMandatory!
+    @IBOutlet var educationalLevelView: selectTextField!
+    @IBOutlet var wifeMobile: textFieldMandatory!
     @IBOutlet var nextButton: UIButton!
     @IBOutlet var previousButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        print(marriageItem.HusbandBirthDate)
         setupField()
-        
         setupToolbar()
-        getEmiratesMaster()
+        getEducationLevelMaster()
     }
     
     func setupField()
     {
-        
-        numberofFamilyBookView.textLabel.text = "Number of Family Book".localize
-        numberofFamilyBookView.textField.placeholder = "Number of Family Book".localize
-        
-        NumberTown.textLabel.text = "Number Town".localize
-        NumberTown.textField.placeholder = "Number Town".localize
+        wifeNameView.textLabel.text = "Wife Name".localize
+        wifeNameView.textField.placeholder = "Wife Name".localize
         
         
-        familyNoView.textLabel.text = "Family No".localize
-        familyNoView.textField.placeholder = "Family No".localize
+        wifeNameEnView.textLabel.text = "Wife Name [En]".localize
+        wifeNameEnView.textField.placeholder = "Wife Name [En]".localize
         
         
-        dateOfIssuanceView.textLabel.text = "Date of Issuance of the Family Book".localize
-        dateOfIssuanceView.viewController = self
+        dateOfBirthView.textLabel.text = "Date of Birth of Wife".localize
+        dateOfBirthView.viewController = self
         
-        placeIssuanceView.textLabel.text = "Place Issuance of a Passport".localize
-        placeIssuanceView.textField.placeholder = "Please Select".localize
+        nationalNumberView.textLabel.text = "National Number For The Wife".localize
+        nationalNumberView.textField.placeholder = "National Number For The Wife".localize
         
+        educationalLevelView.textLabel.text = "Educational Level".localize
+        educationalLevelView.textField.placeholder = "Please Select".localize
+        
+        wifeMobile.textLabel.text = "Wife Mobile".localize
+        wifeMobile.textField.placeholder = "Wife Mobile".localize
         
         let gradient = CAGradientLayer()
         gradient.frame = self.nextButton.bounds
@@ -76,8 +75,8 @@ class abstractEnrollmentViewController: UIViewController,NVActivityIndicatorView
         //self.loginButton.backgroundColor = .green
         self.previousButton.layer.cornerRadius = 20
         self.previousButton.layer.masksToBounds = true
+        
     }
-    
     func setupToolbar() {
         toolBar.tintColor = AppConstants.BROWN_COLOR
         toolBar.barStyle = .default
@@ -101,15 +100,15 @@ class abstractEnrollmentViewController: UIViewController,NVActivityIndicatorView
         toolBar.items = items
         toolBar.backgroundColor = AppConstants.GREEN_COLOR
         
-        placeIssuanceView.textField.inputAccessoryView = toolBar
+        educationalLevelView.textField.inputAccessoryView = toolBar
         
 
-        placeIssuanceView.textField.isUserInteractionEnabled = true
-        placeIssuanceView.textField.inputView = emiratePicker
+        educationalLevelView.textField.isUserInteractionEnabled = true
+        educationalLevelView.textField.inputView = educationPicker
       
         
       
-        emiratePicker.translatesAutoresizingMaskIntoConstraints = false
+        educationPicker.translatesAutoresizingMaskIntoConstraints = false
         
         
         
@@ -119,14 +118,14 @@ class abstractEnrollmentViewController: UIViewController,NVActivityIndicatorView
     @objc func onClickedToolbeltButton(_ sender: Any){
         self.view.endEditing(true)
     }
-    func getEmiratesMaster() {
+    func getEducationLevelMaster() {
         let size = CGSize(width: 30, height: 30)
             
             
             self.startAnimating(size, message: "Loading ...", messageFont: nil, type: .ballBeat)
         
         
-        WebService.GetEmiratesMaster { (json) in
+        WebService.GetEducationLevelMaster { (json) in
             print(json)
             DispatchQueue.main.async {
                 self.stopAnimating(nil)
@@ -146,11 +145,11 @@ class abstractEnrollmentViewController: UIViewController,NVActivityIndicatorView
                     item.Id = String(describing: r["Id"] ?? "")
                     item.Name = String(describing: r["Name"] ?? "")
                     item.NameinArabic = String(describing: r["NameinArabic"] ?? "")
-                    //item.ICA_ID = String(describing: r["ICA_ID"] ?? "")
+                    item.ICA_ID = String(describing: r["ICA_ID"] ?? "")
                     
                   
                     
-                    self.emiratesArray.append(item)
+                    self.educationsArray.append(item)
                     
                     
                 }
@@ -158,7 +157,7 @@ class abstractEnrollmentViewController: UIViewController,NVActivityIndicatorView
                 DispatchQueue.main.async {
                     
                     
-                    self.emiratePicker.reloadAllComponents()
+                    self.educationPicker.reloadAllComponents()
                 }
             }else{
                 
@@ -174,34 +173,34 @@ class abstractEnrollmentViewController: UIViewController,NVActivityIndicatorView
     }
     
     func validateFields() -> Bool{
-        
-    
-        marriageItem.FamilyBookNumber = numberofFamilyBookView.textField.text ?? ""
-        marriageItem.TownNumber = NumberTown.textField.text ?? ""
-        marriageItem.FamilyNumber = familyNoView.textField.text ?? ""
-        marriageItem.FamilyBookIssueDate = dateOfIssuanceView.textField.text ?? ""
-        marriageItem.familyBookDate = dateOfIssuanceView.date ?? Date()
-        //marriageItem.FamilyBookIssuePlace = placeIssuanceView.textField.text ?? ""
        
         
+        marriageItem.WifeFullNameArabic = wifeNameView.textField.text ?? ""
+        marriageItem.WifeFullNameEnglish = wifeNameEnView.textField.text ?? ""
+        marriageItem.WifeBirthDate = dateOfBirthView.textField.text ?? ""
+        marriageItem.WifeNationalId = nationalNumberView.textField.text ?? ""
+        //marriageItem.WifeEducationLevel = educationalLevelView.textField.text ?? ""
+        marriageItem.WifeMobile1 = wifeMobile.textField.text ?? ""
         
-        
-        if numberofFamilyBookView.textField.text == "" ||
-            NumberTown.textField.text == "" ||
-            familyNoView.textField.text == "" ||
-            dateOfIssuanceView.textField.text == "" ||
-            placeIssuanceView.textField.text == ""{
+        let age = self.dateOfBirthView.date.calculateAge() ?? 0
+        print(age ?? 0)
+        if wifeNameView.textField.text == "" ||
+            wifeNameEnView.textField.text == "" ||
+            dateOfBirthView.textField.text == "" ||
+            nationalNumberView.textField.text == "" ||
+            educationalLevelView.textField.text == "" ||
+        wifeMobile.textField.text == "" {
             
             Utils.showAlertWith(title: "Error".localize, message: "Please Fill All Fields".localize, viewController: self)
             return false
             
             
         }
-        
-        if marriageItem.familyBookDate < marriageItem.marriageContractDate {
-            Utils.showAlertWith(title: "Error".localize, message: "Family book date should be same or after marriage contract date".localize, viewController: self)
+        if age < 18 {
+            Utils.showAlertWith(title: "Error".localize, message: "Date of birth of Wife is requird (should be more than 18 years)".localize, viewController: self)
             return false
         }
+        
         
         return true
         
@@ -210,38 +209,39 @@ class abstractEnrollmentViewController: UIViewController,NVActivityIndicatorView
         if !validateFields() {
             return
         }
-        self.performSegue(withIdentifier: "toSatatment", sender: self)
+        self.performSegue(withIdentifier: "toContarct", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toSatatment" {
-            let dest = segue.destination as! statmenetOfWorkViewController
+        if segue.identifier == "toContarct" {
+            let dest = segue.destination as! edaadabstractEnrollmentViewController
             dest.marriageItem = self.marriageItem
         }
     }
 }
-extension abstractEnrollmentViewController: UIPickerViewDelegate , UIPickerViewDataSource {
+extension eddadwifeInformationViewController: UIPickerViewDelegate , UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return emiratesArray.count
+        return educationsArray.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        let item = emiratesArray[row]
+        let item = educationsArray[row]
         
         return AppConstants.isArabic() ? item.NameinArabic : item.Name
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if emiratesArray.count > 0 {
-            let item = emiratesArray[row]
+        
+        if educationsArray.count > 0 {
+            let item = educationsArray[row]
                let title = AppConstants.isArabic() ? item.NameinArabic : item.Name
-               placeIssuanceView.textField.text = title
+               educationalLevelView.textField.text = title
             
-               marriageItem.FamilyBookIssuePlace = item.Id
+               marriageItem.WifeEducationLevel = item.Id
         }
         
     }

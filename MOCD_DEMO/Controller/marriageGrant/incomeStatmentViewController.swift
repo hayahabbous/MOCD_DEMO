@@ -20,7 +20,7 @@ class incomeStatmentViewController: UIViewController ,NVActivityIndicatorViewabl
     var toolBar = UIToolbar()
     let nvactivity = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
     
-    
+    var contentString = ""
     
     @IBOutlet var totalMonthlyIncomeView: textFieldMandatory!
     @IBOutlet var bankNameView: selectTextField!
@@ -168,7 +168,7 @@ class incomeStatmentViewController: UIViewController ,NVActivityIndicatorViewabl
     
     func validateFields() -> Bool{
         
-        
+     
         marriageItem.Totalmonthlyincome = totalMonthlyIncomeView.textField.text ?? ""
         //marriageItem.BankName = bankNameView.textField.text ?? ""
         marriageItem.IBAN = ibanView.textField.text ?? ""
@@ -201,15 +201,82 @@ class incomeStatmentViewController: UIViewController ,NVActivityIndicatorViewabl
         if !validateFields() {
             return
         }
-        self.performSegue(withIdentifier: "toOtherInfo", sender: self)
+        saveAction(sender)
+        //self.performSegue(withIdentifier: "toDoc", sender: self)
+    }
+    
+    @IBAction func saveAction(_ sender: Any) {
+        
+        if !validateFields() {
+            return
+        }
+        //self.performSegue(withIdentifier: "toDoc", sender: self)
+        
+        let size = CGSize(width: 30, height: 30)
+            
+            
+            self.startAnimating(size, message: "Loading ...", messageFont: nil, type: .ballBeat)
+               
+               
+        WebService.SubmitGrantRequest(HusbandNationalId: marriageItem.HusbandNationalId, WifeNationalId: marriageItem.WifeNationalId, MarriageContractDate: marriageItem.MarriageContractDate, Court: marriageItem.Court, EmployerCategory: marriageItem.EmployerCategory, HusbandFullNameArabic: marriageItem.HusbandFullNameArabic, HusbandFullNameEnglish: marriageItem.HusbandFullNameEnglish, HusbandBirthDate: marriageItem.HusbandBirthDate, HusbandEducationLevel: marriageItem.HusbandEducationLevel, HusbandMobile1: marriageItem.HusbandMobile1, HusbandMobile2: marriageItem.HusbandMobile2, HusbandEmail: marriageItem.HusbandEmail, WifeFullNameArabic: marriageItem.HusbandFullNameArabic, WifeFullNameEnglish: marriageItem.WifeFullNameEnglish, WifeBirthDate: marriageItem.WifeBirthDate, WifeEducationLevel: marriageItem.WifeEducationLevel, WifeMobile1: marriageItem.WifeMobile1, WifeEmail: marriageItem.WifeEmail, FamilyBookNumber: marriageItem.FamilyBookNumber, TownNumber: marriageItem.TownNumber, FamilyNumber: marriageItem.FamilyNumber, FamilyBookIssueDate: marriageItem.FamilyBookIssueDate, FamilyBookIssuePlace: marriageItem.FamilyBookIssuePlace, Employer: marriageItem.Employer, WorkPlace: marriageItem.WorkPlace, Totalmonthlyincome: marriageItem.Totalmonthlyincome, BankName: marriageItem.BankName, IBAN: marriageItem.BankName) { (json) in
+            
+            
+            print(json)
+            DispatchQueue.main.async {
+            
+                self.stopAnimating(nil)
+            }
+            guard let ResponseDescriptionEn = json["ResponseDescriptionEn"] as? String else {return}
+            guard let ResponseDescriptionAr = json["ResponseDescriptionAr"] as? String else {return}
+            guard let ResponseTitle = json["ResponseTitle"] as? String else {return}
+            
+            
+            
+            guard let content = json["Content"] as? [String:Any] else {
+                
+                DispatchQueue.main.async {
+             
+                    Utils.showAlertWith(title: ResponseTitle, message: AppConstants.isArabic() ? ResponseDescriptionAr : ResponseDescriptionEn, viewController: self)
+                }
+                return
+                
+            }
+            guard let RequestId = content["RequestId"] as? String else {
+                
+                DispatchQueue.main.async {
+               
+                    Utils.showAlertWith(title: ResponseTitle, message: AppConstants.isArabic() ? ResponseDescriptionAr : ResponseDescriptionEn, viewController: self)
+                }
+                return
+                
+            }
+            
+            
+            
+            DispatchQueue.main.async {
+            
+                
+                self.contentString = RequestId
+                
+                self.performSegue(withIdentifier: "toDoc", sender: self)
+            }
+        }
+           
+       
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toOtherInfo" {
             let dest = segue.destination as! marriageOtherInformationViewController
             dest.marriageItem = self.marriageItem
+        }else if segue.identifier == "toDoc" {
+            let dest = segue.destination as! masterDocViewController
+            dest.requestType = "0"
+            dest.contentString = self.contentString
         }
     }
+    
+    
 }
 extension incomeStatmentViewController: UIPickerViewDelegate , UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

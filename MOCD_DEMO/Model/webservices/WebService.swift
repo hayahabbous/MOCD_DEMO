@@ -1209,8 +1209,130 @@ public class WebService{
         }
     }
     
+    //Elderly
     
+    static func GetMaritalStatus( completetion: @escaping ([String:Any]) -> Void) {
+        
+        let webResource = "GetMaritalStatus"
+        var parametersArray: [[String:Any]] = [[:]]
+        
     
+        
+        
+        RequestResponseWebServices.requestByGET(WebServiceUrl: webResource, params: &parametersArray, endpoint: "GetMaritalStatus" , serviceType: "master") { (json) in
+            completetion(json)
+        }
+    }
+    static func GetRelationsMaster( completetion: @escaping ([String:Any]) -> Void) {
+        
+        let webResource = "GetRelations"
+        var parametersArray: [[String:Any]] = [[:]]
+        
+    
+        
+        
+        RequestResponseWebServices.requestByGET(WebServiceUrl: webResource, params: &parametersArray, endpoint: "GetRelations" , serviceType: "master") { (json) in
+            completetion(json)
+        }
+    }
+    
+    static func GetElderlyServiceType( completetion: @escaping ([String:Any]) -> Void) {
+        
+        let webResource = "GetElderlyServiceType"
+        var parametersArray: [[String:Any]] = [[:]]
+        
+    
+        
+        
+        RequestResponseWebServices.requestByGET(WebServiceUrl: webResource, params: &parametersArray, endpoint: "GetElderlyServiceType" , serviceType: "master") { (json) in
+            completetion(json)
+        }
+    }
+    
+    static func GetElderlyApplicantType( completetion: @escaping ([String:Any]) -> Void) {
+        
+        let webResource = "GetElderlyApplicantType"
+        var parametersArray: [[String:Any]] = [[:]]
+        
+    
+        
+        
+        RequestResponseWebServices.requestByGET(WebServiceUrl: webResource, params: &parametersArray, endpoint: "GetElderlyApplicantType" , serviceType: "master") { (json) in
+            completetion(json)
+        }
+    }
+    static func GetHasChildrens( completetion: @escaping ([String:Any]) -> Void) {
+        
+        let webResource = "GetHasChildrens"
+        var parametersArray: [[String:Any]] = [[:]]
+        
+    
+        
+        
+        RequestResponseWebServices.requestByGET(WebServiceUrl: webResource, params: &parametersArray, endpoint: "GetHasChildrens" , serviceType: "master") { (json) in
+            completetion(json)
+        }
+    }
+    static func GetElderlyHobby( completetion: @escaping ([String:Any]) -> Void) {
+        
+        let webResource = "GetElderlyHobby"
+        var parametersArray: [[String:Any]] = [[:]]
+        
+    
+        
+        
+        RequestResponseWebServices.requestByGET(WebServiceUrl: webResource, params: &parametersArray, endpoint: "GetElderlyHobby" , serviceType: "master") { (json) in
+            completetion(json)
+        }
+    }
+    static func GetElderlyGender( completetion: @escaping ([String:Any]) -> Void) {
+        
+        let webResource = "GetGender"
+        var parametersArray: [[String:Any]] = [[:]]
+        
+    
+        
+        
+        RequestResponseWebServices.requestByGET(WebServiceUrl: webResource, params: &parametersArray, endpoint: "GetGender" , serviceType: "master") { (json) in
+            completetion(json)
+        }
+    }
+    static func GetElderlyProfession( completetion: @escaping ([String:Any]) -> Void) {
+        
+        let webResource = "GetElderlyProfession"
+        var parametersArray: [[String:Any]] = [[:]]
+        
+    
+        
+        
+        RequestResponseWebServices.requestByGET(WebServiceUrl: webResource, params: &parametersArray, endpoint: "GetElderlyProfession" , serviceType: "master") { (json) in
+            completetion(json)
+        }
+    }
+    static func GetElderlyActivity( completetion: @escaping ([String:Any]) -> Void) {
+        
+        let webResource = "GetElderlyActivity"
+        var parametersArray: [[String:Any]] = [[:]]
+        
+    
+        
+        
+        RequestResponseWebServices.requestByGET(WebServiceUrl: webResource, params: &parametersArray, endpoint: "GetElderlyActivity" , serviceType: "master") { (json) in
+            completetion(json)
+        }
+    }
+    static func GetGender( completetion: @escaping ([String:Any]) -> Void) {
+        
+        let webResource = "GetGender"
+        var parametersArray: [[String:Any]] = [[:]]
+        
+    
+        
+        
+        RequestResponseWebServices.requestByGET(WebServiceUrl: webResource, params: &parametersArray, endpoint: "GetGender" , serviceType: "master") { (json) in
+            completetion(json)
+        }
+    }
     
     static func SubmitMassWeddingRequest(HusbandNationalId: String ,WifeNationalId: String , MarriageContractDate: String , Court: String ,
                        HusbandFullNameArabic: String ,HusbandFullNameEnglish: String ,HusbandBirthDate: String , HusbandEducationLevel: String ,HusbandMobile1:String ,HusbandMobile2: String ,HusbandEmail: String ,WifeFullNameArabic: String,WifeFullNameEnglish: String,WifeBirthDate: String,WifeEducationLevel: String,WifeMobile1: String,WifeEmail: String,FamilyBookIssuePlace: String,ReasonForNotRecievinggrant: String,completeion: @escaping ([String:Any]) -> Void  ) {
@@ -1242,6 +1364,355 @@ public class WebService{
         parametersArray.append(["RequestingService":AppConstants.RequestingServiceMassWeddingDEV]);
         parametersArray.append(["TypeOfRequest":AppConstants.TypeOfRequestMassWeddingDEV]);
         parametersArray.append(["ChannelType":AppConstants.ChannelType]);
+        
+        
+        
+        
+        RequestResponseWebServices.requestByPOST(WebServiceUrl: webResource, params: &parametersArray, endpoint: "masterService", completion: { (json) in
+            
+            completeion(json)
+            
+        })
+
+        
+    }
+    
+    static func SaveElderlyRegistartionInMobileUnit(mocd_applicantemiratesid: String = "784190928512228" ,
+                                 mocd_applicantname: String = "Test",
+                                 mocd_servicetype: String = "2" ,
+                                 mocd_elderlyemiratesid: String = "784190928573338",
+                                 mocd_fullnameen: String  = "Test1",
+                                 mocd_fullnamear: String  = "Test1",
+                                 mocd_firstnameen: String  = "Test1",
+                                 mocd_secondnameen: String = "Test1",
+                                 mocd_thirdnameen:String = "Test1",
+                                 mocd_fourthnameen: String  = "Test1",
+                                 mocd_firstnamear: String = "Test1",
+                                 mocd_secondnamear: String = "Test1",
+                                 mocd_thirdnamear: String = "Test1",
+                                 mocd_fourthnamear: String = "Test1",
+                                 mocd_gender: String = "1",
+                                 mocd_dateofbirth: String = "1973-10-30T20:00:00Z",
+                                 mocd_nationality: String = "1c725133-12b0-ea11-a2c7-00155d138354",
+                                 mocd_residenceemirate: String = "a19fa49b-a39c-e911-a2b6-00155d138354",
+                                 mocd_mobilenumber: String = "0555319789" ,
+                                 mocd_telephonenumber: String = "042562323" ,
+                                 mocd_address: String = "test" ,
+                                 mocd_email: String = "test@test.com" ,
+                                 mocd_pobox: String = "1234" ,
+                                 mocd_placeofbirth: String = "India" ,
+                                 mocd_maritalstatus: String = "662410000" ,
+                                 mocd_noofmarriages: String = "1" ,
+                                 mocd_noofdivorced: String = "0" ,
+                                 mocd_noofdaughters: String = "1" ,
+                                 mocd_noofsons: String = "1" ,
+                                 mocd_noofwidowness: String = "0" ,
+                                 mocd_applicanttype: String = "1" ,
+                                 mocd_establishmentdetail: String = "TEST" ,
+                                 mocd_applicantrelationship: String = "0cfdfccd-9d2c-eb11-a2c2-00155d138370" ,
+                                 mocd_responsibleemiratesid: String = "784198128670673" ,
+                                 mocd_responsiblepersonname: String = "Test" ,
+                                 mocd_responsiblemobilenumber: String = "0555319789" ,
+                                 mocd_responsibleaddress: String = "Test" ,
+                                 mocd_responsiblerelationship: String = "0cfdfccd-9d2c-eb11-a2c2-00155d138370" ,
+                                 mocd_profession: String = "1" ,
+                                 mocd_emergencypersonemiratesid: String = "784198128670673" ,
+                                 mocd_emergencyrelationship: String = "0cfdfccd-9d2c-eb11-a2c2-00155d138370" ,
+                                 mocd_emergencyprofession: String = "1" ,
+                                 mocd_emergencypersonaddress: String = "test" ,
+                                 mocd_transferparty: String = "Test" ,
+                                 mocd_transferreason: String = "Test" ,
+                                 mocd_requestingservice: String = "4D1CEAC0-4105-EB11-A2C2-00155D138370" ,
+                                 mocd_servicerequesttype: String = "C2F82A93-582D-EB11-A2C2-00155D138370" ,
+                                 mocd_formgroup: String = "1" ,
+                                 mocd_serviceprocess: String = "2" ,
+                                 mocd_profileid: String = "6567878978978789" ,
+                                 mocd_profilename: String = "test" ,
+                                 mocd_profileemail: String = "test" ,
+                                 mocd_profilemobilenumber: String = "test" ,
+                                 
+                                 completeion: @escaping ([String:Any]) -> Void  ) {
+    
+     
+        let webResource = "Services/SaveElderlyRegistartionInMobileUnit"
+        var parametersArray:[[String:Any]] = [[:]]
+        
+        parametersArray.append(["mocd_applicantemiratesid":mocd_applicantemiratesid]);
+        parametersArray.append(["mocd_applicantname":mocd_applicantname]);
+        parametersArray.append(["mocd_servicetype":mocd_servicetype]);
+        parametersArray.append(["mocd_elderlyemiratesid":mocd_elderlyemiratesid]);
+        parametersArray.append(["mocd_fullnameen":mocd_fullnameen]);
+        parametersArray.append(["mocd_fullnamear":mocd_fullnamear]);
+        parametersArray.append(["mocd_firstnameen":mocd_firstnameen]);
+        parametersArray.append(["mocd_secondnameen":mocd_secondnameen]);
+        
+        
+        
+        
+        
+        parametersArray.append(["mocd_thirdnameen":mocd_thirdnameen]);
+        parametersArray.append(["mocd_thirdnameen":mocd_thirdnameen]);
+        parametersArray.append(["mocd_fourthnameen":mocd_fourthnameen]);
+        parametersArray.append(["mocd_firstnamear":mocd_firstnamear]);
+        parametersArray.append(["mocd_secondnamear":mocd_secondnamear]);
+        parametersArray.append(["mocd_thirdnamear":mocd_thirdnamear]);
+        parametersArray.append(["mocd_fourthnamear":mocd_fourthnamear]);
+        parametersArray.append(["mocd_gender":mocd_gender]);
+        parametersArray.append(["mocd_dateofbirth":mocd_dateofbirth]);
+        parametersArray.append(["mocd_nationality":mocd_nationality]);
+        parametersArray.append(["mocd_residenceemirate":mocd_residenceemirate]);
+        parametersArray.append(["mocd_mobilenumber":mocd_mobilenumber]);
+        parametersArray.append(["mocd_telephonenumber":mocd_telephonenumber]);
+        parametersArray.append(["mocd_address":mocd_address]);
+        parametersArray.append(["mocd_email":mocd_email]);
+        parametersArray.append(["mocd_pobox":mocd_pobox]);
+        parametersArray.append(["mocd_placeofbirth":mocd_placeofbirth]);
+        parametersArray.append(["mocd_maritalstatus":mocd_maritalstatus]);
+        parametersArray.append(["mocd_noofmarriages":mocd_noofmarriages]);
+        parametersArray.append(["mocd_noofdivorced":mocd_noofdivorced]);
+        parametersArray.append(["mocd_noofdaughters":mocd_noofdaughters]);
+        parametersArray.append(["mocd_noofsons":mocd_noofsons]);
+        parametersArray.append(["mocd_noofwidowness":mocd_noofwidowness]);
+        parametersArray.append(["mocd_applicanttype":mocd_applicanttype]);
+        parametersArray.append(["mocd_establishmentdetail":mocd_establishmentdetail]);
+        parametersArray.append(["mocd_applicantrelationship":mocd_applicantrelationship]);
+        parametersArray.append(["mocd_responsiblepersonname":mocd_responsiblepersonname]);
+        parametersArray.append(["mocd_responsiblemobilenumber":mocd_responsiblemobilenumber]);
+        parametersArray.append(["mocd_responsibleaddress":mocd_responsibleaddress]);
+        parametersArray.append(["mocd_responsiblerelationship":mocd_responsiblerelationship]);
+        parametersArray.append(["mocd_profession":mocd_profession]);
+        parametersArray.append(["mocd_emergencypersonemiratesid":mocd_emergencypersonemiratesid]);
+        
+        
+        parametersArray.append(["mocd_emergencyrelationship":mocd_emergencyrelationship]);
+        parametersArray.append(["mocd_emergencyprofession":mocd_emergencyprofession]);
+        parametersArray.append(["mocd_emergencypersonaddress":mocd_emergencypersonaddress]);
+        parametersArray.append(["mocd_transferparty":mocd_transferparty]);
+        parametersArray.append(["mocd_transferreason":mocd_transferreason]);
+        parametersArray.append(["mocd_requestingservice":mocd_requestingservice]);
+        parametersArray.append(["mocd_servicerequesttype":mocd_servicerequesttype]);
+        parametersArray.append(["mocd_formgroup":mocd_formgroup]);
+        parametersArray.append(["mocd_serviceprocess":mocd_serviceprocess]);
+        parametersArray.append(["mocd_profileid":mocd_profileid]);
+        parametersArray.append(["mocd_profilename":mocd_profilename]);
+        parametersArray.append(["mocd_profileemail":mocd_profileemail]);
+        parametersArray.append(["mocd_profilemobilenumber":mocd_profilemobilenumber]);
+        parametersArray.append(["channelId":"4"]);
+        
+        /*
+        parametersArray.append(["RequestingService":AppConstants.RequestingServiceElderly]);
+        parametersArray.append(["TypeOfRequest":AppConstants.TypeOfRequestMobileUnit]);
+        parametersArray.append(["ChannelType":AppConstants.ChannelType]);
+        
+        */
+        
+        
+        RequestResponseWebServices.requestByPOST(WebServiceUrl: webResource, params: &parametersArray, endpoint: "masterService", completion: { (json) in
+            
+            completeion(json)
+            
+        })
+
+        
+    }
+    
+    static func SaveElderlyRegistrationInNursingHome(mocd_applicantemiratesid: String = "784190928512227" ,
+                                                     mocd_applicantname: String = "Test",
+                                                     mocd_applicanthomeaddress: String = "test" ,
+                                                     mocd_applicantworkphoneno: String = "13232",
+                                                     mocd_applicantworkaddress: String  = "Test1",
+                                                     mocd_applicantphoneno: String  = "042562323",
+                                                     mocd_servicetype: String  = "1",
+                                                     mocd_elderlyemiratesid: String = "784190928573337",
+                                                     mocd_fullnameen:String = "Test1",
+                                                     mocd_fullnamear: String  = "Test1",
+                                                     mocd_firstnameen: String = "Test1",
+                                                     mocd_secondnameen: String = "Test1",
+                                                     mocd_thirdnameen: String = "Test1",
+                                                     mocd_fourthnameen: String = "Test1",
+                                                     mocd_firstnamear: String = "test1",
+                                                     mocd_secondnamear: String = "Test1",
+                                                     mocd_thirdnamear: String = "test1",
+                                                     mocd_fourthnamear: String = "test1",
+                                                     mocd_gender: String = "1",
+                                                     mocd_dateofbirth: String = "1973-10-30T20:00:00Z" ,
+                                                     mocd_nationality: String = "1c725133-12b0-ea11-a2c7-00155d138354" ,
+                                                     mocd_residenceemirate: String = "a19fa49b-a39c-e911-a2b6-00155d138354" ,
+                                                     mocd_mobilenumber: String = "0555319789" ,
+                                                     mocd_telephonenumber: String = "042562323" ,
+                                                     mocd_address: String = "test" ,
+                                                     mocd_email: String = "test@test.com" ,
+                                                     mocd_haschildrens: String = "1" ,
+                                                     mocd_describechildrens: String = "Childrens have been described" ,
+                                                     mocd_placeofshelter: String = "It is in place of shelter" ,
+                                                     mocd_applicantrelationship: String = "0cfdfccd-9d2c-eb11-a2c2-00155d138370" ,
+                                                     
+                                                     mocd_formgroup: String = "1" ,
+                                                     mocd_serviceprocess: String = "2" ,
+                                                     mocd_profileid: String = "6567878978978789" ,
+                                                     mocd_profilename: String = "784198128670673" ,
+                                                     mocd_profileemail: String = "Test" ,
+                                                     mocd_profilemobilenumber: String = "0555319789" ,
+                                
+                                
+                                                     completeion: @escaping ([String:Any]) -> Void  ) {
+    
+     
+        let webResource = "Services/SaveElderlyRegistrationInNursingHome"
+        var parametersArray:[[String:Any]] = [[:]]
+        
+        parametersArray.append(["mocd_applicantemiratesid":mocd_applicantemiratesid]);
+        parametersArray.append(["mocd_applicantname":mocd_applicantname]);
+        parametersArray.append(["mocd_applicanthomeaddress":mocd_applicanthomeaddress]);
+        parametersArray.append(["mocd_applicantworkphoneno":mocd_applicantworkphoneno]);
+        parametersArray.append(["mocd_applicantworkaddress":mocd_applicantworkaddress]);
+        parametersArray.append(["mocd_applicantphoneno":mocd_applicantphoneno]);
+        parametersArray.append(["mocd_servicetype":mocd_servicetype]);
+        parametersArray.append(["mocd_elderlyemiratesid":mocd_elderlyemiratesid]);
+        
+        
+        
+        
+        
+        parametersArray.append(["mocd_fullnameen":mocd_fullnameen]);
+        parametersArray.append(["mocd_fullnamear":mocd_fullnamear]);
+        parametersArray.append(["mocd_firstnameen":mocd_firstnameen]);
+        parametersArray.append(["mocd_secondnameen":mocd_secondnameen]);
+        parametersArray.append(["mocd_thirdnameen":mocd_thirdnameen]);
+        parametersArray.append(["mocd_fourthnameen":mocd_fourthnameen]);
+        parametersArray.append(["mocd_firstnamear":mocd_firstnamear]);
+        parametersArray.append(["mocd_secondnamear":mocd_secondnamear]);
+        parametersArray.append(["mocd_thirdnamear":mocd_thirdnamear]);
+        parametersArray.append(["mocd_fourthnamear":mocd_fourthnamear]);
+        parametersArray.append(["mocd_gender":mocd_gender]);
+        parametersArray.append(["mocd_dateofbirth":mocd_dateofbirth]);
+        parametersArray.append(["mocd_nationality":mocd_nationality]);
+        parametersArray.append(["mocd_residenceemirate":mocd_residenceemirate]);
+        parametersArray.append(["mocd_mobilenumber":mocd_mobilenumber]);
+        parametersArray.append(["mocd_telephonenumber":mocd_telephonenumber]);
+        parametersArray.append(["mocd_address":mocd_address]);
+        parametersArray.append(["mocd_email":mocd_email]);
+        parametersArray.append(["mocd_haschildrens":mocd_haschildrens]);
+        parametersArray.append(["mocd_describechildrens":mocd_describechildrens]);
+        parametersArray.append(["mocd_placeofshelter":mocd_placeofshelter]);
+        parametersArray.append(["mocd_applicantrelationship":mocd_applicantrelationship]);
+        parametersArray.append(["mocd_requestingservice":AppConstants.RequestingServiceElderly]);
+        parametersArray.append(["mocd_servicerequesttype":AppConstants.TypeOfRequestNursinghome]);
+        parametersArray.append(["mocd_formgroup":mocd_formgroup]);
+        parametersArray.append(["mocd_serviceprocess":mocd_serviceprocess]);
+        parametersArray.append(["mocd_profileid":mocd_profileid]);
+        parametersArray.append(["mocd_profilename":mocd_profilename]);
+        parametersArray.append(["mocd_profileemail":mocd_profileemail]);
+        parametersArray.append(["mocd_profilemobilenumber":mocd_profilemobilenumber]);
+        
+    
+        /*
+        parametersArray.append(["RequestingService":AppConstants.RequestingServiceElderly]);
+        parametersArray.append(["TypeOfRequest":AppConstants.TypeOfRequestMobileUnit]);
+        parametersArray.append(["ChannelType":AppConstants.ChannelType]);
+        */
+        parametersArray.append(["channelId":"4"]);
+        
+        
+        
+        RequestResponseWebServices.requestByPOST(WebServiceUrl: webResource, params: &parametersArray, endpoint: "masterService", completion: { (json) in
+            
+            completeion(json)
+            
+        })
+
+        
+    }
+    
+    static func SaveElderlyAppointment(mocd_applicantemiratesid: String = "784190928512229" ,
+                                       mocd_applicantname: String = "Test",
+                                       mocd_applicantphoneno: String = "0555319789" ,
+                                       mocd_elderlyemiratesid: String = "784190928573339",
+                                       mocd_servicetype: String  = "3",
+                                       mocd_fullnameen: String  = "Test",
+                                       mocd_fullnamear: String  = "Test",
+                                       mocd_firstnameen: String = "Test",
+                                       mocd_secondnameen:String = "Test1",
+                                       mocd_thirdnameen: String  = "Test1",
+                                       mocd_fourthnameen: String = "Test1",
+                                       mocd_firstnamear: String = "Test1",
+                                       mocd_secondnamear: String = "Test1",
+                                       mocd_thirdnamear: String = "Test1",
+                                       mocd_fourthnamear: String = "test1",
+                                       mocd_gender: String = "1",
+                                       mocd_dateofbirth: String = "1973-10-30T20:00:00Z",
+                                       mocd_nationality: String = "1c725133-12b0-ea11-a2c7-00155d138354",
+                                       mocd_residenceemirate: String = "a19fa49b-a39c-e911-a2b6-00155d138354",
+                                       mocd_mobilenumber: String = "0555319789" ,
+                                       mocd_telephonenumber: String = "042562323" ,
+                                       mocd_address: String = "test" ,
+                                       mocd_email: String = "test@test.com" ,
+                                       mocd_hobby: String = "1" ,
+                                       mocd_typeofactivity: String = "1" ,
+                                       mocd_appointmentdate: String = "2020-11-30T20:00:00Z" ,
+                                       mocd_otherphonenumber: String = "042562323" ,
+                                       mocd_formgroup: String = "1" ,
+                                       mocd_serviceprocess: String = "2" ,
+                                       mocd_profileid: String = "6567878978978789" ,
+                                                     
+                                       mocd_profilename: String = "6567878978978789" ,
+                                       mocd_profileemail: String = "6567878978978789" ,
+                                       mocd_profilemobilenumber: String = "6567878978978789" ,
+                                                    
+                                
+                                                     
+                                       completeion: @escaping ([String:Any]) -> Void  ) {
+    
+     
+        let webResource = "Services/SaveElderlyAppointment"
+        var parametersArray:[[String:Any]] = [[:]]
+        
+        parametersArray.append(["mocd_applicantemiratesid":mocd_applicantemiratesid]);
+        parametersArray.append(["mocd_applicantname":mocd_applicantname]);
+        parametersArray.append(["mocd_applicantphoneno":mocd_applicantphoneno]);
+        parametersArray.append(["mocd_servicetype":mocd_servicetype]);
+        parametersArray.append(["mocd_elderlyemiratesid":mocd_elderlyemiratesid]);
+        parametersArray.append(["mocd_fullnameen":mocd_fullnameen]);
+        parametersArray.append(["mocd_fullnamear":mocd_fullnamear]);
+        parametersArray.append(["mocd_firstnameen":mocd_firstnameen]);
+        
+        
+        
+        
+        
+        parametersArray.append(["mocd_secondnameen":mocd_secondnameen]);
+        parametersArray.append(["mocd_thirdnameen":mocd_thirdnameen]);
+        parametersArray.append(["mocd_fourthnameen":mocd_fourthnameen]);
+        parametersArray.append(["mocd_firstnamear":mocd_firstnamear]);
+        parametersArray.append(["mocd_secondnamear":mocd_secondnamear]);
+        parametersArray.append(["mocd_thirdnamear":mocd_thirdnamear]);
+        parametersArray.append(["mocd_fourthnamear":mocd_fourthnamear]);
+        parametersArray.append(["mocd_gender":mocd_gender]);
+        parametersArray.append(["mocd_dateofbirth":mocd_dateofbirth]);
+        parametersArray.append(["mocd_nationality":mocd_nationality]);
+        parametersArray.append(["mocd_residenceemirate":mocd_residenceemirate]);
+        parametersArray.append(["mocd_mobilenumber":mocd_mobilenumber]);
+        parametersArray.append(["mocd_telephonenumber":mocd_telephonenumber]);
+        parametersArray.append(["mocd_address":mocd_address]);
+        parametersArray.append(["mocd_email":mocd_email]);
+        parametersArray.append(["mocd_hobby":mocd_hobby]);
+        parametersArray.append(["mocd_typeofactivity":mocd_typeofactivity]);
+        parametersArray.append(["mocd_appointmentdate":mocd_appointmentdate]);
+        parametersArray.append(["mocd_otherphonenumber":mocd_otherphonenumber]);
+        parametersArray.append(["mocd_requestingservice":AppConstants.RequestingServiceElderly]);
+        parametersArray.append(["mocd_servicerequesttype":AppConstants.TypeOfRequestAppointmentservice]);
+        parametersArray.append(["mocd_formgroup":mocd_formgroup]);
+        parametersArray.append(["mocd_serviceprocess":mocd_serviceprocess]);
+        parametersArray.append(["mocd_profileid":mocd_profileid]);
+        parametersArray.append(["mocd_profilename":mocd_profilename]);
+        parametersArray.append(["mocd_profileemail":mocd_profileemail]);
+        parametersArray.append(["mocd_profilemobilenumber":mocd_profilemobilenumber]);
+        
+        
+    
+        //parametersArray.append(["RequestingService":AppConstants.RequestingServiceElderly]);
+        //parametersArray.append(["TypeOfRequest":AppConstants.TypeOfRequestMobileUnit]);
+        parametersArray.append(["channelId":"4"]);
         
         
         
@@ -1375,6 +1846,22 @@ public class WebService{
         
     
         parametersArray.append(["RequestId":RequestId])
+       
+        
+        RequestResponseWebServices.requestByPOST(WebServiceUrl: webResource, params: &parametersArray, endpoint: "masterService" ) { (json) in
+            completetion(json)
+        }
+    }
+    static func SubmitElderlyRequest(RequestId: String,AppReference: String , IsUpdate: String ,
+                                   completetion: @escaping ([String:Any]) -> Void) {
+        
+        let webResource = "Services/SubmitElderlyRequest"
+        var parametersArray: [[String:Any]] = [[:]]
+        
+    
+        parametersArray.append(["RequestId":RequestId])
+        parametersArray.append(["AppReference":RequestId])
+        parametersArray.append(["IsUpdate":RequestId])
        
         
         RequestResponseWebServices.requestByPOST(WebServiceUrl: webResource, params: &parametersArray, endpoint: "masterService" ) { (json) in

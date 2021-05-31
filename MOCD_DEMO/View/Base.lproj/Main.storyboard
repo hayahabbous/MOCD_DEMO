@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ci5-zL-WOr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ci5-zL-WOr">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -44,13 +45,13 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MINISTRY OF COMMUNITY DEVELOPMENT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tmq-UK-IZU">
-                                                <rect key="frame" x="46" y="160" width="322" height="18"/>
+                                                <rect key="frame" x="46.5" y="160" width="321.5" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
                                                 <color key="textColor" red="0.69803921570000005" green="0.5450980392" blue="0.27450980390000002" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="39G-Dh-C8A">
-                                                <rect key="frame" x="282" y="377" width="116" height="28"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="39G-Dh-C8A">
+                                                <rect key="frame" x="282" y="552" width="116" height="28"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                                 <state key="normal" title="Forget Password?">
                                                     <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -59,10 +60,11 @@
                                                     <segue destination="XP8-cF-y9T" kind="presentation" id="C0N-bf-MzZ"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z4L-2j-smK">
-                                                <rect key="frame" x="16" y="445" width="382" height="40"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z4L-2j-smK">
+                                                <rect key="frame" x="16" y="598" width="382" height="50"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="GzK-ZE-0zB"/>
+                                                    <constraint firstAttribute="height" constant="50" id="GzK-ZE-0zB"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="LOG IN">
@@ -73,16 +75,16 @@
                                                 </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="1ko-Is-iMH">
-                                                <rect key="frame" x="80.5" y="585" width="253" height="30"/>
+                                                <rect key="frame" x="80.5" y="680" width="253.5" height="30"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XZv-g4-Svr">
-                                                        <rect key="frame" x="0.0" y="0.0" width="140" height="30"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="140.5" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fao-Jk-Bti">
-                                                        <rect key="frame" x="152" y="0.0" width="101" height="30"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fao-Jk-Bti">
+                                                        <rect key="frame" x="152.5" y="0.0" width="101" height="30"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                         <state key="normal" title="Register Here">
                                                             <color key="titleColor" red="0.66799789669999998" green="0.47512125970000002" blue="0.25860109930000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -101,8 +103,8 @@
                                                     <constraint firstAttribute="height" constant="100" id="fSr-98-8MQ"/>
                                                 </constraints>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g1P-Qe-vEe">
-                                                <rect key="frame" x="145" y="631" width="124" height="30"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g1P-Qe-vEe">
+                                                <rect key="frame" x="145" y="726" width="124" height="30"/>
                                                 <state key="normal" title="Continue as guest">
                                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
@@ -111,23 +113,24 @@
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E0E-mV-7Hd" customClass="textFieldMandatory" customModule="MOCD_CONNECT" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="203" width="414" height="50"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <rect key="frame" x="0.0" y="378" width="414" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="7vc-F6-KuV"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="30f-Uy-phh" customClass="textFieldMandatory" customModule="MOCD_CONNECT" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="277" width="414" height="50"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <rect key="frame" x="0.0" y="452" width="414" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="bWz-Bc-t9r"/>
                                                 </constraints>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="upf-aH-wsM">
-                                                <rect key="frame" x="16" y="501" width="382" height="40"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="upf-aH-wsM">
+                                                <rect key="frame" x="16" y="219" width="382" height="50"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="Dzo-jE-31w"/>
+                                                    <constraint firstAttribute="height" constant="50" id="Dzo-jE-31w"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="UAE PASS">
@@ -138,28 +141,37 @@
                                                 </connections>
                                             </button>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UP_Logo_Only" translatesAutoresizingMaskIntoConstraints="NO" id="1SN-Jd-a5v">
-                                                <rect key="frame" x="46" y="510.5" width="30" height="21"/>
+                                                <rect key="frame" x="46" y="233.5" width="30" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="30" id="YpI-wa-hIk"/>
                                                     <constraint firstAttribute="height" constant="21" id="hE5-zK-nLm"/>
                                                 </constraints>
                                             </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A single trusted digital identity for all citizens, residents and visitors." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pyw-kp-dr8">
+                                                <rect key="frame" x="16" y="278" width="382" height="33.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="E0E-mV-7Hd" firstAttribute="top" secondItem="tmq-UK-IZU" secondAttribute="bottom" constant="25" id="1wU-Jt-IP4"/>
-                                            <constraint firstItem="upf-aH-wsM" firstAttribute="top" secondItem="z4L-2j-smK" secondAttribute="bottom" constant="16" id="7Bw-dM-hwk"/>
+                                            <constraint firstItem="E0E-mV-7Hd" firstAttribute="top" secondItem="tmq-UK-IZU" secondAttribute="bottom" constant="200" id="1wU-Jt-IP4"/>
                                             <constraint firstItem="2jF-IM-Vxh" firstAttribute="top" secondItem="2L3-Gc-03X" secondAttribute="bottom" constant="16" id="AZd-HB-al3"/>
+                                            <constraint firstItem="pyw-kp-dr8" firstAttribute="trailing" secondItem="upf-aH-wsM" secondAttribute="trailing" id="Ay6-IQ-FfZ"/>
                                             <constraint firstItem="39G-Dh-C8A" firstAttribute="top" secondItem="30f-Uy-phh" secondAttribute="bottom" constant="50" id="BFf-Uq-9oc"/>
                                             <constraint firstItem="v3C-mY-F74" firstAttribute="centerY" secondItem="2L3-Gc-03X" secondAttribute="centerY" id="EDW-bh-ZtV"/>
                                             <constraint firstItem="Emz-jB-XiR" firstAttribute="top" secondItem="AdE-yZ-wyj" secondAttribute="topMargin" id="HH9-04-fLu"/>
                                             <constraint firstItem="g1P-Qe-vEe" firstAttribute="top" secondItem="fao-Jk-Bti" secondAttribute="bottom" constant="16" id="I0C-Kj-Bjx"/>
                                             <constraint firstItem="upf-aH-wsM" firstAttribute="leading" secondItem="1SN-Jd-a5v" secondAttribute="trailing" constant="-60" id="JKc-aD-ff9"/>
+                                            <constraint firstItem="upf-aH-wsM" firstAttribute="top" secondItem="tmq-UK-IZU" secondAttribute="bottom" constant="41" id="Jt3-th-M7a"/>
                                             <constraint firstItem="v3C-mY-F74" firstAttribute="trailing" secondItem="2L3-Gc-03X" secondAttribute="trailing" id="Jzy-G7-zMu"/>
+                                            <constraint firstItem="z4L-2j-smK" firstAttribute="top" secondItem="39G-Dh-C8A" secondAttribute="bottom" constant="18" id="LdS-Gq-Adx"/>
                                             <constraint firstAttribute="trailing" secondItem="39G-Dh-C8A" secondAttribute="trailing" constant="16" id="LdW-wS-WTL"/>
                                             <constraint firstAttribute="bottom" secondItem="Emz-jB-XiR" secondAttribute="bottom" id="Lx1-PC-nxd"/>
+                                            <constraint firstItem="pyw-kp-dr8" firstAttribute="leading" secondItem="upf-aH-wsM" secondAttribute="leading" id="PsA-Ii-BRw"/>
                                             <constraint firstItem="2jF-IM-Vxh" firstAttribute="centerX" secondItem="2L3-Gc-03X" secondAttribute="centerX" id="QTR-wH-r4N"/>
-                                            <constraint firstItem="1ko-Is-iMH" firstAttribute="top" secondItem="z4L-2j-smK" secondAttribute="bottom" constant="100" id="Sla-hI-91O"/>
+                                            <constraint firstItem="1ko-Is-iMH" firstAttribute="top" secondItem="z4L-2j-smK" secondAttribute="bottom" constant="32" id="Sla-hI-91O"/>
                                             <constraint firstItem="upf-aH-wsM" firstAttribute="trailing" secondItem="z4L-2j-smK" secondAttribute="trailing" id="SoA-rj-p2J"/>
                                             <constraint firstItem="v3C-mY-F74" firstAttribute="top" secondItem="2L3-Gc-03X" secondAttribute="top" id="TVF-hi-RPi"/>
                                             <constraint firstItem="z4L-2j-smK" firstAttribute="centerX" secondItem="AdE-yZ-wyj" secondAttribute="centerX" id="UCC-Eo-p3O"/>
@@ -168,6 +180,7 @@
                                             <constraint firstItem="v3C-mY-F74" firstAttribute="centerX" secondItem="2L3-Gc-03X" secondAttribute="centerX" id="Xsi-Hp-N05"/>
                                             <constraint firstItem="Emz-jB-XiR" firstAttribute="leading" secondItem="AdE-yZ-wyj" secondAttribute="leading" id="Yhl-SB-q8a"/>
                                             <constraint firstItem="E0E-mV-7Hd" firstAttribute="leading" secondItem="AdE-yZ-wyj" secondAttribute="leading" id="ZeK-hU-LzW"/>
+                                            <constraint firstItem="pyw-kp-dr8" firstAttribute="top" secondItem="upf-aH-wsM" secondAttribute="bottom" constant="9" id="b5M-aV-9Xc"/>
                                             <constraint firstAttribute="trailing" secondItem="z4L-2j-smK" secondAttribute="trailing" constant="16" id="b8z-gk-Sbp"/>
                                             <constraint firstItem="upf-aH-wsM" firstAttribute="centerX" secondItem="z4L-2j-smK" secondAttribute="centerX" id="cbV-Pn-Fqm"/>
                                             <constraint firstItem="g1P-Qe-vEe" firstAttribute="centerX" secondItem="AdE-yZ-wyj" secondAttribute="centerX" id="eJZ-6K-2SM"/>
@@ -180,11 +193,11 @@
                                             <constraint firstItem="Emz-jB-XiR" firstAttribute="centerX" secondItem="z4L-2j-smK" secondAttribute="centerX" id="oHB-zX-dIj"/>
                                             <constraint firstItem="30f-Uy-phh" firstAttribute="top" secondItem="E0E-mV-7Hd" secondAttribute="bottom" constant="24" id="rL9-te-xZH"/>
                                             <constraint firstItem="upf-aH-wsM" firstAttribute="leading" secondItem="z4L-2j-smK" secondAttribute="leading" id="saD-wv-i6i"/>
-                                            <constraint firstItem="z4L-2j-smK" firstAttribute="top" secondItem="39G-Dh-C8A" secondAttribute="bottom" constant="40" id="tg4-Yh-idN"/>
                                             <constraint firstItem="2L3-Gc-03X" firstAttribute="top" secondItem="AdE-yZ-wyj" secondAttribute="top" constant="18" id="thN-IN-O6j"/>
                                             <constraint firstItem="1SN-Jd-a5v" firstAttribute="centerY" secondItem="upf-aH-wsM" secondAttribute="centerY" id="vX5-RV-5il"/>
                                             <constraint firstItem="30f-Uy-phh" firstAttribute="trailing" secondItem="E0E-mV-7Hd" secondAttribute="trailing" id="vmO-Xh-vbd"/>
                                             <constraint firstItem="tmq-UK-IZU" firstAttribute="top" secondItem="2jF-IM-Vxh" secondAttribute="bottom" constant="8" id="yAO-e0-BhW"/>
+                                            <constraint firstItem="pyw-kp-dr8" firstAttribute="centerX" secondItem="upf-aH-wsM" secondAttribute="centerX" id="ygF-Dn-Vma"/>
                                             <constraint firstItem="2L3-Gc-03X" firstAttribute="centerX" secondItem="AdE-yZ-wyj" secondAttribute="centerX" id="zYf-FQ-2QY"/>
                                         </constraints>
                                         <connections>
@@ -245,7 +258,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="y7E-vR-1Qc">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="1vB-pX-4b0">
                                         <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
@@ -254,7 +267,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
-                                        <color key="tintColor" systemColor="systemBrownColor" red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" systemColor="systemBrownColor"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="appCell" rowHeight="80" id="ptG-eI-Y7O">
                                         <rect key="frame" x="0.0" y="71.5" width="414" height="80"/>
@@ -264,7 +277,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EXAMPLE TASK 01" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HVx-Ip-yCK">
-                                                    <rect key="frame" x="20" y="30" width="149.5" height="20"/>
+                                                    <rect key="frame" x="20" y="30" width="148.5" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <color key="textColor" red="0.61568627450000002" green="0.44705882349999998" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -289,7 +302,7 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="BEb-Ku-Oao" firstAttribute="top" secondItem="y7E-vR-1Qc" secondAttribute="bottom" id="Ej1-9R-mnn"/>
                             <constraint firstItem="y7E-vR-1Qc" firstAttribute="leading" secondItem="yYB-qy-Lwe" secondAttribute="leading" id="PdJ-y8-Cnm"/>
@@ -351,7 +364,7 @@
                                                 </constraints>
                                             </view>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yik-Gf-Xco" customClass="SkyFloatingLabelTextFieldWithIcon" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="14" y="194" width="376" height="34"/>
+                                                <rect key="frame" x="14" y="194" width="376" height="39"/>
                                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -385,7 +398,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L21-9A-Ijz" customClass="SkyFloatingLabelTextFieldWithIcon" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="14" y="244" width="376" height="34"/>
+                                                <rect key="frame" x="14" y="249" width="376" height="39.5"/>
                                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -419,7 +432,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cz1-E4-IU6" customClass="SkyFloatingLabelTextFieldWithIcon" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="14" y="630.5" width="376" height="34"/>
+                                                <rect key="frame" x="14" y="693" width="376" height="39"/>
                                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -453,7 +466,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8tM-By-EaD" customClass="SkyFloatingLabelTextFieldWithIcon" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="14" y="596" width="376" height="18.5"/>
+                                                <rect key="frame" x="14" y="638" width="376" height="39"/>
                                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -487,7 +500,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nationality" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zVL-ng-aFj" customClass="SkyFloatingLabelTextFieldWithIcon" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="14" y="722" width="376" height="18.5"/>
+                                                <rect key="frame" x="14" y="810.5" width="376" height="39"/>
                                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -521,7 +534,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Oy-UH-V48" customClass="SkyFloatingLabelTextFieldWithIcon" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="14" y="494" width="376" height="34"/>
+                                                <rect key="frame" x="14" y="525.5" width="376" height="39"/>
                                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -555,7 +568,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wPK-xc-uyi" customClass="SkyFloatingLabelTextFieldWithIcon" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="14" y="444" width="376" height="34"/>
+                                                <rect key="frame" x="14" y="470" width="376" height="39.5"/>
                                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -589,7 +602,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ul2-It-ev8" customClass="SkyFloatingLabelTextFieldWithIcon" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="14" y="394" width="376" height="34"/>
+                                                <rect key="frame" x="14" y="415" width="376" height="39"/>
                                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -623,7 +636,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kHB-uT-ZTH" customClass="SkyFloatingLabelTextFieldWithIcon" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="14" y="294" width="376" height="34"/>
+                                                <rect key="frame" x="14" y="304.5" width="376" height="39"/>
                                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -657,7 +670,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="moR-sL-Oj7" customClass="SkyFloatingLabelTextFieldWithIcon" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="14" y="344" width="376" height="34"/>
+                                                <rect key="frame" x="14" y="359.5" width="376" height="39.5"/>
                                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -691,7 +704,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kOm-yi-hdw" customClass="SkyFloatingLabelTextFieldWithIcon" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="14" y="544" width="376" height="34"/>
+                                                <rect key="frame" x="14" y="580.5" width="376" height="39.5"/>
                                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -737,7 +750,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mOh-eI-D32" customClass="SkyFloatingLabelTextFieldWithIcon" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="14" y="687.5" width="376" height="18.5"/>
+                                                <rect key="frame" x="14" y="755" width="376" height="39.5"/>
                                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -824,8 +837,8 @@
                                             <constraint firstItem="Cz1-E4-IU6" firstAttribute="top" secondItem="8tM-By-EaD" secondAttribute="bottom" constant="16" id="zKi-5X-jBX"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PGU-ge-DVY">
-                                        <rect key="frame" x="159" y="756.5" width="120" height="40"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PGU-ge-DVY">
+                                        <rect key="frame" x="159" y="865.5" width="120" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="P9A-9d-x1x"/>
                                             <constraint firstAttribute="width" constant="120" id="shs-5o-sGa"/>
@@ -933,9 +946,9 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="1500"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MAE-Ll-6gg">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1412"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1597.5"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hW5-qp-rjN">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hW5-qp-rjN">
                                                 <rect key="frame" x="132" y="44" width="150" height="150"/>
                                                 <connections>
                                                     <action selector="profileAction:" destination="jTT-06-efq" eventType="touchUpInside" id="cdY-Ay-ZLa"/>
@@ -953,7 +966,7 @@
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Qup-sj-nYR">
                                                 <rect key="frame" x="226" y="154.5" width="40" height="38"/>
-                                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                                                 <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="Fbo-L8-OZo"/>
@@ -961,98 +974,98 @@
                                                 </constraints>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JKs-sP-a1C" customClass="textFieldMandatory" customModule="MOCD_CONNECT" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="231" width="414" height="50"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <rect key="frame" x="0.0" y="416.5" width="414" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="WaC-eO-Vpw"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g9r-Q9-M7v" customClass="textFieldMandatory" customModule="MOCD_CONNECT" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="311" width="414" height="50"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <rect key="frame" x="0.0" y="496.5" width="414" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="3n7-bQ-bsm"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qD4-8p-5tF" customClass="selectTextField" customModule="MOCD_CONNECT" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="391" width="414" height="50"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <rect key="frame" x="0.0" y="576.5" width="414" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="eAf-SV-rWG"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i4H-G4-ghP" customClass="multipleTextField" customModule="MOCD_CONNECT" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="471" width="414" height="50"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <rect key="frame" x="0.0" y="656.5" width="414" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="HqJ-MQ-HEY"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="13A-i9-m2P" customClass="textFieldMandatory" customModule="MOCD_CONNECT" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="551" width="414" height="50"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <rect key="frame" x="0.0" y="736.5" width="414" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="vdi-sX-0cv"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tJX-yF-RCC" customClass="textFieldMandatory" customModule="MOCD_CONNECT" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="631" width="414" height="50"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <rect key="frame" x="0.0" y="816.5" width="414" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="hWr-7h-dEJ"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cdk-Jf-5hs" customClass="textFieldMandatory" customModule="MOCD_CONNECT" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="711" width="414" height="50"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <rect key="frame" x="0.0" y="896.5" width="414" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="Lls-3z-Hiq"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wnw-jB-4PC">
-                                                <rect key="frame" x="16" y="791" width="100.5" height="19.5"/>
+                                                <rect key="frame" x="16" y="976.5" width="100.5" height="19.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                 <color key="textColor" red="0.66799789669999998" green="0.47512125970000002" blue="0.25860109930000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dWG-w0-IHd" customClass="selectTextField" customModule="MOCD_CONNECT" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="840.5" width="414" height="50"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <rect key="frame" x="0.0" y="1026" width="414" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="Ky1-JX-ddh"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j8Y-XO-f06" customClass="textFieldMandatory" customModule="MOCD_CONNECT" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="920.5" width="414" height="50"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <rect key="frame" x="0.0" y="1106" width="414" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="XnW-Bi-QYB"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CiP-bZ-o53" customClass="textFieldMandatory" customModule="MOCD_CONNECT" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="1000.5" width="414" height="50"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <rect key="frame" x="0.0" y="1186" width="414" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="NEE-HI-1hC"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J1V-2T-dnV" customClass="textFieldMandatory" customModule="MOCD_CONNECT" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="1080.5" width="414" height="95"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <rect key="frame" x="0.0" y="1266" width="414" height="95"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="95" id="z6D-rn-mKa"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OLH-rD-hK9" customClass="textFieldMandatory" customModule="MOCD_CONNECT" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="1210" width="414" height="50"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <rect key="frame" x="0.0" y="1395.5" width="414" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="rCA-9R-CDm"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dq3-Jh-CJ9" customClass="M13Checkbox" customModule="M13Checkbox">
-                                                <rect key="frame" x="20" y="1290" width="20" height="20"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <rect key="frame" x="20" y="1475.5" width="20" height="20"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <color key="tintColor" red="0.66799789669999998" green="0.47512125970000002" blue="0.25860109930000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="20" id="aDX-pk-oJe"/>
@@ -1071,13 +1084,13 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable Two Factor Authentication" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rjW-0h-IBj">
-                                                <rect key="frame" x="48" y="1290" width="256" height="20"/>
+                                                <rect key="frame" x="48" y="1475.5" width="254.5" height="20"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CVn-kQ-R6V">
-                                                <rect key="frame" x="147" y="1340" width="120" height="40"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CVn-kQ-R6V">
+                                                <rect key="frame" x="147" y="1525.5" width="120" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="120" id="58c-vf-gk7"/>
                                                     <constraint firstAttribute="height" constant="40" id="l7y-f3-e9H"/>
@@ -1090,19 +1103,53 @@
                                                     <action selector="submitButtonAction:" destination="Tqo-st-g0I" eventType="touchUpInside" id="75H-cA-VfY"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Npe-ZM-4ZI">
+                                                <rect key="frame" x="16" y="224" width="382" height="50"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="GUF-rV-ko6"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <state key="normal" title="UAE PASS">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="uaePassAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pcD-O7-qcX"/>
+                                                    <action selector="uaePassAction:" destination="Tqo-st-g0I" eventType="touchUpInside" id="z6o-BC-zlv"/>
+                                                </connections>
+                                            </button>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UP_Logo_Only" translatesAutoresizingMaskIntoConstraints="NO" id="3W9-nf-XpZ">
+                                                <rect key="frame" x="46" y="238.5" width="30" height="21"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="21" id="Rq4-2u-Q49"/>
+                                                    <constraint firstAttribute="width" constant="30" id="m1A-eX-yaz"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A single trusted digital identity for all citizens, residents and visitors." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WsT-s9-Vxz">
+                                                <rect key="frame" x="16" y="283" width="382" height="33.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please fill the below details:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K7f-gh-jeH">
+                                                <rect key="frame" x="16" y="349" width="382" height="20.5"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                <color key="textColor" red="0.66617894170000003" green="0.47486311199999998" blue="0.25875407459999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="CiP-bZ-o53" firstAttribute="leading" secondItem="j8Y-XO-f06" secondAttribute="leading" id="1CN-oQ-g7g"/>
                                             <constraint firstItem="cdk-Jf-5hs" firstAttribute="trailing" secondItem="tJX-yF-RCC" secondAttribute="trailing" id="2du-gD-UL1"/>
                                             <constraint firstItem="OLH-rD-hK9" firstAttribute="trailing" secondItem="J1V-2T-dnV" secondAttribute="trailing" id="2hH-Cf-Gc0"/>
-                                            <constraint firstItem="JKs-sP-a1C" firstAttribute="top" secondItem="8f2-IC-LSM" secondAttribute="bottom" constant="37" id="3dk-k6-ZW8"/>
                                             <constraint firstAttribute="trailing" secondItem="JKs-sP-a1C" secondAttribute="trailing" id="3ti-MX-6PD"/>
                                             <constraint firstItem="hW5-qp-rjN" firstAttribute="leading" secondItem="8f2-IC-LSM" secondAttribute="leading" id="4MF-Ad-l2Q"/>
                                             <constraint firstItem="qD4-8p-5tF" firstAttribute="trailing" secondItem="g9r-Q9-M7v" secondAttribute="trailing" id="4ec-ft-yx7"/>
                                             <constraint firstItem="j8Y-XO-f06" firstAttribute="trailing" secondItem="dWG-w0-IHd" secondAttribute="trailing" id="5DY-8y-1aV"/>
                                             <constraint firstItem="CVn-kQ-R6V" firstAttribute="top" secondItem="rjW-0h-IBj" secondAttribute="bottom" constant="30" id="7DC-bo-sAZ"/>
                                             <constraint firstItem="13A-i9-m2P" firstAttribute="top" secondItem="i4H-G4-ghP" secondAttribute="bottom" constant="30" id="7Hg-5h-d9U"/>
+                                            <constraint firstItem="JKs-sP-a1C" firstAttribute="top" secondItem="WsT-s9-Vxz" secondAttribute="bottom" constant="100" id="9sC-c2-fDt"/>
                                             <constraint firstItem="rjW-0h-IBj" firstAttribute="centerY" secondItem="Dq3-Jh-CJ9" secondAttribute="centerY" id="9vr-cx-gf4"/>
                                             <constraint firstItem="cdk-Jf-5hs" firstAttribute="leading" secondItem="tJX-yF-RCC" secondAttribute="leading" id="AXm-la-891"/>
                                             <constraint firstItem="rjW-0h-IBj" firstAttribute="leading" secondItem="Dq3-Jh-CJ9" secondAttribute="trailing" constant="8" id="Dl1-b1-wGQ"/>
@@ -1113,16 +1160,23 @@
                                             <constraint firstItem="qD4-8p-5tF" firstAttribute="leading" secondItem="g9r-Q9-M7v" secondAttribute="leading" id="Ju6-B1-sZi"/>
                                             <constraint firstItem="hW5-qp-rjN" firstAttribute="bottom" secondItem="8f2-IC-LSM" secondAttribute="bottom" id="KNb-Sc-iX9"/>
                                             <constraint firstItem="rjW-0h-IBj" firstAttribute="top" secondItem="Dq3-Jh-CJ9" secondAttribute="top" id="Kcq-gm-sEY"/>
+                                            <constraint firstAttribute="trailing" secondItem="Npe-ZM-4ZI" secondAttribute="trailing" constant="16" id="M7f-do-1UE"/>
                                             <constraint firstItem="tJX-yF-RCC" firstAttribute="top" secondItem="13A-i9-m2P" secondAttribute="bottom" constant="30" id="NOa-xt-wLN"/>
+                                            <constraint firstItem="WsT-s9-Vxz" firstAttribute="trailing" secondItem="Npe-ZM-4ZI" secondAttribute="trailing" id="Neu-YJ-f2m"/>
                                             <constraint firstItem="i4H-G4-ghP" firstAttribute="top" secondItem="qD4-8p-5tF" secondAttribute="bottom" constant="30" id="Ngt-N6-E7Q"/>
+                                            <constraint firstItem="3W9-nf-XpZ" firstAttribute="centerY" secondItem="Npe-ZM-4ZI" secondAttribute="centerY" id="Oyf-t5-ICH"/>
+                                            <constraint firstItem="WsT-s9-Vxz" firstAttribute="top" secondItem="Npe-ZM-4ZI" secondAttribute="bottom" constant="9" id="PiE-ao-hoP"/>
                                             <constraint firstItem="g9r-Q9-M7v" firstAttribute="trailing" secondItem="JKs-sP-a1C" secondAttribute="trailing" id="PwO-PP-nxo"/>
                                             <constraint firstItem="J1V-2T-dnV" firstAttribute="trailing" secondItem="CiP-bZ-o53" secondAttribute="trailing" id="Qdm-U2-NSk"/>
                                             <constraint firstItem="Dq3-Jh-CJ9" firstAttribute="leading" secondItem="MAE-Ll-6gg" secondAttribute="leading" constant="20" id="RmL-T4-rs3"/>
                                             <constraint firstItem="i4H-G4-ghP" firstAttribute="leading" secondItem="qD4-8p-5tF" secondAttribute="leading" id="Rzh-QI-Ioc"/>
+                                            <constraint firstItem="K7f-gh-jeH" firstAttribute="leading" secondItem="Npe-ZM-4ZI" secondAttribute="leading" id="TtN-ko-i2H"/>
                                             <constraint firstItem="OLH-rD-hK9" firstAttribute="leading" secondItem="J1V-2T-dnV" secondAttribute="leading" id="VVK-dj-foO"/>
+                                            <constraint firstItem="Npe-ZM-4ZI" firstAttribute="top" secondItem="8f2-IC-LSM" secondAttribute="bottom" constant="30" id="WbK-GH-UBC"/>
                                             <constraint firstItem="JKs-sP-a1C" firstAttribute="leading" secondItem="MAE-Ll-6gg" secondAttribute="leading" id="bUu-Ex-xVx"/>
                                             <constraint firstItem="tJX-yF-RCC" firstAttribute="trailing" secondItem="13A-i9-m2P" secondAttribute="trailing" id="cag-Ow-ygh"/>
                                             <constraint firstItem="OLH-rD-hK9" firstAttribute="top" secondItem="J1V-2T-dnV" secondAttribute="bottom" constant="34.5" id="cy6-B7-VQA"/>
+                                            <constraint firstItem="Npe-ZM-4ZI" firstAttribute="leading" secondItem="MAE-Ll-6gg" secondAttribute="leading" constant="16" id="dRj-OU-dEk"/>
                                             <constraint firstItem="dWG-w0-IHd" firstAttribute="trailing" secondItem="cdk-Jf-5hs" secondAttribute="trailing" id="dWw-c0-n4Q"/>
                                             <constraint firstItem="dWG-w0-IHd" firstAttribute="leading" secondItem="cdk-Jf-5hs" secondAttribute="leading" id="dgB-qR-8If"/>
                                             <constraint firstItem="tJX-yF-RCC" firstAttribute="leading" secondItem="13A-i9-m2P" secondAttribute="leading" id="eir-Zm-BXs"/>
@@ -1133,13 +1187,18 @@
                                             <constraint firstItem="hW5-qp-rjN" firstAttribute="trailing" secondItem="8f2-IC-LSM" secondAttribute="trailing" id="hq7-39-aZh"/>
                                             <constraint firstItem="j8Y-XO-f06" firstAttribute="leading" secondItem="dWG-w0-IHd" secondAttribute="leading" id="kO6-li-uEC"/>
                                             <constraint firstItem="13A-i9-m2P" firstAttribute="trailing" secondItem="i4H-G4-ghP" secondAttribute="trailing" id="kRj-vC-i0z"/>
+                                            <constraint firstItem="K7f-gh-jeH" firstAttribute="trailing" secondItem="Npe-ZM-4ZI" secondAttribute="trailing" id="knd-JL-4it"/>
                                             <constraint firstItem="j8Y-XO-f06" firstAttribute="top" secondItem="dWG-w0-IHd" secondAttribute="bottom" constant="30" id="koj-OB-JD4"/>
                                             <constraint firstItem="8f2-IC-LSM" firstAttribute="centerX" secondItem="MAE-Ll-6gg" secondAttribute="centerX" id="lWm-iy-afo"/>
                                             <constraint firstItem="cdk-Jf-5hs" firstAttribute="top" secondItem="tJX-yF-RCC" secondAttribute="bottom" constant="30" id="lXj-kg-zbP"/>
                                             <constraint firstAttribute="bottom" secondItem="CVn-kQ-R6V" secondAttribute="bottom" constant="32" id="mmO-6c-NwO"/>
+                                            <constraint firstItem="WsT-s9-Vxz" firstAttribute="leading" secondItem="Npe-ZM-4ZI" secondAttribute="leading" id="op5-eE-c96"/>
+                                            <constraint firstItem="WsT-s9-Vxz" firstAttribute="centerX" secondItem="Npe-ZM-4ZI" secondAttribute="centerX" id="pJQ-XK-Xlx"/>
                                             <constraint firstItem="Wnw-jB-4PC" firstAttribute="leading" secondItem="MAE-Ll-6gg" secondAttribute="leading" constant="16" id="pKq-y3-Txv"/>
                                             <constraint firstItem="CiP-bZ-o53" firstAttribute="trailing" secondItem="j8Y-XO-f06" secondAttribute="trailing" id="quF-aa-O8R"/>
                                             <constraint firstItem="hW5-qp-rjN" firstAttribute="top" secondItem="8f2-IC-LSM" secondAttribute="top" id="s0T-Ag-FhE"/>
+                                            <constraint firstItem="K7f-gh-jeH" firstAttribute="top" secondItem="WsT-s9-Vxz" secondAttribute="bottom" constant="32.5" id="tEy-WW-hZt"/>
+                                            <constraint firstItem="Npe-ZM-4ZI" firstAttribute="leading" secondItem="3W9-nf-XpZ" secondAttribute="trailing" constant="-60" id="u6y-Ge-ePb"/>
                                             <constraint firstItem="8f2-IC-LSM" firstAttribute="top" secondItem="MAE-Ll-6gg" secondAttribute="top" constant="44" id="vYo-Xz-ZZ1"/>
                                             <constraint firstItem="Qup-sj-nYR" firstAttribute="bottom" secondItem="8f2-IC-LSM" secondAttribute="bottom" id="vqO-tQ-6Nf"/>
                                             <constraint firstItem="J1V-2T-dnV" firstAttribute="leading" secondItem="CiP-bZ-o53" secondAttribute="leading" id="whc-HZ-Sbc"/>
@@ -1162,7 +1221,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="5Su-Sr-Kfj" secondAttribute="bottom" id="GfM-Sf-VBd"/>
                             <constraint firstItem="5Su-Sr-Kfj" firstAttribute="trailing" secondItem="jYW-mP-rOC" secondAttribute="trailing" id="JyT-pe-bHh"/>
@@ -1175,6 +1234,7 @@
                     <connections>
                         <outlet property="answerView" destination="j8Y-XO-f06" id="9fF-k6-qPw"/>
                         <outlet property="cameraImageView" destination="Qup-sj-nYR" id="lhu-Qp-Ewi"/>
+                        <outlet property="confirmPasswordHeight" destination="rCA-9R-CDm" id="D8J-4J-hXt"/>
                         <outlet property="confirmPasswordView" destination="OLH-rD-hK9" id="JlQ-gR-ILU"/>
                         <outlet property="emailView" destination="13A-i9-m2P" id="2hq-e7-flp"/>
                         <outlet property="emiratesIDView" destination="cdk-Jf-5hs" id="kRN-eZ-8k9"/>
@@ -1184,12 +1244,15 @@
                         <outlet property="mobileView" destination="tJX-yF-RCC" id="Wob-Pe-yEB"/>
                         <outlet property="nationalitiesPickerView" destination="BNl-Bk-xZI" id="dyM-0W-K7O"/>
                         <outlet property="nationalityView" destination="qD4-8p-5tF" id="5d4-08-Tqn"/>
+                        <outlet property="passwordHeight" destination="z6D-rn-mKa" id="YJI-az-vC6"/>
                         <outlet property="passwordView" destination="J1V-2T-dnV" id="4Ug-Ja-hd8"/>
                         <outlet property="profileImageView" destination="8f2-IC-LSM" id="dU9-LD-4KT"/>
                         <outlet property="securityPicker" destination="9Av-wL-yZC" id="yTr-f7-rhz"/>
                         <outlet property="securityQuestionsView" destination="dWG-w0-IHd" id="Uuw-KM-dTk"/>
                         <outlet property="submitButton" destination="CVn-kQ-R6V" id="ITl-OX-MzQ"/>
                         <outlet property="twoFactorAuthCheckBox" destination="Dq3-Jh-CJ9" id="rRc-pc-WHT"/>
+                        <outlet property="uaePassButton" destination="Npe-ZM-4ZI" id="ioZ-9P-bkB"/>
+                        <outlet property="usernameHeight" destination="NEE-HI-1hC" id="8JI-qQ-Q4S"/>
                         <outlet property="usernameView" destination="CiP-bZ-o53" id="oU4-4R-6Tq"/>
                     </connections>
                 </viewController>
@@ -1325,7 +1388,7 @@
                                                     </collectionViewCell>
                                                 </cells>
                                             </collectionView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iej-vt-XKL">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iej-vt-XKL">
                                                 <rect key="frame" x="132" y="100" width="150" height="150"/>
                                                 <connections>
                                                     <action selector="profileAction:" destination="jTT-06-efq" eventType="touchUpInside" id="h89-hK-pdC"/>
@@ -1378,13 +1441,13 @@
                                                 </cells>
                                             </collectionView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Center Children" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B20-Je-P1V">
-                                                <rect key="frame" x="8" y="370" width="126" height="20.5"/>
+                                                <rect key="frame" x="8" y="370" width="125.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Added Children" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XaD-ED-VUB">
-                                                <rect key="frame" x="8" y="611" width="124" height="20.5"/>
+                                                <rect key="frame" x="8" y="611" width="123.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -1421,7 +1484,7 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="iVX-7M-Zup">
-                                        <rect key="frame" x="142.5" y="47" width="129.5" height="20.5"/>
+                                        <rect key="frame" x="142.5" y="47" width="129" height="20.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vme-2Y-zOd">
                                                 <rect key="frame" x="0.0" y="0.0" width="71" height="20.5"/>
@@ -1430,7 +1493,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Haya !" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R9Y-Xh-arF">
-                                                <rect key="frame" x="78" y="0.0" width="51.5" height="20.5"/>
+                                                <rect key="frame" x="78" y="0.0" width="51" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -1527,7 +1590,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xGb-c8-wY4">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xGb-c8-wY4">
                                 <rect key="frame" x="20" y="0.0" width="374" height="808"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
@@ -1553,7 +1616,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f0k-rp-WLp">
-                                        <rect key="frame" x="166" y="76" width="42" height="20.5"/>
+                                        <rect key="frame" x="166.5" y="76" width="41.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1561,7 +1624,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="yW6-Nk-LPE">
                                         <rect key="frame" x="32" y="112" width="310" height="50"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cOx-Si-7Bi">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cOx-Si-7Bi">
                                                 <rect key="frame" x="0.0" y="0.0" width="139" height="50"/>
                                                 <color key="backgroundColor" red="0.73333333329999995" green="0.61176470589999998" blue="0.38431372549999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <state key="normal" title="Add ">
@@ -1571,7 +1634,7 @@
                                                     <action selector="addChildButton:" destination="tNG-Hu-9sU" eventType="touchUpInside" id="NXq-6m-DtD"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TBC-sQ-jyk">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TBC-sQ-jyk">
                                                 <rect key="frame" x="171" y="0.0" width="139" height="50"/>
                                                 <color key="backgroundColor" red="0.73333333329999995" green="0.61176470589999998" blue="0.38431372549999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <state key="normal" title="Cancel">
@@ -1587,7 +1650,7 @@
                                         </constraints>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="170" id="4WO-yy-gIC"/>
                                     <constraint firstItem="f0k-rp-WLp" firstAttribute="centerX" secondItem="kB5-fn-WIW" secondAttribute="centerX" id="93I-7t-yJS"/>
@@ -1642,7 +1705,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="V6O-ya-04e">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="Ydf-Yv-ed5">
                                         <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
@@ -1655,7 +1718,7 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="V6O-ya-04e" secondAttribute="trailing" id="gqb-ZV-FRm"/>
                             <constraint firstItem="V6O-ya-04e" firstAttribute="top" secondItem="H1h-dY-zEb" secondAttribute="bottom" id="i19-kS-mj8"/>
@@ -1688,15 +1751,15 @@
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gyj-Ci-Gax">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <string key="text">Nomow App is an initiative by the Department of Care and Rehabilitation f People of Determination in the Ministry of Community Development. It aims to early detection of any developmental delay in children under six years old, to compare their global development with their peers, in order to provide them early intervention services that would develop their skills. 
 Nomow App is a screening tool of child development can be used families, before child being transitioned nto full assessment by interdisciplinary team. so it is the initial step towards referring children with developmental delay into he UAE's early childhood intervention program. </string>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="gyj-Ci-Gax" firstAttribute="top" secondItem="LXu-LF-Kgl" secondAttribute="bottom" id="9pk-Is-WKa"/>
                             <constraint firstItem="gyj-Ci-Gax" firstAttribute="leading" secondItem="eF8-la-5mV" secondAttribute="leading" id="Pyu-C4-Qwm"/>
@@ -1727,7 +1790,7 @@ Nomow App is a screening tool of child development can be used families, before 
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Csq-6T-yJi">
                                 <rect key="frame" x="16" y="112" width="100" height="100"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="TNW-fg-AZ9"/>
                                     <constraint firstAttribute="height" constant="100" id="UmZ-V9-Lj5"/>
@@ -1765,7 +1828,7 @@ Nomow App is a screening tool of child development can be used families, before 
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EXAMPLE TASK 01" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ro-7Y-J5e">
-                                                    <rect key="frame" x="20" y="11" width="149.5" height="20.5"/>
+                                                    <rect key="frame" x="20" y="11" width="148.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <color key="textColor" red="0.61568627450000002" green="0.44705882349999998" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1818,7 +1881,7 @@ Nomow App is a screening tool of child development can be used families, before 
                                                 </label>
                                                 <view tag="22" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ACK-mF-BDp" customClass="M13Checkbox" customModule="M13Checkbox">
                                                     <rect key="frame" x="83" y="38" width="20" height="20"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="9Bf-Xv-Ijw"/>
                                                         <constraint firstAttribute="width" constant="20" id="WFW-A9-E4l"/>
@@ -1842,7 +1905,7 @@ Nomow App is a screening tool of child development can be used families, before 
                                                 </label>
                                                 <view tag="33" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KxU-W7-az5" customClass="M13Checkbox" customModule="M13Checkbox">
                                                     <rect key="frame" x="157" y="38" width="20" height="20"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="20" id="6tV-UM-EMJ"/>
                                                         <constraint firstAttribute="height" constant="20" id="me3-JG-JDq"/>
@@ -1866,7 +1929,7 @@ Nomow App is a screening tool of child development can be used families, before 
                                                 </label>
                                                 <view tag="11" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kbb-fe-alq" customClass="M13Checkbox" customModule="M13Checkbox">
                                                     <rect key="frame" x="16" y="38" width="20" height="20"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <color key="tintColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="87Q-O3-csw"/>
@@ -1917,7 +1980,7 @@ Nomow App is a screening tool of child development can be used families, before 
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EXAMPLE TASK 01" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3iB-OL-YOM">
-                                                    <rect key="frame" x="20" y="11" width="149.5" height="20.5"/>
+                                                    <rect key="frame" x="20" y="11" width="148.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <color key="textColor" red="0.61568627450000002" green="0.44705882349999998" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -2049,7 +2112,7 @@ Nomow App is a screening tool of child development can be used families, before 
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EDEN JAMAL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zAq-Zv-Ovt">
-                                <rect key="frame" x="128" y="133" width="108" height="20.5"/>
+                                <rect key="frame" x="128" y="133" width="107.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -2062,7 +2125,7 @@ Nomow App is a screening tool of child development can be used families, before 
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p2O-96-Y28">
                                 <rect key="frame" x="328" y="133" width="70" height="20"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="un-healthy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Us-ML-X3Q">
                                 <rect key="frame" x="328" y="133" width="70" height="20"/>
@@ -2106,7 +2169,7 @@ Nomow App is a screening tool of child development can be used families, before 
                                 <rect key="frame" x="1" y="346" width="412" height="5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GOALS PROGRESS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8G5-Vp-Z5t">
-                                        <rect key="frame" x="19" y="8" width="151.5" height="20.5"/>
+                                        <rect key="frame" x="19" y="8" width="151" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -2136,7 +2199,7 @@ Nomow App is a screening tool of child development can be used families, before 
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="8G5-Vp-Z5t" secondAttribute="trailing" constant="20" symbolic="YES" id="8Ah-Po-ggK"/>
                                     <constraint firstItem="8G5-Vp-Z5t" firstAttribute="leading" secondItem="jGx-qq-Prr" secondAttribute="leading" constant="19" id="AZM-Yb-2yM"/>
@@ -2149,7 +2212,7 @@ Nomow App is a screening tool of child development can be used families, before 
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zPz-cg-XZ1">
                                 <rect key="frame" x="128" y="175" width="0.0" height="30"/>
-                                <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" systemColor="systemRedColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" id="JbV-a2-K5l"/>
                                 </constraints>
@@ -2159,7 +2222,7 @@ Nomow App is a screening tool of child development can be used families, before 
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small" weight="thin"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Fl-UC-ukz">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Fl-UC-ukz">
                                 <rect key="frame" x="136" y="175" width="60" height="30"/>
                                 <color key="backgroundColor" red="0.66799789669999998" green="0.47512125970000002" blue="0.25860109930000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -2265,33 +2328,33 @@ Nomow App is a screening tool of child development can be used families, before 
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J52-2e-dvH" customClass="textFieldMandatory" customModule="MOCD_CONNECT" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="81" width="342" height="60"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="jW8-YO-a4t"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WlW-eH-26g" customClass="selectTextField" customModule="MOCD_CONNECT" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="157" width="342" height="60"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="Om9-UH-q6E"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yzA-Ja-s4P" customClass="selectTextField" customModule="MOCD_CONNECT" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="233" width="342" height="60"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="MS3-mY-KTl"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1BR-My-8KS" customClass="textFieldMandatory" customModule="MOCD_CONNECT" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="309" width="342" height="60"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="U6m-Ub-1MX"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LI7-3f-I74">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LI7-3f-I74">
                                         <rect key="frame" x="111" y="409" width="120" height="40"/>
                                         <color key="backgroundColor" red="0.73333333329999995" green="0.61176470589999998" blue="0.38431372549999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
@@ -2305,7 +2368,7 @@ Nomow App is a screening tool of child development can be used families, before 
                                             <action selector="addbuttonAction:" destination="nWP-Vs-kXj" eventType="touchUpInside" id="rBi-O4-R1h"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tbU-TO-PBM">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tbU-TO-PBM">
                                         <rect key="frame" x="286" y="8" width="48" height="30"/>
                                         <state key="normal" title="Cancel">
                                             <color key="titleColor" red="0.73333333329999995" green="0.61176470589999998" blue="0.38431372549999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -2321,7 +2384,7 @@ Nomow App is a screening tool of child development can be used families, before 
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="J52-2e-dvH" secondAttribute="trailing" id="4PY-VP-FCQ"/>
                                     <constraint firstItem="P1M-k2-6gN" firstAttribute="centerX" secondItem="pNn-ot-5FL" secondAttribute="centerX" id="4Ts-0g-aof"/>
@@ -2521,7 +2584,7 @@ Nomow App is a screening tool of child development can be used families, before 
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Fr-hd-Yck">
+                                                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Fr-hd-Yck">
                                                     <rect key="frame" x="288" y="6.5" width="106" height="31"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="106" id="gZq-c3-zAw"/>
@@ -2723,7 +2786,7 @@ Nomow App is a screening tool of child development can be used families, before 
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mPW-Pv-e4X">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rkz-1e-rMn">
                                     <size key="itemSize" width="414" height="186"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -2814,7 +2877,7 @@ Nomow App is a screening tool of child development can be used families, before 
                                             <subviews>
                                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AjG-8m-QXx">
                                                     <rect key="frame" x="0.0" y="58" width="414" height="128"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <prototypes>
                                                         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="sCell" textLabel="XJ4-L6-fZW" style="IBUITableViewCellStyleDefault" id="Na9-h3-BP6">
                                                             <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
@@ -2866,7 +2929,7 @@ Nomow App is a screening tool of child development can be used families, before 
                                 </cells>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="nHL-xT-WOy" firstAttribute="top" secondItem="mPW-Pv-e4X" secondAttribute="bottom" id="22E-a7-pF0"/>
                             <constraint firstItem="mPW-Pv-e4X" firstAttribute="leading" secondItem="zsr-ZZ-sk3" secondAttribute="leading" id="Ale-ym-t9v"/>
@@ -2889,11 +2952,26 @@ Nomow App is a screening tool of child development can be used families, before 
                         <segue destination="8q9-gd-VEt" kind="show" identifier="toEdaad" id="ls3-nr-tLU"/>
                         <segue destination="g4k-Nk-ezs" kind="show" identifier="toMassWedding" id="VSF-sJ-i2f"/>
                         <segue destination="6i0-8y-O0q" kind="show" identifier="toCertificate" id="CGQ-Il-6pm"/>
+                        <segue destination="0ra-AG-E2t" kind="show" identifier="toOTP" id="MBZ-Tg-wJe"/>
+                        <segue destination="a27-7Y-t6j" kind="show" identifier="toElderlyReg" id="aVP-ge-J5H"/>
+                        <segue destination="Kib-2i-Oi6" kind="show" identifier="toNursing" id="z09-70-WcC"/>
+                        <segue destination="68X-q5-Zc4" kind="show" identifier="toVisiting" id="vmk-mq-KfP"/>
+                        <segue destination="mRL-do-816" kind="show" identifier="toNewEdaad" id="oso-c1-Qef"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iPH-Qn-MWd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1544.9275362318842" y="1012.5000000000001"/>
+        </scene>
+        <!--OTP-->
+        <scene sceneID="W8a-j9-C2h">
+            <objects>
+                <viewControllerPlaceholder storyboardName="OTP" id="0ra-AG-E2t" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="SrF-c4-oU4"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y3a-L5-jvB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3273" y="1197"/>
         </scene>
         <!--massWedding-->
         <scene sceneID="1eW-3O-7yW">
@@ -2914,6 +2992,16 @@ Nomow App is a screening tool of child development can be used families, before 
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dvu-fo-UZf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2956" y="1374"/>
+        </scene>
+        <!--elderlyRegestiration-->
+        <scene sceneID="YeX-Xb-t2H">
+            <objects>
+                <viewControllerPlaceholder storyboardName="elderlyRegestiration" id="a27-7Y-t6j" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="LRa-aM-zJm"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f9s-JP-6uy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2586" y="1521"/>
         </scene>
         <!--edadProgram-->
         <scene sceneID="OBq-1O-2yC">
@@ -2989,7 +3077,7 @@ Nomow App is a screening tool of child development can be used families, before 
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vpu-Id-wwU">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="titleCell" rowHeight="82" id="YJh-A5-tgf" userLabel="TitleCell">
                                         <rect key="frame" x="0.0" y="28" width="414" height="82"/>
@@ -3011,7 +3099,7 @@ Nomow App is a screening tool of child development can be used families, before 
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1WN-Fu-9dE">
-                                                    <rect key="frame" x="156" y="38.5" width="42" height="20.5"/>
+                                                    <rect key="frame" x="156" y="38.5" width="41.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -3180,7 +3268,7 @@ Nomow App is a screening tool of child development can be used families, before 
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Service Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgB-YM-xbE">
-                                                    <rect key="frame" x="20" y="11" width="156" height="20.5"/>
+                                                    <rect key="frame" x="20" y="11" width="155.5" height="20.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20.333333333333329" id="1FV-1H-G4g"/>
                                                     </constraints>
@@ -3190,9 +3278,9 @@ Nomow App is a screening tool of child development can be used families, before 
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YBX-kK-OXA">
                                                     <rect key="frame" x="20" y="39.5" width="374" height="200"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, </string>
-                                                    <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" systemColor="labelColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
@@ -3263,7 +3351,7 @@ Nomow App is a screening tool of child development can be used families, before 
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Vpu-Id-wwU" secondAttribute="trailing" id="5Yq-3q-7Iu"/>
                             <constraint firstItem="IeG-aw-H4D" firstAttribute="top" secondItem="Vpu-Id-wwU" secondAttribute="bottom" id="ElA-Cs-elo"/>
@@ -3317,7 +3405,7 @@ Nomow App is a screening tool of child development can be used families, before 
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="occ-ie-L04">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="telCell" id="VQD-BA-Oil">
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
@@ -3452,7 +3540,7 @@ Nomow App is a screening tool of child development can be used families, before 
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="occ-ie-L04" firstAttribute="leading" secondItem="s9d-ZU-9rN" secondAttribute="leading" id="S0G-cY-ccM"/>
                             <constraint firstItem="occ-ie-L04" firstAttribute="top" secondItem="AYh-pe-1pf" secondAttribute="bottom" id="ZaU-ER-Eo2"/>
@@ -3495,13 +3583,13 @@ Nomow App is a screening tool of child development can be used families, before 
                                                 <rect key="frame" x="0.0" y="-677" width="682" height="1477"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="fill out the details :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WfN-xS-poP">
-                                                <rect key="frame" x="8" y="284" width="147" height="21"/>
+                                                <rect key="frame" x="8" y="284" width="146" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N1m-hU-rqB" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="8" y="313" width="359" height="18.5"/>
+                                                <rect key="frame" x="8" y="313" width="359" height="39"/>
                                                 <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -3528,7 +3616,7 @@ Nomow App is a screening tool of child development can be used families, before 
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ov8-fU-xbl" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="8" y="347.5" width="359" height="18.5"/>
+                                                <rect key="frame" x="8" y="368" width="359" height="39.5"/>
                                                 <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -3555,7 +3643,7 @@ Nomow App is a screening tool of child development can be used families, before 
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h7d-Pg-a1c" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="8" y="382" width="359" height="30"/>
+                                                <rect key="frame" x="8" y="423.5" width="359" height="39"/>
                                                 <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -3581,14 +3669,14 @@ Nomow App is a screening tool of child development can be used families, before 
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FAn-GO-7dp">
-                                                <rect key="frame" x="8" y="382" width="359" height="30"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FAn-GO-7dp">
+                                                <rect key="frame" x="8" y="423.5" width="359" height="39"/>
                                                 <connections>
                                                     <action selector="birthdateAction:" destination="DFa-qD-r0F" eventType="touchUpInside" id="AA1-a0-1te"/>
                                                 </connections>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NPp-0V-sJO" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="8" y="420" width="359" height="18.5"/>
+                                                <rect key="frame" x="8" y="470.5" width="359" height="39.5"/>
                                                 <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -3615,7 +3703,7 @@ Nomow App is a screening tool of child development can be used families, before 
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IP3-oR-oYB" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="8" y="454.5" width="359" height="39"/>
+                                                <rect key="frame" x="8" y="526" width="359" height="39"/>
                                                 <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="39" id="2sQ-Vv-du7"/>
@@ -3644,7 +3732,7 @@ Nomow App is a screening tool of child development can be used families, before 
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Sh-3Q-bAC">
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Sh-3Q-bAC">
                                                 <rect key="frame" x="8" y="735" width="359" height="39.333333333333314"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <connections>
@@ -3666,7 +3754,7 @@ Nomow App is a screening tool of child development can be used families, before 
                                                     <constraint firstAttribute="height" constant="170" id="zCZ-5m-xv1"/>
                                                 </constraints>
                                             </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="piQ-ME-DAJ">
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="piQ-ME-DAJ">
                                                 <rect key="frame" x="112" y="92" width="150" height="150"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <connections>
@@ -3676,14 +3764,14 @@ Nomow App is a screening tool of child development can be used families, before 
                                             </button>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera" translatesAutoresizingMaskIntoConstraints="NO" id="7kq-h3-kwt">
                                                 <rect key="frame" x="216.5" y="212" width="40" height="40"/>
-                                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="Q9W-ov-uSl"/>
                                                     <constraint firstAttribute="height" constant="40" id="Sud-cj-RVx"/>
                                                 </constraints>
                                             </imageView>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rdv-WJ-3ny" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="8" y="509.5" width="359" height="18.5"/>
+                                                <rect key="frame" x="8" y="581" width="359" height="39"/>
                                                 <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -3710,7 +3798,7 @@ Nomow App is a screening tool of child development can be used families, before 
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="this app is for the children who are less than 66 months old" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n5Y-ZU-Iek">
-                                                <rect key="frame" x="8" y="593" width="359" height="33.5"/>
+                                                <rect key="frame" x="8" y="706" width="359" height="33.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -3755,8 +3843,8 @@ Nomow App is a screening tool of child development can be used families, before 
                                             <constraint firstItem="Ov8-fU-xbl" firstAttribute="top" secondItem="N1m-hU-rqB" secondAttribute="bottom" constant="16" id="ytX-Dp-tzo"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cmh-d5-Sff">
-                                        <rect key="frame" x="127.5" y="642.5" width="120" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cmh-d5-Sff">
+                                        <rect key="frame" x="127.5" y="755.5" width="120" height="30"/>
                                         <color key="backgroundColor" red="0.73333333329999995" green="0.61176470589999998" blue="0.38431372549999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="120" id="CkF-rN-ycl"/>
@@ -3770,7 +3858,7 @@ Nomow App is a screening tool of child development can be used families, before 
                                         </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BZi-M2-7ou" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                        <rect key="frame" x="8" y="544" width="359" height="18.5"/>
+                                        <rect key="frame" x="8" y="636" width="359" height="39.5"/>
                                         <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -3957,7 +4045,7 @@ Nomow App is a screening tool of child development can be used families, before 
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Usa-Wh-Ddz">
+                                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Usa-Wh-Ddz">
                                                     <rect key="frame" x="147" y="20" width="120" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="120" id="Omz-kY-ZaI"/>
@@ -4025,25 +4113,25 @@ Nomow App is a screening tool of child development can be used families, before 
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The World of an abstract artist" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n4e-1X-pap">
-                                                    <rect key="frame" x="105.5" y="11" width="249" height="128"/>
+                                                    <rect key="frame" x="105.5" y="11" width="247.5" height="128"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="James Aurthuer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JO7-N9-1q4">
-                                                    <rect key="frame" x="103.5" y="146.5" width="126" height="21"/>
+                                                    <rect key="frame" x="103.5" y="146.5" width="124.5" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                     <color key="textColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pcd-OL-pKf">
-                                                    <rect key="frame" x="246.5" y="146.5" width="17" height="21"/>
+                                                    <rect key="frame" x="245" y="146.5" width="17" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="199K" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WlN-me-ZCc">
-                                                    <rect key="frame" x="278.5" y="146.5" width="33" height="21"/>
+                                                    <rect key="frame" x="277" y="146.5" width="33" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -4157,7 +4245,7 @@ Nomow App is a screening tool of child development can be used families, before 
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ayD-Nc-Xrt">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="yRr-75-c0Z">
                                         <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
@@ -4170,7 +4258,7 @@ Nomow App is a screening tool of child development can be used families, before 
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="ayD-Nc-Xrt" firstAttribute="top" secondItem="7tN-Sq-iE1" secondAttribute="bottom" id="94K-tD-P8s"/>
                             <constraint firstItem="ayD-Nc-Xrt" firstAttribute="bottom" secondItem="tdN-ur-PCC" secondAttribute="top" id="hzD-1n-XeL"/>
@@ -4206,7 +4294,7 @@ Nomow App is a screening tool of child development can be used families, before 
                     <view key="view" contentMode="scaleToFill" id="lCL-7c-iY4" customClass="PDFView">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="vkH-AL-y7V"/>
                     <connections>
@@ -4695,8 +4783,8 @@ Nomow App is a screening tool of child development can be used families, before 
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BG" translatesAutoresizingMaskIntoConstraints="NO" id="nqe-yR-fxI">
                                                 <rect key="frame" x="0.0" y="-677" width="682" height="1477"/>
                                             </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zVX-j2-fE3">
-                                                <rect key="frame" x="127.5" y="459.5" width="120" height="30"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zVX-j2-fE3">
+                                                <rect key="frame" x="127.5" y="542.5" width="120" height="30"/>
                                                 <color key="backgroundColor" red="0.2369583207" green="0.59855216739999995" blue="0.58454734009999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="120" id="hza-QQ-T3W"/>
@@ -4710,13 +4798,13 @@ Nomow App is a screening tool of child development can be used families, before 
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="fill out the details :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xft-gd-hMS">
-                                                <rect key="frame" x="8" y="284" width="147" height="21"/>
+                                                <rect key="frame" x="8" y="284" width="146" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SKn-yL-JzS" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="8" y="313" width="359" height="18.5"/>
+                                                <rect key="frame" x="8" y="313" width="359" height="39"/>
                                                 <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -4743,7 +4831,7 @@ Nomow App is a screening tool of child development can be used families, before 
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aac-0z-Dg3" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="8" y="339.5" width="359" height="18.5"/>
+                                                <rect key="frame" x="8" y="360" width="359" height="39.5"/>
                                                 <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -4770,7 +4858,7 @@ Nomow App is a screening tool of child development can be used families, before 
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z8A-CF-Qjz" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="8" y="374.5" width="359" height="18.5"/>
+                                                <rect key="frame" x="8" y="416" width="359" height="39"/>
                                                 <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -4797,7 +4885,7 @@ Nomow App is a screening tool of child development can be used families, before 
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WUw-cG-BVr" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="8" y="409" width="359" height="18.5"/>
+                                                <rect key="frame" x="8" y="471" width="359" height="39.5"/>
                                                 <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -4838,7 +4926,7 @@ Nomow App is a screening tool of child development can be used families, before 
                                                     <constraint firstAttribute="height" constant="170" id="uQT-fM-7Ay"/>
                                                 </constraints>
                                             </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yt1-41-vlk">
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yt1-41-vlk">
                                                 <rect key="frame" x="112" y="92" width="150" height="150"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <connections>
@@ -4848,7 +4936,7 @@ Nomow App is a screening tool of child development can be used families, before 
                                             </button>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera" translatesAutoresizingMaskIntoConstraints="NO" id="jfJ-30-KFT">
                                                 <rect key="frame" x="216.5" y="212" width="40" height="40"/>
-                                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="VHi-fe-EOp"/>
                                                     <constraint firstAttribute="height" constant="40" id="ZEe-qi-pgV"/>
@@ -4996,7 +5084,7 @@ Nomow App is a screening tool of child development can be used families, before 
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BfH-8T-loa">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BfH-8T-loa">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
@@ -5007,7 +5095,7 @@ Nomow App is a screening tool of child development can be used families, before 
                                 <rect key="frame" x="16" y="348" width="382" height="200"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forget your password?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QaK-8B-tct">
-                                        <rect key="frame" x="16" y="22" width="179" height="20.5"/>
+                                        <rect key="frame" x="16" y="22" width="178.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -5020,7 +5108,7 @@ Nomow App is a screening tool of child development can be used families, before 
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WD6-gd-LBe">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WD6-gd-LBe">
                                         <rect key="frame" x="254" y="141" width="120" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="Oaz-TC-cGf"/>
@@ -5036,7 +5124,7 @@ Nomow App is a screening tool of child development can be used families, before 
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="QaK-8B-tct" firstAttribute="leading" secondItem="Kdj-8c-Mv2" secondAttribute="leading" constant="16" id="A53-u2-mdf"/>
                                     <constraint firstItem="QaK-8B-tct" firstAttribute="top" secondItem="Kdj-8c-Mv2" secondAttribute="top" constant="22" id="L24-kK-1jh"/>
@@ -5080,17 +5168,17 @@ Nomow App is a screening tool of child development can be used families, before 
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5nD-Qz-OPj">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="RkY-gI-IMg"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="RkY-gI-IMg" firstAttribute="trailing" secondItem="5nD-Qz-OPj" secondAttribute="trailing" id="0zz-Zs-ju8"/>
                             <constraint firstItem="5nD-Qz-OPj" firstAttribute="top" secondItem="RkY-gI-IMg" secondAttribute="top" id="WPv-0p-RRd"/>
                             <constraint firstItem="RkY-gI-IMg" firstAttribute="bottom" secondItem="5nD-Qz-OPj" secondAttribute="bottom" id="hyI-z5-ykP"/>
                             <constraint firstItem="5nD-Qz-OPj" firstAttribute="leading" secondItem="RkY-gI-IMg" secondAttribute="leading" id="jcu-Z7-EqJ"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="RkY-gI-IMg"/>
                     </view>
                     <connections>
                         <outlet property="webViewContainer" destination="5nD-Qz-OPj" id="xkP-Wr-Lgc"/>
@@ -5136,7 +5224,7 @@ Nomow App is a screening tool of child development can be used families, before 
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VBb-w8-lWY">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VBb-w8-lWY">
                                 <rect key="frame" x="83" y="767" width="248" height="95"/>
                                 <color key="backgroundColor" red="0.31372549020000001" green="0.69411764710000001" blue="0.51764705879999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -5155,7 +5243,8 @@ Nomow App is a screening tool of child development can be used families, before 
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="q9Y-6F-4XG"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="98M-1N-Tm7" firstAttribute="top" secondItem="zEa-Mv-2Lm" secondAttribute="bottom" constant="20" id="0zn-ME-aN8"/>
                             <constraint firstItem="AaV-Hi-hvz" firstAttribute="leading" secondItem="gRn-T2-2Uh" secondAttribute="leading" id="2N8-Xu-OiO"/>
@@ -5179,7 +5268,6 @@ Nomow App is a screening tool of child development can be used families, before 
                             <constraint firstItem="zEa-Mv-2Lm" firstAttribute="leading" secondItem="AaV-Hi-hvz" secondAttribute="leading" id="sgX-my-S14"/>
                             <constraint firstItem="VBb-w8-lWY" firstAttribute="bottom" secondItem="jBs-1g-pal" secondAttribute="bottom" id="yWE-Og-omj"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="q9Y-6F-4XG"/>
                     </view>
                     <connections>
                         <outlet property="labelDateOfBirth" destination="98M-1N-Tm7" id="PaQ-pd-igT"/>
@@ -5194,7 +5282,108 @@ Nomow App is a screening tool of child development can be used families, before 
             </objects>
             <point key="canvasLocation" x="-1678" y="-896"/>
         </scene>
+        <!--newEdaadProgram-->
+        <scene sceneID="cDT-Dl-7ZT">
+            <objects>
+                <viewControllerPlaceholder storyboardName="newEdaadProgram" id="mRL-do-816" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="vYK-yd-E8N"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Atp-oF-Yn8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3207" y="911"/>
+        </scene>
+        <!--nursingHome-->
+        <scene sceneID="Khc-wR-TQH">
+            <objects>
+                <viewControllerPlaceholder storyboardName="nursingHome" id="Kib-2i-Oi6" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Pnw-xw-a9v"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VuS-lh-LNL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3163" y="1013"/>
+        </scene>
+        <!--vistingElderly-->
+        <scene sceneID="Jpi-Dy-3KY">
+            <objects>
+                <viewControllerPlaceholder storyboardName="vistingElderly" id="68X-q5-Zc4" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="q1x-LH-F5c"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rhc-Dp-Co3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3283" y="1072"/>
+        </scene>
     </scenes>
+    <designables>
+        <designable name="2Oy-UH-V48">
+            <size key="intrinsicContentSize" width="376" height="39.220703125"/>
+        </designable>
+        <designable name="8tM-By-EaD">
+            <size key="intrinsicContentSize" width="376" height="39.220703125"/>
+        </designable>
+        <designable name="BZi-M2-7ou">
+            <size key="intrinsicContentSize" width="359" height="39.220703125"/>
+        </designable>
+        <designable name="Cz1-E4-IU6">
+            <size key="intrinsicContentSize" width="376" height="39.220703125"/>
+        </designable>
+        <designable name="IP3-oR-oYB">
+            <size key="intrinsicContentSize" width="359" height="39.220703125"/>
+        </designable>
+        <designable name="L21-9A-Ijz">
+            <size key="intrinsicContentSize" width="376" height="39.220703125"/>
+        </designable>
+        <designable name="N1m-hU-rqB">
+            <size key="intrinsicContentSize" width="359" height="39.220703125"/>
+        </designable>
+        <designable name="NPp-0V-sJO">
+            <size key="intrinsicContentSize" width="359" height="39.220703125"/>
+        </designable>
+        <designable name="Ov8-fU-xbl">
+            <size key="intrinsicContentSize" width="359" height="39.220703125"/>
+        </designable>
+        <designable name="SKn-yL-JzS">
+            <size key="intrinsicContentSize" width="359" height="39.220703125"/>
+        </designable>
+        <designable name="WUw-cG-BVr">
+            <size key="intrinsicContentSize" width="359" height="39.220703125"/>
+        </designable>
+        <designable name="aac-0z-Dg3">
+            <size key="intrinsicContentSize" width="359" height="39.220703125"/>
+        </designable>
+        <designable name="h7d-Pg-a1c">
+            <size key="intrinsicContentSize" width="359" height="39.220703125"/>
+        </designable>
+        <designable name="kHB-uT-ZTH">
+            <size key="intrinsicContentSize" width="376" height="39.220703125"/>
+        </designable>
+        <designable name="kOm-yi-hdw">
+            <size key="intrinsicContentSize" width="376" height="39.220703125"/>
+        </designable>
+        <designable name="mOh-eI-D32">
+            <size key="intrinsicContentSize" width="376" height="39.220703125"/>
+        </designable>
+        <designable name="moR-sL-Oj7">
+            <size key="intrinsicContentSize" width="376" height="39.220703125"/>
+        </designable>
+        <designable name="rdv-WJ-3ny">
+            <size key="intrinsicContentSize" width="359" height="39.220703125"/>
+        </designable>
+        <designable name="ul2-It-ev8">
+            <size key="intrinsicContentSize" width="376" height="39.220703125"/>
+        </designable>
+        <designable name="wPK-xc-uyi">
+            <size key="intrinsicContentSize" width="376" height="39.220703125"/>
+        </designable>
+        <designable name="yik-Gf-Xco">
+            <size key="intrinsicContentSize" width="376" height="39.220703125"/>
+        </designable>
+        <designable name="z8A-CF-Qjz">
+            <size key="intrinsicContentSize" width="359" height="39.220703125"/>
+        </designable>
+        <designable name="zVL-ng-aFj">
+            <size key="intrinsicContentSize" width="376" height="39.220703125"/>
+        </designable>
+    </designables>
     <inferredMetricsTieBreakers>
         <segue reference="tQm-eu-L2s"/>
         <segue reference="MDd-jE-GnH"/>
@@ -5212,7 +5401,7 @@ Nomow App is a screening tool of child development can be used families, before 
         <image name="add" width="57" height="57"/>
         <image name="afternoon" width="375" height="666"/>
         <image name="camera" width="30" height="30"/>
-        <image name="camera.fill" catalog="system" width="128" height="96"/>
+        <image name="camera.fill" catalog="system" width="128" height="94"/>
         <image name="conditions" width="50" height="50"/>
         <image name="file_colored" width="50" height="50"/>
         <image name="help" width="50" height="50"/>
@@ -5226,8 +5415,23 @@ Nomow App is a screening tool of child development can be used families, before 
         <image name="s2" width="1400" height="1400"/>
         <image name="step_background" width="28.5" height="28.5"/>
         <image name="story_background" width="650" height="390"/>
-        <image name="teletype.answer" catalog="system" width="128" height="86"/>
+        <image name="teletype.answer" catalog="system" width="128" height="89"/>
         <image name="trash" catalog="system" width="121" height="128"/>
         <image name="usage" width="50" height="50"/>
+        <systemColor name="groupTableViewBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBrownColor">
+            <color red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

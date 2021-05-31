@@ -233,7 +233,7 @@ class statmenetOfWorkViewController: UIViewController ,NVActivityIndicatorViewab
     
     func validateFields() -> Bool{
         
-        
+     
         //marriageItem.EmployerCategory = employerCategoryView.textField.text ?? ""
         marriageItem.Employer = emplyerView.textField.text ?? ""
         //marriageItem.WorkPlace = placeOfWorkView.textField.text ?? ""

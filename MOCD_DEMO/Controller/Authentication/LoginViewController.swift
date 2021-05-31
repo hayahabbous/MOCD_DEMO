@@ -226,7 +226,7 @@ class LoginViewController: UIViewController ,NVActivityIndicatorViewable{
         }
         
         
-        WebService.RetrieveUAEPassUser(email: email, uaePassUserId: userID) { (json) in
+        WebService.RetrieveUAEPassUser(email: "", uaePassUserId: userID) { (json) in // email should be empty and user id should be pass by parmaeter
             print(json)
             
             
@@ -239,7 +239,10 @@ class LoginViewController: UIViewController ,NVActivityIndicatorViewable{
             guard let code = json["code"] as? Int else {return}
             guard let message = json["message"] as? String else {return}
             
+            
+            //user is found
             if code > 0 {
+                
                 guard let data = json["data"] as? [String: Any] else{return}
                 guard let result = data["result"] as? [String: Any] else {return}
                 guard let responseDescription = result["ResponseDescription"] as? [String: Any] else {return}
@@ -286,7 +289,8 @@ class LoginViewController: UIViewController ,NVActivityIndicatorViewable{
                         self.isUAEPass = true
                         self.uaePassUserId = userID
                         self.uaePassEmail = email
-                        //self.mapuUser(uaePassUserID: <#T##String#>, userId: <#T##String#>)
+                        //self.login()
+                        //self.mapuUser(uaePassUserID: self.uaePassUserId, userId: self.user.id)
                         
                     }
                     
@@ -316,7 +320,7 @@ class LoginViewController: UIViewController ,NVActivityIndicatorViewable{
         
         
 
-        WebService.CreateUAEPassUserMapping(uaePassUserId: uaePassUserID, uaePassUserType: "SOAP3", userId: userId ) { (json) in
+        WebService.CreateUAEPassUserMapping(uaePassUserId: uaePassUserID, uaePassUserType: "SOP3", userId: userId ) { (json) in
             print(json)
             
             
@@ -504,6 +508,17 @@ class LoginViewController: UIViewController ,NVActivityIndicatorViewable{
             }
         }
         webVC?.onUAEPassFailureBlock = {(response: String?) -> Void in
+            
+            let alert = UIAlertController(title: "Error".localize, message: response, preferredStyle: .alert)
+            
+            let okAction = UIAlertAction(title: "Ok".localize, style: .default) { (action) in
+                
+            }
+            
+            alert.addAction(okAction)
+            self.navigationController?.present(alert, animated: true, completion: nil)
+            
+            
         }
         if let viewController = webVC {
             self.navigationController?.pushViewController(viewController, animated: true)
@@ -547,7 +562,18 @@ class LoginViewController: UIViewController ,NVActivityIndicatorViewable{
         self.email = userProfile.email ?? ""
         self.mobileNumber = userProfile.mobile ?? ""
         self.emiratesID = userProfile.idn ?? ""
-        self.retrieveUser(email: userProfile.email ?? "", userID: userProfile.uuid ?? "")
+        
+        if userProfile.userType == "SOP1" {
+            let alert = UIAlertController(title: "Error".localize, message: "Your account is unverified, please upgrade your account following instructions in the UAEPASS app.".localize, preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Ok".localize, style: .default) { (action) in
+                
+            }
+            alert.addAction(okAction)
+            self.navigationController?.present(alert, animated: true, completion: nil)
+        }else {
+            self.retrieveUser(email: userProfile.email ?? "", userID: userProfile.uuid ?? "")
+        }
+        
         /*
         let userProfileVC = self.storyboard?.instantiateViewController(withIdentifier: "UserProfileViewController") as? UserProfileViewController
         userProfileVC?.userProfile = userProfile

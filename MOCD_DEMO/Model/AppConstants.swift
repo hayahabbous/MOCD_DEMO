@@ -102,6 +102,8 @@ class AspectElement: NSObject {
 }
 class AppConstants: NSObject {
     
+    static var personalUser: personalInfo?
+    
     
     static var isLive: Bool = false
     static var isNemowEnabled = "isNemowEnabled"
@@ -132,7 +134,13 @@ class AppConstants: NSObject {
     
     static let RequestingServiceMassWeddingDEV: String = "f2e102ac-6992-e911-a2b5-00155d138354"
     static let TypeOfRequestMassWeddingDEV: String = "c8954e46-6b92-e911-a2b5-00155d138354"
+   
     
+    static let RequestingServiceElderly: String = "4D1CEAC0-4105-EB11-A2C2-00155D138370"
+    
+    static let TypeOfRequestNursinghome: String = "C2F82A93-582D-EB11-A2C2-00155D138370"
+    static let TypeOfRequestMobileUnit: String = "11DEBDB0-582D-EB11-A2C2-00155D138370"
+    static let TypeOfRequestAppointmentservice: String = "01DE944B-D827-EB11-A2C2-00155D138370"
     
     
     static let RequestingServiceEdaadDEV: String = "a6ce08ff-6992-e911-a2b5-00155d138354"

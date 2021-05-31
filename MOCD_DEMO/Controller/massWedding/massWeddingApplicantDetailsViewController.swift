@@ -60,9 +60,14 @@ class massWeddingApplicantDetailsViewController: UIViewController ,NVActivityInd
         
         husbandNameView.textLabel.text = "Husband Name".localize
         husbandNameView.textField.placeholder = "Husband Name".localize
+        husbandNameView.textField.text = AppConstants.personalUser?.fullEnglishName ?? ""
+        
         
         nationalNumberView.textLabel.text = "National Number For the Husband".localize
         nationalNumberView.textField.placeholder = "National Number For the Husband".localize
+        nationalNumberView.textField.text = AppConstants.personalUser?.emiratesID ?? ""
+        
+        
         
         dateView.textLabel.text = "Date of the Marriage Contract".localize
         dateView.viewController = self
@@ -82,10 +87,13 @@ class massWeddingApplicantDetailsViewController: UIViewController ,NVActivityInd
         
         mobileView.textLabel.text = "Mobile No".localize
         mobileView.textField.placeholder = "Mobile No".localize
-        
+        mobileView.textField.text = AppConstants.personalUser?.mobileNumber ?? ""
         
         emailView.textLabel.text = "Email".localize
         emailView.textField.placeholder = "Email".localize
+        emailView.textField.text = AppConstants.personalUser?.email ?? ""
+        
+        
         
         cityView.textLabel.text = "City".localize
         cityView.textField.placeholder = "City".localize

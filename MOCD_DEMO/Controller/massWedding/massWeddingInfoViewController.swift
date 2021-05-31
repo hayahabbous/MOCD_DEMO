@@ -81,8 +81,10 @@ class massWeddingInfoViewController: UIViewController {
             if code == 200 {
                 
                 guard let content = json["Content"] as? String else {
+                    DispatchQueue.main.async {
+                        Utils.showAlertWith(title: ResponseTitle, message: AppConstants.isArabic() ? ResponseDescriptionAr : ResponseDescriptionEn, viewController: self)
+                    }
                     
-                    Utils.showAlertWith(title: ResponseTitle, message: AppConstants.isArabic() ? ResponseDescriptionAr : ResponseDescriptionEn, viewController: self)
                     return
                     
                 }
